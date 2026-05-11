@@ -3105,6 +3105,21 @@ select {
   grid-column: 1 / -1;
 }
 
+/* SQL メモ（sql-editor.html） */
+.sqlEditor__textarea {
+  width: 100%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.45;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--soft);
+  background: var(--surface, #fafafa);
+  color: var(--ink, #111);
+  resize: vertical;
+  tab-size: 2;
+}
+
 /* 購入手続き（チェックアウト） */
 .cartPage {
   padding-bottom: 48px;
