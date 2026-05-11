@@ -212,6 +212,20 @@ async function handler(req, res) {
     } catch {
       /* keep msg */
     }
+    const low = String(msg).toLowerCase();
+    const badKey =
+      r.status === 401 ||
+      r.status === 403 ||
+      low.includes("invalid api key") ||
+      low.includes("jwt") ||
+      low.includes("invalid authentication");
+    if (badKey) {
+      return res.status(502).json({
+        error: "Supabase rejected the server credentials",
+        hint:
+          "Vercel の環境変数を確認してください。SUPABASE_URL は Dashboard → Settings → API の Project URL（…supabase.co）。SUPABASE_SERVICE_ROLE_KEY は同画面の service_role（secret）をそのまま貼り付け（前後に引用符・改行・空白なし）。保存後に再デプロイ。Preview でも使う場合は Preview 用にも同じ変数を設定。",
+      });
+    }
     if (msg.length > 400) msg = msg.slice(0, 397) + "…";
     return res.status(502).json({ error: msg, status: r.status });
   }
