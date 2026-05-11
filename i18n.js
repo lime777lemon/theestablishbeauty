@@ -241,7 +241,7 @@
       "contact.result.detailPrefix": "詳細：",
       "contact.result.fileHint":
         "\n\n※ file:// で開いている場合は https の本番 URL か、python3 -m http.server などで http://localhost:… から開き直してください。",
-      "contact.result.mailLine": "\n\nメール：info@theestablishbeauty.com",
+      "contact.result.mailLine": "\n\nメール：info@theestablish.jp",
       "contact.demo.name": "お名前：",
       "contact.demo.email": "メール：",
       "contact.demo.topic": "種別：",
@@ -489,7 +489,7 @@
       "contact.result.detailPrefix": "Details: ",
       "contact.result.fileHint":
         "\n\nIf you opened this page as file://, try again from your https site or http://localhost via a simple HTTP server.",
-      "contact.result.mailLine": "\n\nEmail: info@theestablishbeauty.com",
+      "contact.result.mailLine": "\n\nEmail: info@theestablish.jp",
       "contact.demo.name": "Name: ",
       "contact.demo.email": "Email: ",
       "contact.demo.topic": "Topic: ",

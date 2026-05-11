@@ -6,7 +6,7 @@
  * 環境変数（Vercel ダッシュボード）:
  * - RESEND_API_KEY
  * - CONTACT_NOTIFY_FROM  … Resend で検証済みの送信元（例: onboarding@resend.dev または自ドメイン）
- * - CONTACT_NOTIFY_TO    … 通知を受け取る宛先（例: info@theestablishbeauty.com）
+ * - CONTACT_NOTIFY_TO    … 通知を受け取る宛先（例: info@theestablish.jp）
  * - CONTACT_WEBHOOK_SECRET … 共有秘密。Supabase Webhook の Authorization: Bearer と一致させる
  */
 
