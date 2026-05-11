@@ -108,16 +108,20 @@
         <div class="panel contact">
           <div class="contact__grid">
             <div>
-              <h2 class="h2" data-i18n="contact.form.h2">フォームで送信</h2>
+              <h2 class="h2" data-i18n="contact.form.h2">お問い合わせフォーム</h2>
               <p class="subtle" data-i18n="contact.lead" data-i18n-html>
-                送信内容は Supabase のテーブル <code class="micro">contact_inquiries</code> に保存されます。フォルダを直接開く
-                <code class="micro">file://</code>
-                では送信に失敗することがあるため、公開 URL（https）かローカルの HTTP サーバーから開いてください。ダッシュボードはプロジェクト
-                <code class="micro">lywcdvevizwopochcpic</code>
-                の Table Editor を確認してください。メールの自動通知は未設定です。
+                必須項目を入力し、同意にチェックを入れたうえで「メールで送る」を押すと、
+                <strong>Vercel の API 経由で Supabase（public.contact_inquiries）に保存</strong>し（Supabase の秘密鍵はサーバー側のみ）、続けてメールアプリが開き本文が挿入された状態で
+                <strong>info@theestablish.jp</strong> 宛に送れます（最終送信はメールアプリ側です）。
+                <code class="micro">file://</code> や API のない静的ホストでは保存に失敗することがあるため、本番の https URL または
+                <code class="micro">vercel dev</code> で試してください。
               </p>
 
-              <form class="contact__form" data-contact-form>
+              <form
+                class="contact__form"
+                data-contact-form
+                data-contact-mailto-to="info@theestablish.jp"
+              >
                 <label class="field">
                   <span data-i18n="contact.field.name">お名前</span>
                   <input
@@ -159,9 +163,9 @@
                 </label>
 
                 <div class="contact__actions">
-                  <a class="btn btn--ghost" href="mailto:info@theestablish.jp" data-i18n="contact.mailto"
-                    >メールで送る</a
-                  >
+                  <button class="btn btn--ghost" type="button" data-i18n="contact.mailto" data-contact-mailto>
+                    メールで送る
+                  </button>
                 </div>
 
                 <p class="micro subtle" data-contact-result role="status" aria-live="polite"></p>
@@ -335,11 +339,6 @@
     </div>
 
     <script>
-      window.__CONTACT_SUPABASE__ = {
-        url: "https://lywcdvevizwopochcpic.supabase.co",
-        anonKey:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx5d2NkdmV2aXp3b3BvY2hjcGljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcyNTA1NzYsImV4cCI6MjA4MjgyNjU3Nn0.pbwMCLurN-sEErdVZ-9FpXzLBCElqPoDo2QjXIBnwhc",
-      };
       (function () {
         function ct(key) {
           var si = window.siteI18n;
@@ -353,6 +352,7 @@
           try {
             var j = JSON.parse(raw);
             if (j && typeof j.message === "string" && j.message) msg = j.message;
+            else if (j && typeof j.error === "string" && j.error) msg = j.error;
           } catch (e) {}
           if (msg.length > 200) msg = msg.slice(0, 197) + "…";
           return msg;
@@ -360,86 +360,115 @@
         function bind() {
           var form = document.querySelector("[data-contact-form]");
           if (!form || form.nodeName !== "FORM") return;
-          form.addEventListener("submit", async function (e) {
-            e.preventDefault();
-            var submitBtn = form.querySelector('button[type="submit"]');
-            var fd = new FormData(form);
-            var name = String(fd.get("name") || "").trim();
-            var email = String(fd.get("email") || "").trim();
-            var topic = String(fd.get("topic") || "").trim();
-            var message = String(fd.get("message") || "").trim();
-            var out = document.querySelector("[data-contact-result]");
-            var cfg = window.__CONTACT_SUPABASE__;
-            function setBusy(busy) {
-              if (submitBtn) submitBtn.disabled = busy;
-            }
-            var cr = fd.get("consent");
-            var consent = cr === "on" || cr === "true" || cr === true || cr === "1";
-            if (!cfg || !cfg.url || !cfg.anonKey) {
-              if (out) {
-                out.textContent =
-                  ct("contact.result.demo") +
-                  "\n\n" +
-                  ct("contact.demo.name") +
+          var mailBtn = form.querySelector("[data-contact-mailto]");
+          if (mailBtn) {
+            mailBtn.addEventListener("click", async function () {
+              if (!form.reportValidity()) return;
+              var to = String(form.getAttribute("data-contact-mailto-to") || "info@theestablish.jp").trim();
+              if (!to) to = "info@theestablish.jp";
+              var fd = new FormData(form);
+              var name = String(fd.get("name") || "").trim();
+              var email = String(fd.get("email") || "").trim();
+              var topicCode = String(fd.get("topic") || "").trim();
+              var messageFull = String(fd.get("message") || "").trim();
+              var cr = fd.get("consent");
+              var consent = cr === "on" || cr === "true" || cr === true || cr === "1";
+              var topicEl = form.elements.namedItem("topic");
+              var topicLabel = topicCode;
+              if (topicEl && topicEl.options && typeof topicEl.selectedIndex === "number") {
+                var opt = topicEl.options[topicEl.selectedIndex];
+                if (opt && opt.textContent) topicLabel = opt.textContent.trim();
+              }
+              var subject = ct("contact.mailto.subject");
+              function buildBody(msg) {
+                return (
+                  ct("contact.mailto.body.name") +
                   name +
                   "\n" +
-                  ct("contact.demo.email") +
+                  ct("contact.mailto.body.email") +
                   email +
                   "\n" +
-                  ct("contact.demo.topic") +
-                  topic +
+                  ct("contact.mailto.body.topic") +
+                  topicLabel +
+                  " (" +
+                  topicCode +
+                  ")" +
                   "\n" +
-                  ct("contact.demo.body") +
-                  message.slice(0, 120) +
-                  (message.length > 120 ? "…" : "");
+                  ct("contact.mailto.body.consent") +
+                  "\n\n" +
+                  ct("contact.mailto.body.message") +
+                  "\n" +
+                  msg
+                );
               }
-              form.reset();
-              return;
-            }
-            try {
-              setBusy(true);
-              var base = String(cfg.url).replace(/\/$/, "");
-              var res = await fetch(base + "/rest/v1/contact_inquiries", {
-                method: "POST",
-                mode: "cors",
-                headers: {
-                  "Content-Type": "application/json",
-                  apikey: cfg.anonKey,
-                  Authorization: "Bearer " + cfg.anonKey,
-                  Prefer: "return=minimal",
-                },
-                body: JSON.stringify({
-                  name: name || null,
-                  email: email || null,
-                  inquiry_type: topic || null,
-                  message: message || null,
-                  consent: consent,
-                  page_path: (window.location.pathname + (window.location.search || "")).slice(0, 500),
-                  locale:
-                    document.documentElement.getAttribute("data-site-lang") || document.documentElement.lang || null,
-                  user_agent: typeof navigator !== "undefined" ? String(navigator.userAgent).slice(0, 500) : null,
-                }),
-              });
-              if (!res.ok) {
+              var message = messageFull;
+              var body = buildBody(message);
+              var maxTotal = 1900;
+              var prefix = "mailto:" + to + "?subject=";
+              function mailtoHref(bodyText) {
+                return (
+                  prefix +
+                  encodeURIComponent(subject) +
+                  "&body=" +
+                  encodeURIComponent(bodyText)
+                );
+              }
+              var href = mailtoHref(body);
+              while (href.length > maxTotal && message.length > 80) {
+                message = message.slice(0, Math.floor(message.length * 0.85));
+                body = buildBody(message + "\n\n" + ct("contact.mailto.truncated"));
+                href = mailtoHref(body);
+              }
+              if (href.length > maxTotal) {
+                body = buildBody(ct("contact.mailto.truncatedOnly"));
+                href = mailtoHref(body);
+              }
+              var out = document.querySelector("[data-contact-result]");
+              mailBtn.disabled = true;
+              try {
+                var res = await fetch("/api/contact-inquiry", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    name: name || null,
+                    email: email || null,
+                    inquiry_type: topicCode || null,
+                    message: messageFull || null,
+                    consent: consent,
+                    page_path: (window.location.pathname + (window.location.search || "")).slice(0, 500),
+                    locale:
+                      document.documentElement.getAttribute("data-site-lang") ||
+                      document.documentElement.lang ||
+                      null,
+                    user_agent: typeof navigator !== "undefined" ? String(navigator.userAgent).slice(0, 500) : null,
+                  }),
+                });
                 var errText = await res.text().catch(function () {
                   return "";
                 });
-                throw new Error(formatApiError(errText, res.status));
+                if (!res.ok) {
+                  throw new Error(formatApiError(errText, res.status));
+                }
+                if (out) {
+                  out.textContent = ct("contact.result.success") + "\n\n" + ct("contact.result.mailtoOpened");
+                }
+                form.reset();
+              } catch (err) {
+                console.error(err);
+                var hint = window.location.protocol === "file:" ? ct("contact.result.fileHint") : "";
+                var detail = err && err.message ? "\n\n" + ct("contact.result.detailPrefix") + err.message : "";
+                if (out) {
+                  out.textContent =
+                    ct("contact.result.fail") + detail + hint + ct("contact.result.mailLine") + "\n\n" + ct("contact.result.mailtoOpened");
+                }
+              } finally {
+                mailBtn.disabled = false;
               }
-              if (out) {
-                out.textContent = ct("contact.result.success");
-              }
-              form.reset();
-            } catch (err) {
-              console.error(err);
-              var hint = window.location.protocol === "file:" ? ct("contact.result.fileHint") : "";
-              var detail = err && err.message ? "\n\n" + ct("contact.result.detailPrefix") + err.message : "";
-              if (out) {
-                out.textContent = ct("contact.result.fail") + detail + hint + ct("contact.result.mailLine");
-              }
-            } finally {
-              setBusy(false);
-            }
+              window.location.href = href;
+            });
+          }
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
           });
         }
         if (document.readyState === "loading") {

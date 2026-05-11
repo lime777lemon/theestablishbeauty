@@ -211,9 +211,9 @@
       "contact.crumb.home": "ホーム",
       "contact.crumb.current": "お問い合わせ",
       "contact.hero.sub": "ご質問・ご相談はこちらからお送りください。",
-      "contact.form.h2": "フォームで送信",
+      "contact.form.h2": "お問い合わせフォーム",
       "contact.lead":
-        "送信内容は Supabase のテーブル <code class=\"micro\">contact_inquiries</code> に保存されます。フォルダを直接開く <code class=\"micro\">file://</code> では送信に失敗することがあるため、公開 URL（https）かローカルの HTTP サーバーから開いてください。ダッシュボードはプロジェクト <code class=\"micro\">lywcdvevizwopochcpic</code> の Table Editor を確認してください。メール通知は Webhook 設定後に届きます。",
+        "必須項目を入力し、同意にチェックを入れたうえで「メールで送る」を押すと、<strong>Vercel の API 経由で Supabase（public.contact_inquiries）に保存</strong>し（Supabase の秘密鍵はサーバー側のみ）、続けてメールアプリが開き本文が挿入された状態で <strong>info@theestablish.jp</strong> 宛に送れます（最終送信はメールアプリ側です）。<code class=\"micro\">file://</code> や API のない静的ホストでは保存に失敗することがあるため、本番の https URL または <code class=\"micro\">vercel dev</code> で試してください。",
       "contact.field.name": "お名前",
       "contact.field.email": "メールアドレス",
       "contact.field.topic": "お問い合わせ種別",
@@ -227,6 +227,16 @@
       "contact.topic.other": "その他",
       "contact.consent": "入力内容に同意して送信します",
       "contact.mailto": "メールで送る",
+      "contact.mailto.subject": "[EMR-TEK] お問い合わせ",
+      "contact.mailto.body.name": "お名前：",
+      "contact.mailto.body.email": "メールアドレス：",
+      "contact.mailto.body.topic": "お問い合わせ種別：",
+      "contact.mailto.body.consent": "入力内容への同意：あり",
+      "contact.mailto.body.message": "【お問い合わせ内容】",
+      "contact.mailto.truncated": "（本文が長いため、ここまでを自動で挿入しました。続きはこのメールに追記してください。）",
+      "contact.mailto.truncatedOnly":
+        "（ブラウザの文字数制限のため、お問い合わせ内容を自動挿入できませんでした。お名前・メール・種別に続き、内容をこのメールにご記入ください。）",
+      "contact.result.mailtoOpened": "メール作成画面を開きました。送信ボタンを押して送信してください。",
       "contact.aside.label": "連絡先",
       "contact.aside.email": "メール",
       "contact.aside.email.hint": "通常 1〜2営業日以内に返信します。",
@@ -235,7 +245,7 @@
       "contact.aside.faq.btn": "FAQを見る",
       "contact.result.demo": "送信しました（デモ：Supabase 未設定）。",
       "contact.result.success":
-        "送信しました。Supabase（プロジェクト lywcdvevizwopochcpic）の public.contact_inquiries に保存されています。\n\n通知メールは Database Webhook → Vercel の /api/notify-contact-inquiry → Resend を設定済みの場合のみ届きます。届かないときは Supabase の Webhook ログと Vercel Functions のログを確認してください。",
+        "送信しました。Vercel の API 経由で Supabase の public.contact_inquiries に保存しました（anon キーはブラウザに出しません）。\n\n通知メールは Database Webhook → /api/notify-contact-inquiry → Resend を設定済みの場合のみ届きます。届かないときは Supabase の Webhook ログと Vercel Functions のログを確認してください。",
       "contact.result.fail": "送信に失敗しました。",
       "contact.result.detailPrefix": "詳細：",
       "contact.result.fileHint":
@@ -458,9 +468,9 @@
       "contact.crumb.home": "Home",
       "contact.crumb.current": "Contact",
       "contact.hero.sub": "Send us your questions or requests using the form below.",
-      "contact.form.h2": "Send a message",
+      "contact.form.h2": "Contact form",
       "contact.lead":
-        "Your message is saved to the Supabase table <code class=\"micro\">contact_inquiries</code>. Opening this page as <code class=\"micro\">file://</code> may cause submission to fail—use your public https URL or a local HTTP server. In the dashboard, open project <code class=\"micro\">lywcdvevizwopochcpic</code> → Table Editor. Email notifications are sent only after you configure the webhook pipeline.",
+        "Fill in the required fields, check consent, then click <strong>Email us</strong>. We save via the <strong>Vercel API</strong> to Supabase (<code class=\"micro\">public.contact_inquiries</code>)—keys stay on the server—then your mail app opens to <strong>info@theestablish.jp</strong>. Saving fails on <code class=\"micro\">file://</code> or static hosts without <code class=\"micro\">/api</code>; use your production https URL or <code class=\"micro\">vercel dev</code>.",
       "contact.field.name": "Name",
       "contact.field.email": "Email",
       "contact.field.topic": "Topic",
@@ -474,6 +484,17 @@
       "contact.topic.other": "Other",
       "contact.consent": "I agree to submit the information above",
       "contact.mailto": "Email us",
+      "contact.mailto.subject": "[EMR-TEK] Contact inquiry",
+      "contact.mailto.body.name": "Name: ",
+      "contact.mailto.body.email": "Email: ",
+      "contact.mailto.body.topic": "Topic: ",
+      "contact.mailto.body.consent": "Consent to submitted information: yes",
+      "contact.mailto.body.message": "Message:",
+      "contact.mailto.truncated":
+        "(The message was long; only part was inserted automatically. Please paste the rest below.)",
+      "contact.mailto.truncatedOnly":
+        "(Your browser limited the mail link length. Please add your full message below your name, email, and topic.)",
+      "contact.result.mailtoOpened": "Your mail app should open—press send there to finish.",
       "contact.aside.label": "Contact",
       "contact.aside.email": "Email",
       "contact.aside.email.hint": "We usually reply within 1–2 business days.",
@@ -482,7 +503,7 @@
       "contact.aside.faq.btn": "Open FAQ",
       "contact.result.demo": "Sent (demo: Supabase not configured).",
       "contact.result.success":
-        "Sent. Your entry is stored in Supabase project lywcdvevizwopochcpic, table public.contact_inquiries.\n\nNotification emails are only sent if Database Webhook → Vercel /api/notify-contact-inquiry → Resend is configured. If mail is missing, check Supabase webhook logs and Vercel function logs.",
+        "Saved. Your entry was written to public.contact_inquiries via the Vercel API (no Supabase keys in the browser).\n\nNotification emails are only sent if Database Webhook → /api/notify-contact-inquiry → Resend is configured. If mail is missing, check Supabase webhook logs and Vercel function logs.",
       "contact.result.fail": "Could not send.",
       "contact.result.detailPrefix": "Details: ",
       "contact.result.fileHint":
