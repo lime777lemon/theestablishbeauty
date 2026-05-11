@@ -15,6 +15,49 @@
 
 const TOPICS = new Set(["product", "order", "returns", "wholesale", "other"]);
 
+/** Vercel が付与する req.body（オブジェクト / 文字列 / Buffer）を JSON オブジェクトに統一 */
+function readJsonBody(req) {
+  const b = req.body;
+  if (b === undefined || b === null) {
+    return {};
+  }
+  if (Buffer.isBuffer(b)) {
+    try {
+      return JSON.parse(b.toString("utf8") || "{}");
+    } catch {
+      return null;
+    }
+  }
+  if (typeof b === "string") {
+    try {
+      return JSON.parse(b || "{}");
+    } catch {
+      return null;
+    }
+  }
+  if (typeof b === "object") {
+    return b;
+  }
+  return {};
+}
+
+function normalizeHostname(host) {
+  return String(host || "")
+    .replace(/^www\./i, "")
+    .toLowerCase();
+}
+
+function originsMatch(a, b) {
+  try {
+    const ua = new URL(a.startsWith("http") ? a : `https://${a}`);
+    const ub = new URL(b.startsWith("http") ? b : `https://${b}`);
+    if (ua.protocol !== ub.protocol) return false;
+    return normalizeHostname(ua.hostname) === normalizeHostname(ub.hostname);
+  } catch {
+    return a.replace(/\/$/, "") === b.replace(/\/$/, "");
+  }
+}
+
 function clampStr(s, max) {
   const t = String(s ?? "").trim();
   if (t.length <= max) return t;
@@ -36,17 +79,32 @@ function originAllowed(req) {
     .filter(Boolean);
   if (!allowed.length) return true;
 
-  const origin = String(req.headers.origin || "").replace(/\/$/, "");
-  const referer = String(req.headers.referer || "");
+  const origin = String(req.headers.origin || "").trim().replace(/\/$/, "");
+  const referer = String(req.headers.referer || "").trim();
   const vercel = process.env.VERCEL_URL;
 
   for (const a of allowed) {
-    if (origin && origin === a) return true;
-    if (referer === a || referer.startsWith(a + "/")) return true;
+    if (origin && originsMatch(origin, a)) return true;
+    if (referer) {
+      try {
+        const ro = new URL(referer).origin.replace(/\/$/, "");
+        if (originsMatch(ro, a)) return true;
+      } catch {
+        if (referer === a || referer.startsWith(a + "/")) return true;
+      }
+    }
   }
   if (vercel) {
     const v = `https://${vercel}`.replace(/\/$/, "");
-    if (origin === v || referer === v || referer.startsWith(v + "/")) return true;
+    if (origin && originsMatch(origin, v)) return true;
+    if (referer) {
+      try {
+        const ro = new URL(referer).origin.replace(/\/$/, "");
+        if (originsMatch(ro, v)) return true;
+      } catch {
+        if (referer === v || referer.startsWith(v + "/")) return true;
+      }
+    }
   }
   return false;
 }
@@ -64,16 +122,20 @@ async function handler(req, res) {
   }
 
   if (!originAllowed(req)) {
-    return res.status(403).json({ error: "Forbidden" });
+    console.warn("contact-inquiry: Forbidden origin", {
+      origin: req.headers.origin,
+      referer: req.headers.referer?.slice(0, 120),
+      allowed: process.env.CONTACT_ALLOWED_ORIGINS,
+    });
+    return res.status(403).json({
+      error: "Forbidden",
+      hint: "Origin did not match CONTACT_ALLOWED_ORIGINS. Add both apex and www, or remove the env var to allow all origins.",
+    });
   }
 
-  let body = req.body;
-  if (typeof body === "string") {
-    try {
-      body = JSON.parse(body);
-    } catch {
-      return res.status(400).json({ error: "Invalid JSON body" });
-    }
+  const body = readJsonBody(req);
+  if (body === null) {
+    return res.status(400).json({ error: "Invalid JSON body" });
   }
   if (!body || typeof body !== "object") {
     return res.status(400).json({ error: "Expected JSON object" });

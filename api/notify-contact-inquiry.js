@@ -18,6 +18,31 @@ function escapeHtml(s) {
     .replace(/"/g, "&quot;");
 }
 
+function readJsonBody(req) {
+  const b = req.body;
+  if (b === undefined || b === null) {
+    return null;
+  }
+  if (Buffer.isBuffer(b)) {
+    try {
+      return JSON.parse(b.toString("utf8") || "{}");
+    } catch {
+      return null;
+    }
+  }
+  if (typeof b === "string") {
+    try {
+      return JSON.parse(b || "{}");
+    } catch {
+      return null;
+    }
+  }
+  if (typeof b === "object") {
+    return b;
+  }
+  return null;
+}
+
 async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -38,24 +63,31 @@ async function handler(req, res) {
     return res.status(500).json({ error: "Server misconfigured" });
   }
 
-  let body = req.body;
-  if (typeof body === "string") {
-    try {
-      body = JSON.parse(body);
-    } catch {
-      return res.status(400).json({ error: "Invalid JSON body" });
-    }
+  let body = readJsonBody(req);
+  if (body === null) {
+    return res.status(400).json({ error: "Invalid JSON body" });
   }
   if (!body || typeof body !== "object") {
     return res.status(400).json({ error: "Expected JSON object" });
   }
 
-  const type = body.type ?? body.eventType ?? body.event?.type;
-  const table = body.table ?? body.event?.table;
-  const schema = body.schema ?? body.event?.schema ?? "public";
-  const record = body.record ?? body.new ?? body.event?.record ?? null;
+  const root = body.payload && typeof body.payload === "object" ? body.payload : body;
+  const type = root.type ?? root.eventType ?? body.event?.type ?? body.event_type;
+  const table = root.table ?? body.event?.table;
+  const schema = root.schema ?? body.event?.schema ?? "public";
+  const record = root.record ?? root.new ?? body.record ?? body.new ?? body.event?.record ?? null;
 
-  if (schema !== "public" || table !== "contact_inquiries" || String(type).toUpperCase() !== "INSERT") {
+  const schemaOk = String(schema || "public").toLowerCase() === "public";
+  const tableOk = String(table || "").toLowerCase() === "contact_inquiries";
+  const typeOk = String(type || "").toUpperCase() === "INSERT";
+
+  if (!schemaOk || !tableOk || !typeOk) {
+    console.warn("notify-contact-inquiry: skipped (not contact_inquiries INSERT)", {
+      schema,
+      table,
+      type,
+      topKeys: Object.keys(body),
+    });
     return res.status(200).json({ ok: true, skipped: true });
   }
   if (!record || typeof record !== "object") {
