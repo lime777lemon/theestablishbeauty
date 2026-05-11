@@ -1,6 +1,7 @@
 .DS_Store
 .env
 .env.*
+!.env.example
 *.log
 github-theestablishbeauty/
 
@@ -21,3 +22,5 @@ __pycache__/
 .vercel/
 .idea/
 .vscode/
+.vercel
+.env*.local

@@ -2663,6 +2663,18 @@ select {
   padding-top: 18px;
 }
 
+/* Establish pages: keep ~30px between sections */
+.page-establish main > section.page {
+  padding-top: 30px;
+}
+
+/* Establish pages: keep media responsive by default */
+.page-establish img,
+.page-establish video {
+  max-width: 100%;
+  height: auto;
+}
+
 .prose p {
   margin: 10px 0 0;
 }

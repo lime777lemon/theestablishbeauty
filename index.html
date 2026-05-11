@@ -38,14 +38,24 @@
       }
       .page-establish .establishBrand__logo {
         display: block;
-        height: 52px;
+        height: 64px;
         width: auto;
-        max-width: min(220px, 46vw);
+        max-width: min(260px, 56vw);
         object-fit: contain;
       }
       .page-establish .establishBrand__logo--footer {
-        height: 44px;
-        max-width: 200px;
+        height: 52px;
+        max-width: 240px;
+      }
+      @media (max-width: 520px) {
+        .page-establish .establishBrand__logo {
+          height: 56px;
+          max-width: min(240px, 70vw);
+        }
+        .page-establish .establishBrand__logo--footer {
+          height: 48px;
+          max-width: 220px;
+        }
       }
       .page-establish .establishHero {
         background: linear-gradient(180deg, rgba(254, 242, 242, 0.55) 0%, rgba(255, 255, 255, 0) 42%);
@@ -218,6 +228,24 @@
         padding: 22px 22px 20px;
         background: white;
       }
+      .page-establish .establishPanel--partner {
+        position: relative;
+        overflow: hidden;
+      }
+      .page-establish .establishPanel--partner::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(60% 80% at 18% 32%, rgba(220, 38, 38, 0.22) 0%, rgba(220, 38, 38, 0) 62%),
+          linear-gradient(135deg, rgba(185, 28, 28, 0.18) 0%, rgba(255, 255, 255, 0) 58%);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .page-establish .establishPanel--partner > * {
+        position: relative;
+        z-index: 1;
+      }
       .page-establish .establishPanel--muted {
         background: var(--soft);
       }
@@ -332,6 +360,50 @@
         flex-wrap: wrap;
         gap: 8px 14px;
       }
+      .page-establish .navDropdown {
+        display: none;
+      }
+      .page-establish .navDropdown > summary {
+        list-style: none;
+        cursor: pointer;
+        user-select: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 10px 12px;
+        background: #fff;
+        font-weight: 650;
+        letter-spacing: 0.02em;
+      }
+      .page-establish .navDropdown > summary::-webkit-details-marker {
+        display: none;
+      }
+      .page-establish .navDropdown__caret {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid rgba(15, 23, 42, 0.72);
+        transform: translateY(1px);
+      }
+      .page-establish .navDropdown__panel {
+        margin-top: 10px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+        overflow: hidden;
+      }
+      .page-establish .navDropdown__panel a {
+        display: block;
+        padding: 12px 14px;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      }
+      .page-establish .navDropdown__panel a:last-child {
+        border-bottom: 0;
+      }
       @media (min-width: 900px) {
         .page-establish .footer__grid {
           grid-template-columns: 1.4fr 1fr 1fr;
@@ -345,10 +417,10 @@
           gap: 12px;
         }
         .page-establish .nav {
-          justify-content: flex-start;
-          overflow-x: auto;
-          padding-bottom: 6px;
-          -webkit-overflow-scrolling: touch;
+          display: none;
+        }
+        .page-establish .navDropdown {
+          display: block;
         }
       }
     </style>
@@ -404,6 +476,21 @@
           <a class="nav__link" href="./emr-tek.html" data-i18n="teb.nav.emr">EMR-TEK ストア</a>
           <a class="nav__link" href="./contact.html" data-i18n="teb.nav.contact">お問い合わせ</a>
         </nav>
+        <details class="navDropdown" data-i18n-attr="aria-label:teb.nav.main" aria-label="メイン">
+          <summary>
+            <span data-i18n="teb.nav.menu">メニュー</span>
+            <span class="navDropdown__caret" aria-hidden="true"></span>
+          </summary>
+          <div class="navDropdown__panel">
+            <a class="nav__link nav__link--active" href="./index.html" data-i18n="teb.nav.home">ホーム</a>
+            <a class="nav__link" href="#model" data-i18n="teb.nav.model">仕組み</a>
+            <a class="nav__link" href="#infrastructure" data-i18n="teb.nav.infra">インフラ</a>
+            <a class="nav__link" href="#marketplace" data-i18n="teb.nav.marketplace">Marketplace</a>
+            <a class="nav__link" href="#partners" data-i18n="teb.nav.partners">取引先</a>
+            <a class="nav__link" href="./emr-tek.html" data-i18n="teb.nav.emr">EMR-TEK ストア</a>
+            <a class="nav__link" href="./contact.html" data-i18n="teb.nav.contact">お問い合わせ</a>
+          </div>
+        </details>
       </div>
     </header>
 
@@ -752,7 +839,7 @@
         </p>
 
         <div class="establishGrid establishGrid--2" style="margin-top: 22px">
-          <article class="establishPanel">
+          <article class="establishPanel establishPanel--partner">
             <div class="establishKicker" style="color: rgba(15, 23, 42, 0.55)" data-i18n="teb.partner.kicker">
               Partner
             </div>

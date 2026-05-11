@@ -106,7 +106,11 @@
             <div>
               <h2 class="h2">フォームで送信</h2>
               <p class="subtle">
-                送信内容はサーバーに保存されず、画面に完了メッセージを表示します。
+                送信内容は Supabase のテーブル <code class="micro">contact_inquiries</code> に保存されます。フォルダを直接開く
+                <code class="micro">file://</code>
+                では送信に失敗することがあるため、公開 URL（https）かローカルの HTTP サーバーから開いてください。ダッシュボードはプロジェクト
+                <code class="micro">lywcdvevizwopochcpic</code>
+                の Table Editor を確認してください。メールの自動通知は未設定です。
               </p>
 
               <form class="contact__form" data-contact-form>
@@ -145,10 +149,10 @@
 
                 <div class="contact__actions">
                   <button class="btn" type="submit">送信する</button>
-                  <a class="btn btn--ghost" href="mailto:info@emr-tek.com">メールで送る</a>
+                  <a class="btn btn--ghost" href="mailto:info@theestablish.jp">メールで送る</a>
                 </div>
 
-                <p class="micro subtle" data-contact-result></p>
+                <p class="micro subtle" data-contact-result role="status" aria-live="polite"></p>
               </form>
             </div>
 
@@ -156,14 +160,8 @@
               <div class="contact__card">
                 <div class="contact__cardTitle">メール</div>
                 <div class="contact__cardBody">
-                  <a class="link" href="mailto:info@emr-tek.com">info@emr-tek.com</a>
+                  <a class="link" href="mailto:info@theestablish.jp">info@theestablish.jp</a>
                   <div class="micro subtle">通常 1〜2営業日以内に返信します。</div>
-                </div>
-              </div>
-              <div class="contact__card">
-                <div class="contact__cardTitle">住所</div>
-                <div class="contact__cardBody">
-                  <div class="micro">6 Sonic Way, Toronto, ON M3C 0P1, Canada</div>
                 </div>
               </div>
               <div class="contact__card">
@@ -203,7 +201,7 @@
           </div>
           <div class="micro subtle">Toronto, ON, Canada</div>
           <div class="micro">
-            <a class="link" href="mailto:info@emr-tek.com">info@emr-tek.com</a>
+            <a class="link" href="mailto:info@theestablish.jp">info@theestablish.jp</a>
           </div>
         </div>
 
@@ -324,7 +322,116 @@
       </div>
     </div>
 
-    <script src="./app.js?v=20260412" defer></script>
+    <script>
+      window.__CONTACT_SUPABASE__ = {
+        url: "https://lywcdvevizwopochcpic.supabase.co",
+        anonKey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx5d2NkdmV2aXp3b3BvY2hjcGljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcyNTA1NzYsImV4cCI6MjA4MjgyNjU3Nn0.pbwMCLurN-sEErdVZ-9FpXzLBCElqPoDo2QjXIBnwhc",
+      };
+      (function () {
+        function formatApiError(raw, status) {
+          var msg = (raw || "").trim() || "HTTP " + status;
+          try {
+            var j = JSON.parse(raw);
+            if (j && typeof j.message === "string" && j.message) msg = j.message;
+          } catch (e) {}
+          if (msg.length > 200) msg = msg.slice(0, 197) + "…";
+          return msg;
+        }
+        function bind() {
+          var form = document.querySelector("[data-contact-form]");
+          if (!form || form.nodeName !== "FORM") return;
+          form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var fd = new FormData(form);
+            var name = String(fd.get("name") || "").trim();
+            var email = String(fd.get("email") || "").trim();
+            var topic = String(fd.get("topic") || "").trim();
+            var message = String(fd.get("message") || "").trim();
+            var out = document.querySelector("[data-contact-result]");
+            var cfg = window.__CONTACT_SUPABASE__;
+            function setBusy(busy) {
+              if (submitBtn) submitBtn.disabled = busy;
+            }
+            var cr = fd.get("consent");
+            var consent = cr === "on" || cr === "true" || cr === true || cr === "1";
+            if (!cfg || !cfg.url || !cfg.anonKey) {
+              if (out) {
+                out.textContent =
+                  "送信しました（デモ：Supabase 未設定）。\n\nお名前：" +
+                  name +
+                  "\nメール：" +
+                  email +
+                  "\n種別：" +
+                  topic +
+                  "\n内容：" +
+                  message.slice(0, 120) +
+                  (message.length > 120 ? "…" : "");
+              }
+              form.reset();
+              return;
+            }
+            try {
+              setBusy(true);
+              var base = String(cfg.url).replace(/\/$/, "");
+              var res = await fetch(base + "/rest/v1/contact_inquiries", {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                  "Content-Type": "application/json",
+                  apikey: cfg.anonKey,
+                  Authorization: "Bearer " + cfg.anonKey,
+                  Prefer: "return=minimal",
+                },
+                body: JSON.stringify({
+                  name: name || null,
+                  email: email || null,
+                  inquiry_type: topic || null,
+                  message: message || null,
+                  consent: consent,
+                  page_path: (window.location.pathname + (window.location.search || "")).slice(0, 500),
+                  locale:
+                    document.documentElement.getAttribute("data-site-lang") || document.documentElement.lang || null,
+                  user_agent: typeof navigator !== "undefined" ? String(navigator.userAgent).slice(0, 500) : null,
+                }),
+              });
+              if (!res.ok) {
+                var errText = await res.text().catch(function () {
+                  return "";
+                });
+                throw new Error(formatApiError(errText, res.status));
+              }
+              if (out) {
+                out.textContent =
+                  "送信しました。Supabase（プロジェクト lywcdvevizwopochcpic）の public.contact_inquiries に保存されています。\n\n" +
+                  "通知メールは Database Webhook → Vercel の /api/notify-contact-inquiry → Resend を設定済みの場合のみ届きます。届かないときは Supabase の Webhook ログと Vercel Functions のログを確認してください。";
+              }
+              form.reset();
+            } catch (err) {
+              console.error(err);
+              var hint =
+                window.location.protocol === "file:"
+                  ? "\n\n※ file:// で開いている場合は https の本番 URL か、python3 -m http.server などで http://localhost:… から開き直してください。"
+                  : "";
+              var detail = err && err.message ? "\n\n詳細：" + err.message : "";
+              if (out) {
+                out.textContent =
+                  "送信に失敗しました。" + detail + hint + "\n\nメール：info@theestablish.jp";
+              }
+            } finally {
+              setBusy(false);
+            }
+          });
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", bind);
+        } else {
+          bind();
+        }
+      })();
+    </script>
+    <script src="./app.js?v=20260511d" defer></script>
       <script src="./i18n.js" defer></script>
   </body>
 </html>

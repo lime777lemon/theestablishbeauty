@@ -1,3 +1,5 @@
 .env
 vendor/bundle
 .bundle
+.vercel
+.env*.local

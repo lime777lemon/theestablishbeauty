@@ -1421,20 +1421,7 @@ function initForms() {
     if (out) out.textContent = `注文 ${order}（${email}）は「発送準備中」です。`;
   });
 
-  document.querySelector("[data-contact-form]")?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const form = /** @type {HTMLFormElement} */ (e.currentTarget);
-    const fd = new FormData(form);
-    const name = String(fd.get("name") ?? "").trim();
-    const email = String(fd.get("email") ?? "").trim();
-    const topic = String(fd.get("topic") ?? "").trim();
-    const message = String(fd.get("message") ?? "").trim();
-    const out = document.querySelector("[data-contact-result]");
-    if (out) {
-      out.textContent = `送信しました。\n\nお名前：${name}\nメール：${email}\n種別：${topic}\n内容：${message.slice(0, 120)}${message.length > 120 ? "…" : ""}`;
-    }
-    form.reset();
-  });
+  // お問い合わせは contact-form.js が担当（app.js の他初期化が失敗しても送信できるようにする）
 }
 
 function initHeaderStubs() {
