@@ -4,7 +4,7 @@
  * URL: /api/contact-inquiry
  *
  * 環境変数（Vercel）:
- * - SUPABASE_URL … 例 https://xxxx.supabase.co
+ * - SUPABASE_URL … 例 https://xxxx.supabase.co（/rest/v1 を含めてもコード側で除去します）
  * - SUPABASE_SERVICE_ROLE_KEY … 推奨（サーバー専用。RLS をバイパスして挿入）
  *   または SUPABASE_ANON_KEY … RLS が anon の INSERT を許可している場合のみ
  *
@@ -62,6 +62,18 @@ function clampStr(s, max) {
   const t = String(s ?? "").trim();
   if (t.length <= max) return t;
   return t.slice(0, max);
+}
+
+/** Project URL のみ想定。…/rest/v1/ まで貼っても二重パスにならないよう origin のみ使う */
+function normalizeSupabaseUrl(raw) {
+  const s = String(raw || "").trim();
+  if (!s) return "";
+  try {
+    const u = new URL(s);
+    return u.origin;
+  } catch {
+    return s.replace(/\/rest\/v1\/?.*$/i, "").replace(/\/+$/, "");
+  }
 }
 
 function isValidEmail(s) {
@@ -166,9 +178,7 @@ async function handler(req, res) {
   const locale = clampStr(body.locale, 32) || null;
   const userAgent = clampStr(body.user_agent, 500) || null;
 
-  const supabaseUrl = String(process.env.SUPABASE_URL || "")
-    .trim()
-    .replace(/\/$/, "");
+  const supabaseUrl = normalizeSupabaseUrl(process.env.SUPABASE_URL || "");
   const serviceKey = String(process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
   const anonKey = String(process.env.SUPABASE_ANON_KEY || "").trim();
   const key = serviceKey || anonKey;
@@ -224,6 +234,13 @@ async function handler(req, res) {
         error: "Supabase rejected the server credentials",
         hint:
           "Vercel の環境変数を確認してください。SUPABASE_URL は Dashboard → Settings → API の Project URL（…supabase.co）。SUPABASE_SERVICE_ROLE_KEY は同画面の service_role（secret）をそのまま貼り付け（前後に引用符・改行・空白なし）。保存後に再デプロイ。Preview でも使う場合は Preview 用にも同じ変数を設定。",
+      });
+    }
+    if (low.includes("invalid path")) {
+      return res.status(502).json({
+        error: "Invalid Supabase request URL",
+        hint:
+          "SUPABASE_URL は https://xxxx.supabase.co のみ（末尾に /rest/v1 は不要）。Data API に表示されるフル URL を貼っている場合は、ホスト部分だけに直すか、このデプロイ後は自動で直ります。",
       });
     }
     if (msg.length > 400) msg = msg.slice(0, 397) + "…";
