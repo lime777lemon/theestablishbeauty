@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var k = "establish_site_lang";
+          var v = localStorage.getItem(k) || "ja";
+          if (v !== "ja" && v !== "en") v = "ja";
+          document.documentElement.setAttribute("data-site-lang", v);
+          document.documentElement.setAttribute("lang", v === "en" ? "en" : "ja");
+        } catch (e) {}
+      })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>配送・返品・支払い・価格について – EMR-TEK</title>
+    <meta
+      name="description"
+      content="配送ポリシー（海外発送・所要日数・関税）、返品・返金、お支払い方法、価格表示について。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./i18n.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="emr.skip">本文へスキップ</a>
+
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <div class="topbar__left">
+          <span class="badge" data-i18n="emr.topbar.badge">出荷2〜5営業日・お届け7〜14日目安</span>
+        </div>
+        <div class="topbar__right" aria-label="言語と通貨" data-i18n-attr="aria-label:emr.topbar.langcurrency" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:flex-end">
+          <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label">
+            <button type="button" class="pill pill--lang" data-lang-switch="ja">日本語</button>
+            <button type="button" class="pill pill--lang" data-lang-switch="en">English</button>
+          </div>
+
+          <button class="pill" type="button" data-action="open-language" data-i18n="emr.pill.lang">
+            日本語
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+          <button class="pill" type="button" data-action="open-currency" data-i18n="emr.pill.currency">
+            日本 (JPY ¥)
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="container header__inner">
+        <div class="brand">
+          <a class="brand__link" href="./emr-tek.html" data-i18n-attr="aria-label:emr.brand.aria" aria-label="EMR-TEK ホーム">
+            <span class="brand__name">EMR-TEK</span>
+          </a>
+        </div>
+        <nav class="nav" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
+          <a class="nav__link" href="./collection-all.html" data-i18n="emr.nav.shop">ショップ</a>
+          <a class="nav__link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a>
+          <a class="nav__link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a>
+          <a class="nav__link" href="./emr-tek.html#track" data-i18n="emr.nav.track">注文追跡</a>
+          <a class="nav__link" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
+          <a class="nav__link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
+        </nav>
+        <div class="header__actions">
+          <button class="icon-btn" type="button" data-action="open-search" data-i18n-attr="aria-label:emr.aria.search" aria-label="検索">
+            <span aria-hidden="true">⌕</span>
+          </button>
+          <button class="icon-btn" type="button" data-action="open-cart" data-i18n-attr="aria-label:emr.aria.cart" aria-label="カート">
+            <span aria-hidden="true">🛒</span>
+            <span class="cart-count" data-i18n-attr="aria-label:emr.aria.cartcount" aria-label="カート内商品数" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <section class="hero">
+        <div class="container hero__inner">
+          <div class="breadcrumbs" aria-label="パンくず">
+            <a href="./emr-tek.html">ホーム</a>
+            <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+            <span aria-current="page">配送・返品・支払い・価格</span>
+          </div>
+          <div class="hero__titleRow">
+            <div>
+              <h1 class="h1">配送・返品・支払い・価格について</h1>
+              <p class="subtle">輸入EC・海外発送を前提としたご案内</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container page">
+        <div class="panel prose legalDoc">
+          <p class="legalMeta">最終更新日：2026年4月11日</p>
+
+          <div class="callout" role="note">
+            <div class="callout__title">海外からの配送について（重要）</div>
+            <div class="callout__body">
+              当社の取扱は<strong>輸入電子商取引</strong>であり、商品は<strong>海外の倉庫・仕入先・物流パートナーから発送</strong>される場合があります（ドロップシッピングを含む）。そのため、<strong>お届けまでに国内の通常購入より時間がかかる場合</strong>があります。また、<strong>通関時に関税・輸入消費税・通関手数料等が発生する可能性</strong>があり、これらは当社が商品代金に含めて事前に確定できないことがあります。金額・お支払い方法は、各国の税関・配送業者の案内に従ってください。
+            </div>
+          </div>
+
+          <nav class="legalTOC" aria-label="このページの内容">
+            <div class="legalTOC__title">目次</div>
+            <ul>
+              <li>
+                <a class="link" href="#shipping">配送ポリシー</a>
+                <ul>
+                  <li><a class="link" href="#shipping-us-jp">配送の透明性（米国発→日本）</a></li>
+                </ul>
+              </li>
+              <li><a class="link" href="#returns">返品・返金ポリシー</a></li>
+              <li><a class="link" href="#payment">お支払いについて</a></li>
+              <li><a class="link" href="#pricing">価格・税・手数料について</a></li>
+            </ul>
+          </nav>
+
+          <h2 class="h2" id="shipping">配送ポリシー</h2>
+
+          <h3 class="h3 legalH3" id="shipping-us-jp">配送の透明性（米国発→日本向け）</h3>
+          <p>
+            北米（米国等）の倉庫から日本へお届けするルートは、国際輸送・通関を経るため<strong>国内の通常購入より日数がかかります</strong>。以下は購入前にご確認いただきたい必須事項です（目安であり確約ではありません）。
+          </p>
+          <ul class="legalList">
+            <li>
+              <strong>配送日数（目安）：</strong>
+              倉庫からの出荷後、日本のお届け先まで<strong>7〜14営業日程度</strong>を目安としてください。繁忙期・天候・通関の混雑・住所不備・再配達等により、これより長くなる場合があります。画面上の「発送までの目安（例：2〜5営業日）」は<strong>倉庫から出荷手続きまでの日数</strong>であり、この国際輸送日数は含みません。
+            </li>
+            <li>
+              <strong>関税の有無：</strong>
+              日本へ輸入される際、<strong>関税・輸入消費税・通関手数料等がかかる場合があります</strong>。これらは<strong>商品代金・送料に含まれず</strong>、税関・配送業者の案内に従い<strong>お客様負担</strong>となることがあります。税率・課否は申告価額・商品分類等により変わり、<strong>当社が事前に正確な金額をお約束できません</strong>。かからない場合もあります。
+            </li>
+            <li>
+              <strong>追跡可否：</strong>
+              利用する配送サービスで追跡番号が付与される場合、<strong>発送完了後に追跡可能</strong>です。番号・追跡URLは、発送完了の案内メール等でお知らせします。便の種類により<strong>追跡番号が付かない、または到着まで情報が更新されない区間がある</strong>場合があります。
+            </li>
+          </ul>
+
+          <h3 class="h3 legalH3">発送元・海外配送</h3>
+          <p>
+            商品は、当社が管理する海外拠点、仕入先、または物流パートナーの倉庫から<strong>日本国内および海外のお届け先</strong>へ発送されます。表示上の「発送までの目安（例：2〜5営業日）」は、<strong>倉庫から出荷手続きを行うまでの営業日</strong>を指し、国際輸送・通関・国内配送の所要日数は含みません。
+          </p>
+          <h3 class="h3 legalH3">お届けまでの日数</h3>
+          <p>
+            国際配送では、<strong>航空・海上の混載状況、天候、通関の混雑、祝日・年末年始、住所不備・再配達</strong>などにより、予定より遅れることがあります。追跡番号が付与されるサービスでは、発送完了メールまたはマイページ等で案内します（提供する場合）。
+          </p>
+          <h3 class="h3 legalH3">送料・配送エリア</h3>
+          <p>
+            送料は、注文内容・お届け地域・キャンペーンにより変動します。一定金額以上のご注文で送料無料となる場合、条件は商品ページおよびカート画面の表示に従います。離島・遠隔地など、追加送料がかかる地域がある場合があります。
+          </p>
+          <h3 class="h3 legalH3">関税・輸入消費税・通関手数料</h3>
+          <p>
+            商品が国境を越える場合、<strong>お客様の国・地域の法令に基づき、関税、輸入消費税、通関手数料、ブローカー手数料等がお客様負担で発生する可能性</strong>があります。これらは<strong>商品代金・送料とは別途</strong>、税関・配送業者・当局の指示に従ってお支払いいただく場合があります。金額は商品の分類・申告価額・為替・各国の規則により変動し、<strong>当社が事前に正確な金額を提示できない場合</strong>があります。
+          </p>
+
+          <h2 class="h2" id="returns">返品・返金ポリシー</h2>
+          <p>
+            条件の詳細は、<a class="link" href="./terms.html">利用規約</a>とも合わせてご確認ください。以下は、輸入EC・海外発送を想定した例です（実運用では期間・手数料を明確に定めてください）。
+          </p>
+          <ul class="legalList">
+            <li>
+              <strong>お客様都合の返品・キャンセル：</strong> 未開封・未使用の場合に限り、商品到着後<strong>14日以内（例）</strong>に<a class="link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>からご連絡ください（※実運用で受付期間を明記）。承認後、返送先を案内します。<strong>返送にかかる国際送料・関税・手数料は、原則お客様負担</strong>です。既に開封済み・使用済みの場合は、衛生・商品性質上お受けできない場合があります。
+            </li>
+            <li>
+              <strong>不良品・誤配送・破損：</strong> 到着後、速やかに写真とともにご連絡ください。当社が確認のうえ、交換・返金・再送のいずれかを案内します。海外発送のため、返品・交換の往復に<strong>2〜4週間程度</strong>を要する場合があります。
+            </li>
+            <li>
+              <strong>返金：</strong> 返金が認められる場合、決済方法に応じて<strong>カード会社または決済事業者の規定に従い</strong>、数日〜数週間以内に処理されます。振込返金の場合は、手数料を差し引く場合があります。
+            </li>
+            <li>
+              <strong>キャンセル：</strong> 出荷前であれば承諾できる場合があります。出荷後は返品ポリシーに従います。
+            </li>
+          </ul>
+
+          <h2 class="h2" id="payment">お支払いについて</h2>
+          <p>
+            ご利用のお支払い方法は、注文時に選択いただくもののうち、当社が提供するものに限ります（例：クレジットカード、その他当社が指定する決済方法）。<a class="link" href="./checkout.html">購入手続き</a>画面ではお支払いの選択肢を表示している場合があります。
+          </p>
+          <ul class="legalList">
+            <li>
+              <strong>お支払いの時期：</strong> 多くの場合、<strong>ご注文確定時または当社が受注を承諾した時点</strong>で決済が行われます。代金引換・銀行振込などを提供する場合は、各方法の説明に従います。
+            </li>
+            <li>
+              <strong>セキュリティ：</strong> カード情報等は、当社が直接保持せず、<strong>PCI DSS 等に準拠した決済代行業者</strong>の環境で処理されます。
+            </li>
+            <li>
+              <strong>決済通貨・為替：</strong> 表示通貨がお客様のカード会社の請求通貨と異なる場合、<strong>カード会社の決済日の為替レート</strong>が適用され、手数料が差し引かれることがあります。
+            </li>
+          </ul>
+
+          <h2 class="h2" id="pricing">価格・税・手数料について</h2>
+          <p>
+            本サイトに表示される商品価格は、<strong>日本円（JPY）表示の場合、税込または税抜の表示方針に従います</strong>（商品ページの表記をご確認ください）。輸入EC・海外在庫のため、<strong>仕入れ・為替・関税の変動により、予告なく価格を改定する場合</strong>があります。ご注文の確定時点の価格が適用されます。
+          </p>
+          <ul class="legalList">
+            <li>
+              <strong>商品代金に含まれるもの：</strong> 商品本体の価格。送料・決済手数料・関税・輸入諸費用は、<strong>別途</strong>または<strong>別途請求</strong>となる場合があります。
+            </li>
+            <li>
+              <strong>消費税：</strong> 国内の取引形態に応じ、税込表示または税抜＋税額の表示に従います。海外向け免税表示がある場合は、対象条件を商品ページに記載します。
+            </li>
+            <li>
+              <strong>クーポン・キャンペーン：</strong> 適用条件・併用可否は、各キャンペーンの規則に従います。
+            </li>
+          </ul>
+
+          <p class="subtle micro" style="margin-top: 2rem">
+            <a class="link" href="./privacy.html">プライバシーポリシー</a>
+            ／
+            <a class="link" href="./terms.html">利用規約</a>
+            ／
+            <a class="link" href="./tokushoho.html">特定商取引法に基づく表記</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <div class="footer__brand">EMR-TEK</div>
+          <div class="micro subtle">
+            <p>輸入EC・ドロップシッピングによるウェルネス製品のご提供。</p>
+          </div>
+          <div class="micro subtle">Toronto, ON, Canada</div>
+          <div class="micro">
+            <a class="link" href="mailto:info@emr-tek.com">info@emr-tek.com</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__title" data-i18n="emr.footer.shop">ショップ</div>
+          <ul class="footer__list">
+            <li><a class="link" href="./collection-all.html">全商品</a></li>
+            <li><a class="link" href="./collection-red-light.html">Red Light Therapy Devices</a></li>
+            <li><a class="link" href="./collection-blue-light-glasses.html">Blue Light Blocking Glasses</a></li>
+            <li><a class="link" href="./collection-indoor-lighting.html">Indoor Lighting Solutions</a></li>
+            <li><a class="link" href="./collection-emf-protection.html">EMF Protection</a></li>
+            <li><a class="link" href="./collection-uv.html">UV</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__title" data-i18n="emr.footer.learn">学ぶ</div>
+          <ul class="footer__list">
+            <li><a class="link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a></li>
+            <li><a class="link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a></li>
+            <li><a class="link" href="./faq.html" data-i18n="emr.footer.faq">よくある質問</a></li>
+            <li><a class="link" href="./contact.html">お問い合わせ</a></li>
+          </ul>
+        </div>
+        <div class="newsletter">
+          <div class="footer__title" data-i18n="emr.footer.newsletter">ニュースレター</div>
+          <p class="micro subtle" data-i18n="emr.footer.newsletter.hint">新商品・キャンペーン情報をお届けします。</p>
+          <form class="newsletter__form" data-newsletter>
+            <input required type="email" name="email" data-i18n-attr="placeholder:emr.footer.email.placeholder" placeholder="メールアドレス" />
+            <button class="btn btn--sm" type="submit" data-i18n="emr.footer.subscribe">登録</button>
+          </form>
+          <p class="micro subtle" data-newsletter-result></p>
+        </div>
+      </div>
+      <div class="container footer__bottom">
+        <nav class="footer__legal micro" aria-label="法的情報">
+          <a class="link" href="./privacy.html">プライバシーポリシー</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./terms.html">利用規約</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./tokushoho.html">特定商取引法に基づく表記</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./customer-policies.html">配送・返品・支払い</a>
+        </nav>
+        <div class="footer__bottomCredits">
+          <div class="micro subtle">© 2025 EMR-TEK</div>
+          <div class="micro subtle">Powered by Static HTML</div>
+        </div>
+      </div>
+    </footer>
+
+    <dialog class="modal" data-cart-modal data-i18n-attr="aria-label:emr.modal.cart" aria-label="カート">
+      <form method="dialog" class="modal__inner">
+        <div class="modal__head">
+          <div class="h3" data-i18n="emr.modal.cart">カート</div>
+          <button class="icon-btn" value="cancel" data-i18n-attr="aria-label:emr.modal.close" aria-label="閉じる">
+            <svg class="icon" aria-hidden="true">
+              <use href="./icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <div class="cart" data-cart>
+            <p class="subtle" data-cart-empty data-i18n="emr.cart.empty">カートは空です。</p>
+            <ul class="cart__list" data-cart-list></ul>
+            <div class="cart__summary" data-cart-summary hidden>
+              <div class="cart__row">
+                <span data-i18n="emr.cart.subtotal">小計</span>
+                <strong data-cart-subtotal>¥0</strong>
+              </div>
+              <button class="btn" type="button" data-action="checkout" data-i18n="emr.cart.checkout">購入手続きへ</button>
+              <button class="btn btn--ghost" type="button" data-action="clear-cart" data-i18n="emr.cart.clear">カートを空にする</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="modal" data-search-modal data-i18n-attr="aria-label:emr.modal.search" aria-label="検索">
+      <form method="dialog" class="modal__inner">
+        <div class="modal__head">
+          <div class="h3" data-i18n="emr.modal.search">検索</div>
+          <button class="icon-btn" value="cancel" data-i18n-attr="aria-label:emr.modal.close" aria-label="閉じる">
+            <svg class="icon" aria-hidden="true">
+              <use href="./icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <label class="field">
+            <span data-i18n="emr.search.keyword">キーワード</span>
+            <input type="search" placeholder="例：Firefly / 630nm / COB" data-search-modal-input />
+          </label>
+          <div class="micro subtle" data-i18n="emr.search.hint">この検索は一覧（全商品）に反映されます。</div>
+          <menu class="modal__menu">
+            <button class="btn" value="default" data-action="search-apply" data-i18n="emr.search.apply">適用</button>
+            <button class="btn btn--ghost" value="cancel">閉じる</button>
+          </menu>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="cookie" data-cookie hidden>
+      <div class="container cookie__inner" role="dialog" data-i18n-attr="aria-label:emr.cookie.dialog" aria-label="Cookieの利用">
+        <div>
+          <div class="cookie__title" data-i18n="emr.cookie.title">Cookieを使用しています</div>
+          <div class="micro subtle" data-i18n="emr.cookie.body">体験向上と分析のためにCookieを利用します。設定はいつでも変更できます。</div>
+        </div>
+        <div class="cookie__actions">
+          <button class="btn btn--sm btn--ghost" type="button" data-action="cookie-decline" data-i18n="emr.cookie.decline">拒否</button>
+          <button class="btn btn--sm" type="button" data-action="cookie-accept" data-i18n="emr.cookie.accept">同意</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js?v=20260412" defer></script>
+      <script src="./i18n.js" defer></script>
+  </body>
+</html>

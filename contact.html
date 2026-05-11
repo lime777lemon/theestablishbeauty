@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var k = "establish_site_lang";
+          var v = localStorage.getItem(k) || "ja";
+          if (v !== "ja" && v !== "en") v = "ja";
+          document.documentElement.setAttribute("data-site-lang", v);
+          document.documentElement.setAttribute("lang", v === "en" ? "en" : "ja");
+        } catch (e) {}
+      })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>お問い合わせ – EMR-TEK</title>
+    <meta name="description" content="EMR-TEK 日本語版 – お問い合わせ" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./i18n.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="emr.skip">本文へスキップ</a>
+
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <div class="topbar__left">
+          <span class="badge" data-i18n="emr.topbar.badge">出荷2〜5営業日・お届け7〜14日目安</span>
+        </div>
+
+        <div class="topbar__right" aria-label="言語と通貨" data-i18n-attr="aria-label:emr.topbar.langcurrency" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:flex-end">
+          <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label">
+            <button type="button" class="pill pill--lang" data-lang-switch="ja">日本語</button>
+            <button type="button" class="pill pill--lang" data-lang-switch="en">English</button>
+          </div>
+
+          <button class="pill" type="button" data-action="open-language" data-i18n="emr.pill.lang">
+            日本語
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+          <button class="pill" type="button" data-action="open-currency" data-i18n="emr.pill.currency">
+            日本 (JPY ¥)
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="container header__inner">
+        <div class="brand">
+          <a class="brand__link" href="./emr-tek.html" data-i18n-attr="aria-label:emr.brand.aria" aria-label="EMR-TEK ホーム">
+            <span class="brand__name">EMR-TEK</span>
+          </a>
+        </div>
+
+        <nav class="nav" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
+          <a class="nav__link" href="./collection-all.html" data-i18n="emr.nav.shop">ショップ</a>
+          <a class="nav__link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a>
+          <a class="nav__link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a>
+          <a class="nav__link" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
+          <a class="nav__link nav__link--active" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="icon-btn" type="button" data-action="open-search" data-i18n-attr="aria-label:emr.aria.search" aria-label="検索">
+            <span aria-hidden="true">⌕</span>
+          </button>
+          <button class="icon-btn" type="button" data-action="open-cart" data-i18n-attr="aria-label:emr.aria.cart" aria-label="カート">
+            <span aria-hidden="true">🛒</span>
+            <span class="cart-count" data-i18n-attr="aria-label:emr.aria.cartcount" aria-label="カート内商品数" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <section class="hero">
+        <div class="container hero__inner">
+          <div class="breadcrumbs" aria-label="パンくず">
+            <a href="./emr-tek.html">ホーム</a>
+            <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+            <span aria-current="page">お問い合わせ</span>
+          </div>
+
+          <div class="hero__titleRow">
+            <div>
+              <h1 class="h1">お問い合わせ</h1>
+              <p class="subtle">ご質問・ご相談はこちらからお送りください。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container page">
+        <div class="panel contact">
+          <div class="contact__grid">
+            <div>
+              <h2 class="h2">フォームで送信</h2>
+              <p class="subtle">
+                送信内容はサーバーに保存されず、画面に完了メッセージを表示します。
+              </p>
+
+              <form class="contact__form" data-contact-form>
+                <label class="field">
+                  <span>お名前</span>
+                  <input required name="name" autocomplete="name" placeholder="例：山田 太郎" />
+                </label>
+                <label class="field">
+                  <span>メールアドレス</span>
+                  <input required name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+                </label>
+                <label class="field">
+                  <span>お問い合わせ種別</span>
+                  <select name="topic" required>
+                    <option value="product" selected>製品について</option>
+                    <option value="order">注文・配送について</option>
+                    <option value="returns">返品・返金について</option>
+                    <option value="wholesale">卸・法人について</option>
+                    <option value="other">その他</option>
+                  </select>
+                </label>
+                <label class="field field--full">
+                  <span>内容</span>
+                  <textarea
+                    required
+                    name="message"
+                    rows="6"
+                    placeholder="お問い合わせ内容をご記入ください"
+                  ></textarea>
+                </label>
+
+                <label class="check check--full">
+                  <input required type="checkbox" name="consent" />
+                  <span>入力内容に同意して送信します</span>
+                </label>
+
+                <div class="contact__actions">
+                  <button class="btn" type="submit">送信する</button>
+                  <a class="btn btn--ghost" href="mailto:info@emr-tek.com">メールで送る</a>
+                </div>
+
+                <p class="micro subtle" data-contact-result></p>
+              </form>
+            </div>
+
+            <aside class="contact__aside" aria-label="連絡先">
+              <div class="contact__card">
+                <div class="contact__cardTitle">メール</div>
+                <div class="contact__cardBody">
+                  <a class="link" href="mailto:info@emr-tek.com">info@emr-tek.com</a>
+                  <div class="micro subtle">通常 1〜2営業日以内に返信します。</div>
+                </div>
+              </div>
+              <div class="contact__card">
+                <div class="contact__cardTitle">住所</div>
+                <div class="contact__cardBody">
+                  <div class="micro">6 Sonic Way, Toronto, ON M3C 0P1, Canada</div>
+                </div>
+              </div>
+              <div class="contact__card">
+                <div class="contact__cardTitle">よくある質問</div>
+                <div class="contact__cardBody">
+                  <div class="micro subtle">
+                    購入前のよくある質問はFAQをご確認ください。
+                  </div>
+                <div class="micro" style="margin-top: 8px">
+                  <a class="btn btn--sm btn--ghost" href="./faq.html">FAQを見る</a>
+                </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <div class="footer__brand">EMR-TEK</div>
+          <div class="micro subtle">
+            <p>
+              <strong>重要な注意事項</strong>:
+              赤色および赤外線治療装置、青色遮光メガネ、その他の製品に関してこのサイトで提供されるすべての情報は、
+              病気の診断、治療、治癒、予防を目的としたものではありません。当社の製品は医療機器と誤解されるべきではなく、
+              治療上の主張も行いません。これらの製品は、2015 年 1 月 20 日に発表された
+              “General Wellness: Policy on Low Risk Devices”草案に従って、FDA の認可を必要としない低リスクの
+              一般的なウェルネス/フィットネス アイテムです。当社の製品は個人使用のみを目的としており、
+              商業用途を目的としたものではありません。
+            </p>
+            <p>
+              ※ これらの記述は食品医薬品局によって評価されていません。この製品は、病気の診断、治療、治癒、予防を目的としたものではありません。
+            </p>
+          </div>
+          <div class="micro subtle">Toronto, ON, Canada</div>
+          <div class="micro">
+            <a class="link" href="mailto:info@emr-tek.com">info@emr-tek.com</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer__title" data-i18n="emr.footer.shop">ショップ</div>
+          <ul class="footer__list">
+            <li><a class="link" href="./collection-all.html">全商品</a></li>
+            <li><a class="link" href="./collection-red-light.html">Red Light Therapy Devices</a></li>
+            <li><a class="link" href="./collection-blue-light-glasses.html">Blue Light Blocking Glasses</a></li>
+            <li><a class="link" href="./collection-indoor-lighting.html">Indoor Lighting Solutions</a></li>
+            <li><a class="link" href="./collection-emf-protection.html">EMF Protection</a></li>
+            <li><a class="link" href="./collection-uv.html">UV</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__title" data-i18n="emr.footer.learn">学ぶ</div>
+          <ul class="footer__list">
+            <li><a class="link" href="#" data-i18n="emr.footer.about">EMR-TEKについて</a></li>
+            <li><a class="link" href="./faq.html" data-i18n="emr.footer.faq">よくある質問</a></li>
+            <li><a class="link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a></li>
+            <li><a class="link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a></li>
+            <li><a class="link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+
+        <div class="newsletter">
+          <div class="footer__title" data-i18n="emr.footer.newsletter">ニュースレター</div>
+          <p class="micro subtle" data-i18n="emr.footer.newsletter.hint">新商品・キャンペーン情報をお届けします。</p>
+          <form class="newsletter__form" data-newsletter>
+            <input required type="email" name="email" data-i18n-attr="placeholder:emr.footer.email.placeholder" placeholder="メールアドレス" />
+            <button class="btn btn--sm" type="submit" data-i18n="emr.footer.subscribe">登録</button>
+          </form>
+          <p class="micro subtle" data-newsletter-result></p>
+        </div>
+      </div>
+
+      <div class="container footer__bottom">
+        <nav class="footer__legal micro" aria-label="法的情報">
+          <a class="link" href="./privacy.html">プライバシーポリシー</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./terms.html">利用規約</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./tokushoho.html">特定商取引法に基づく表記</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./customer-policies.html">配送・返品・支払い</a>
+        </nav>
+        <div class="footer__bottomCredits">
+          <div class="micro subtle">© 2025 EMR-TEK</div>
+          <div class="micro subtle">Powered by Static HTML</div>
+        </div>
+      </div>
+    </footer>
+
+    <dialog class="modal" data-cart-modal data-i18n-attr="aria-label:emr.modal.cart" aria-label="カート">
+      <form method="dialog" class="modal__inner">
+        <div class="modal__head">
+          <div class="h3" data-i18n="emr.modal.cart">カート</div>
+          <button class="icon-btn" value="cancel" data-i18n-attr="aria-label:emr.modal.close" aria-label="閉じる">
+            <svg class="icon" aria-hidden="true">
+              <use href="./icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <div class="cart" data-cart>
+            <p class="subtle" data-cart-empty data-i18n="emr.cart.empty">カートは空です。</p>
+            <ul class="cart__list" data-cart-list></ul>
+            <div class="cart__summary" data-cart-summary hidden>
+              <div class="cart__row">
+                <span data-i18n="emr.cart.subtotal">小計</span>
+                <strong data-cart-subtotal>¥0</strong>
+              </div>
+              <button class="btn" type="button" data-action="checkout" data-i18n="emr.cart.checkout">購入手続きへ</button>
+              <button class="btn btn--ghost" type="button" data-action="clear-cart" data-i18n="emr.cart.clear">カートを空にする</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="modal" data-search-modal data-i18n-attr="aria-label:emr.modal.search" aria-label="検索">
+      <form method="dialog" class="modal__inner">
+        <div class="modal__head">
+          <div class="h3" data-i18n="emr.modal.search">検索</div>
+          <button class="icon-btn" value="cancel" data-i18n-attr="aria-label:emr.modal.close" aria-label="閉じる">
+            <svg class="icon" aria-hidden="true">
+              <use href="./icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <label class="field">
+            <span data-i18n="emr.search.keyword">キーワード</span>
+            <input type="search" data-i18n-attr="placeholder:emr.search.placeholder" placeholder="例：Firewave / マスク / 近赤外" data-search-modal-input />
+          </label>
+          <div class="micro subtle" data-i18n="emr.search.hint">この検索は一覧（全商品）に反映されます。</div>
+          <menu class="modal__menu">
+            <button class="btn" value="default" data-action="search-apply" data-i18n="emr.search.apply">適用</button>
+            <button class="btn btn--ghost" value="cancel">閉じる</button>
+          </menu>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="cookie" data-cookie hidden>
+      <div class="container cookie__inner" role="dialog" data-i18n-attr="aria-label:emr.cookie.dialog" aria-label="Cookieの利用">
+        <div>
+          <div class="cookie__title" data-i18n="emr.cookie.title">Cookieを使用しています</div>
+          <div class="micro subtle" data-i18n="emr.cookie.body">
+            体験向上と分析のためにCookieを利用します。設定はいつでも変更できます。
+          </div>
+        </div>
+        <div class="cookie__actions">
+          <button class="btn btn--sm btn--ghost" type="button" data-action="cookie-decline" data-i18n="emr.cookie.decline">拒否</button>
+          <button class="btn btn--sm" type="button" data-action="cookie-accept" data-i18n="emr.cookie.accept">同意</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js?v=20260412" defer></script>
+      <script src="./i18n.js" defer></script>
+  </body>
+</html>

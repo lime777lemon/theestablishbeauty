@@ -1,0 +1,859 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var k = "establish_site_lang";
+          var v = localStorage.getItem(k) || "ja";
+          if (v !== "ja" && v !== "en") v = "ja";
+          document.documentElement.setAttribute("data-site-lang", v);
+          document.documentElement.setAttribute("lang", v === "en" ? "en" : "ja");
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="./assets/teb-logo.png" type="image/png" />
+    <title data-i18n-title="teb.doc.title">The Establish Beauty — ホーム</title>
+    <meta
+      name="description"
+      data-i18n-desc="teb.doc.desc"
+      content="The Establish Beauty — Beauty Commerce Infrastructure。ブランド専用LP（/brands/...）で世界観を分け、アカウント・カート・Checkoutは統合。split fulfillment。マルチベンダー・キュレーション・手数料モデル。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./i18n.css" />
+    <style>
+      .page-establish .establishBrand__link {
+        display: inline-flex;
+        align-items: center;
+        line-height: 0;
+      }
+      .page-establish .establishBrand__logo {
+        display: block;
+        height: 52px;
+        width: auto;
+        max-width: min(220px, 46vw);
+        object-fit: contain;
+      }
+      .page-establish .establishBrand__logo--footer {
+        height: 44px;
+        max-width: 200px;
+      }
+      .page-establish .establishHero {
+        background: linear-gradient(180deg, rgba(254, 242, 242, 0.55) 0%, rgba(255, 255, 255, 0) 42%);
+        border-bottom: 1px solid var(--border);
+      }
+      .page-establish .establishHero .h1 {
+        letter-spacing: 0.02em;
+      }
+      .page-establish .establishHeroBanner {
+        margin-top: 28px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+        aspect-ratio: 2.35 / 1;
+        max-height: min(440px, 52vw);
+        background: #e8e0d6;
+      }
+      .page-establish .establishHeroBanner__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 72% 32%;
+        display: block;
+      }
+      @media (max-width: 640px) {
+        .page-establish .establishHeroBanner {
+          aspect-ratio: 4 / 3;
+          max-height: none;
+          border-radius: 12px;
+          margin-top: 22px;
+        }
+        .page-establish .establishHeroBanner__img {
+          object-position: 65% 28%;
+        }
+      }
+      .page-establish .establishShowroom {
+        margin: 0;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+        aspect-ratio: 2 / 1;
+        max-height: min(480px, 56vw);
+        background: #d4c4e0;
+      }
+      .page-establish .establishShowroom__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 42%;
+        display: block;
+      }
+      @media (max-width: 640px) {
+        .page-establish .establishShowroom {
+          aspect-ratio: 1 / 1;
+          max-height: none;
+          border-radius: 12px;
+        }
+        .page-establish .establishInfographic {
+          border-radius: 12px;
+        }
+      }
+      .page-establish .establishInfographic {
+        margin: 22px 0 0;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+        background: #f8fafc;
+        line-height: 0;
+      }
+      .page-establish .establishInfographic__img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .page-establish .establishShowcase {
+        margin-top: 20px;
+        display: grid;
+        gap: 14px;
+      }
+      .page-establish .establishShowcase__banner {
+        margin: 0;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 10px 36px rgba(15, 23, 42, 0.07);
+        aspect-ratio: 2.4 / 1;
+        max-height: min(320px, 48vw);
+        background: #e5e7eb;
+      }
+      .page-establish .establishShowcase__banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 22%;
+        display: block;
+      }
+      .page-establish .establishShowcase__banner--panorama {
+        aspect-ratio: 3 / 1;
+        max-height: min(300px, 52vw);
+        background: #e8eef5;
+      }
+      .page-establish .establishShowcase__banner--panorama img {
+        object-position: center center;
+      }
+      .page-establish .establishShowcase__pair {
+        display: grid;
+        gap: 14px;
+      }
+      @media (min-width: 720px) {
+        .page-establish .establishShowcase__pair {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .page-establish .establishShowcase__tile {
+        margin: 0;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 10px 36px rgba(15, 23, 42, 0.07);
+        aspect-ratio: 4 / 3;
+        background: #f1f5f9;
+      }
+      .page-establish .establishShowcase__tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+      .page-establish .establishShowcase__spotlight {
+        margin: 0 auto;
+        width: 100%;
+        max-width: min(480px, 100%);
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 10px 36px rgba(15, 23, 42, 0.07);
+        aspect-ratio: 1 / 1;
+        background: #fff;
+      }
+      .page-establish .establishShowcase__spotlight img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        display: block;
+      }
+      @media (max-width: 640px) {
+        .page-establish .establishShowcase__banner {
+          aspect-ratio: 16 / 10;
+          max-height: none;
+          border-radius: 12px;
+        }
+        .page-establish .establishShowcase__banner--panorama {
+          aspect-ratio: 16 / 9;
+        }
+        .page-establish .establishShowcase__tile {
+          border-radius: 12px;
+        }
+        .page-establish .establishShowcase__spotlight {
+          border-radius: 12px;
+        }
+      }
+      .page-establish .establishPanel {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 22px 22px 20px;
+        background: white;
+      }
+      .page-establish .establishPanel--muted {
+        background: var(--soft);
+      }
+      .page-establish .establishPillarCards {
+        display: grid;
+        gap: 22px;
+        margin-top: 22px;
+      }
+      @media (min-width: 900px) {
+        .page-establish .establishPillarCards {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 18px;
+          align-items: stretch;
+        }
+      }
+      .page-establish .establishPillarCard {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 20px 18px 22px;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        min-width: 0;
+      }
+      .page-establish .establishPillarCard__art {
+        width: 100%;
+        max-width: 220px;
+        margin: 0 auto 4px;
+      }
+      .page-establish .establishPillarCard__art img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+      }
+      .page-establish .establishPillarCard__title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        margin: 10px 0 0;
+        color: rgba(15, 23, 42, 0.92);
+      }
+      .page-establish .establishPillarCard__rule {
+        width: 44px;
+        height: 2px;
+        background: rgba(15, 23, 42, 0.88);
+        margin: 12px auto 14px;
+        flex-shrink: 0;
+      }
+      .page-establish .establishPillarCard__body {
+        margin: 0;
+        line-height: 1.65;
+        text-align: left;
+        color: rgba(51, 65, 85, 0.96);
+        font-size: 0.95rem;
+        width: 100%;
+      }
+      .page-establish .establishGrid {
+        display: grid;
+        gap: 18px;
+      }
+      @media (min-width: 768px) {
+        .page-establish .establishGrid--2 {
+          grid-template-columns: 1fr 1fr;
+          align-items: stretch;
+        }
+        .page-establish .establishGrid--3 {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          align-items: stretch;
+        }
+      }
+      .page-establish .establishTagline {
+        margin: 18px 0 0;
+        padding: 0 0 0 14px;
+        border-left: 3px solid rgba(185, 28, 28, 0.35);
+        font-size: 15px;
+        line-height: 1.55;
+        color: rgba(15, 23, 42, 0.72);
+        max-width: 42rem;
+      }
+      .page-establish .establishTagline + .establishTagline {
+        margin-top: 12px;
+      }
+      .page-establish .establishPath {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+          monospace;
+        font-size: 13px;
+        color: rgba(15, 23, 42, 0.78);
+      }
+      .page-establish .establishPillarTitle {
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        margin: 0 0 8px;
+        color: rgba(15, 23, 42, 0.92);
+      }
+      .page-establish .establishKicker {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(185, 28, 28, 0.85);
+        margin-bottom: 8px;
+      }
+      .page-establish .header__inner {
+        grid-template-columns: auto 1fr;
+      }
+      .page-establish .nav {
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 8px 14px;
+      }
+      @media (min-width: 900px) {
+        .page-establish .footer__grid {
+          grid-template-columns: 1.4fr 1fr 1fr;
+        }
+      }
+      @media (max-width: 1020px) {
+        .page-establish .header__inner {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 12px;
+        }
+        .page-establish .nav {
+          justify-content: flex-start;
+          overflow-x: auto;
+          padding-bottom: 6px;
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+    </style>
+  </head>
+  <body class="page-establish">
+    <a class="skip-link" href="#main" data-i18n="teb.skip">本文へスキップ</a>
+
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <div class="topbar__left">
+          <span class="badge">theestablishbeauty.com</span>
+        </div>
+        <div
+          class="topbar__right micro subtle"
+          style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end"
+        >
+          <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label">
+            <button type="button" class="pill pill--lang" data-lang-switch="ja">日本語</button>
+            <button type="button" class="pill pill--lang" data-lang-switch="en">English</button>
+          </div>
+          <span data-i18n="teb.topbar.tagline">Unified account · checkout · split fulfillment</span>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="container header__inner">
+        <div class="brand">
+          <a
+            class="brand__link establishBrand__link"
+            href="./establish-beauty.html"
+            data-i18n-attr="aria-label:teb.brand.aria"
+            aria-label="The Establish Beauty ホーム"
+          >
+            <img
+              class="establishBrand__logo"
+              src="./assets/teb-logo.png"
+              width="200"
+              height="200"
+              decoding="async"
+              data-i18n-attr="alt:teb.brand.logoAlt"
+              alt="The Establish Beauty ロゴ"
+            />
+          </a>
+        </div>
+
+        <nav class="nav" data-i18n-attr="aria-label:teb.nav.main" aria-label="メイン">
+          <a class="nav__link nav__link--active" href="./establish-beauty.html" data-i18n="teb.nav.home">ホーム</a>
+          <a class="nav__link" href="#model" data-i18n="teb.nav.model">仕組み</a>
+          <a class="nav__link" href="#infrastructure" data-i18n="teb.nav.infra">インフラ</a>
+          <a class="nav__link" href="#marketplace" data-i18n="teb.nav.marketplace">Marketplace</a>
+          <a class="nav__link" href="#partners" data-i18n="teb.nav.partners">取引先</a>
+          <a class="nav__link" href="./index.html" data-i18n="teb.nav.emr">EMR-TEK ストア</a>
+          <a class="nav__link" href="./contact.html" data-i18n="teb.nav.contact">お問い合わせ</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <section class="hero establishHero">
+        <div class="container hero__inner">
+          <div class="breadcrumbs" data-i18n-attr="aria-label:teb.crumb.label" aria-label="パンくず">
+            <span aria-current="page" data-i18n="teb.crumb.home">ホーム</span>
+          </div>
+
+          <div class="hero__titleRow">
+            <div>
+              <p class="establishKicker" data-i18n="teb.hero.kicker">Beauty Commerce Infrastructure</p>
+              <h1 class="h1" data-i18n="teb.hero.h1">美しさを、正直に届ける。</h1>
+              <p
+                class="subtle"
+                style="max-width: 42rem; margin-top: 10px"
+                data-i18n="teb.hero.lead"
+                data-i18n-html
+              >
+                <strong>ブランド専用 LP</strong>で世界観を分け（例：<span class="establishPath">/brands/redlight</span> ·
+                <span class="establishPath">/brands/kbeauty</span> · <span class="establishPath">/brands/organic</span>）、
+                一方で<strong>アカウント・カート・Checkout はマーケット共通</strong>の現代的な型です。決済は統合、出荷はベンダーごとに<strong>split fulfillment</strong>。単なる EC ではなく、集積・LP・決済・導線・分配・獲得を束ねる<strong>インフラ</strong>として設計します。
+              </p>
+              <p class="establishTagline" lang="en">
+                Multi-vendor beauty marketplace with unified checkout and split fulfillment.
+              </p>
+              <p class="establishTagline" lang="en">
+                Curated beauty commerce platform with centralized checkout and distributed vendor fulfillment.
+              </p>
+              <p class="establishTagline" lang="en">
+                A curated beauty marketplace connecting beauty device manufacturers, D2C skincare brands, and
+                online-first beauty companies.
+              </p>
+            </div>
+            <div class="hero__cta" style="align-self: end">
+              <a class="btn" href="#model" data-i18n="teb.btn.lp">LP / 統合チェックアウト</a>
+              <a class="btn btn--ghost" href="#infrastructure" data-i18n="teb.btn.infra">インフラとしての価値</a>
+              <a class="btn btn--ghost" href="#marketplace" data-i18n="teb.btn.market">Marketplace</a>
+              <a class="btn btn--ghost" href="./index.html" data-i18n="teb.btn.emr">EMR-TEK ストアへ</a>
+            </div>
+          </div>
+
+          <figure class="establishHeroBanner">
+            <img
+              class="establishHeroBanner__img"
+              src="./assets/hero-establish-beauty.png"
+              width="1200"
+              height="510"
+              alt="艶やかなウェーブヘアの女性の横顔 — 上質なビューティをイメージしたヒーロービジュアル"
+              data-i18n-attr="alt:teb.hero.img.alt"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section class="container page" id="showroom" aria-labelledby="showroom-heading">
+        <h2 class="h2" id="showroom-heading" data-i18n="teb.showroom.h2">キュレーションされた発見の場</h2>
+        <p class="subtle" style="margin-top: 8px; max-width: 44rem" data-i18n="teb.showroom.p">
+          美容デバイスからスキンケアまで、厳選ブランドが並ぶショールームのような体験を、オンラインでも。The Establish Beauty
+          が目指すのは、インフラの背後にある「信頼できる美の選び方」です。
+        </p>
+        <figure class="establishShowroom" style="margin-top: 22px">
+          <img
+            class="establishShowroom__img"
+            src="./assets/showroom-establish-beauty.png"
+            width="1400"
+            height="700"
+            alt="The Establish Beauty のネオンサインと、カウンターに並ぶコスメ・美容デバイスが映る上質なショールーム空間"
+            data-i18n-attr="alt:teb.showroom.img.alt"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </section>
+
+      <section class="container page" id="showcase" aria-labelledby="showcase-heading">
+        <h2 class="h2" id="showcase-heading" data-i18n="teb.showcase.h2">ブランドの世界観</h2>
+        <p class="subtle" style="margin-top: 8px; max-width: 44rem" data-i18n="teb.showcase.p">
+          デバイスからスキンケア、メイクまで。キュレーションされたビジュアルで、マーケットの幅をイメージしてください。
+        </p>
+        <div class="establishShowcase">
+          <figure class="establishShowcase__banner">
+            <img
+              src="./assets/teb-showcase-portrait.png"
+              width="1600"
+              height="667"
+              alt="明るい照明のもと、白いニットを着た女性のポートレート — プレミアムビューティのトーン"
+              data-i18n-attr="alt:teb.showcase.alt.portrait"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div class="establishShowcase__pair">
+            <figure class="establishShowcase__tile">
+              <img
+                src="./assets/teb-showcase-cosmetics.png"
+                width="1200"
+                height="900"
+                alt="大理石の上に並ぶ MAC・Estée Lauder・Urban Decay などのラグジュアリーコスメ — 多様なブランドの並び"
+                data-i18n-attr="alt:teb.showcase.alt.cosmetics"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <figure class="establishShowcase__tile">
+              <img
+                src="./assets/teb-showcase-lumin.png"
+                width="1200"
+                height="900"
+                alt="LUMIN のリカバリーオイルとチャコールクレンザー — ミニマルな黒パッケージのスキンケア"
+                data-i18n-attr="alt:teb.showcase.alt.skincare"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          </div>
+          <figure class="establishShowcase__spotlight">
+            <img
+              src="./assets/teb-showcase-beauty-collection.png"
+              width="1024"
+              height="1024"
+              alt="ポートレートとスキンケア製品のコラージュ。「BEAUTY COLLECTION」「厳選ブランドをひとつに」のキャプション入りのプロモーションビジュアル"
+              data-i18n-attr="alt:teb.showcase.alt.collection"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <figure class="establishShowcase__banner establishShowcase__banner--panorama">
+            <img
+              src="./assets/teb-showcase-glossier.png"
+              width="1024"
+              height="340"
+              alt="淡いブルーと白の背景に Glossier のスキンケア・メイク製品が並ぶバナー — Cloud Paint、日焼け止め、Solution など"
+              data-i18n-attr="alt:teb.showcase.alt.glossier"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section class="container page" id="model" aria-labelledby="model-heading">
+        <h2 class="h2" id="model-heading" data-i18n="teb.model.h2">マルチベンダー型マーケットプレイス</h2>
+        <p
+          class="subtle"
+          style="margin-top: 8px; max-width: 40rem"
+          data-i18n="teb.model.intro"
+          data-i18n-html
+        >
+          <strong>見せ方は LP ごと、買い手体験は統合。</strong>ブランドごとに専用 LP と世界観を分け、ログイン・カート・Checkout はマーケット全体で共通にします。
+        </p>
+        <div class="establishGrid establishGrid--2" style="margin-top: 18px">
+          <div class="establishPanel">
+            <h3 class="h3" style="margin-top: 0; font-size: 1rem" data-i18n="teb.url.h3">ブランド LP の URL 例</h3>
+            <p class="subtle" style="margin: 0 0 10px; line-height: 1.6" data-i18n="teb.url.p">
+              スラッグは契約・実装で確定。世界観・トーンはパス単位で分離する想定です。
+            </p>
+            <ul class="subtle" style="margin: 0; padding-left: 0; list-style: none; line-height: 1.9">
+              <li><span class="establishPath">/brands/redlight</span></li>
+              <li><span class="establishPath">/brands/kbeauty</span></li>
+              <li><span class="establishPath">/brands/organic</span></li>
+            </ul>
+          </div>
+          <div class="establishPanel establishPanel--muted">
+            <h3 class="h3" style="margin-top: 0; font-size: 1rem" data-i18n="teb.buyer.h3">買い手側（マーケット統合）</h3>
+            <ul class="subtle" style="margin: 0; padding-left: 1.2em; line-height: 1.85">
+              <li data-i18n="teb.buyer.li1" data-i18n-html>
+                <strong>アカウント</strong> — <strong>共通</strong>（単一プロファイル／マーケット横断）。
+              </li>
+              <li data-i18n="teb.buyer.li2" data-i18n-html>
+                <strong>カート</strong> — <strong>共通</strong>。複数ブランドの商品を同一カートへ。
+              </li>
+              <li data-i18n="teb.buyer.li3" data-i18n-html>
+                <strong>Checkout</strong> — <strong>共通</strong>（<strong>unified / centralized checkout</strong>）。
+              </li>
+              <li data-i18n="teb.buyer.li4" data-i18n-html>
+                <strong>フルフィル</strong> — <strong>分割</strong>（<strong>split fulfillment</strong> — ベンダーごとに出荷・在庫）。
+              </li>
+              <li data-i18n="teb.buyer.li5" data-i18n-html><strong>注文データ</strong> — <strong>各社へ分配</strong>。</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="h3" id="pillars-heading" style="margin-top: 32px" data-i18n="teb.pillars.h3">
+          コピー・設計上の 3 つの柱
+        </h3>
+        <p class="subtle" style="margin-top: 8px; max-width: 40rem" data-i18n="teb.pillars.intro">
+          対外向けメッセージと内部の設計判断をそろえるためのラベルです。
+        </p>
+        <!-- イラスト: assets/teb-pillar-art-*.png（円内のみ。再生成: scripts/crop-teb-pillar-art.sh）。文言は i18n の teb.pillar.* -->
+        <div class="establishPillarCards" aria-labelledby="pillars-heading">
+          <article class="establishPillarCard" aria-labelledby="pillar-m-title">
+            <div class="establishPillarCard__art">
+              <img
+                src="./assets/teb-pillar-art-marketplace.png"
+                width="1024"
+                height="1024"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h4 class="establishPillarCard__title" id="pillar-m-title" lang="en" data-i18n="teb.pillar.m.title">Marketplace</h4>
+            <div class="establishPillarCard__rule" aria-hidden="true"></div>
+            <p class="establishPillarCard__body subtle" data-i18n="teb.pillar.m.body" data-i18n-html>
+              複数ブランドをひとつの場に載せ、発見から購入導線までを横断的に提供する「市場」レイヤー。
+            </p>
+          </article>
+          <article class="establishPillarCard" aria-labelledby="pillar-c-title">
+            <div class="establishPillarCard__art">
+              <img
+                src="./assets/teb-pillar-art-curated.png"
+                width="1024"
+                height="1024"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h4 class="establishPillarCard__title" id="pillar-c-title" lang="en" data-i18n="teb.pillar.c.title">Curated Commerce</h4>
+            <div class="establishPillarCard__rule" aria-hidden="true"></div>
+            <p class="establishPillarCard__body subtle" data-i18n="teb.pillar.c.body" data-i18n-html>
+              掲載基準と編集によるキュレーション。ストーリーと品質のそろったコマース体験としてブランドを紹介する層。
+            </p>
+          </article>
+          <article class="establishPillarCard" aria-labelledby="pillar-i-title">
+            <div class="establishPillarCard__art">
+              <img
+                src="./assets/teb-pillar-art-inventory.png"
+                width="1024"
+                height="1024"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h4 class="establishPillarCard__title" id="pillar-i-title" lang="en" data-i18n="teb.pillar.i.title">Inventory-light Platform</h4>
+            <div class="establishPillarCard__rule" aria-hidden="true"></div>
+            <p class="establishPillarCard__body subtle" data-i18n="teb.pillar.i.body" data-i18n-html>
+              自社フルフィル中心の大量在庫モデルではなく、パートナー在庫・物流と組み合わせる在庫・オペレーションの基盤。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container page" id="infrastructure" aria-labelledby="infrastructure-heading">
+        <h2 class="h2" id="infrastructure-heading" data-i18n="teb.infra.h2">Beauty Commerce Infrastructure</h2>
+        <p
+          class="subtle"
+          style="margin-top: 8px; max-width: 44rem"
+          data-i18n="teb.infra.intro"
+          data-i18n-html
+        >
+          単なる EC 店舗ではなく、美容ブランドのコマースを載せる<strong>インフラ</strong>として定義します。次を<strong>一つの基盤で統合</strong>することで、プラットフォームの価値は「店を出す」以上に大きくなります。
+        </p>
+        <figure class="establishInfographic">
+          <img
+            class="establishInfographic__img"
+            src="./assets/teb-brand-platform-infographic.png"
+            width="1024"
+            height="682"
+            alt="BRAND を中心としたプラットフォームの全体図。周囲にブランド集積・LP 提供・決済・顧客導線・注文分配・顧客獲得の 6 領域、下部に統合データ基盤・パートナー連携・セキュリティ等の基盤要素を示す。"
+            data-i18n-attr="alt:teb.infra.diagram.alt"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div class="establishPanel" style="margin-top: 20px">
+          <ul class="subtle" style="margin: 0; padding-left: 1.2em; line-height: 1.85">
+            <li data-i18n="teb.infra.li1" data-i18n-html>
+              <strong>ブランド集積</strong> — キュレーションされた掲載とパートナー管理。
+            </li>
+            <li data-i18n="teb.infra.li2" data-i18n-html><strong>LP 提供</strong> — ブランド専用パス・テンプレ・世界観の分離。</li>
+            <li data-i18n="teb.infra.li3" data-i18n-html>
+              <strong>決済</strong> — 統合チェックアウトとリスク・コンプライアンスの集約（設計次第）。
+            </li>
+            <li data-i18n="teb.infra.li4" data-i18n-html>
+              <strong>顧客導線</strong> — 発見から購入までの一貫した体験設計。
+            </li>
+            <li data-i18n="teb.infra.li5" data-i18n-html>
+              <strong>注文分配</strong> — オーダーをベンダーへ振り分け、split fulfillment を支えるデータ層。
+            </li>
+            <li data-i18n="teb.infra.li6" data-i18n-html>
+              <strong>顧客獲得</strong> — マーケット・キュレーションに紐づく獲得・リテンション（施策は別途）。
+            </li>
+          </ul>
+        </div>
+        <p
+          class="micro subtle"
+          style="margin-top: 14px; max-width: 44rem"
+          data-i18n="teb.infra.note"
+          data-i18n-html
+        >
+          Positioning in English: a <strong>beauty commerce infrastructure</strong> layer — not only a storefront, but
+          the integrated stack for brand aggregation, LP delivery, payments, customer journeys, order routing, and
+          acquisition.
+        </p>
+      </section>
+
+      <section class="container page" id="marketplace" aria-labelledby="marketplace-heading">
+        <h2 class="h2" id="marketplace-heading" data-i18n="teb.market.h2">Beauty Marketplace</h2>
+        <p
+          class="subtle"
+          style="margin-top: 8px; max-width: 40rem"
+          data-i18n="teb.market.intro"
+          data-i18n-html
+        >
+          マルチベンダー型として、横断一覧・検索に加え、<strong>共通アカウント・共通カート・共通 Checkout</strong>と<strong>注文分配（split fulfillment）</strong>を載せたマーケットを準備中です。収益は<strong>販売手数料</strong>を中心とした設計を想定しています。
+        </p>
+        <div class="establishPanel establishPanel--muted establishGrid" style="margin-top: 22px">
+          <div>
+            <h3 class="h3" data-i18n="teb.market.platform">プラットフォーム側の役割（想定）</h3>
+            <ul class="subtle" style="margin: 12px 0 0; padding-left: 1.2em; line-height: 1.7">
+              <li data-i18n="teb.market.li1" data-i18n-html>
+                <span class="establishPath">/brands/…</span> 形式のブランド専用 LP・テンプレ・掲載基準・キュレーション
+              </li>
+              <li data-i18n="teb.market.li2" data-i18n-html>
+                統合アイデンティティ（共通アカウント）、共通カート、<strong>unified checkout</strong>、計測
+              </li>
+              <li data-i18n="teb.market.li3" data-i18n-html>
+                注文確定後のデータ分配・ベンダー向けフルフィル（API・管理画面等は実装で定義）
+              </li>
+              <li data-i18n="teb.market.li4" data-i18n-html>
+                在庫は原則パートナー側 — inventory-light（自社は大量在庫を持たない）
+              </li>
+              <li data-i18n="teb.market.li5" data-i18n-html>
+                取引成立に連動する手数料・契約に基づくレベニューシェア
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="container page" id="partners" aria-labelledby="partners-heading">
+        <h2 class="h2" id="partners-heading" data-i18n="teb.partners.h2">取引先ブランド</h2>
+        <p
+          class="subtle"
+          style="margin-top: 8px; max-width: 40rem"
+          data-i18n="teb.partners.intro"
+          data-i18n-html
+        >
+          各ブランドは <span class="establishPath">/brands/{slug}</span> 相当の専用 LP で世界観を分け、購入時は<strong>同一アカウント・同一カート・同一 Checkout</strong>に集約します。出荷と在庫は原則ベンダー側（split fulfillment）です。現在は EMR-TEK の日本語ストアを同一サイト内の導線（ブランド LP 相当）としてご利用いただけます。
+        </p>
+
+        <div class="establishGrid establishGrid--2" style="margin-top: 22px">
+          <article class="establishPanel">
+            <div class="establishKicker" style="color: rgba(15, 23, 42, 0.55)" data-i18n="teb.partner.kicker">
+              Partner
+            </div>
+            <h3 class="h3">EMR-TEK</h3>
+            <p
+              class="subtle"
+              style="margin-top: 10px; line-height: 1.65"
+              data-i18n="teb.partner.emr.desc"
+              data-i18n-html
+            >
+              赤色光・近赤外、UV、LED マスク、ブルーライトカット、コスメ、室内照明など。光とスキンケアのデバイスを中心に展開するブランドです。
+            </p>
+            <p style="margin-top: 18px">
+              <a class="btn" href="./index.html" data-i18n="teb.partner.emr.btn">EMR-TEK ストアを開く</a>
+            </p>
+          </article>
+
+          <article class="establishPanel establishPanel--muted">
+            <h3 class="h3" data-i18n="teb.partner.other.h3">その他のブランド</h3>
+            <p class="subtle" style="margin-top: 10px; line-height: 1.65" data-i18n="teb.partner.other.p">
+              追加の取引先が決まり次第、この欄に掲載します。
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <div class="footer__brand">
+            <img
+              class="establishBrand__logo establishBrand__logo--footer"
+              src="./assets/teb-logo.png"
+              width="200"
+              height="200"
+              decoding="async"
+              data-i18n-attr="alt:teb.brand.logoAlt"
+              alt="The Establish Beauty ロゴ"
+            />
+          </div>
+          <p class="micro subtle" style="margin-top: 10px; max-width: 28rem" data-i18n="teb.footer.note">
+            メインの法人・連絡先・ポリシー文面はドメイン公開時に合わせて整備してください。このページは静的プレースホルダーです。
+          </p>
+        </div>
+
+        <div>
+          <div class="footer__title" data-i18n="teb.footer.explore">探索</div>
+          <ul class="footer__list">
+            <li>
+              <a class="link" href="./establish-beauty.html" data-i18n="teb.footer.link.home">ホーム</a>
+            </li>
+            <li>
+              <a class="link" href="#showroom" data-i18n="teb.footer.link.showroom">キュレーション・ショールーム</a>
+            </li>
+            <li>
+              <a class="link" href="#model" data-i18n="teb.footer.link.model">マルチベンダー型・3 つの柱</a>
+            </li>
+            <li>
+              <a class="link" href="#infrastructure" data-i18n="teb.footer.link.infra">Beauty Commerce Infrastructure</a>
+            </li>
+            <li>
+              <a class="link" href="#marketplace" data-i18n="teb.footer.link.market">Beauty Marketplace</a>
+            </li>
+            <li>
+              <a class="link" href="./index.html" data-i18n="teb.footer.link.emr">EMR-TEK ストア</a>
+            </li>
+            <li>
+              <a class="link" href="./contact.html" data-i18n="teb.footer.link.contact">お問い合わせ</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__title" data-i18n="teb.footer.legal">法的情報（EMR-TEK ストア）</div>
+          <ul class="footer__list">
+            <li>
+              <a class="link" href="./privacy.html" data-i18n="teb.footer.privacy">プライバシーポリシー</a>
+            </li>
+            <li>
+              <a class="link" href="./terms.html" data-i18n="teb.footer.terms">利用規約</a>
+            </li>
+            <li>
+              <a class="link" href="./tokushoho.html" data-i18n="teb.footer.tokushoho">特定商取引法に基づく表記</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container footer__bottom">
+        <nav class="footer__legal micro" data-i18n-attr="aria-label:teb.footer.legalnav" aria-label="法的情報">
+          <a class="link" href="./privacy.html" data-i18n="teb.footer.privacy">プライバシーポリシー</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./terms.html" data-i18n="teb.footer.terms">利用規約</a>
+        </nav>
+        <div class="footer__bottomCredits">
+          <div class="micro subtle">© 2026 The Establish Beauty</div>
+          <div class="micro subtle" data-i18n="teb.footer.credit2">EMR-TEK 商品ページは従来どおり維持</div>
+        </div>
+      </div>
+    </footer>
+    <script src="./i18n.js" defer></script>
+  </body>
+</html>

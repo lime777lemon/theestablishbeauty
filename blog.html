@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var k = "establish_site_lang";
+          var v = localStorage.getItem(k) || "ja";
+          if (v !== "ja" && v !== "en") v = "ja";
+          document.documentElement.setAttribute("data-site-lang", v);
+          document.documentElement.setAttribute("lang", v === "en" ? "en" : "ja");
+        } catch (e) {}
+      })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>ブログ – EMR-TEK</title>
+    <meta
+      name="description"
+      content="EMR-TEK ブログ — 赤色光、紫外線、スキンケア、光の科学に関する記事。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./i18n.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="emr.skip">本文へスキップ</a>
+
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <div class="topbar__left">
+          <span class="badge" data-i18n="emr.topbar.badge">出荷2〜5営業日・お届け7〜14日目安</span>
+        </div>
+
+        <div class="topbar__right" aria-label="言語と通貨" data-i18n-attr="aria-label:emr.topbar.langcurrency" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:flex-end">
+          <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label">
+            <button type="button" class="pill pill--lang" data-lang-switch="ja">日本語</button>
+            <button type="button" class="pill pill--lang" data-lang-switch="en">English</button>
+          </div>
+
+          <button class="pill" type="button" data-action="open-language" data-i18n="emr.pill.lang">
+            日本語
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+          <button class="pill" type="button" data-action="open-currency" data-i18n="emr.pill.currency">
+            日本 (JPY ¥)
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="container header__inner">
+        <div class="brand">
+          <a class="brand__link" href="./emr-tek.html" data-i18n-attr="aria-label:emr.brand.aria" aria-label="EMR-TEK ホーム">
+            <span class="brand__name">EMR-TEK</span>
+          </a>
+        </div>
+
+        <nav class="nav" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
+          <a class="nav__link" href="./collection-all.html" data-i18n="emr.nav.shop">ショップ</a>
+          <a class="nav__link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a>
+          <a class="nav__link nav__link--active" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a>
+          <a class="nav__link" href="./emr-tek.html#track" data-i18n="emr.nav.track">注文追跡</a>
+          <a class="nav__link" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
+          <a class="nav__link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="icon-btn" type="button" data-action="open-search" data-i18n-attr="aria-label:emr.aria.search" aria-label="検索">
+            <span aria-hidden="true">⌕</span>
+          </button>
+          <button class="icon-btn" type="button" data-action="open-cart" data-i18n-attr="aria-label:emr.aria.cart" aria-label="カート">
+            <span aria-hidden="true">🛒</span>
+            <span class="cart-count" data-i18n-attr="aria-label:emr.aria.cartcount" aria-label="カート内商品数" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <section class="hero">
+        <div class="container hero__inner">
+          <div class="breadcrumbs" aria-label="パンくず">
+            <a href="./emr-tek.html">ホーム</a>
+            <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+            <span aria-current="page">ブログ</span>
+          </div>
+
+          <div class="hero__titleRow">
+            <div>
+              <h1 class="h1">ブログ</h1>
+              <p class="subtle">
+                光の科学、スキンケア、UV の基礎など — 記事の全文は EMR-TEK 公式サイトでお読みいただけます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="blogSection section section--padding" aria-labelledby="blog-heading">
+        <div class="container">
+          <h2 id="blog-heading" class="sr-only">記事一覧</h2>
+
+          <div class="blogGrid">
+            <article class="blogCard">
+              <div class="blogCard__media">
+                <a
+                  class="blogCard__mediaLink"
+                  href="https://emr-tek.com/en-jp/blogs/news/are-you-truly-giving-your-skin-what-it-deserves-or-weighing-it-down-with-plastic"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <img
+                    class="blogCard__image"
+                    src="https://emr-tek.com/cdn/shop/articles/How_To_Get_Rid_of_11_Lines-Step-by-Step_b326d327-0d2a-49a7-bbee-b189c7f8b4d3.webp?v=1774950780&amp;width=1000"
+                    alt=""
+                    width="1000"
+                    height="672"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </div>
+              <div class="blogCard__content">
+                <div class="blogCard__meta">
+                  <span class="blogCard__date" aria-hidden="true">
+                    <svg class="blogCard__cal" viewBox="0 0 16 16" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M5.33325 0.666668V3.40544M10.6666 0.666668V3.40544M14.4999 6.33333H1.49994M6.93325 14.6667H9.06659C11.0268 14.6667 12.0069 14.6667 12.7556 14.2852C13.4141 13.9496 13.9496 13.4142 14.2851 12.7556C14.6666 12.0069 14.6666 11.0269 14.6666 9.06667V7.93334C14.6666 5.97315 14.6666 4.99306 14.2851 4.24437C13.9496 3.5858 13.4141 3.05037 12.7556 2.71481C12.0069 2.33333 11.0268 2.33333 9.06659 2.33333H6.93325C4.97307 2.33333 3.99298 2.33333 3.24429 2.71481C2.58572 3.05037 2.05029 3.5858 1.71473 4.24437C1.33325 4.99306 1.33325 5.97315 1.33325 7.93333V9.06667C1.33325 11.0269 1.33325 12.0069 1.71473 12.7556C2.05029 13.4142 2.58572 13.9496 3.24429 14.2852C3.99298 14.6667 4.97307 14.6667 6.93325 14.6667Z"
+                      />
+                    </svg>
+                  </span>
+                  <time class="blogCard__time" datetime="2025-10-28T12:24:54Z">2025年10月28日</time>
+                </div>
+                <h3 class="blogCard__title">
+                  <a
+                    href="https://emr-tek.com/en-jp/blogs/news/are-you-truly-giving-your-skin-what-it-deserves-or-weighing-it-down-with-plastic"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >あなたは本当に自分の肌にふさわしいものを与えていますか — それともプラスチックで重ねていますか？</a
+                  >
+                </h3>
+                <p class="blogCard__excerpt">
+                  肌がプラスチック製の LED マスク シェルに 15–20 分間出会うたびに、快適さと使いやすさにトレードオフが生じます。従来の LED フェイスマスクは皮膚に直接当てられます — プラスチックのシェルを顔に押し込み、暖かい空気を閉じ込めます。…
+                </p>
+                <p class="blogCard__more">
+                  <a
+                    class="link"
+                    href="https://emr-tek.com/en-jp/blogs/news/are-you-truly-giving-your-skin-what-it-deserves-or-weighing-it-down-with-plastic"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >続きを読む</a
+                  >
+                </p>
+              </div>
+            </article>
+
+            <article class="blogCard">
+              <div class="blogCard__media">
+                <a
+                  class="blogCard__mediaLink"
+                  href="https://emr-tek.com/en-jp/blogs/news/can-humans-see-ultraviolet-light"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <img
+                    class="blogCard__image"
+                    src="https://emr-tek.com/cdn/shop/articles/Can_Humans_See_Ultraviolet_Light.png?v=1764877400&amp;width=1072"
+                    alt=""
+                    width="1072"
+                    height="720"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </div>
+              <div class="blogCard__content">
+                <div class="blogCard__meta">
+                  <span class="blogCard__date" aria-hidden="true">
+                    <svg class="blogCard__cal" viewBox="0 0 16 16" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M5.33325 0.666668V3.40544M10.6666 0.666668V3.40544M14.4999 6.33333H1.49994M6.93325 14.6667H9.06659C11.0268 14.6667 12.0069 14.6667 12.7556 14.2852C13.4141 13.9496 13.9496 13.4142 14.2851 12.7556C14.6666 12.0069 14.6666 11.0269 14.6666 9.06667V7.93334C14.6666 5.97315 14.6666 4.99306 14.2851 4.24437C13.9496 3.5858 13.4141 3.05037 12.7556 2.71481C12.0069 2.33333 11.0268 2.33333 9.06659 2.33333H6.93325C4.97307 2.33333 3.99298 2.33333 3.24429 2.71481C2.58572 3.05037 2.05029 3.5858 1.71473 4.24437C1.33325 4.99306 1.33325 5.97315 1.33325 7.93333V9.06667C1.33325 11.0269 1.33325 12.0069 1.71473 12.7556C2.05029 13.4142 2.58572 13.9496 3.24429 14.2852C3.99298 14.6667 4.97307 14.6667 6.93325 14.6667Z"
+                      />
+                    </svg>
+                  </span>
+                  <time class="blogCard__time" datetime="2025-03-13T01:22:00Z">2025年3月12日</time>
+                </div>
+                <h3 class="blogCard__title">
+                  <a
+                    href="https://emr-tek.com/en-jp/blogs/news/can-humans-see-ultraviolet-light"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >人間は紫外線を見ることができるのか:謎を解説</a
+                  >
+                </h3>
+                <p class="blogCard__excerpt">
+                  紫外線の目に見えない世界を探索する 通常は視界から隠されているもの — 紫外線（UV）の微妙で目に見えない波長を認識できることを想像してみてください。UV は人間の目で検出できる範囲をはるかに超えていますが、私たちの…
+                </p>
+                <p class="blogCard__more">
+                  <a
+                    class="link"
+                    href="https://emr-tek.com/en-jp/blogs/news/can-humans-see-ultraviolet-light"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >続きを読む</a
+                  >
+                </p>
+              </div>
+            </article>
+
+            <article class="blogCard">
+              <div class="blogCard__media">
+                <a
+                  class="blogCard__mediaLink"
+                  href="https://emr-tek.com/en-jp/blogs/news/how-to-use-red-light-therapy-for-lungs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <img
+                    class="blogCard__image"
+                    src="https://emr-tek.com/cdn/shop/articles/Danny_S._create_an_image_for_an_article_called___How_To_Use_334b6ec7-6005-439f-bf5f-eb3742a85cd4.png?v=1764879971&amp;width=1072"
+                    alt=""
+                    width="1072"
+                    height="720"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </div>
+              <div class="blogCard__content">
+                <div class="blogCard__meta">
+                  <span class="blogCard__date" aria-hidden="true">
+                    <svg class="blogCard__cal" viewBox="0 0 16 16" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M5.33325 0.666668V3.40544M10.6666 0.666668V3.40544M14.4999 6.33333H1.49994M6.93325 14.6667H9.06659C11.0268 14.6667 12.0069 14.6667 12.7556 14.2852C13.4141 13.9496 13.9496 13.4142 14.2851 12.7556C14.6666 12.0069 14.6666 11.0269 14.6666 9.06667V7.93334C14.6666 5.97315 14.6666 4.99306 14.2851 4.24437C13.9496 3.5858 13.4141 3.05037 12.7556 2.71481C12.0069 2.33333 11.0268 2.33333 9.06659 2.33333H6.93325C4.97307 2.33333 3.99298 2.33333 3.24429 2.71481C2.58572 3.05037 2.05029 3.5858 1.71473 4.24437C1.33325 4.99306 1.33325 5.97315 1.33325 7.93333V9.06667C1.33325 11.0269 1.33325 12.0069 1.71473 12.7556C2.05029 13.4142 2.58572 13.9496 3.24429 14.2852C3.99298 14.6667 4.97307 14.6667 6.93325 14.6667Z"
+                      />
+                    </svg>
+                  </span>
+                  <time class="blogCard__time" datetime="2025-03-10T01:11:00Z">2025年3月9日</time>
+                </div>
+                <h3 class="blogCard__title">
+                  <a
+                    href="https://emr-tek.com/en-jp/blogs/news/how-to-use-red-light-therapy-for-lungs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >肺に赤色光療法を使用する方法: ステップバイステップ</a
+                  >
+                </h3>
+                <p class="blogCard__excerpt">
+                  人々が全体的な幸福感をサポートする自然な方法を探すにつれて、赤色光や近赤外線への関心が急速に高まっています。赤色光療法は科学界や健康界でよく議論されますが、多くの人が光ベースの治療を楽しんでいます。…
+                </p>
+                <p class="blogCard__more">
+                  <a
+                    class="link"
+                    href="https://emr-tek.com/en-jp/blogs/news/how-to-use-red-light-therapy-for-lungs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >続きを読む</a
+                  >
+                </p>
+              </div>
+            </article>
+
+            <article class="blogCard">
+              <div class="blogCard__media">
+                <a
+                  class="blogCard__mediaLink"
+                  href="https://emr-tek.com/en-jp/blogs/news/365-vs-395-uv-light"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <img
+                    class="blogCard__image"
+                    src="https://emr-tek.com/cdn/shop/articles/365_vs_395_UV_Light.png?v=1764880124&amp;width=1072"
+                    alt=""
+                    width="1072"
+                    height="720"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </div>
+              <div class="blogCard__content">
+                <div class="blogCard__meta">
+                  <span class="blogCard__date" aria-hidden="true">
+                    <svg class="blogCard__cal" viewBox="0 0 16 16" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M5.33325 0.666668V3.40544M10.6666 0.666668V3.40544M14.4999 6.33333H1.49994M6.93325 14.6667H9.06659C11.0268 14.6667 12.0069 14.6667 12.7556 14.2852C13.4141 13.9496 13.9496 13.4142 14.2851 12.7556C14.6666 12.0069 14.6666 11.0269 14.6666 9.06667V7.93334C14.6666 5.97315 14.6666 4.99306 14.2851 4.24437C13.9496 3.5858 13.4141 3.05037 12.7556 2.71481C12.0069 2.33333 11.0268 2.33333 9.06659 2.33333H6.93325C4.97307 2.33333 3.99298 2.33333 3.24429 2.71481C2.58572 3.05037 2.05029 3.5858 1.71473 4.24437C1.33325 4.99306 1.33325 5.97315 1.33325 7.93333V9.06667C1.33325 11.0269 1.33325 12.0069 1.71473 12.7556C2.05029 13.4142 2.58572 13.9496 3.24429 14.2852C3.99298 14.6667 4.97307 14.6667 6.93325 14.6667Z"
+                      />
+                    </svg>
+                  </span>
+                  <time class="blogCard__time" datetime="2025-03-07T01:08:00Z">2025年3月6日</time>
+                </div>
+                <h3 class="blogCard__title">
+                  <a
+                    href="https://emr-tek.com/en-jp/blogs/news/365-vs-395-uv-light"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >365 と 395 UV ライト: 違いは何ですか？</a
+                  >
+                </h3>
+                <p class="blogCard__excerpt">
+                  365nm と 395nm の UV 光: 違いと用途を理解する 紫外線（UV）光技術の世界では、法医学、宝石学、セキュリティ、ビジュアル デザインなどの分野の専門家にとって、さまざまな波長の動作を知ることが不可欠です。違いは…
+                </p>
+                <p class="blogCard__more">
+                  <a
+                    class="link"
+                    href="https://emr-tek.com/en-jp/blogs/news/365-vs-395-uv-light"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >続きを読む</a
+                  >
+                </p>
+              </div>
+            </article>
+
+            <article class="blogCard">
+              <div class="blogCard__media">
+                <a
+                  class="blogCard__mediaLink"
+                  href="https://emr-tek.com/en-jp/blogs/news/what-is-uvb-light"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <img
+                    class="blogCard__image"
+                    src="https://emr-tek.com/cdn/shop/articles/Danny_S._create_an_image_for_an_article_called___What_Is_UV_9f038394-de6e-4d59-a1da-34babfc12ce2.png?v=1764880274&amp;width=1072"
+                    alt=""
+                    width="1072"
+                    height="720"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </div>
+              <div class="blogCard__content">
+                <div class="blogCard__meta">
+                  <span class="blogCard__date" aria-hidden="true">
+                    <svg class="blogCard__cal" viewBox="0 0 16 16" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M5.33325 0.666668V3.40544M10.6666 0.666668V3.40544M14.4999 6.33333H1.49994M6.93325 14.6667H9.06659C11.0268 14.6667 12.0069 14.6667 12.7556 14.2852C13.4141 13.9496 13.9496 13.4142 14.2851 12.7556C14.6666 12.0069 14.6666 11.0269 14.6666 9.06667V7.93334C14.6666 5.97315 14.6666 4.99306 14.2851 4.24437C13.9496 3.5858 13.4141 3.05037 12.7556 2.71481C12.0069 2.33333 11.0268 2.33333 9.06659 2.33333H6.93325C4.97307 2.33333 3.99298 2.33333 3.24429 2.71481C2.58572 3.05037 2.05029 3.5858 1.71473 4.24437C1.33325 4.99306 1.33325 5.97315 1.33325 7.93333V9.06667C1.33325 11.0269 1.33325 12.0069 1.71473 12.7556C2.05029 13.4142 2.58572 13.9496 3.24429 14.2852C3.99298 14.6667 4.97307 14.6667 6.93325 14.6667Z"
+                      />
+                    </svg>
+                  </span>
+                  <time class="blogCard__time" datetime="2025-03-04T01:05:00Z">2025年3月3日</time>
+                </div>
+                <h3 class="blogCard__title">
+                  <a
+                    href="https://emr-tek.com/en-jp/blogs/news/what-is-uvb-light"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >UVBライトとは:UVBライト101</a
+                  >
+                </h3>
+                <p class="blogCard__excerpt">
+                  UVB 光の理解: UVB 光とは何か、そしてなぜ重要なのか UVB 光についてはよく話題になりますが、必ずしも完全に理解されているわけではありません。UVB は自然太陽光の一部として最もよく知られていますが、私たちの相互作用において独特の役割を果たしています。…
+                </p>
+                <p class="blogCard__more">
+                  <a
+                    class="link"
+                    href="https://emr-tek.com/en-jp/blogs/news/what-is-uvb-light"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >続きを読む</a
+                  >
+                </p>
+              </div>
+            </article>
+
+            <article class="blogCard">
+              <div class="blogCard__media">
+                <a
+                  class="blogCard__mediaLink"
+                  href="https://emr-tek.com/en-jp/blogs/news/how-to-get-rid-of-textured-skin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <img
+                    class="blogCard__image"
+                    src="https://emr-tek.com/cdn/shop/articles/How_To_Get_Rid_Of_Textured_Skin.png?v=1764880449&amp;width=1072"
+                    alt=""
+                    width="1072"
+                    height="720"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </div>
+              <div class="blogCard__content">
+                <div class="blogCard__meta">
+                  <span class="blogCard__date" aria-hidden="true">
+                    <svg class="blogCard__cal" viewBox="0 0 16 16" stroke="currentColor" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M5.33325 0.666668V3.40544M10.6666 0.666668V3.40544M14.4999 6.33333H1.49994M6.93325 14.6667H9.06659C11.0268 14.6667 12.0069 14.6667 12.7556 14.2852C13.4141 13.9496 13.9496 13.4142 14.2851 12.7556C14.6666 12.0069 14.6666 11.0269 14.6666 9.06667V7.93334C14.6666 5.97315 14.6666 4.99306 14.2851 4.24437C13.9496 3.5858 13.4141 3.05037 12.7556 2.71481C12.0069 2.33333 11.0268 2.33333 9.06659 2.33333H6.93325C4.97307 2.33333 3.99298 2.33333 3.24429 2.71481C2.58572 3.05037 2.05029 3.5858 1.71473 4.24437C1.33325 4.99306 1.33325 5.97315 1.33325 7.93333V9.06667C1.33325 11.0269 1.33325 12.0069 1.71473 12.7556C2.05029 13.4142 2.58572 13.9496 3.24429 14.2852C3.99298 14.6667 4.97307 14.6667 6.93325 14.6667Z"
+                      />
+                    </svg>
+                  </span>
+                  <time class="blogCard__time" datetime="2025-03-01T14:55:00Z">2025年3月1日</time>
+                </div>
+                <h3 class="blogCard__title">
+                  <a
+                    href="https://emr-tek.com/en-jp/blogs/news/how-to-get-rid-of-textured-skin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >テクスチャーのある肌を取り除く方法: ステップバイステップ</a
+                  >
+                </h3>
+                <p class="blogCard__excerpt">
+                  テクスチャード スキンを理解する: 原因、ケア、日常の健康アプローチ テクスチャード スキンは、あらゆる年齢、あらゆる肌タイプに現れる共通の懸念事項です。小さな凹凸、乾燥、凹凸のある部分、または過去の微妙な痕跡に気づいたとしても…
+                </p>
+                <p class="blogCard__more">
+                  <a
+                    class="link"
+                    href="https://emr-tek.com/en-jp/blogs/news/how-to-get-rid-of-textured-skin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >続きを読む</a
+                  >
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <div class="footer__brand">EMR-TEK</div>
+          <div class="micro subtle">
+            <p>
+              <strong>重要な注意事項</strong>:
+              赤色および赤外線治療装置、青色遮光メガネ、その他の製品に関してこのサイトで提供されるすべての情報は、
+              病気の診断、治療、治癒、予防を目的としたものではありません。
+            </p>
+          </div>
+          <div class="micro subtle">Toronto, ON, Canada</div>
+          <div class="micro">
+            <a class="link" href="mailto:info@emr-tek.com">info@emr-tek.com</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer__title" data-i18n="emr.footer.shop">ショップ</div>
+          <ul class="footer__list">
+            <li><a class="link" href="./collection-all.html">全商品</a></li>
+            <li><a class="link" href="./collection-red-light.html">Red Light Therapy Devices</a></li>
+            <li><a class="link" href="./collection-blue-light-glasses.html">Blue Light Blocking Glasses</a></li>
+            <li><a class="link" href="./collection-indoor-lighting.html">Indoor Lighting Solutions</a></li>
+            <li><a class="link" href="./collection-emf-protection.html">EMF Protection</a></li>
+            <li><a class="link" href="./collection-uv.html">UV</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__title" data-i18n="emr.footer.learn">学ぶ</div>
+          <ul class="footer__list">
+            <li><a class="link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a></li>
+            <li><a class="link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a></li>
+            <li><a class="link" href="./faq.html" data-i18n="emr.footer.faq">よくある質問</a></li>
+            <li><a class="link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+
+        <div class="newsletter">
+          <div class="footer__title" data-i18n="emr.footer.newsletter">ニュースレター</div>
+          <p class="micro subtle" data-i18n="emr.footer.newsletter.hint">新商品・キャンペーン情報をお届けします。</p>
+          <form class="newsletter__form" data-newsletter>
+            <input required type="email" name="email" data-i18n-attr="placeholder:emr.footer.email.placeholder" placeholder="メールアドレス" />
+            <button class="btn btn--sm" type="submit" data-i18n="emr.footer.subscribe">登録</button>
+          </form>
+          <p class="micro subtle" data-newsletter-result></p>
+        </div>
+      </div>
+
+      <div class="container footer__bottom">
+        <nav class="footer__legal micro" aria-label="法的情報">
+          <a class="link" href="./privacy.html">プライバシーポリシー</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./terms.html">利用規約</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./tokushoho.html">特定商取引法に基づく表記</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./customer-policies.html">配送・返品・支払い</a>
+        </nav>
+        <div class="footer__bottomCredits">
+          <div class="micro subtle">© 2025 EMR-TEK</div>
+          <div class="micro subtle">Powered by Static HTML</div>
+        </div>
+      </div>
+    </footer>
+
+    <dialog class="modal" data-cart-modal data-i18n-attr="aria-label:emr.modal.cart" aria-label="カート">
+      <form method="dialog" class="modal__inner">
+        <div class="modal__head">
+          <div class="h3" data-i18n="emr.modal.cart">カート</div>
+          <button class="icon-btn" value="cancel" data-i18n-attr="aria-label:emr.modal.close" aria-label="閉じる">
+            <svg class="icon" aria-hidden="true">
+              <use href="./icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <div class="cart" data-cart>
+            <p class="subtle" data-cart-empty data-i18n="emr.cart.empty">カートは空です。</p>
+            <ul class="cart__list" data-cart-list></ul>
+            <div class="cart__summary" data-cart-summary hidden>
+              <div class="cart__row">
+                <span data-i18n="emr.cart.subtotal">小計</span>
+                <strong data-cart-subtotal>¥0</strong>
+              </div>
+              <button class="btn" type="button" data-action="checkout" data-i18n="emr.cart.checkout">購入手続きへ</button>
+              <button class="btn btn--ghost" type="button" data-action="clear-cart" data-i18n="emr.cart.clear">カートを空にする</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="modal" data-search-modal data-i18n-attr="aria-label:emr.modal.search" aria-label="検索">
+      <form method="dialog" class="modal__inner">
+        <div class="modal__head">
+          <div class="h3" data-i18n="emr.modal.search">検索</div>
+          <button class="icon-btn" value="cancel" data-i18n-attr="aria-label:emr.modal.close" aria-label="閉じる">
+            <svg class="icon" aria-hidden="true">
+              <use href="./icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <label class="field">
+            <span data-i18n="emr.search.keyword">キーワード</span>
+            <input type="search" placeholder="例：Firefly / 630nm / COB" data-search-modal-input />
+          </label>
+          <div class="micro subtle" data-i18n="emr.search.hint">この検索は一覧（全商品）に反映されます。</div>
+          <menu class="modal__menu">
+            <button class="btn" value="default" data-action="search-apply" data-i18n="emr.search.apply">適用</button>
+            <button class="btn btn--ghost" value="cancel">閉じる</button>
+          </menu>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="cookie" data-cookie hidden>
+      <div class="container cookie__inner" role="dialog" data-i18n-attr="aria-label:emr.cookie.dialog" aria-label="Cookieの利用">
+        <div>
+          <div class="cookie__title" data-i18n="emr.cookie.title">Cookieを使用しています</div>
+          <div class="micro subtle" data-i18n="emr.cookie.body">
+            体験向上と分析のためにCookieを利用します。設定はいつでも変更できます。
+          </div>
+        </div>
+        <div class="cookie__actions">
+          <button class="btn btn--sm btn--ghost" type="button" data-action="cookie-decline" data-i18n="emr.cookie.decline">拒否</button>
+          <button class="btn btn--sm" type="button" data-action="cookie-accept" data-i18n="emr.cookie.accept">同意</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js?v=20260412" defer></script>
+      <script src="./i18n.js" defer></script>
+  </body>
+</html>

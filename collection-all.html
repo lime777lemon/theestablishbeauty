@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var k = "establish_site_lang";
+          var v = localStorage.getItem(k) || "ja";
+          if (v !== "ja" && v !== "en") v = "ja";
+          document.documentElement.setAttribute("data-site-lang", v);
+          document.documentElement.setAttribute("lang", v === "en" ? "en" : "ja");
+        } catch (e) {}
+      })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>全商品 – EMR-TEK</title>
+    <meta
+      name="description"
+      content="EMR-TEK 全商品（All Products）— 並べ替え・フィルター、カテゴリからの導線、赤色光セラピー関連記事まで。公式 en-jp/collections/all と同じ構成の静的版です。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./i18n.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="emr.skip">本文へスキップ</a>
+
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <div class="topbar__left">
+          <span class="badge" data-i18n="emr.topbar.badge">出荷2〜5営業日・お届け7〜14日目安</span>
+        </div>
+
+        <div class="topbar__right" aria-label="言語と通貨" data-i18n-attr="aria-label:emr.topbar.langcurrency" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:flex-end">
+          <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label">
+            <button type="button" class="pill pill--lang" data-lang-switch="ja">日本語</button>
+            <button type="button" class="pill pill--lang" data-lang-switch="en">English</button>
+          </div>
+
+          <button class="pill" type="button" data-action="open-language" data-i18n="emr.pill.lang">
+            日本語
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+          <button class="pill" type="button" data-action="open-currency" data-i18n="emr.pill.currency">
+            日本 (JPY ¥)
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="container header__inner">
+        <div class="brand">
+          <a class="brand__link" href="./emr-tek.html" data-i18n-attr="aria-label:emr.brand.aria" aria-label="EMR-TEK ホーム">
+            <span class="brand__name">EMR-TEK</span>
+          </a>
+        </div>
+
+        <nav class="nav" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
+          <a class="nav__link nav__link--active" href="./collection-all.html" data-i18n="emr.nav.shop">ショップ</a>
+          <a class="nav__link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a>
+          <a class="nav__link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a>
+          <a class="nav__link" href="./emr-tek.html#track" data-i18n="emr.nav.track">注文追跡</a>
+          <a class="nav__link" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
+          <a class="nav__link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="icon-btn" type="button" data-action="open-search" data-i18n-attr="aria-label:emr.aria.search" aria-label="検索">
+            <span aria-hidden="true">⌕</span>
+          </button>
+          <button class="icon-btn" type="button" data-action="open-cart" data-i18n-attr="aria-label:emr.aria.cart" aria-label="カート">
+            <span aria-hidden="true">🛒</span>
+            <span class="cart-count" data-i18n-attr="aria-label:emr.aria.cartcount" aria-label="カート内商品数" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <section class="hero">
+        <div class="container hero__inner">
+          <div class="breadcrumbs" aria-label="パンくず">
+            <a href="./emr-tek.html">コレクション</a>
+            <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+            <span aria-current="page">全商品</span>
+          </div>
+
+          <div class="hero__titleRow">
+            <div>
+              <h1 class="h1">全商品</h1>
+              <p class="subtle">
+                公式ストアの「All Products」と同様、一覧のほかカテゴリ別のおすすめや学習記事までこのページにまとめています。フィルター・並べ替え・キーワード検索に対応します。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--padding shopAll" aria-labelledby="shop-all-heading">
+        <div class="container">
+          <h2 id="shop-all-heading" class="sr-only">商品一覧</h2>
+
+          <div class="shopAll__bar">
+            <p class="shopAll__count subtle" role="status">
+              <span data-results-meta>—</span>
+            </p>
+            <div class="shopAll__sort">
+              <label class="shopAll__sortLabel" for="shop-all-sort">並べ替え</label>
+              <div class="select collectionToolbar__selectWrap">
+                <select id="shop-all-sort" class="collectionToolbar__select" data-sort>
+                  <option value="best" selected>おすすめ</option>
+                  <option value="bestselling">売れ筋順</option>
+                  <option value="price_asc">価格：安い順</option>
+                  <option value="price_desc">価格：高い順</option>
+                  <option value="az">名前：あいうえお順</option>
+                  <option value="za">名前：逆順</option>
+                  <option value="new_desc">新着順</option>
+                  <option value="old_asc">発売が古い順</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <details class="shopFacets">
+            <summary class="shopFacets__summary">フィルターを表示</summary>
+            <div class="shopFacets__body panel">
+              <div class="search">
+                <label class="search__label" for="shop-all-q">キーワード</label>
+                <input
+                  id="shop-all-q"
+                  class="search__input"
+                  type="search"
+                  data-search
+                  placeholder="例：Firefly / マスク / 630nm"
+                  autocomplete="off"
+                />
+              </div>
+
+              <fieldset class="shopFacets__fieldset">
+                <legend class="shopFacets__legend">カテゴリ</legend>
+                <div class="shopFacets__chips">
+                  <label class="shopFacets__chip"
+                    ><input type="checkbox" data-filter="category" value="red" /> 赤色光・近赤外</label
+                  >
+                  <label class="shopFacets__chip"
+                    ><input type="checkbox" data-filter="category" value="mask" /> LEDマスク</label
+                  >
+                  <label class="shopFacets__chip"
+                    ><input type="checkbox" data-filter="category" value="uv" /> UV</label
+                  >
+                  <label class="shopFacets__chip"
+                    ><input type="checkbox" data-filter="category" value="glasses" /> ブルーライトカット</label
+                  >
+                  <label class="shopFacets__chip"
+                    ><input type="checkbox" data-filter="category" value="cosmetics" /> コスメ</label
+                  >
+                  <label class="shopFacets__chip"
+                    ><input type="checkbox" data-filter="category" value="indoor" /> 室内照明</label
+                  >
+                  <label class="shopFacets__chip"
+                    ><input type="checkbox" data-filter="category" value="stands" /> スタンド</label
+                  >
+                </div>
+              </fieldset>
+
+              <div class="shopFacets__priceRow">
+                <span class="shopFacets__legend">価格（円・税込目安）</span>
+                <div class="shopFacets__priceInputs">
+                  <input
+                    class="shopFacets__priceInput"
+                    type="number"
+                    inputmode="numeric"
+                    min="0"
+                    data-filter-min
+                    placeholder="最低"
+                    aria-label="最低価格"
+                  />
+                  <span class="shopFacets__priceSep">—</span>
+                  <input
+                    class="shopFacets__priceInput"
+                    type="number"
+                    inputmode="numeric"
+                    min="0"
+                    data-filter-max
+                    placeholder="最高"
+                    aria-label="最高価格"
+                  />
+                </div>
+                <div class="shopFacets__priceActions">
+                  <button type="button" class="btn btn--sm" data-action="apply-price">価格を適用</button>
+                  <button type="button" class="btn btn--ghost btn--sm" data-action="clear-filters">
+                    条件をクリア
+                  </button>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <div class="grid shopAll__grid productGrid--uniform" data-grid aria-live="polite" aria-busy="false"></div>
+
+          <div class="collectionAll__below">
+            <h2 class="collectionAll__subhead h2">カテゴリーから探す</h2>
+            <p class="subtle collectionAll__sublead">
+              ベストセラー・用途別のコレクションへすぐ移動できます（
+              <a href="https://emr-tek.com/en-jp/collections/all" target="_blank" rel="noopener noreferrer"
+                >公式の Shop All</a
+              >
+              と同じ導線イメージ）。
+            </p>
+            <div class="cards collectionAll__promos" aria-label="カテゴリ別コレクション">
+              <a class="cardlink" href="./collection-red-light.html" aria-label="Red Light Therapy Devices">
+                <div class="cardlink__media cardlink__media--red"></div>
+                <div class="cardlink__body">
+                  <div class="cardlink__kicker">ベストセラー</div>
+                  <div class="cardlink__title">Red Light Therapy Devices</div>
+                  <div class="cardlink__desc">
+                    肌・リカバリー・エネルギー向けに調整された赤色・近赤外のライトセラピー。
+                  </div>
+                </div>
+              </a>
+              <a class="cardlink" href="./collection-uv.html" aria-label="Ultraviolet Devices">
+                <div class="cardlink__media cardlink__media--uv"></div>
+                <div class="cardlink__body">
+                  <div class="cardlink__kicker">ベストセラー</div>
+                  <div class="cardlink__title">UV</div>
+                  <div class="cardlink__desc">太陽光に近い体験を室内で。UV ライト関連製品。</div>
+                </div>
+              </a>
+              <a class="cardlink" href="./collection-red-light.html" aria-label="LEDマスク">
+                <div class="cardlink__media cardlink__media--mask"></div>
+                <div class="cardlink__body">
+                  <div class="cardlink__kicker">ベストセラー</div>
+                  <div class="cardlink__title">LEDマスク</div>
+                  <div class="cardlink__desc">
+                    ライトセラピーと相性の良いセラム・スキンケア（公式の Face Mask / Cosmetics 相当）。
+                  </div>
+                </div>
+              </a>
+              <a class="cardlink" href="./collection-blue-light-glasses.html" aria-label="Blue Light Blocking Glasses">
+                <div class="cardlink__media cardlink__media--glasses"></div>
+                <div class="cardlink__body">
+                  <div class="cardlink__title">Blue Light Blocking Glasses</div>
+                  <div class="cardlink__desc">目を守り、睡眠とホルモンバランスをサポート。</div>
+                </div>
+              </a>
+              <a class="cardlink" href="./collection-indoor-lighting.html" aria-label="Indoor Lighting Solutions">
+                <div class="cardlink__media cardlink__media--indoor"></div>
+                <div class="cardlink__body">
+                  <div class="cardlink__title">Indoor Lighting Solutions</div>
+                  <div class="cardlink__desc">自然光に近い、サーカディアン配慮の室内照明・電球。</div>
+                </div>
+              </a>
+            </div>
+
+            <section id="learn" class="learn" aria-labelledby="learn-heading-all">
+              <div class="learn__head">
+                <h2 id="learn-heading-all" class="h2">赤色光セラピーのメリットを学ぶ</h2>
+                <a class="btn btn--ghost" href="./blog.html" aria-label="すべての記事">すべての記事</a>
+              </div>
+              <div class="learn__grid">
+                <article class="post">
+                  <div class="post__meta">2025/10/28</div>
+                  <h3 class="post__title">
+                    肌に本当に必要なものは？— プラスチックの“重さ”を見直す
+                  </h3>
+                  <p class="post__desc">
+                    従来のLEDマスクは密着型。快適性と使い勝手のトレードオフをどう考えるか…
+                  </p>
+                  <a
+                    class="post__link"
+                    href="https://emr-tek.com/en-jp/blogs/news/are-you-truly-giving-your-skin-what-it-deserves-or-weighing-it-down-with-plastic"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="続きを読む"
+                    >続きを読む</a
+                  >
+                </article>
+                <article class="post">
+                  <div class="post__meta">2025/03/12</div>
+                  <h3 class="post__title">人は紫外線を見られる？見えない光の謎</h3>
+                  <p class="post__desc">
+                    可視光の外側にある紫外線。見えない波長が私たちに与える影響を探ります。
+                  </p>
+                  <a
+                    class="post__link"
+                    href="https://emr-tek.com/en-jp/blogs/news/can-humans-see-ultraviolet-light"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="続きを読む"
+                    >続きを読む</a
+                  >
+                </article>
+                <article class="post">
+                  <div class="post__meta">2025/03/09</div>
+                  <h3 class="post__title">赤色光を“肺”に使うには：ステップ別ガイド</h3>
+                  <p class="post__desc">
+                    赤色光・近赤外の活用は広がっています。安全に楽しむための基本手順を紹介。
+                  </p>
+                  <a
+                    class="post__link"
+                    href="https://emr-tek.com/en-jp/blogs/news/how-to-use-red-light-therapy-for-lungs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="続きを読む"
+                    >続きを読む</a
+                  >
+                </article>
+              </div>
+            </section>
+
+            <section class="collectionAll__trust" aria-label="サービスと安心">
+              <div class="collectionAll__trustGrid">
+                <div class="collectionAll__trustItem">
+                  <div class="collectionAll__trustTitle">カスタマーサポート</div>
+                  <p class="micro subtle">
+                    ご不明点はいつでもお問い合わせください。チームがサポートします。
+                  </p>
+                </div>
+                <div class="collectionAll__trustItem">
+                  <div class="collectionAll__trustTitle">送料について</div>
+                  <p class="micro subtle">一定金額以上のご注文で送料無料になる場合があります（地域・キャンペーンにより異なります）。</p>
+                </div>
+                <div class="collectionAll__trustItem">
+                  <div class="collectionAll__trustTitle">お友だち紹介</div>
+                  <p class="micro subtle">紹介プログラムにより双方に割引がある場合があります（公式の案内に準拠）。</p>
+                </div>
+                <div class="collectionAll__trustItem">
+                  <div class="collectionAll__trustTitle">安全なお支払い</div>
+                  <p class="micro subtle">決済情報は暗号化され安全に処理されます。</p>
+                </div>
+              </div>
+              <p class="micro subtle collectionAll__cert">認証の例: FCC / RoHS / CE（製品により異なります）</p>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <div class="footer__brand">EMR-TEK</div>
+          <div class="micro subtle">
+            <p>
+              <strong>重要な注意事項</strong>:
+              赤色および赤外線治療装置、青色遮光メガネ、その他の製品に関してこのサイトで提供されるすべての情報は、
+              病気の診断、治療、治癒、予防を目的としたものではありません。
+            </p>
+          </div>
+          <div class="micro subtle">Toronto, ON, Canada</div>
+          <div class="micro">
+            <a class="link" href="mailto:info@emr-tek.com">info@emr-tek.com</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer__title" data-i18n="emr.footer.shop">ショップ</div>
+          <ul class="footer__list">
+            <li><a class="link" href="./collection-all.html">全商品</a></li>
+            <li><a class="link" href="./collection-red-light.html">Red Light Therapy Devices</a></li>
+            <li><a class="link" href="./collection-blue-light-glasses.html">Blue Light Blocking Glasses</a></li>
+            <li><a class="link" href="./collection-indoor-lighting.html">Indoor Lighting Solutions</a></li>
+            <li><a class="link" href="./collection-emf-protection.html">EMF Protection</a></li>
+            <li><a class="link" href="./collection-uv.html">UV</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__title" data-i18n="emr.footer.learn">学ぶ</div>
+          <ul class="footer__list">
+            <li><a class="link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a></li>
+            <li><a class="link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a></li>
+            <li><a class="link" href="./faq.html" data-i18n="emr.footer.faq">よくある質問</a></li>
+            <li><a class="link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+
+        <div class="newsletter">
+          <div class="footer__title" data-i18n="emr.footer.newsletter">ニュースレター</div>
+          <p class="micro subtle" data-i18n="emr.footer.newsletter.hint">新商品・キャンペーン情報をお届けします。</p>
+          <form class="newsletter__form" data-newsletter>
+            <input required type="email" name="email" data-i18n-attr="placeholder:emr.footer.email.placeholder" placeholder="メールアドレス" />
+            <button class="btn btn--sm" type="submit" data-i18n="emr.footer.subscribe">登録</button>
+          </form>
+          <p class="micro subtle" data-newsletter-result></p>
+        </div>
+      </div>
+
+      <div class="container footer__bottom">
+        <nav class="footer__legal micro" aria-label="法的情報">
+          <a class="link" href="./privacy.html">プライバシーポリシー</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./terms.html">利用規約</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./tokushoho.html">特定商取引法に基づく表記</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./customer-policies.html">配送・返品・支払い</a>
+        </nav>
+        <div class="footer__bottomCredits">
+          <div class="micro subtle">© 2025 EMR-TEK</div>
+          <div class="micro subtle">Powered by Static HTML</div>
+        </div>
+      </div>
+    </footer>
+
+    <dialog class="modal" data-cart-modal data-i18n-attr="aria-label:emr.modal.cart" aria-label="カート">
+      <form method="dialog" class="modal__inner">
+        <div class="modal__head">
+          <div class="h3" data-i18n="emr.modal.cart">カート</div>
+          <button class="icon-btn" value="cancel" data-i18n-attr="aria-label:emr.modal.close" aria-label="閉じる">
+            <svg class="icon" aria-hidden="true">
+              <use href="./icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <div class="cart" data-cart>
+            <p class="subtle" data-cart-empty data-i18n="emr.cart.empty">カートは空です。</p>
+            <ul class="cart__list" data-cart-list></ul>
+            <div class="cart__summary" data-cart-summary hidden>
+              <div class="cart__row">
+                <span data-i18n="emr.cart.subtotal">小計</span>
+                <strong data-cart-subtotal>¥0</strong>
+              </div>
+              <button class="btn" type="button" data-action="checkout" data-i18n="emr.cart.checkout">購入手続きへ</button>
+              <button class="btn btn--ghost" type="button" data-action="clear-cart" data-i18n="emr.cart.clear">カートを空にする</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="modal" data-search-modal data-i18n-attr="aria-label:emr.modal.search" aria-label="検索">
+      <form method="dialog" class="modal__inner">
+        <div class="modal__head">
+          <div class="h3" data-i18n="emr.modal.search">検索</div>
+          <button class="icon-btn" value="cancel" data-i18n-attr="aria-label:emr.modal.close" aria-label="閉じる">
+            <svg class="icon" aria-hidden="true">
+              <use href="./icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <label class="field">
+            <span data-i18n="emr.search.keyword">キーワード</span>
+            <input type="search" placeholder="例：Firefly / マスク / 近赤外" data-search-modal-input />
+          </label>
+          <div class="micro subtle" data-i18n="emr.search.hint">この検索は一覧（全商品）に反映されます。</div>
+          <menu class="modal__menu">
+            <button class="btn" value="default" data-action="search-apply" data-i18n="emr.search.apply">適用</button>
+            <button class="btn btn--ghost" value="cancel">閉じる</button>
+          </menu>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="cookie" data-cookie hidden>
+      <div class="container cookie__inner" role="dialog" data-i18n-attr="aria-label:emr.cookie.dialog" aria-label="Cookieの利用">
+        <div>
+          <div class="cookie__title" data-i18n="emr.cookie.title">Cookieを使用しています</div>
+          <div class="micro subtle" data-i18n="emr.cookie.body">
+            体験向上と分析のためにCookieを利用します。設定はいつでも変更できます。
+          </div>
+        </div>
+        <div class="cookie__actions">
+          <button class="btn btn--sm btn--ghost" type="button" data-action="cookie-decline" data-i18n="emr.cookie.decline">拒否</button>
+          <button class="btn btn--sm" type="button" data-action="cookie-accept" data-i18n="emr.cookie.accept">同意</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js?v=20260517" defer></script>
+      <script src="./i18n.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+gem "dotenv"
+gem "json"
+gem "sinatra", "~> 3.2"
+gem "sinatra-contrib"
+gem "stripe", "18.1.0"

@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var k = "establish_site_lang";
+          var v = localStorage.getItem(k) || "ja";
+          if (v !== "ja" && v !== "en") v = "ja";
+          document.documentElement.setAttribute("data-site-lang", v);
+          document.documentElement.setAttribute("lang", v === "en" ? "en" : "ja");
+        } catch (e) {}
+      })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>科学を学ぶ – EMR-TEK</title>
+    <meta name="description" content="EMR-TEK 日本語版 – 赤信号（赤色光・近赤外）の背後にある科学" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./i18n.css" />
+  </head>
+  <body class="page-science">
+    <a class="skip-link" href="#main" data-i18n="emr.skip">本文へスキップ</a>
+
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <div class="topbar__left">
+          <span class="badge" data-i18n="emr.topbar.badge">出荷2〜5営業日・お届け7〜14日目安</span>
+        </div>
+
+        <div class="topbar__right" aria-label="言語と通貨" data-i18n-attr="aria-label:emr.topbar.langcurrency" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:flex-end">
+          <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label">
+            <button type="button" class="pill pill--lang" data-lang-switch="ja">日本語</button>
+            <button type="button" class="pill pill--lang" data-lang-switch="en">English</button>
+          </div>
+
+          <button class="pill" type="button" data-action="open-language" data-i18n="emr.pill.lang">
+            日本語
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+          <button class="pill" type="button" data-action="open-currency" data-i18n="emr.pill.currency">
+            日本 (JPY ¥)
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="container header__inner">
+        <div class="brand">
+          <a class="brand__link" href="./emr-tek.html" data-i18n-attr="aria-label:emr.brand.aria" aria-label="EMR-TEK ホーム">
+            <span class="brand__name">EMR-TEK</span>
+          </a>
+        </div>
+
+        <nav class="nav" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
+          <a class="nav__link" href="./collection-all.html" data-i18n="emr.nav.shop">ショップ</a>
+          <a class="nav__link nav__link--active" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a>
+          <a class="nav__link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a>
+          <a class="nav__link" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
+          <a class="nav__link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="icon-btn" type="button" data-action="open-search" data-i18n-attr="aria-label:emr.aria.search" aria-label="検索">
+            <span aria-hidden="true">⌕</span>
+          </button>
+          <button class="icon-btn" type="button" data-action="open-cart" data-i18n-attr="aria-label:emr.aria.cart" aria-label="カート">
+            <span aria-hidden="true">🛒</span>
+            <span class="cart-count" data-i18n-attr="aria-label:emr.aria.cartcount" aria-label="カート内商品数" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <section class="hero scienceHero">
+        <div class="container hero__inner scienceHero__inner">
+          <div class="breadcrumbs" aria-label="パンくず">
+            <a href="./emr-tek.html">ホーム</a>
+            <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+            <span aria-current="page">科学を学ぶ</span>
+          </div>
+
+          <div class="scienceHero__grow">
+            <div class="scienceHero__banner">
+              <p class="scienceHero__kicker">赤信号の背後にある科学</p>
+              <h1 class="scienceHero__title">日々のウェルネスに、光のパワーを</h1>
+              <p class="subtle scienceHero__lead">
+                ミトコンドリアから波長・放射照度まで、研究に基づいてわかりやすくまとめています。
+              </p>
+            </div>
+          </div>
+
+          <div class="kpis" aria-label="要点">
+            <div class="kpi">
+              <div class="kpi__label">主要メカニズム</div>
+              <div class="kpi__value">ATP↑ / 血流↑</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi__label">重要因子</div>
+              <div class="kpi__value">波長・放射照度</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi__label">用量反応</div>
+              <div class="kpi__value">二相性</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container page">
+        <div class="panel prose">
+          <h2 class="h2">赤色光治療：2つの同時メカニズム</h2>
+          <p>
+            赤色光とNIR（近赤外）光はミトコンドリアのシトクロムcオキシダーゼ（複合体IV）に吸収され、
+            <strong>ATP産生が増加</strong>します。細胞エネルギーは多くの生理機能の下流を駆動します。
+            これは理論ではなく、PubMedで公開された6,000件以上の研究で再現されています。
+          </p>
+          <p>
+            2つ目の同時メカニズムとして、光は酵素から一酸化窒素を光解離し、酵素を解放して
+            <strong>局所的な血管拡張剤</strong>として機能します。結果として治療された組織への血流が増加します。
+            1つのセッションで2つの効果が重なります。
+          </p>
+
+          <div class="callout">
+            <div class="callout__title">重要</div>
+            <div class="callout__body">
+              波長・放射照度・テクノロジーによって、デバイスが実際に機能するかどうかが決まります。
+            </div>
+          </div>
+
+          <h2 class="h2">波長と放射照度：効く/効かないを分ける要素</h2>
+          <p>
+            シトクロムcオキシダーゼの吸収ピークは <strong>約630nm / 約670nm / 約830nm</strong> です。
+            これは多くのパネルが採用する汎用的な660nm/850nmとは異なります。
+          </p>
+          <p>
+            組織に送達される放射照度（mW/cm²）は、ワット数ではなく<strong>線量</strong>を決定します。
+            EMR-TEKのCOB（Chip-on-Board）テクノロジーは、標準SMDパネルの約200mW/cm²に対して、
+            <strong>パネル面で1,400mW/cm²</strong>を実現します。この差が、現実的な距離での治療投与を可能にします。
+          </p>
+
+          <h2 class="h2">二相用量反応：多ければ良い、ではない</h2>
+          <p>
+            光バイオモジュレーションは二相用量反応に従います。少なすぎると反応なし、適切な量で狙う効果、
+            多すぎると同じ経路が阻害される可能性があります。放射照度、距離、セッション時間、一貫性はすべて重要です。
+          </p>
+          <p>
+            EMR-TEKデバイスは、高精度の波長、COB放射照度、サードパーティ検証済み出力を中心に構築されています。
+            テクノロジーの差が、実際の結果と高価なプラセボを区別します。
+          </p>
+        </div>
+      </section>
+
+      <section class="container page">
+        <div class="panel">
+          <div class="sectionHead">
+            <h2 class="h2">フルメリットのレッドライトセラピー</h2>
+            <p class="subtle micro">代表的なテーマをまとめました。</p>
+          </div>
+
+          <div class="split">
+            <div class="split__item">
+              <div class="split__media">
+                <img
+                  src="https://emr-tek.com/cdn/shop/files/FIREWAVE247378N494.jpg?v=1764078255&amp;width=3780"
+                  alt="自宅でFirewaveを使っている女性"
+                  srcset="
+                    https://emr-tek.com/cdn/shop/files/FIREWAVE247378N494.jpg?v=1764078255&amp;width=180 180w,
+                    https://emr-tek.com/cdn/shop/files/FIREWAVE247378N494.jpg?v=1764078255&amp;width=360 360w,
+                    https://emr-tek.com/cdn/shop/files/FIREWAVE247378N494.jpg?v=1764078255&amp;width=540 540w,
+                    https://emr-tek.com/cdn/shop/files/FIREWAVE247378N494.jpg?v=1764078255&amp;width=720 720w,
+                    https://emr-tek.com/cdn/shop/files/FIREWAVE247378N494.jpg?v=1764078255&amp;width=900 900w,
+                    https://emr-tek.com/cdn/shop/files/FIREWAVE247378N494.jpg?v=1764078255&amp;width=1080 1080w,
+                    https://emr-tek.com/cdn/shop/files/FIREWAVE247378N494.jpg?v=1764078255&amp;width=1600 1600w
+                  "
+                  width="3780"
+                  height="2128"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 639px) calc(100vw - 72px), (max-width: 1023px) calc(50vw - 48px), min(520px, calc((min(1160px, 100vw - 40px) - 14px) / 2))"
+                />
+              </div>
+              <h3 class="h3" style="margin-top: 12px">皮膚とコラーゲン</h3>
+              <ul class="list">
+                <li>630nmは線維芽細胞（コラーゲン/エラスチン生成に関与）との相互作用が研究されています。</li>
+                <li>研究はシトクロムC酸化酵素の活性化と細胞エネルギーの関連に焦点を当てています。</li>
+                <li>数百件の公開研究（Avci et al., 2013; Chung et al., 2012）にわたって文書化されています。</li>
+              </ul>
+            </div>
+
+            <div class="split__item">
+              <div class="split__media">
+                <img
+                  src="https://emr-tek.com/cdn/shop/files/image_7f10aaa4-fddf-484a-a632-92f055962617.jpg?v=1743523367&amp;width=1920"
+                  alt=""
+                  srcset="
+                    https://emr-tek.com/cdn/shop/files/image_7f10aaa4-fddf-484a-a632-92f055962617.jpg?v=1743523367&amp;width=180 180w,
+                    https://emr-tek.com/cdn/shop/files/image_7f10aaa4-fddf-484a-a632-92f055962617.jpg?v=1743523367&amp;width=360 360w,
+                    https://emr-tek.com/cdn/shop/files/image_7f10aaa4-fddf-484a-a632-92f055962617.jpg?v=1743523367&amp;width=540 540w,
+                    https://emr-tek.com/cdn/shop/files/image_7f10aaa4-fddf-484a-a632-92f055962617.jpg?v=1743523367&amp;width=720 720w,
+                    https://emr-tek.com/cdn/shop/files/image_7f10aaa4-fddf-484a-a632-92f055962617.jpg?v=1743523367&amp;width=900 900w,
+                    https://emr-tek.com/cdn/shop/files/image_7f10aaa4-fddf-484a-a632-92f055962617.jpg?v=1743523367&amp;width=1080 1080w,
+                    https://emr-tek.com/cdn/shop/files/image_7f10aaa4-fddf-484a-a632-92f055962617.jpg?v=1743523367&amp;width=1600 1600w
+                  "
+                  width="1920"
+                  height="1080"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 639px) calc(100vw - 72px), (max-width: 1023px) calc(50vw - 48px), min(520px, calc((min(1160px, 100vw - 40px) - 14px) / 2))"
+                />
+              </div>
+              <h3 class="h3" style="margin-top: 12px">循環と血流</h3>
+              <ul class="list">
+                <li>一酸化窒素の光解離が、局所血管拡張剤として働くことが研究されています。</li>
+                <li>このメカニズムは、曝露領域への血流増加と関連付けられています。</li>
+                <li>医薬品の血管拡張薬の標的となる同じ分子が、ここでは光で放出されます。</li>
+              </ul>
+            </div>
+
+            <div class="split__item">
+              <div class="split__media">
+                <img
+                  src="https://emr-tek.com/cdn/shop/products/FIREWAVE2362727.jpg?v=1683556729&amp;width=3820"
+                  alt="Firewaveをオンにして使用するゴージャスな女性"
+                  srcset="
+                    https://emr-tek.com/cdn/shop/products/FIREWAVE2362727.jpg?v=1683556729&amp;width=180 180w,
+                    https://emr-tek.com/cdn/shop/products/FIREWAVE2362727.jpg?v=1683556729&amp;width=360 360w,
+                    https://emr-tek.com/cdn/shop/products/FIREWAVE2362727.jpg?v=1683556729&amp;width=540 540w,
+                    https://emr-tek.com/cdn/shop/products/FIREWAVE2362727.jpg?v=1683556729&amp;width=720 720w,
+                    https://emr-tek.com/cdn/shop/products/FIREWAVE2362727.jpg?v=1683556729&amp;width=900 900w,
+                    https://emr-tek.com/cdn/shop/products/FIREWAVE2362727.jpg?v=1683556729&amp;width=1080 1080w,
+                    https://emr-tek.com/cdn/shop/products/FIREWAVE2362727.jpg?v=1683556729&amp;width=1600 1600w
+                  "
+                  width="3820"
+                  height="2151"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 639px) calc(100vw - 72px), (max-width: 1023px) calc(50vw - 48px), min(520px, calc((min(1160px, 100vw - 40px) - 14px) / 2))"
+                />
+              </div>
+              <h3 class="h3" style="margin-top: 12px">実際に重要なテクノロジー</h3>
+              <ul class="list">
+                <li>標準SMDパネルに対するCOB（チップオンボード）：1,400 mW/cm² vs 200 mW/cm²</li>
+                <li>ゼロフリッカー：医療機器と同じ規格のMeanwell工業グレードドライバー</li>
+                <li>ゼロEMF：サードパーティテスト済み（ユーザーに磁場なし）</li>
+              </ul>
+            </div>
+
+            <div class="split__item">
+              <div class="split__media">
+                <img
+                  src="https://emr-tek.com/cdn/shop/files/image_b7d99edc-c80d-465d-8dde-cbacd2bce882.jpg?v=1752529377&amp;width=3936"
+                  alt="ベッドでインフェルノを使っている人"
+                  srcset="
+                    https://emr-tek.com/cdn/shop/files/image_b7d99edc-c80d-465d-8dde-cbacd2bce882.jpg?v=1752529377&amp;width=180 180w,
+                    https://emr-tek.com/cdn/shop/files/image_b7d99edc-c80d-465d-8dde-cbacd2bce882.jpg?v=1752529377&amp;width=360 360w,
+                    https://emr-tek.com/cdn/shop/files/image_b7d99edc-c80d-465d-8dde-cbacd2bce882.jpg?v=1752529377&amp;width=540 540w,
+                    https://emr-tek.com/cdn/shop/files/image_b7d99edc-c80d-465d-8dde-cbacd2bce882.jpg?v=1752529377&amp;width=720 720w,
+                    https://emr-tek.com/cdn/shop/files/image_b7d99edc-c80d-465d-8dde-cbacd2bce882.jpg?v=1752529377&amp;width=900 900w,
+                    https://emr-tek.com/cdn/shop/files/image_b7d99edc-c80d-465d-8dde-cbacd2bce882.jpg?v=1752529377&amp;width=1080 1080w,
+                    https://emr-tek.com/cdn/shop/files/image_b7d99edc-c80d-465d-8dde-cbacd2bce882.jpg?v=1752529377&amp;width=1600 1600w
+                  "
+                  width="3936"
+                  height="2216"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 639px) calc(100vw - 72px), (max-width: 1023px) calc(50vw - 48px), min(520px, calc((min(1160px, 100vw - 40px) - 14px) / 2))"
+                />
+              </div>
+              <h3 class="h3" style="margin-top: 12px">睡眠と概日生物学</h3>
+              <ul class="list">
+                <li>メラノプシンは400–570nmに反応します（赤色光は範囲外）。</li>
+                <li>概日リズムの乱れが懸念される代替光源として研究されています。</li>
+                <li>サードパーティ検証済み精度波長：630/670/830nm（コモディティ660/850nmではありません）。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="sectionCta">
+            <a class="btn btn--ghost" href="./faq.html">FAQを見る</a>
+            <a class="btn" href="./contact.html">お問い合わせ</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <div class="footer__brand">EMR-TEK</div>
+          <div class="micro subtle">
+            <p>
+              <strong>重要な注意事項</strong>:
+              赤色および赤外線治療装置、青色遮光メガネ、その他の製品に関してこのサイトで提供されるすべての情報は、
+              病気の診断、治療、治癒、予防を目的としたものではありません。当社の製品は医療機器と誤解されるべきではなく、
+              治療上の主張も行いません。これらの製品は、2015 年 1 月 20 日に発表された
+              “General Wellness: Policy on Low Risk Devices”草案に従って、FDA の認可を必要としない低リスクの
+              一般的なウェルネス/フィットネス アイテムです。当社の製品は個人使用のみを目的としており、
+              商業用途を目的としたものではありません。
+            </p>
+            <p>
+              ※ これらの記述は食品医薬品局によって評価されていません。この製品は、病気の診断、治療、治癒、予防を目的としたものではありません。
+            </p>
+          </div>
+          <div class="micro subtle">Toronto, ON, Canada</div>
+          <div class="micro">
+            <a class="link" href="mailto:info@emr-tek.com">info@emr-tek.com</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer__title" data-i18n="emr.footer.shop">ショップ</div>
+          <ul class="footer__list">
+            <li><a class="link" href="./collection-all.html">全商品</a></li>
+            <li><a class="link" href="./collection-red-light.html">Red Light Therapy Devices</a></li>
+            <li><a class="link" href="./collection-blue-light-glasses.html">Blue Light Blocking Glasses</a></li>
+            <li><a class="link" href="./collection-indoor-lighting.html">Indoor Lighting Solutions</a></li>
+            <li><a class="link" href="./collection-emf-protection.html">EMF Protection</a></li>
+            <li><a class="link" href="./collection-uv.html">UV</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__title" data-i18n="emr.footer.learn">学ぶ</div>
+          <ul class="footer__list">
+            <li><a class="link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a></li>
+            <li><a class="link" href="./faq.html" data-i18n="emr.footer.faq">よくある質問</a></li>
+            <li><a class="link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a></li>
+            <li><a class="link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+
+        <div class="newsletter">
+          <div class="footer__title" data-i18n="emr.footer.newsletter">ニュースレター</div>
+          <p class="micro subtle" data-i18n="emr.footer.newsletter.hint">新商品・キャンペーン情報をお届けします。</p>
+          <form class="newsletter__form" data-newsletter>
+            <input required type="email" name="email" data-i18n-attr="placeholder:emr.footer.email.placeholder" placeholder="メールアドレス" />
+            <button class="btn btn--sm" type="submit" data-i18n="emr.footer.subscribe">登録</button>
+          </form>
+          <p class="micro subtle" data-newsletter-result></p>
+        </div>
+      </div>
+
+      <div class="container footer__bottom">
+        <nav class="footer__legal micro" aria-label="法的情報">
+          <a class="link" href="./privacy.html">プライバシーポリシー</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./terms.html">利用規約</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./tokushoho.html">特定商取引法に基づく表記</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./customer-policies.html">配送・返品・支払い</a>
+        </nav>
+        <div class="footer__bottomCredits">
+          <div class="micro subtle">© 2025 EMR-TEK</div>
+          <div class="micro subtle">Powered by Static HTML</div>
+        </div>
+      </div>
+    </footer>
+
+    <dialog class="modal" data-cart-modal data-i18n-attr="aria-label:emr.modal.cart" aria-label="カート">
+      <form method="dialog" class="modal__inner">
+        <div class="modal__head">
+          <div class="h3" data-i18n="emr.modal.cart">カート</div>
+          <button class="icon-btn" value="cancel" data-i18n-attr="aria-label:emr.modal.close" aria-label="閉じる">
+            <svg class="icon" aria-hidden="true">
+              <use href="./icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <div class="cart" data-cart>
+            <p class="subtle" data-cart-empty data-i18n="emr.cart.empty">カートは空です。</p>
+            <ul class="cart__list" data-cart-list></ul>
+            <div class="cart__summary" data-cart-summary hidden>
+              <div class="cart__row">
+                <span data-i18n="emr.cart.subtotal">小計</span>
+                <strong data-cart-subtotal>¥0</strong>
+              </div>
+              <button class="btn" type="button" data-action="checkout" data-i18n="emr.cart.checkout">購入手続きへ</button>
+              <button class="btn btn--ghost" type="button" data-action="clear-cart" data-i18n="emr.cart.clear">カートを空にする</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="modal" data-search-modal data-i18n-attr="aria-label:emr.modal.search" aria-label="検索">
+      <form method="dialog" class="modal__inner">
+        <div class="modal__head">
+          <div class="h3" data-i18n="emr.modal.search">検索</div>
+          <button class="icon-btn" value="cancel" data-i18n-attr="aria-label:emr.modal.close" aria-label="閉じる">
+            <svg class="icon" aria-hidden="true">
+              <use href="./icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <label class="field">
+            <span data-i18n="emr.search.keyword">キーワード</span>
+            <input type="search" placeholder="例：ミトコンドリア / 波長 / 放射照度" data-search-modal-input />
+          </label>
+          <div class="micro subtle" data-i18n="emr.search.hint">この検索は一覧（全商品）に反映されます。</div>
+          <menu class="modal__menu">
+            <button class="btn" value="default" data-action="search-apply" data-i18n="emr.search.apply">適用</button>
+            <button class="btn btn--ghost" value="cancel">閉じる</button>
+          </menu>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="cookie" data-cookie hidden>
+      <div class="container cookie__inner" role="dialog" data-i18n-attr="aria-label:emr.cookie.dialog" aria-label="Cookieの利用">
+        <div>
+          <div class="cookie__title" data-i18n="emr.cookie.title">Cookieを使用しています</div>
+          <div class="micro subtle" data-i18n="emr.cookie.body">
+            体験向上と分析のためにCookieを利用します。設定はいつでも変更できます。
+          </div>
+        </div>
+        <div class="cookie__actions">
+          <button class="btn btn--sm btn--ghost" type="button" data-action="cookie-decline" data-i18n="emr.cookie.decline">拒否</button>
+          <button class="btn btn--sm" type="button" data-action="cookie-accept" data-i18n="emr.cookie.accept">同意</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js?v=20260412" defer></script>
+      <script src="./i18n.js" defer></script>
+  </body>
+</html>
+

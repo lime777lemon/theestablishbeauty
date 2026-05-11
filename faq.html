@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var k = "establish_site_lang";
+          var v = localStorage.getItem(k) || "ja";
+          if (v !== "ja" && v !== "en") v = "ja";
+          document.documentElement.setAttribute("data-site-lang", v);
+          document.documentElement.setAttribute("lang", v === "en" ? "en" : "ja");
+        } catch (e) {}
+      })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>FAQ – EMR-TEK</title>
+    <meta name="description" content="EMR-TEK 日本語版 – よくある質問（FAQ）" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./i18n.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="emr.skip">本文へスキップ</a>
+
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <div class="topbar__left">
+          <span class="badge" data-i18n="emr.topbar.badge">出荷2〜5営業日・お届け7〜14日目安</span>
+        </div>
+
+        <div class="topbar__right" aria-label="言語と通貨" data-i18n-attr="aria-label:emr.topbar.langcurrency" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:flex-end">
+          <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label">
+            <button type="button" class="pill pill--lang" data-lang-switch="ja">日本語</button>
+            <button type="button" class="pill pill--lang" data-lang-switch="en">English</button>
+          </div>
+
+          <button class="pill" type="button" data-action="open-language" data-i18n="emr.pill.lang">
+            日本語
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+          <button class="pill" type="button" data-action="open-currency" data-i18n="emr.pill.currency">
+            日本 (JPY ¥)
+            <span class="chev" aria-hidden="true">▾</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="container header__inner">
+        <div class="brand">
+          <a class="brand__link" href="./emr-tek.html" data-i18n-attr="aria-label:emr.brand.aria" aria-label="EMR-TEK ホーム">
+            <span class="brand__name">EMR-TEK</span>
+          </a>
+        </div>
+
+        <nav class="nav" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
+          <a class="nav__link" href="./collection-all.html" data-i18n="emr.nav.shop">ショップ</a>
+          <a class="nav__link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a>
+          <a class="nav__link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a>
+          <a class="nav__link nav__link--active" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
+          <a class="nav__link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="icon-btn" type="button" data-action="open-search" data-i18n-attr="aria-label:emr.aria.search" aria-label="検索">
+            <span aria-hidden="true">⌕</span>
+          </button>
+          <button class="icon-btn" type="button" data-action="open-cart" data-i18n-attr="aria-label:emr.aria.cart" aria-label="カート">
+            <span aria-hidden="true">🛒</span>
+            <span class="cart-count" data-i18n-attr="aria-label:emr.aria.cartcount" aria-label="カート内商品数" data-cart-count>0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <section class="hero">
+        <div class="container hero__inner">
+          <div class="breadcrumbs" aria-label="パンくず">
+            <a href="./emr-tek.html">ホーム</a>
+            <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+            <span aria-current="page">FAQ</span>
+          </div>
+
+          <div class="hero__titleRow">
+            <div>
+              <h1 class="h1">FAQ</h1>
+              <p class="subtle">よくある質問と回答です。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container page">
+        <div class="panel">
+          <div class="faq__head">
+            <h2 class="h2">製品</h2>
+            <p class="subtle micro">クリックすると回答が開きます。</p>
+          </div>
+
+          <div class="faq" role="list">
+            <details class="faq__item" role="listitem">
+              <summary class="faq__q">セッション中はランプからどのくらい離れたところに立っていればよいですか？</summary>
+              <div class="faq__a">
+                <p>
+                  <strong>6〜12インチ</strong> の距離をお勧めします。感度と使用目標に応じて、ランプから最適な露出を実現します。
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item" role="listitem">
+              <summary class="faq__q">セッションはどのくらい続くべきですか？</summary>
+              <div class="faq__a">
+                <p>
+                  典型的なセッションは <strong>5〜15分</strong>（治療領域ごと）です。短いセッションから始めて、必要に応じて徐々に増やします。
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item" role="listitem">
+              <summary class="faq__q">あなたのライトはEMFを発しますか？</summary>
+              <div class="faq__a">
+                <p>
+                  はい。すべての電子機器と同様に、当社の照明は低周波電磁場（EMF）を放出します。ただし、必ずしもその場にさらされる必要はありません。
+                  <strong>約5インチ（約13cm）以上</strong>の距離では、デバイスから実用的にEMFは検出されません。
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item" role="listitem">
+              <summary class="faq__q">EMRライトはちらつきますか？</summary>
+              <div class="faq__a">
+                <p>
+                  白熱灯を含むほぼすべての照明は、AC電源によって点滅します。LEDは、低品質のコンポーネントで設計されている場合、特に問題になりやすいです。
+                </p>
+                <p>
+                  当社のライトは高品質のパワードライバーを使用しており、ちらつきはほとんどありません。スローモーションビデオでも検出できないほど、ちらつきを排除しました。ちらつきと、ごくわずかなちらつきが起きうる「ちらつき効果」については、ブログ記事もあわせてご覧ください。
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item" role="listitem">
+              <summary class="faq__q">ランプと一緒にゴーグルを使用する必要がありますか？</summary>
+              <div class="faq__a">
+                <p>
+                  ゴーグルが付属しており、デバイスを使用するときは<strong>着用してください</strong>。
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="faq__head" style="margin-top: 16px">
+            <h2 class="h2">注文</h2>
+            <p class="subtle micro">配送・マニュアルなど</p>
+          </div>
+
+          <div class="faq" role="list">
+            <details class="faq__item" role="listitem">
+              <summary class="faq__q">追加の質問？</summary>
+              <div class="faq__a">
+                <p>
+                  <a class="link" href="./contact.html">お問い合わせページ</a>からお問い合わせください。喜んでお手伝いさせていただきます。
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item" role="listitem">
+              <summary class="faq__q">ランプにはガイドが付いていますか？</summary>
+              <div class="faq__a">
+                <p>
+                  デジタル版は当社のWebサイトの各製品ページの「マニュアル」セクションで入手でき、配送には説明書が2枚含まれています。
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="faq__head" style="margin-top: 16px">
+            <h2 class="h2">配送</h2>
+            <p class="subtle micro">海外発送・納期・運送業者</p>
+          </div>
+
+          <div class="faq" role="list">
+            <details class="faq__item" role="listitem">
+              <summary class="faq__q">海外発送はしますか？</summary>
+              <div class="faq__a">
+                <p>
+                  はい。当社のすべての照明には電圧変換器が統合されているため、国によって異なる電圧差は問題になりません。お住まいの国に合わせた正しい電源をお届けします。
+                </p>
+                <p>
+                  間違った電源ケーブルを受け取った場合は、
+                  <a class="link" href="mailto:info@emr-tek.com">info@emr-tek.com</a>
+                  までご連絡ください。ご注文番号をお知らせいただければ、正しいものをお送りします。
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item" role="listitem">
+              <summary class="faq__q">注文を受け取るまでにどれくらい時間がかかりますか？</summary>
+              <div class="faq__a">
+                <p>
+                  配送先によって異なります。当施設で処理されたご注文は、お届けまで目安として <strong>5〜7営業日</strong> かかることがあります。海外配送は <strong>7〜16日</strong> 程度かかる場合があります。配送の詳細・追跡は、確認メールに記載されます。
+                </p>
+                <p class="subtle micro">
+                  通関・関税・追跡で不明な点は
+                  <a class="link" href="mailto:info@emr-tek.com">info@emr-tek.com</a>
+                  までお問い合わせください。
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item" role="listitem">
+              <summary class="faq__q">どのような配送業者を利用していますか？</summary>
+              <div class="faq__a">
+                <p>
+                  当社は主要な運送業者および地元の配送パートナーを利用しています。チェックアウト時に配送方法を選択するよう求められます。
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="faq__head" style="margin-top: 16px">
+            <h2 class="h2">その他</h2>
+            <p class="subtle micro">保証・割引・返品</p>
+          </div>
+
+          <div class="faq" role="list">
+            <details class="faq__item" role="listitem">
+              <summary class="faq__q">保証を提供しますか？</summary>
+              <div class="faq__a">
+                <p>
+                  はい。当社の製品にはすべて <strong>1年間のメーカー保証</strong> が付属します。問題が発生した場合は
+                  <a class="link" href="mailto:info@emr-tek.com">info@emr-tek.com</a> までメールでお問い合わせください。
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item" role="listitem">
+              <summary class="faq__q">割引は行っていますか？</summary>
+              <div class="faq__a">
+                <p>
+                  たまにプロモーションを行っています。ニュースレターに登録するか、ソーシャルメディアでフォローして最新情報を入手してください。
+                </p>
+              </div>
+            </details>
+
+            <details class="faq__item" role="listitem">
+              <summary class="faq__q">中古のランプを返却できますか？</summary>
+              <div class="faq__a">
+                <p>
+                  返品の資格を得るには、ランプが <strong>未使用</strong> で、元の状態・梱包のまま、配達から <strong>30日以内</strong> に返送される必要があります。中古品は返品できません。
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <div class="footer__brand">EMR-TEK</div>
+          <div class="micro subtle">
+            <p>
+              <strong>重要な注意事項</strong>:
+              赤色および赤外線治療装置、青色遮光メガネ、その他の製品に関してこのサイトで提供されるすべての情報は、
+              病気の診断、治療、治癒、予防を目的としたものではありません。当社の製品は医療機器と誤解されるべきではなく、
+              治療上の主張も行いません。これらの製品は、2015 年 1 月 20 日に発表された
+              “General Wellness: Policy on Low Risk Devices”草案に従って、FDA の認可を必要としない低リスクの
+              一般的なウェルネス/フィットネス アイテムです。当社の製品は個人使用のみを目的としており、
+              商業用途を目的としたものではありません。
+            </p>
+            <p>
+              ※ これらの記述は食品医薬品局によって評価されていません。この製品は、病気の診断、治療、治癒、予防を目的としたものではありません。
+            </p>
+          </div>
+          <div class="micro subtle">Toronto, ON, Canada</div>
+          <div class="micro">
+            <a class="link" href="mailto:info@emr-tek.com">info@emr-tek.com</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer__title" data-i18n="emr.footer.shop">ショップ</div>
+          <ul class="footer__list">
+            <li><a class="link" href="./collection-all.html">全商品</a></li>
+            <li><a class="link" href="./collection-red-light.html">Red Light Therapy Devices</a></li>
+            <li><a class="link" href="./collection-blue-light-glasses.html">Blue Light Blocking Glasses</a></li>
+            <li><a class="link" href="./collection-indoor-lighting.html">Indoor Lighting Solutions</a></li>
+            <li><a class="link" href="./collection-emf-protection.html">EMF Protection</a></li>
+            <li><a class="link" href="./collection-uv.html">UV</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__title" data-i18n="emr.footer.learn">学ぶ</div>
+          <ul class="footer__list">
+            <li><a class="link" href="#" data-i18n="emr.footer.about">EMR-TEKについて</a></li>
+            <li><a class="link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a></li>
+            <li><a class="link" href="./faq.html" data-i18n="emr.footer.faq">よくある質問</a></li>
+            <li><a class="link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a></li>
+            <li><a class="link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+
+        <div class="newsletter">
+          <div class="footer__title" data-i18n="emr.footer.newsletter">ニュースレター</div>
+          <p class="micro subtle" data-i18n="emr.footer.newsletter.hint">新商品・キャンペーン情報をお届けします。</p>
+          <form class="newsletter__form" data-newsletter>
+            <input required type="email" name="email" data-i18n-attr="placeholder:emr.footer.email.placeholder" placeholder="メールアドレス" />
+            <button class="btn btn--sm" type="submit" data-i18n="emr.footer.subscribe">登録</button>
+          </form>
+          <p class="micro subtle" data-newsletter-result></p>
+        </div>
+      </div>
+
+      <div class="container footer__bottom">
+        <nav class="footer__legal micro" aria-label="法的情報">
+          <a class="link" href="./privacy.html">プライバシーポリシー</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./terms.html">利用規約</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./tokushoho.html">特定商取引法に基づく表記</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./customer-policies.html">配送・返品・支払い</a>
+        </nav>
+        <div class="footer__bottomCredits">
+          <div class="micro subtle">© 2025 EMR-TEK</div>
+          <div class="micro subtle">Powered by Static HTML</div>
+        </div>
+      </div>
+    </footer>
+
+    <dialog class="modal" data-cart-modal data-i18n-attr="aria-label:emr.modal.cart" aria-label="カート">
+      <form method="dialog" class="modal__inner">
+        <div class="modal__head">
+          <div class="h3" data-i18n="emr.modal.cart">カート</div>
+          <button class="icon-btn" value="cancel" data-i18n-attr="aria-label:emr.modal.close" aria-label="閉じる">
+            <svg class="icon" aria-hidden="true">
+              <use href="./icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <div class="cart" data-cart>
+            <p class="subtle" data-cart-empty data-i18n="emr.cart.empty">カートは空です。</p>
+            <ul class="cart__list" data-cart-list></ul>
+            <div class="cart__summary" data-cart-summary hidden>
+              <div class="cart__row">
+                <span data-i18n="emr.cart.subtotal">小計</span>
+                <strong data-cart-subtotal>¥0</strong>
+              </div>
+              <button class="btn" type="button" data-action="checkout" data-i18n="emr.cart.checkout">購入手続きへ</button>
+              <button class="btn btn--ghost" type="button" data-action="clear-cart" data-i18n="emr.cart.clear">カートを空にする</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="modal" data-search-modal data-i18n-attr="aria-label:emr.modal.search" aria-label="検索">
+      <form method="dialog" class="modal__inner">
+        <div class="modal__head">
+          <div class="h3" data-i18n="emr.modal.search">検索</div>
+          <button class="icon-btn" value="cancel" data-i18n-attr="aria-label:emr.modal.close" aria-label="閉じる">
+            <svg class="icon" aria-hidden="true">
+              <use href="./icons.svg#close"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <label class="field">
+            <span data-i18n="emr.search.keyword">キーワード</span>
+            <input type="search" data-i18n-attr="placeholder:emr.search.placeholder" placeholder="例：Firewave / マスク / 近赤外" data-search-modal-input />
+          </label>
+          <div class="micro subtle" data-i18n="emr.search.hint">この検索は一覧（全商品）に反映されます。</div>
+          <menu class="modal__menu">
+            <button class="btn" value="default" data-action="search-apply" data-i18n="emr.search.apply">適用</button>
+            <button class="btn btn--ghost" value="cancel">閉じる</button>
+          </menu>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="cookie" data-cookie hidden>
+      <div class="container cookie__inner" role="dialog" data-i18n-attr="aria-label:emr.cookie.dialog" aria-label="Cookieの利用">
+        <div>
+          <div class="cookie__title" data-i18n="emr.cookie.title">Cookieを使用しています</div>
+          <div class="micro subtle" data-i18n="emr.cookie.body">
+            体験向上と分析のためにCookieを利用します。設定はいつでも変更できます。
+          </div>
+        </div>
+        <div class="cookie__actions">
+          <button class="btn btn--sm btn--ghost" type="button" data-action="cookie-decline" data-i18n="emr.cookie.decline">拒否</button>
+          <button class="btn btn--sm" type="button" data-action="cookie-accept" data-i18n="emr.cookie.accept">同意</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js?v=20260412" defer></script>
+      <script src="./i18n.js" defer></script>
+  </body>
+</html>
