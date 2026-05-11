@@ -16,11 +16,12 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
-    <title data-i18n-title="contact.doc.title">お問い合わせ – EMR-TEK</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <title data-i18n-title="inquiries.doc.title">お問い合わせ一覧（運営）– EMR-TEK</title>
     <meta
       name="description"
-      data-i18n-desc="contact.doc.desc"
-      content="EMR-TEK 日本語版 – お問い合わせ"
+      data-i18n-desc="inquiries.doc.desc"
+      content="お問い合わせフォーム送信分の閲覧（管理者トークン・サーバー API 経由）"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -71,7 +72,8 @@
           <a class="nav__link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a>
           <a class="nav__link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a>
           <a class="nav__link" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
-          <a class="nav__link nav__link--active" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
+          <a class="nav__link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
+          <a class="nav__link" href="./sql-editor.html" data-i18n="emr.nav.sql">SQL メモ</a>
         </nav>
 
         <div class="header__actions">
@@ -92,102 +94,71 @@
           <div class="breadcrumbs" data-i18n-attr="aria-label:teb.crumb.label" aria-label="パンくず">
             <a href="./emr-tek.html" data-i18n="contact.crumb.home">ホーム</a>
             <span class="breadcrumbs__sep" aria-hidden="true">/</span>
-            <span aria-current="page" data-i18n="contact.crumb.current">お問い合わせ</span>
+            <a href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
+            <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+            <span aria-current="page" data-i18n="inquiries.crumb.current">一覧（運営）</span>
           </div>
 
           <div class="hero__titleRow">
             <div>
-              <h1 class="h1" data-i18n="emr.nav.contact">お問い合わせ</h1>
-              <p class="subtle" data-i18n="contact.hero.sub">ご質問・ご相談はこちらからお送りください。</p>
+              <h1 class="h1" data-i18n="inquiries.hero.h1">お問い合わせ一覧</h1>
+              <p class="subtle" data-i18n="inquiries.hero.lead">
+                フォーム送信データを API 経由で表示します（編集は Supabase Table Editor で行ってください）。
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       <section class="container page">
-        <div class="panel contact">
-          <div class="contact__grid">
-            <div>
-              <h2 class="h2" data-i18n="contact.form.h2">お問い合わせフォーム</h2>
-              <p class="subtle" data-i18n="contact.lead" data-i18n-html>
-                必須項目を入力し、同意にチェックを入れたうえで「送信」を押すと、
-                <strong>Vercel の API 経由で Supabase（public.contact_inquiries）に保存</strong>されます（秘密鍵はサーバー側のみ）。
-                返信が必要な場合は、入力いただいたメールアドレス宛にご連絡します。別途メールアプリは開きません。
-                <code class="micro">file://</code> や API のない静的ホストでは保存に失敗することがあるため、本番の https URL または
-                <code class="micro">vercel dev</code> で試してください。
-              </p>
-              <p class="micro subtle" data-i18n="contact.admin.hint" data-i18n-html style="margin-top: 10px"></p>
+        <div class="panel contact inquiriesAdmin">
+          <p class="subtle" data-i18n="inquiries.notice" data-i18n-html style="margin-bottom: 16px"></p>
 
-              <form class="contact__form" data-contact-form>
-                <label class="field">
-                  <span data-i18n="contact.field.name">お名前</span>
-                  <input
-                    required
-                    name="name"
-                    autocomplete="name"
-                    data-i18n-attr="placeholder:contact.placeholder.name"
-                    placeholder="例：山田 太郎"
-                  />
-                </label>
-                <label class="field">
-                  <span data-i18n="contact.field.email">メールアドレス</span>
-                  <input required name="email" type="email" autocomplete="email" placeholder="you@example.com" />
-                </label>
-                <label class="field">
-                  <span data-i18n="contact.field.topic">お問い合わせ種別</span>
-                  <select name="topic" required>
-                    <option value="product" selected data-i18n="contact.topic.product">製品について</option>
-                    <option value="order" data-i18n="contact.topic.order">注文・配送について</option>
-                    <option value="returns" data-i18n="contact.topic.returns">返品・返金について</option>
-                    <option value="wholesale" data-i18n="contact.topic.wholesale">卸・法人について</option>
-                    <option value="other" data-i18n="contact.topic.other">その他</option>
-                  </select>
-                </label>
-                <label class="field field--full">
-                  <span data-i18n="contact.field.message">内容</span>
-                  <textarea
-                    required
-                    name="message"
-                    rows="6"
-                    data-i18n-attr="placeholder:contact.placeholder.message"
-                    placeholder="お問い合わせ内容をご記入ください"
-                  ></textarea>
-                </label>
-
-                <label class="check check--full">
-                  <input required type="checkbox" name="consent" />
-                  <span data-i18n="contact.consent">入力内容に同意して送信します</span>
-                </label>
-
-                <div class="contact__actions">
-                  <button class="btn" type="submit" data-i18n="contact.submit">送信</button>
-                </div>
-
-                <p class="micro subtle" data-contact-result role="status" aria-live="polite"></p>
-              </form>
+          <div class="inquiriesAdmin__auth">
+            <label class="field field--full">
+              <span data-i18n="inquiries.token.label">管理者トークン</span>
+              <input
+                type="password"
+                id="inquiries-token"
+                name="admin_token"
+                spellcheck="false"
+                autocomplete="off"
+                data-i18n-attr="placeholder:inquiries.token.placeholder"
+                placeholder="Vercel の CONTACT_INQUIRIES_ADMIN_SECRET と同じ値"
+              />
+              <span class="micro subtle" data-i18n="inquiries.token.hint">このブラウザの sessionStorage にだけ保存されます（タブを閉じるまで）。</span>
+            </label>
+            <div class="contact__actions inquiriesAdmin__authActions">
+              <button class="btn" type="button" id="inquiries-load" data-i18n="inquiries.load">読み込み</button>
+              <button class="btn btn--ghost" type="button" id="inquiries-token-clear" data-i18n="inquiries.token.clear">トークンを消去</button>
             </div>
-
-            <aside class="contact__aside" data-i18n-attr="aria-label:contact.aside.label" aria-label="連絡先">
-              <div class="contact__card">
-                <div class="contact__cardTitle" data-i18n="contact.aside.email">メール</div>
-                <div class="contact__cardBody">
-                  <a class="link" href="mailto:info@theestablish.jp">info@theestablish.jp</a>
-                  <div class="micro subtle" data-i18n="contact.aside.email.hint">通常 1〜2営業日以内に返信します。</div>
-                </div>
-              </div>
-              <div class="contact__card">
-                <div class="contact__cardTitle" data-i18n="contact.aside.faq">よくある質問</div>
-                <div class="contact__cardBody">
-                  <div class="micro subtle" data-i18n="contact.aside.faq.hint">
-                    購入前のよくある質問はFAQをご確認ください。
-                  </div>
-                  <div class="micro" style="margin-top: 8px">
-                    <a class="btn btn--sm btn--ghost" href="./faq.html" data-i18n="contact.aside.faq.btn">FAQを見る</a>
-                  </div>
-                </div>
-              </div>
-            </aside>
           </div>
+
+          <div class="inquiriesAdmin__toolbar" hidden data-inquiries-toolbar>
+            <label class="field inquiriesAdmin__filter">
+              <span class="micro" data-i18n="inquiries.filter.label">絞り込み</span>
+              <input
+                type="search"
+                id="inquiries-filter"
+                spellcheck="false"
+                data-i18n-attr="placeholder:inquiries.filter.placeholder"
+                placeholder="メール・名前・内容など"
+              />
+            </label>
+            <div class="contact__actions inquiriesAdmin__toolbarBtns">
+              <button class="btn btn--sm" type="button" id="inquiries-refresh" data-i18n="inquiries.refresh">再読み込み</button>
+              <button class="btn btn--sm btn--ghost" type="button" id="inquiries-csv" data-i18n="inquiries.csv">CSV 出力</button>
+            </div>
+          </div>
+
+          <div class="inquiriesAdmin__tableWrap" hidden data-inquiries-wrap>
+            <table class="inquiriesAdmin__table" data-inquiries-table>
+              <thead data-inquiries-thead></thead>
+              <tbody data-inquiries-tbody></tbody>
+            </table>
+          </div>
+
+          <p class="micro subtle" id="inquiries-status" role="status" aria-live="polite" style="margin-top: 12px"></p>
         </div>
       </section>
     </main>
@@ -335,6 +306,9 @@
 
     <script>
       (function () {
+        var STORAGE = "contact_inquiries_admin_token_v1";
+        var allRows = [];
+
         function ct(key) {
           var si = window.siteI18n;
           if (si && typeof si.t === "function" && typeof si.getLang === "function") {
@@ -342,75 +316,242 @@
           }
           return key;
         }
-        function formatApiError(raw, status) {
-          var msg = (raw || "").trim() || "HTTP " + status;
-          try {
-            var j = JSON.parse(raw);
-            if (j && typeof j.message === "string" && j.message) msg = j.message;
-            else if (j && typeof j.error === "string" && j.error) {
-              msg = j.error;
-              if (typeof j.hint === "string" && j.hint) msg += " — " + j.hint;
-            }
-          } catch (e) {}
-          if (msg.length > 200) msg = msg.slice(0, 197) + "…";
-          return msg;
+
+        function escapeHtml(s) {
+          return String(s ?? "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
         }
-        function bind() {
-          var form = document.querySelector("[data-contact-form]");
-          if (!form || form.nodeName !== "FORM") return;
-          form.addEventListener("submit", async function (e) {
-            e.preventDefault();
-            if (!form.reportValidity()) return;
-            var submitBtn = form.querySelector('button[type="submit"]');
-            var fd = new FormData(form);
-            var name = String(fd.get("name") || "").trim();
-            var email = String(fd.get("email") || "").trim();
-            var topicCode = String(fd.get("topic") || "").trim();
-            var messageFull = String(fd.get("message") || "").trim();
-            var cr = fd.get("consent");
-            var consent = cr === "on" || cr === "true" || cr === true || cr === "1";
-            var out = document.querySelector("[data-contact-result]");
-            if (submitBtn) submitBtn.disabled = true;
-            try {
-              var res = await fetch("/api/contact-inquiry", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  name: name || null,
-                  email: email || null,
-                  inquiry_type: topicCode || null,
-                  message: messageFull || null,
-                  consent: consent,
-                  page_path: (window.location.pathname + (window.location.search || "")).slice(0, 500),
-                  locale:
-                    document.documentElement.getAttribute("data-site-lang") ||
-                    document.documentElement.lang ||
-                    null,
-                  user_agent: typeof navigator !== "undefined" ? String(navigator.userAgent).slice(0, 500) : null,
-                }),
+
+        function cellText(v) {
+          if (v === null || v === undefined) return "";
+          if (typeof v === "object") return JSON.stringify(v);
+          return String(v);
+        }
+
+        function columnOrder(rows) {
+          var preferred = ["id", "created_at", "name", "email", "inquiry_type", "message", "page_path", "locale", "consent", "user_agent"];
+          var keys = {};
+          rows.forEach(function (r) {
+            if (r && typeof r === "object") {
+              Object.keys(r).forEach(function (k) {
+                keys[k] = true;
               });
-              var errText = await res.text().catch(function () {
-                return "";
-              });
-              if (!res.ok) {
-                throw new Error(formatApiError(errText, res.status));
-              }
-              if (out) {
-                out.textContent = ct("contact.result.success");
-              }
-              form.reset();
-            } catch (err) {
-              console.error(err);
-              var hint = window.location.protocol === "file:" ? ct("contact.result.fileHint") : "";
-              var detail = err && err.message ? "\n\n" + ct("contact.result.detailPrefix") + err.message : "";
-              if (out) {
-                out.textContent = ct("contact.result.fail") + detail + hint + ct("contact.result.mailLine");
-              }
-            } finally {
-              if (submitBtn) submitBtn.disabled = false;
             }
           });
+          var out = [];
+          preferred.forEach(function (k) {
+            if (keys[k]) out.push(k);
+          });
+          Object.keys(keys)
+            .sort()
+            .forEach(function (k) {
+              if (out.indexOf(k) === -1) out.push(k);
+            });
+          return out;
         }
+
+        function renderTable(rows) {
+          var thead = document.querySelector("[data-inquiries-thead]");
+          var tbody = document.querySelector("[data-inquiries-tbody]");
+          var wrap = document.querySelector("[data-inquiries-wrap]");
+          if (!thead || !tbody || !wrap) return;
+          thead.innerHTML = "";
+          tbody.innerHTML = "";
+          if (!rows.length) {
+            wrap.hidden = false;
+            var cols0 = allRows.length ? columnOrder(allRows) : [];
+            var span0 = Math.max(1, cols0.length);
+            var tr0 = document.createElement("tr");
+            var td0 = document.createElement("td");
+            td0.colSpan = span0;
+            td0.className = "inquiriesAdmin__empty";
+            td0.textContent = cols0.length ? ct("inquiries.filter.empty") : ct("inquiries.empty");
+            tr0.appendChild(td0);
+            tbody.appendChild(tr0);
+            return;
+          }
+          var cols = columnOrder(rows);
+          var hr = document.createElement("tr");
+          cols.forEach(function (c) {
+            var th = document.createElement("th");
+            th.textContent = c;
+            hr.appendChild(th);
+          });
+          thead.appendChild(hr);
+          rows.forEach(function (r) {
+            var tr = document.createElement("tr");
+            cols.forEach(function (c) {
+              var td = document.createElement("td");
+              var raw = cellText(r[c]);
+              if (c === "message" && raw.length > 240) {
+                td.innerHTML =
+                  '<span class="inquiriesAdmin__msgShort">' +
+                  escapeHtml(raw.slice(0, 240)) +
+                  "…</span>" +
+                  ' <button type="button" class="linklike" data-msg-expand>' +
+                  escapeHtml(ct("inquiries.msg.expand")) +
+                  "</button>" +
+                  '<span class="inquiriesAdmin__msgFull" hidden>' +
+                  escapeHtml(raw) +
+                  "</span>";
+                var btn = td.querySelector("[data-msg-expand]");
+                if (btn) {
+                  btn.addEventListener("click", function () {
+                    var short = td.querySelector(".inquiriesAdmin__msgShort");
+                    var full = td.querySelector(".inquiriesAdmin__msgFull");
+                    if (full) full.hidden = !full.hidden;
+                    if (short) short.hidden = !short.hidden;
+                    btn.hidden = !btn.hidden;
+                  });
+                }
+              } else {
+                td.textContent = raw;
+              }
+              tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+          });
+          wrap.hidden = false;
+        }
+
+        function filterRows(q) {
+          var t = String(q || "")
+            .trim()
+            .toLowerCase();
+          if (!t) return allRows.slice();
+          return allRows.filter(function (r) {
+            return Object.keys(r).some(function (k) {
+              return cellText(r[k]).toLowerCase().indexOf(t) !== -1;
+            });
+          });
+        }
+
+        function toCsv(rows) {
+          if (!rows.length) return "";
+          var cols = columnOrder(rows);
+          var lines = [];
+          lines.push(cols.map(csvEscape).join(","));
+          rows.forEach(function (r) {
+            lines.push(
+              cols
+                .map(function (c) {
+                  return csvEscape(cellText(r[c]));
+                })
+                .join(",")
+            );
+          });
+          return "\ufeff" + lines.join("\r\n");
+        }
+
+        function csvEscape(s) {
+          var x = String(s);
+          if (/[",\r\n]/.test(x)) return '"' + x.replace(/"/g, '""') + '"';
+          return x;
+        }
+
+        function bind() {
+          var tokenEl = document.getElementById("inquiries-token");
+          var status = document.getElementById("inquiries-status");
+          var toolbar = document.querySelector("[data-inquiries-toolbar]");
+          var wrap = document.querySelector("[data-inquiries-wrap]");
+          if (!tokenEl) return;
+
+          try {
+            tokenEl.value = sessionStorage.getItem(STORAGE) || "";
+          } catch (e) {}
+
+          function setStatus(msg) {
+            if (status) status.textContent = msg || "";
+          }
+
+          async function load() {
+            var tok = String(tokenEl.value || "").trim();
+            if (!tok) {
+              setStatus(ct("inquiries.err.notoken"));
+              return;
+            }
+            try {
+              sessionStorage.setItem(STORAGE, tok);
+            } catch (e) {}
+            setStatus(ct("inquiries.loading"));
+            try {
+              var res = await fetch("/api/contact-inquiries-admin?limit=200", {
+                headers: { Authorization: "Bearer " + tok },
+              });
+              var text = await res.text();
+              var data = {};
+              try {
+                data = JSON.parse(text);
+              } catch (_) {
+                data = { error: text.slice(0, 200) };
+              }
+              if (!res.ok) {
+                setStatus((data && data.error) || text || "HTTP " + res.status);
+                if (toolbar) toolbar.hidden = true;
+                if (wrap) wrap.hidden = true;
+                return;
+              }
+              allRows = Array.isArray(data.rows) ? data.rows : [];
+              if (toolbar) toolbar.hidden = false;
+              renderTable(filterRows(document.getElementById("inquiries-filter")?.value || ""));
+              setStatus(ct("inquiries.loaded").replace(/\{n\}/g, String(allRows.length)));
+            } catch (err) {
+              setStatus(String((err && err.message) || err));
+              if (toolbar) toolbar.hidden = true;
+              if (wrap) wrap.hidden = true;
+            }
+          }
+
+          document.getElementById("inquiries-load")?.addEventListener("click", load);
+          document.getElementById("inquiries-refresh")?.addEventListener("click", load);
+          document.getElementById("inquiries-token-clear")?.addEventListener("click", function () {
+            tokenEl.value = "";
+            try {
+              sessionStorage.removeItem(STORAGE);
+            } catch (e) {}
+            allRows = [];
+            if (toolbar) toolbar.hidden = true;
+            if (wrap) wrap.hidden = true;
+            var tb = document.querySelector("[data-inquiries-tbody]");
+            var th = document.querySelector("[data-inquiries-thead]");
+            if (tb) tb.innerHTML = "";
+            if (th) th.innerHTML = "";
+            setStatus(ct("inquiries.token.cleared"));
+          });
+
+          document.getElementById("inquiries-filter")?.addEventListener("input", function () {
+            renderTable(filterRows(document.getElementById("inquiries-filter").value));
+          });
+
+          document.getElementById("inquiries-csv")?.addEventListener("click", async function () {
+            var rows = filterRows(document.getElementById("inquiries-filter")?.value || "");
+            var csv = toCsv(rows);
+            if (!csv) {
+              setStatus(ct("inquiries.csv.empty"));
+              return;
+            }
+            try {
+              await navigator.clipboard.writeText(csv);
+              setStatus(ct("inquiries.csv.copied"));
+            } catch (e) {
+              var blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+              var a = document.createElement("a");
+              a.href = URL.createObjectURL(blob);
+              a.download = "contact_inquiries.csv";
+              a.click();
+              URL.revokeObjectURL(a.href);
+              setStatus(ct("inquiries.csv.downloaded"));
+            }
+          });
+
+          document.addEventListener("site-lang-change", function () {
+            if (allRows.length) renderTable(filterRows(document.getElementById("inquiries-filter")?.value || ""));
+          });
+        }
+
         if (document.readyState === "loading") {
           document.addEventListener("DOMContentLoaded", bind);
         } else {
@@ -419,6 +560,6 @@
       })();
     </script>
     <script src="./i18n.js" defer></script>
-    <script src="./app.js?v=20260512b" defer></script>
+    <script src="./app.js?v=20260512c" defer></script>
   </body>
 </html>

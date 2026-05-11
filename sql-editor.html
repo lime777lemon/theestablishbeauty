@@ -111,6 +111,30 @@
             コピーして Supabase Dashboard の SQL Editor に貼り付けて実行してください。
           </p>
 
+          <div class="callout sqlEditor__callout" role="note">
+            <div class="callout__title" data-i18n="sql.runwhere.bad.title">SQL Editor にシェルを貼らないでください</div>
+            <div class="callout__body" data-i18n="sql.runwhere.bad.body" data-i18n-html></div>
+          </div>
+
+          <h2 class="h2 sqlEditor__runTitle" data-i18n="sql.runwhere.title">どこで何を実行するか</h2>
+          <div class="split sqlEditor__split">
+            <div class="split__item">
+              <div class="h3 sqlEditor__cardTitle" data-i18n="sql.runwhere.dash.heading">Supabase の SQL Editor（ブラウザ）</div>
+              <p class="micro subtle" data-i18n="sql.runwhere.dash.lead">許可されるのは SQL だけです。シェルコマンドは実行できません。</p>
+              <pre class="sqlEditor__pre" aria-label="SQL の例"><code>SELECT 1 AS ok;</code></pre>
+              <p class="micro subtle" data-i18n="sql.runwhere.dash.hint">上の「Supabase の SQL を開く」から同じ画面へ移動し、下書きを貼って Run（⌘↵）します。</p>
+            </div>
+            <div class="split__item">
+              <div class="h3 sqlEditor__cardTitle" data-i18n="sql.runwhere.term.heading">ターミナル（この PC）</div>
+              <p class="micro subtle" data-i18n="sql.runwhere.term.lead">リポジトリのルート（redlight フォルダ）で、ローカルのスクリプトを実行します。</p>
+              <pre class="sqlEditor__pre" id="sql-terminal-cmd" aria-label="ターミナル用コマンド"><code>./scripts/sql-shell.sh</code></pre>
+              <div class="contact__actions sqlEditor__cardActions">
+                <button class="btn btn--sm" type="button" id="sql-copy-cmd" data-i18n="sql.copyCmd">コマンドをコピー</button>
+              </div>
+              <p class="micro subtle" data-i18n="sql.runwhere.term.hint">接続先は .env.local の SUPABASE_DATABASE_URL と SUPABASE_DB_PASSWORD（任意）です。</p>
+            </div>
+          </div>
+
           <label class="field">
             <span data-i18n="sql.ref.label">プロジェクト ref（ダッシュボード URL 用）</span>
             <input
@@ -353,6 +377,16 @@
               if (toast) toast.textContent = String(e && e.message ? e.message : "Copy failed");
             }
           });
+          var termCmdEl = document.getElementById("sql-terminal-cmd");
+          var termCmdText = termCmdEl ? String(termCmdEl.textContent || "").trim() : "./scripts/sql-shell.sh";
+          document.getElementById("sql-copy-cmd")?.addEventListener("click", async function () {
+            try {
+              await navigator.clipboard.writeText(termCmdText);
+              if (toast) toast.textContent = ct("sql.copiedCmd");
+            } catch (e) {
+              if (toast) toast.textContent = String(e && e.message ? e.message : "Copy failed");
+            }
+          });
           document.getElementById("sql-clear")?.addEventListener("click", function () {
             ta.value = "";
             try {
@@ -370,6 +404,6 @@
       })();
     </script>
     <script src="./i18n.js" defer></script>
-    <script src="./app.js?v=20260511e" defer></script>
+    <script src="./app.js?v=20260512a" defer></script>
   </body>
 </html>
