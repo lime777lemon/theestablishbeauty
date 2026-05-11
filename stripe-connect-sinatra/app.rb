@@ -13,7 +13,8 @@ require "sinatra"
 require "sinatra/json"
 require "json"
 
-Dotenv.load
+# .env 次に .env.local（後者が上書き）。Vercel CLI の pull は .env.local に入ることがある。
+Dotenv.load(".env", ".env.local")
 
 Stripe.api_key = ENV.fetch("STRIPE_SECRET_KEY")
 stripe_client = Stripe::StripeClient.new(ENV.fetch("STRIPE_SECRET_KEY"))

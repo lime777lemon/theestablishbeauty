@@ -1427,7 +1427,12 @@ function initForms() {
 function initHeaderStubs() {
   const toast = (msg) => alert(msg);
   document.querySelector('[data-action="open-language"]')?.addEventListener("click", () => {
-    toast("言語切り替えは未実装です（日本語固定）。");
+    const si = window.siteI18n;
+    if (si && typeof si.getLang === "function" && typeof si.setLang === "function") {
+      si.setLang(si.getLang() === "ja" ? "en" : "ja");
+      return;
+    }
+    toast("言語を切り替えられませんでした。ページを再読み込みしてください。");
   });
   document.querySelector('[data-action="open-currency"]')?.addEventListener("click", () => {
     toast("通貨切り替えは未実装です（JPY固定）。");

@@ -36,6 +36,12 @@
       "teb.btn.emr": "EMR-TEK ストアへ",
       "teb.hero.img.alt":
         "艶やかなウェーブヘアの女性の横顔 — 上質なビューティをイメージしたヒーロービジュアル",
+      "teb.hero.tagline1":
+        "統合チェックアウトと split fulfillment（分割フルフィル）を備えた、マルチベンダー型ビューティマーケットプレイス。",
+      "teb.hero.tagline2":
+        "決済は一元化、配送・在庫はベンダー分散。キュレーションされたビューティコマース基盤。",
+      "teb.hero.tagline3":
+        "美容デバイスメーカー、D2C スキンケアブランド、オンライン主軸のビューティ企業をつなぐ、キュレーション型マーケットプレイス。",
 
       "teb.showroom.h2": "キュレーションされた発見の場",
       "teb.showroom.p":
@@ -98,7 +104,7 @@
       "teb.infra.li6":
         "<strong>顧客獲得</strong> — マーケット・キュレーションに紐づく獲得・リテンション（施策は別途）。",
       "teb.infra.note":
-        "Positioning in English: a <strong>beauty commerce infrastructure</strong> layer — not only a storefront, but the integrated stack for brand aggregation, LP delivery, payments, customer journeys, order routing, and acquisition.",
+        "（英語でのポジショニング表現）<strong>beauty commerce infrastructure</strong>（美容コマース基盤）というレイヤーであり、単なるストアフロントにとどまらず、ブランド集積・LP 配信・決済・顧客ジャーニー・注文ルーティング・獲得をひと続きで束ねる統合スタックを指します。",
 
       "teb.market.h2": "Beauty Marketplace",
       "teb.market.intro":
@@ -199,6 +205,54 @@
       "cart.sub": "内容をご確認のうえ、購入手続きへお進みください。",
       "cart.continue": "ショップを続ける",
       "cart.gotocheckout": "購入手続きへ進む",
+
+      "contact.doc.title": "お問い合わせ – EMR-TEK",
+      "contact.doc.desc": "EMR-TEK 日本語版 – お問い合わせ",
+      "contact.crumb.home": "ホーム",
+      "contact.crumb.current": "お問い合わせ",
+      "contact.hero.sub": "ご質問・ご相談はこちらからお送りください。",
+      "contact.form.h2": "フォームで送信",
+      "contact.lead":
+        "送信内容は Supabase のテーブル <code class=\"micro\">contact_inquiries</code> に保存されます。フォルダを直接開く <code class=\"micro\">file://</code> では送信に失敗することがあるため、公開 URL（https）かローカルの HTTP サーバーから開いてください。ダッシュボードはプロジェクト <code class=\"micro\">lywcdvevizwopochcpic</code> の Table Editor を確認してください。メール通知は Webhook 設定後に届きます。",
+      "contact.field.name": "お名前",
+      "contact.field.email": "メールアドレス",
+      "contact.field.topic": "お問い合わせ種別",
+      "contact.field.message": "内容",
+      "contact.placeholder.name": "例：山田 太郎",
+      "contact.placeholder.message": "お問い合わせ内容をご記入ください",
+      "contact.topic.product": "製品について",
+      "contact.topic.order": "注文・配送について",
+      "contact.topic.returns": "返品・返金について",
+      "contact.topic.wholesale": "卸・法人について",
+      "contact.topic.other": "その他",
+      "contact.consent": "入力内容に同意して送信します",
+      "contact.submit": "送信する",
+      "contact.mailto": "メールで送る",
+      "contact.aside.label": "連絡先",
+      "contact.aside.email": "メール",
+      "contact.aside.email.hint": "通常 1〜2営業日以内に返信します。",
+      "contact.aside.faq": "よくある質問",
+      "contact.aside.faq.hint": "購入前のよくある質問はFAQをご確認ください。",
+      "contact.aside.faq.btn": "FAQを見る",
+      "contact.result.demo": "送信しました（デモ：Supabase 未設定）。",
+      "contact.result.success":
+        "送信しました。Supabase（プロジェクト lywcdvevizwopochcpic）の public.contact_inquiries に保存されています。\n\n通知メールは Database Webhook → Vercel の /api/notify-contact-inquiry → Resend を設定済みの場合のみ届きます。届かないときは Supabase の Webhook ログと Vercel Functions のログを確認してください。",
+      "contact.result.fail": "送信に失敗しました。",
+      "contact.result.detailPrefix": "詳細：",
+      "contact.result.fileHint":
+        "\n\n※ file:// で開いている場合は https の本番 URL か、python3 -m http.server などで http://localhost:… から開き直してください。",
+      "contact.result.mailLine": "\n\nメール：info@theestablishbeauty.com",
+      "contact.demo.name": "お名前：",
+      "contact.demo.email": "メール：",
+      "contact.demo.topic": "種別：",
+      "contact.demo.body": "内容：",
+
+      "emr.footer.legalnav": "法的情報",
+      "emr.footer.privacy_link": "プライバシーポリシー",
+      "emr.footer.terms_link": "利用規約",
+      "emr.footer.tokushoho_link": "特定商取引法に基づく表記",
+      "emr.footer.policies_link": "配送・返品・支払い",
+      "emr.search.close": "閉じる",
     },
     en: {
       "teb.doc.title": "The Establish Beauty — Home",
@@ -230,6 +284,12 @@
       "teb.btn.emr": "EMR-TEK store",
       "teb.hero.img.alt":
         "Profile of a woman with glossy wavy hair — hero visual for premium beauty",
+      "teb.hero.tagline1":
+        "Multi-vendor beauty marketplace with unified checkout and split fulfillment.",
+      "teb.hero.tagline2":
+        "Curated beauty commerce platform with centralized checkout and distributed vendor fulfillment.",
+      "teb.hero.tagline3":
+        "A curated beauty marketplace connecting beauty device manufacturers, D2C skincare brands, and online-first beauty companies.",
 
       "teb.showroom.h2": "A curated place to discover",
       "teb.showroom.p":
@@ -292,7 +352,7 @@
       "teb.infra.li6":
         "<strong>Acquisition</strong> — growth tied to the market and curation (tactics TBD).",
       "teb.infra.note":
-        "Positioning: a <strong>beauty commerce infrastructure</strong> layer—not only a storefront, but the integrated stack for brand aggregation, LP delivery, payments, customer journeys, order routing, and acquisition.",
+        "Positioning in English: a <strong>beauty commerce infrastructure</strong> layer — not only a storefront, but the integrated stack for brand aggregation, LP delivery, payments, customer journeys, order routing, and acquisition.",
 
       "teb.market.h2": "Beauty Marketplace",
       "teb.market.intro":
@@ -393,6 +453,54 @@
       "cart.sub": "Review your items, then continue to checkout.",
       "cart.continue": "Continue shopping",
       "cart.gotocheckout": "Go to checkout",
+
+      "contact.doc.title": "Contact — EMR-TEK",
+      "contact.doc.desc": "Contact EMR-TEK — questions and support",
+      "contact.crumb.home": "Home",
+      "contact.crumb.current": "Contact",
+      "contact.hero.sub": "Send us your questions or requests using the form below.",
+      "contact.form.h2": "Send a message",
+      "contact.lead":
+        "Your message is saved to the Supabase table <code class=\"micro\">contact_inquiries</code>. Opening this page as <code class=\"micro\">file://</code> may cause submission to fail—use your public https URL or a local HTTP server. In the dashboard, open project <code class=\"micro\">lywcdvevizwopochcpic</code> → Table Editor. Email notifications are sent only after you configure the webhook pipeline.",
+      "contact.field.name": "Name",
+      "contact.field.email": "Email",
+      "contact.field.topic": "Topic",
+      "contact.field.message": "Message",
+      "contact.placeholder.name": "e.g. Jane Doe",
+      "contact.placeholder.message": "How can we help?",
+      "contact.topic.product": "Product",
+      "contact.topic.order": "Order & shipping",
+      "contact.topic.returns": "Returns & refunds",
+      "contact.topic.wholesale": "Wholesale / business",
+      "contact.topic.other": "Other",
+      "contact.consent": "I agree to submit the information above",
+      "contact.submit": "Submit",
+      "contact.mailto": "Email us",
+      "contact.aside.label": "Contact",
+      "contact.aside.email": "Email",
+      "contact.aside.email.hint": "We usually reply within 1–2 business days.",
+      "contact.aside.faq": "FAQ",
+      "contact.aside.faq.hint": "See the FAQ for common questions before you buy.",
+      "contact.aside.faq.btn": "Open FAQ",
+      "contact.result.demo": "Sent (demo: Supabase not configured).",
+      "contact.result.success":
+        "Sent. Your entry is stored in Supabase project lywcdvevizwopochcpic, table public.contact_inquiries.\n\nNotification emails are only sent if Database Webhook → Vercel /api/notify-contact-inquiry → Resend is configured. If mail is missing, check Supabase webhook logs and Vercel function logs.",
+      "contact.result.fail": "Could not send.",
+      "contact.result.detailPrefix": "Details: ",
+      "contact.result.fileHint":
+        "\n\nIf you opened this page as file://, try again from your https site or http://localhost via a simple HTTP server.",
+      "contact.result.mailLine": "\n\nEmail: info@theestablishbeauty.com",
+      "contact.demo.name": "Name: ",
+      "contact.demo.email": "Email: ",
+      "contact.demo.topic": "Topic: ",
+      "contact.demo.body": "Message: ",
+
+      "emr.footer.legalnav": "Legal",
+      "emr.footer.privacy_link": "Privacy policy",
+      "emr.footer.terms_link": "Terms of use",
+      "emr.footer.tokushoho_link": "Specified commercial transactions",
+      "emr.footer.policies_link": "Shipping, returns & payment",
+      "emr.search.close": "Close",
     },
   };
 
@@ -426,6 +534,10 @@
       const key = el.getAttribute("data-i18n");
       if (!key) return;
       const val = t(lang, key);
+      if (el instanceof HTMLOptionElement) {
+        el.textContent = val;
+        return;
+      }
       if (el.hasAttribute("data-i18n-html")) {
         el.innerHTML = val;
       } else {
@@ -488,6 +600,8 @@
       });
     });
   }
+
+  window.siteI18n = { getLang, setLang, t };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);

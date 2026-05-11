@@ -16,8 +16,12 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
-    <title>お問い合わせ – EMR-TEK</title>
-    <meta name="description" content="EMR-TEK 日本語版 – お問い合わせ" />
+    <title data-i18n-title="contact.doc.title">お問い合わせ – EMR-TEK</title>
+    <meta
+      name="description"
+      data-i18n-desc="contact.doc.desc"
+      content="EMR-TEK 日本語版 – お問い合わせ"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -85,16 +89,16 @@
     <main id="main" class="main">
       <section class="hero">
         <div class="container hero__inner">
-          <div class="breadcrumbs" aria-label="パンくず">
-            <a href="./emr-tek.html">ホーム</a>
+          <div class="breadcrumbs" data-i18n-attr="aria-label:teb.crumb.label" aria-label="パンくず">
+            <a href="./emr-tek.html" data-i18n="contact.crumb.home">ホーム</a>
             <span class="breadcrumbs__sep" aria-hidden="true">/</span>
-            <span aria-current="page">お問い合わせ</span>
+            <span aria-current="page" data-i18n="contact.crumb.current">お問い合わせ</span>
           </div>
 
           <div class="hero__titleRow">
             <div>
-              <h1 class="h1">お問い合わせ</h1>
-              <p class="subtle">ご質問・ご相談はこちらからお送りください。</p>
+              <h1 class="h1" data-i18n="emr.nav.contact">お問い合わせ</h1>
+              <p class="subtle" data-i18n="contact.hero.sub">ご質問・ご相談はこちらからお送りください。</p>
             </div>
           </div>
         </div>
@@ -104,8 +108,8 @@
         <div class="panel contact">
           <div class="contact__grid">
             <div>
-              <h2 class="h2">フォームで送信</h2>
-              <p class="subtle">
+              <h2 class="h2" data-i18n="contact.form.h2">フォームで送信</h2>
+              <p class="subtle" data-i18n="contact.lead" data-i18n-html>
                 送信内容は Supabase のテーブル <code class="micro">contact_inquiries</code> に保存されます。フォルダを直接開く
                 <code class="micro">file://</code>
                 では送信に失敗することがあるため、公開 URL（https）かローカルの HTTP サーバーから開いてください。ダッシュボードはプロジェクト
@@ -115,64 +119,73 @@
 
               <form class="contact__form" data-contact-form>
                 <label class="field">
-                  <span>お名前</span>
-                  <input required name="name" autocomplete="name" placeholder="例：山田 太郎" />
+                  <span data-i18n="contact.field.name">お名前</span>
+                  <input
+                    required
+                    name="name"
+                    autocomplete="name"
+                    data-i18n-attr="placeholder:contact.placeholder.name"
+                    placeholder="例：山田 太郎"
+                  />
                 </label>
                 <label class="field">
-                  <span>メールアドレス</span>
+                  <span data-i18n="contact.field.email">メールアドレス</span>
                   <input required name="email" type="email" autocomplete="email" placeholder="you@example.com" />
                 </label>
                 <label class="field">
-                  <span>お問い合わせ種別</span>
+                  <span data-i18n="contact.field.topic">お問い合わせ種別</span>
                   <select name="topic" required>
-                    <option value="product" selected>製品について</option>
-                    <option value="order">注文・配送について</option>
-                    <option value="returns">返品・返金について</option>
-                    <option value="wholesale">卸・法人について</option>
-                    <option value="other">その他</option>
+                    <option value="product" selected data-i18n="contact.topic.product">製品について</option>
+                    <option value="order" data-i18n="contact.topic.order">注文・配送について</option>
+                    <option value="returns" data-i18n="contact.topic.returns">返品・返金について</option>
+                    <option value="wholesale" data-i18n="contact.topic.wholesale">卸・法人について</option>
+                    <option value="other" data-i18n="contact.topic.other">その他</option>
                   </select>
                 </label>
                 <label class="field field--full">
-                  <span>内容</span>
+                  <span data-i18n="contact.field.message">内容</span>
                   <textarea
                     required
                     name="message"
                     rows="6"
+                    data-i18n-attr="placeholder:contact.placeholder.message"
                     placeholder="お問い合わせ内容をご記入ください"
                   ></textarea>
                 </label>
 
                 <label class="check check--full">
                   <input required type="checkbox" name="consent" />
-                  <span>入力内容に同意して送信します</span>
+                  <span data-i18n="contact.consent">入力内容に同意して送信します</span>
                 </label>
 
                 <div class="contact__actions">
-                  <button class="btn" type="submit">送信する</button>
-                  <a class="btn btn--ghost" href="mailto:info@theestablish.jp">メールで送る</a>
+                  <button class="btn" type="submit" data-i18n="contact.submit">送信する</button>
+                  <a class="btn btn--ghost" href="mailto:info@theestablishbeauty.com" data-i18n="contact.mailto"
+                    >メールで送る</a
+                  >
                 </div>
 
                 <p class="micro subtle" data-contact-result role="status" aria-live="polite"></p>
               </form>
             </div>
 
-            <aside class="contact__aside" aria-label="連絡先">
+            <aside class="contact__aside" data-i18n-attr="aria-label:contact.aside.label" aria-label="連絡先">
               <div class="contact__card">
-                <div class="contact__cardTitle">メール</div>
+                <div class="contact__cardTitle" data-i18n="contact.aside.email">メール</div>
                 <div class="contact__cardBody">
-                  <a class="link" href="mailto:info@theestablish.jp">info@theestablish.jp</a>
-                  <div class="micro subtle">通常 1〜2営業日以内に返信します。</div>
+                  <a class="link" href="mailto:info@theestablishbeauty.com">info@theestablishbeauty.com</a>
+                  <div class="micro subtle" data-i18n="contact.aside.email.hint">通常 1〜2営業日以内に返信します。</div>
                 </div>
               </div>
               <div class="contact__card">
-                <div class="contact__cardTitle">よくある質問</div>
+                <div class="contact__cardTitle" data-i18n="contact.aside.faq">よくある質問</div>
                 <div class="contact__cardBody">
-                  <div class="micro subtle">
+                  <div class="micro subtle" data-i18n="contact.aside.faq.hint">
                     購入前のよくある質問はFAQをご確認ください。
                   </div>
-                <div class="micro" style="margin-top: 8px">
-                  <a class="btn btn--sm btn--ghost" href="./faq.html">FAQを見る</a>
-                </div>
+                  <div class="micro" style="margin-top: 8px">
+                    <a class="btn btn--sm btn--ghost" href="./faq.html" data-i18n="contact.aside.faq.btn">FAQを見る</a>
+                  </div>
                 </div>
               </div>
             </aside>
@@ -201,14 +214,14 @@
           </div>
           <div class="micro subtle">Toronto, ON, Canada</div>
           <div class="micro">
-            <a class="link" href="mailto:info@theestablish.jp">info@theestablish.jp</a>
+            <a class="link" href="mailto:info@theestablishbeauty.com">info@theestablishbeauty.com</a>
           </div>
         </div>
 
         <div>
           <div class="footer__title" data-i18n="emr.footer.shop">ショップ</div>
           <ul class="footer__list">
-            <li><a class="link" href="./collection-all.html">全商品</a></li>
+            <li><a class="link" href="./collection-all.html" data-i18n="emr.footer.allproducts">全商品</a></li>
             <li><a class="link" href="./collection-red-light.html">Red Light Therapy Devices</a></li>
             <li><a class="link" href="./collection-blue-light-glasses.html">Blue Light Blocking Glasses</a></li>
             <li><a class="link" href="./collection-indoor-lighting.html">Indoor Lighting Solutions</a></li>
@@ -240,14 +253,14 @@
       </div>
 
       <div class="container footer__bottom">
-        <nav class="footer__legal micro" aria-label="法的情報">
-          <a class="link" href="./privacy.html">プライバシーポリシー</a>
+        <nav class="footer__legal micro" data-i18n-attr="aria-label:emr.footer.legalnav" aria-label="法的情報">
+          <a class="link" href="./privacy.html" data-i18n="emr.footer.privacy_link">プライバシーポリシー</a>
           <span class="footer__legalSep" aria-hidden="true">·</span>
-          <a class="link" href="./terms.html">利用規約</a>
+          <a class="link" href="./terms.html" data-i18n="emr.footer.terms_link">利用規約</a>
           <span class="footer__legalSep" aria-hidden="true">·</span>
-          <a class="link" href="./tokushoho.html">特定商取引法に基づく表記</a>
+          <a class="link" href="./tokushoho.html" data-i18n="emr.footer.tokushoho_link">特定商取引法に基づく表記</a>
           <span class="footer__legalSep" aria-hidden="true">·</span>
-          <a class="link" href="./customer-policies.html">配送・返品・支払い</a>
+          <a class="link" href="./customer-policies.html" data-i18n="emr.footer.policies_link">配送・返品・支払い</a>
         </nav>
         <div class="footer__bottomCredits">
           <div class="micro subtle">© 2025 EMR-TEK</div>
@@ -301,7 +314,7 @@
           <div class="micro subtle" data-i18n="emr.search.hint">この検索は一覧（全商品）に反映されます。</div>
           <menu class="modal__menu">
             <button class="btn" value="default" data-action="search-apply" data-i18n="emr.search.apply">適用</button>
-            <button class="btn btn--ghost" value="cancel">閉じる</button>
+            <button class="btn btn--ghost" value="cancel" data-i18n="emr.search.close">閉じる</button>
           </menu>
         </div>
       </form>
@@ -329,6 +342,13 @@
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx5d2NkdmV2aXp3b3BvY2hjcGljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcyNTA1NzYsImV4cCI6MjA4MjgyNjU3Nn0.pbwMCLurN-sEErdVZ-9FpXzLBCElqPoDo2QjXIBnwhc",
       };
       (function () {
+        function ct(key) {
+          var si = window.siteI18n;
+          if (si && typeof si.t === "function" && typeof si.getLang === "function") {
+            return si.t(si.getLang(), key);
+          }
+          return key;
+        }
         function formatApiError(raw, status) {
           var msg = (raw || "").trim() || "HTTP " + status;
           try {
@@ -359,13 +379,18 @@
             if (!cfg || !cfg.url || !cfg.anonKey) {
               if (out) {
                 out.textContent =
-                  "送信しました（デモ：Supabase 未設定）。\n\nお名前：" +
+                  ct("contact.result.demo") +
+                  "\n\n" +
+                  ct("contact.demo.name") +
                   name +
-                  "\nメール：" +
+                  "\n" +
+                  ct("contact.demo.email") +
                   email +
-                  "\n種別：" +
+                  "\n" +
+                  ct("contact.demo.topic") +
                   topic +
-                  "\n内容：" +
+                  "\n" +
+                  ct("contact.demo.body") +
                   message.slice(0, 120) +
                   (message.length > 120 ? "…" : "");
               }
@@ -403,21 +428,15 @@
                 throw new Error(formatApiError(errText, res.status));
               }
               if (out) {
-                out.textContent =
-                  "送信しました。Supabase（プロジェクト lywcdvevizwopochcpic）の public.contact_inquiries に保存されています。\n\n" +
-                  "通知メールは Database Webhook → Vercel の /api/notify-contact-inquiry → Resend を設定済みの場合のみ届きます。届かないときは Supabase の Webhook ログと Vercel Functions のログを確認してください。";
+                out.textContent = ct("contact.result.success");
               }
               form.reset();
             } catch (err) {
               console.error(err);
-              var hint =
-                window.location.protocol === "file:"
-                  ? "\n\n※ file:// で開いている場合は https の本番 URL か、python3 -m http.server などで http://localhost:… から開き直してください。"
-                  : "";
-              var detail = err && err.message ? "\n\n詳細：" + err.message : "";
+              var hint = window.location.protocol === "file:" ? ct("contact.result.fileHint") : "";
+              var detail = err && err.message ? "\n\n" + ct("contact.result.detailPrefix") + err.message : "";
               if (out) {
-                out.textContent =
-                  "送信に失敗しました。" + detail + hint + "\n\nメール：info@theestablish.jp";
+                out.textContent = ct("contact.result.fail") + detail + hint + ct("contact.result.mailLine");
               }
             } finally {
               setBusy(false);
@@ -431,7 +450,7 @@
         }
       })();
     </script>
-    <script src="./app.js?v=20260511d" defer></script>
-      <script src="./i18n.js" defer></script>
+    <script src="./i18n.js" defer></script>
+    <script src="./app.js?v=20260511e" defer></script>
   </body>
 </html>
