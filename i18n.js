@@ -213,7 +213,7 @@
       "emr.footer.legal": "法的情報",
 
       "auth.oauth.stub":
-        "Google（Gmail）での登録・ログインは、OAuth 接続を設定したあとに有効になります。例：Supabase Auth の signInWithOAuth({ provider: 'google' }) を /api または Edge Function から呼び出し、このボタンの href を認可 URL に差し替えてください。",
+        "現在、Google（Gmail）での登録・ログインはご利用いただけません。メールアドレスとパスワードでお進みください。",
       "auth.oauth.google": "Google で続ける（Gmail）",
       "auth.or": "または",
       "auth.field.displayName": "お名前（表示名）",
@@ -594,7 +594,7 @@
       "emr.footer.legal": "Legal",
 
       "auth.oauth.stub":
-        "Google (Gmail) sign-in will work after you wire OAuth—for example Supabase Auth signInWithOAuth({ provider: 'google' }) from an API route—and set this button’s href to your authorization URL.",
+        "Google (Gmail) sign-in is not available yet. Please use your email and password.",
       "auth.oauth.google": "Continue with Google (Gmail)",
       "auth.or": "or",
       "auth.field.displayName": "Display name",
