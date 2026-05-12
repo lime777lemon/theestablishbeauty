@@ -1,6 +1,10 @@
 /**
  * POST /api/auth-sign-up — create user via Supabase Admin API (no email confirmation by default).
  * Body: { flow: "consumer"|"business", email, password, display_name?, company?, department?, phone?, contact_name?, consent? }
+ *
+ * 任意（登録完了メール → Resend）:
+ * - RESEND_API_KEY, CONTACT_NOTIFY_FROM（または AUTH_REGISTER_EMAIL_FROM）
+ * - PUBLIC_SITE_URL（または SITE_URL）… メール内ログイン URL の起点。未設定時は CONTACT_ALLOWED_ORIGINS の https 先頭、または VERCEL_URL
  */
 
 const { createClient } = require("@supabase/supabase-js");
@@ -14,6 +18,7 @@ const {
   sendJson,
 } = require("./auth-shared");
 const { getSupabaseJsOptions } = require("./supabase-node-options");
+const { sendRegistrationWelcomeEmail } = require("./auth-welcome-email");
 
 function getSupabaseAdmin() {
   const url = normalizeSupabaseUrl(process.env.SUPABASE_URL);
@@ -165,8 +170,22 @@ function handler(req, res) {
         });
       }
 
+      let emailSent = false;
+      try {
+        emailSent = await sendRegistrationWelcomeEmail({
+          flow,
+          email,
+          displayName: display_name,
+          company,
+          contactName: contact_name,
+        });
+      } catch (e) {
+        console.error("auth-sign-up: welcome email error", e);
+      }
+
       return sendJson(req, res, 201, {
         ok: true,
+        email_sent: emailSent,
         user: {
           id: user.id,
           email: user.email,

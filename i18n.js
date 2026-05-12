@@ -238,15 +238,13 @@
       "auth.consent.business":
         "入力内容が正確であること、および <a class=\"link\" href=\"./terms.html\">利用規約</a>・<a class=\"link\" href=\"./privacy.html\">プライバシーポリシー</a> に同意することを確認します",
       "auth.consumer.reg.title": "会員登録（個人）",
-      "auth.consumer.reg.desc":
-        "メールアドレスとパスワードで登録できます（Vercel の /api/auth-sign-up 経由で Supabase Auth に保存）。Google（Gmail）は OAuth 設定後に有効化します。",
+      "auth.consumer.reg.desc": "メールアドレスとパスワードでご登録いただけます。",
       "auth.consumer.reg.docTitle": "会員登録（個人）– EMR-TEK",
       "auth.consumer.login.title": "ログイン（個人）",
       "auth.consumer.login.desc": "登録済みのメールアドレス、または Google でログインできます。",
       "auth.consumer.login.docTitle": "ログイン（個人）– EMR-TEK",
       "auth.business.reg.title": "法人アカウント登録",
-      "auth.business.reg.desc":
-        "卸・取引先向けの法人登録です（/api/auth-sign-up）。審査のため、担当よりご連絡する場合があります。Google は OAuth 設定後に有効化します。",
+      "auth.business.reg.desc": "卸・取引先向けの法人登録です。",
       "auth.business.reg.docTitle": "法人登録 – The Establish Beauty",
       "auth.business.login.title": "法人ログイン",
       "auth.business.login.desc": "法人登録済みのワークスペースメール、または Google でサインインしてください。",
@@ -257,6 +255,10 @@
       "auth.api.network": "通信に失敗しました。ネットワークと /api のあるホスト（本番 URL または vercel dev）で再度お試しください。",
       "auth.api.password_mismatch": "パスワードが一致しません。",
       "auth.api.register_ok": "登録を受け付けました。続けてログインしてください。",
+      "auth.api.register_ok_with_email":
+        "登録を受け付けました。ご登録のメールアドレス宛に完了通知を送りました。メール内のリンクからログインできます。届かない場合は迷惑メールフォルダもご確認ください。",
+      "auth.api.register_ok_no_mailer":
+        "登録を受け付けました。完了メールは送信できませんでした（RESEND_API_KEY・送信元、および PUBLIC_SITE_URL などサイトの URL を環境変数で設定してください）。この画面からログインへお進みください。",
       "auth.api.login_ok": "ログインしました。まもなく移動します…",
       "auth.api.error.forbidden": "このサイトからのリクエストとして許可されていません（CONTACT_ALLOWED_ORIGINS を確認してください）。",
       "auth.api.error.misconfigured":
@@ -617,15 +619,13 @@
       "auth.consent.business":
         "I confirm the information is accurate and I agree to the <a class=\"link\" href=\"./terms.html\">Terms</a> and <a class=\"link\" href=\"./privacy.html\">Privacy policy</a>",
       "auth.consumer.reg.title": "Sign up (personal)",
-      "auth.consumer.reg.desc":
-        "Sign up with email and password via /api/auth-sign-up (Supabase Auth). Google (Gmail) activates after OAuth is configured.",
+      "auth.consumer.reg.desc": "Create your account with email and password.",
       "auth.consumer.reg.docTitle": "Sign up (personal) — EMR-TEK",
       "auth.consumer.login.title": "Log in (personal)",
       "auth.consumer.login.desc": "Use your registered email or Google to sign in.",
       "auth.consumer.login.docTitle": "Log in (personal) — EMR-TEK",
       "auth.business.reg.title": "Business account signup",
-      "auth.business.reg.desc":
-        "For wholesale and trade partners (/api/auth-sign-up). We may contact you to verify details. Google activates after OAuth is configured.",
+      "auth.business.reg.desc": "For wholesale and trade partners.",
       "auth.business.reg.docTitle": "Business signup — The Establish Beauty",
       "auth.business.login.title": "Business login",
       "auth.business.login.desc": "Use your work email or Google to access the business workspace.",
@@ -636,6 +636,10 @@
       "auth.api.network": "Request failed. Try again from a host that serves /api (production https or vercel dev).",
       "auth.api.password_mismatch": "Passwords do not match.",
       "auth.api.register_ok": "Account created. Please log in to continue.",
+      "auth.api.register_ok_with_email":
+        "Account created. We sent a confirmation email with a login link. Check spam if you do not see it.",
+      "auth.api.register_ok_no_mailer":
+        "Account created, but the confirmation email was not sent (configure RESEND_API_KEY, from address, and PUBLIC_SITE_URL). Please open the login page from this site.",
       "auth.api.login_ok": "Signed in. Redirecting…",
       "auth.api.error.forbidden": "This origin is not allowed (check CONTACT_ALLOWED_ORIGINS).",
       "auth.api.error.misconfigured":

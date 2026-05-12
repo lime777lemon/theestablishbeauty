@@ -113,7 +113,11 @@
         .then(function (res) {
           if (sub) sub.disabled = false;
           if (res.httpOk && res.data && res.data.ok) {
-            note.textContent = t("auth.api.register_ok");
+            var msg;
+            if (res.data.email_sent === true) msg = t("auth.api.register_ok_with_email");
+            else if (res.data.email_sent === false) msg = t("auth.api.register_ok_no_mailer");
+            else msg = t("auth.api.register_ok");
+            note.textContent = msg;
             form.reset();
             return;
           }
