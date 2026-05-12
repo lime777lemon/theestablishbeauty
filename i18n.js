@@ -214,6 +214,11 @@
 
       "auth.oauth.stub":
         "現在、Google（Gmail）での登録・ログインはご利用いただけません。メールアドレスとパスワードでお進みください。",
+      "auth.oauth.redirecting": "Google に接続しています…",
+      "auth.oauth.start_failed":
+        "Google ログインを開始できませんでした。Supabase の Google プロバイダ（Client ID / Secret）と、Authentication の Redirect URLs を確認してください。",
+      "auth.oauth.missing_site_origin":
+        "サイトの公開 URL（PUBLIC_SITE_URL）がサーバーに設定されていません。Vercel または .env.local に https:// からのトップ URL を設定し、Supabase の Redirect URLs に /auth/oauth-callback.html を追加してください。",
       "auth.oauth.google": "Google で続ける（Gmail）",
       "auth.or": "または",
       "auth.field.displayName": "お名前（表示名）",
@@ -595,6 +600,11 @@
 
       "auth.oauth.stub":
         "Google (Gmail) sign-in is not available yet. Please use your email and password.",
+      "auth.oauth.redirecting": "Connecting to Google…",
+      "auth.oauth.start_failed":
+        "Could not start Google sign-in. Check Supabase Google provider and Redirect URLs.",
+      "auth.oauth.missing_site_origin":
+        "PUBLIC_SITE_URL is not set on the server. Set your site origin (https://…) in Vercel or .env.local, and add /auth/oauth-callback.html to Supabase Redirect URLs.",
       "auth.oauth.google": "Continue with Google (Gmail)",
       "auth.or": "or",
       "auth.field.displayName": "Display name",

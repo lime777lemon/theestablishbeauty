@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Google ログイン処理中…</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        padding: 2rem;
+        max-width: 36rem;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="msg">Google ログインを完了しています…</p>
+    <script>
+      (function () {
+        var SESSION_KEY = "establish_sb_session_v1";
+        var msg = document.getElementById("msg");
+        var q = new URLSearchParams(window.location.search);
+        if (q.get("error")) {
+          msg.textContent =
+            "ログインに失敗しました: " + (q.get("error_description") || q.get("error") || "unknown");
+          return;
+        }
+        var hash = window.location.hash ? window.location.hash.slice(1) : "";
+        if (!hash) {
+          msg.textContent = "セッション情報がありません。もう一度「Google で続ける」からお試しください。";
+          return;
+        }
+        var params = new URLSearchParams(hash);
+        var access_token = params.get("access_token");
+        var refresh_token = params.get("refresh_token");
+        var expires_in = params.get("expires_in");
+        var expires_at = params.get("expires_at");
+        var token_type = params.get("token_type");
+        if (!access_token) {
+          msg.textContent = "アクセストークンを取得できませんでした。Supabase の Redirect URLs にこのページの URL を追加してください。";
+          return;
+        }
+        var session = {
+          access_token: access_token,
+          refresh_token: refresh_token || "",
+          expires_in: expires_in ? Number(expires_in) : undefined,
+          expires_at: expires_at ? Number(expires_at) : undefined,
+          token_type: token_type || "bearer",
+        };
+        try {
+          localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+        } catch (e) {
+          msg.textContent = "ブラウザに保存できませんでした。";
+          return;
+        }
+        var sp = new URLSearchParams(window.location.search);
+        var target = sp.get("target") === "business" ? "business" : "consumer";
+        var dest = target === "business" ? "../establish-beauty.html" : "../index.html";
+        msg.textContent = "リダイレクトしています…";
+        window.location.replace(dest);
+      })();
+    </script>
+  </body>
+</html>

@@ -74,10 +74,40 @@
     document.querySelectorAll("[data-auth-google]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var out = document.querySelector("[data-auth-oauth-note]");
+        var mode = document.body.getAttribute("data-auth-mode") || "";
+        var target = /^business-/.test(mode) ? "business" : "consumer";
         if (out) {
           out.hidden = false;
-          out.textContent = t("auth.oauth.stub");
+          out.textContent = t("auth.oauth.redirecting");
         }
+        fetch("/api/auth-google-start?target=" + encodeURIComponent(target), { credentials: "same-origin" })
+          .then(function (r) {
+            return r.text().then(function (text) {
+              var data = {};
+              try {
+                data = text ? JSON.parse(text) : {};
+              } catch (e) {
+                data = {};
+              }
+              return { httpOk: r.ok, data: data };
+            });
+          })
+          .then(function (res) {
+            if (res.httpOk && res.data && res.data.ok && res.data.url) {
+              window.location.href = res.data.url;
+              return;
+            }
+            if (out) {
+              var err = res.data && res.data.error;
+              if (err === "missing_site_origin") out.textContent = t("auth.oauth.missing_site_origin");
+              else if (err === "server_misconfigured") out.textContent = t("auth.api.error.misconfigured");
+              else if (err === "forbidden") out.textContent = t("auth.api.error.forbidden");
+              else out.textContent = t("auth.oauth.start_failed");
+            }
+          })
+          .catch(function () {
+            if (out) out.textContent = t("auth.api.network");
+          });
       });
     });
   }
