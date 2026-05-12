@@ -5,8 +5,8 @@
  *
  * 環境変数（Vercel ダッシュボード）:
  * - RESEND_API_KEY
- * - CONTACT_NOTIFY_FROM  … Resend で検証済みの送信元（例: onboarding@resend.dev または自ドメイン）
- * - CONTACT_NOTIFY_TO    … 通知を受け取る宛先（例: info@theestablish.jp）
+ * - CONTACT_NOTIFY_FROM  … Resend で検証済みの送信元（例: info@theestablishbeauty.com）
+ * - CONTACT_NOTIFY_TO    … 通知を受け取る宛先（例: info@theestablishbeauty.com）
  * - CONTACT_WEBHOOK_SECRET … 共有秘密。Supabase Webhook の Authorization: Bearer と一致させる
  */
 
@@ -16,6 +16,13 @@ function escapeHtml(s) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+/** Vercel 環境変数の先頭末尾空白・改行を除く（貼り付けミスで Resend の from が壊れるのを防ぐ） */
+function cleanEnvLine(s) {
+  return String(s ?? "")
+    .trim()
+    .replace(/[\r\n\t]/g, "");
 }
 
 function readJsonBody(req) {
@@ -49,15 +56,15 @@ async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const secret = process.env.CONTACT_WEBHOOK_SECRET;
-  const auth = req.headers.authorization || "";
+  const secret = cleanEnvLine(process.env.CONTACT_WEBHOOK_SECRET);
+  const auth = String(req.headers.authorization || "").trim();
   if (!secret || auth !== `Bearer ${secret}`) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 
-  const resendKey = process.env.RESEND_API_KEY;
-  const from = process.env.CONTACT_NOTIFY_FROM;
-  const to = process.env.CONTACT_NOTIFY_TO;
+  const resendKey = cleanEnvLine(process.env.RESEND_API_KEY);
+  const from = cleanEnvLine(process.env.CONTACT_NOTIFY_FROM);
+  const to = cleanEnvLine(process.env.CONTACT_NOTIFY_TO);
   if (!resendKey || !from || !to) {
     console.error("notify-contact-inquiry: missing RESEND_API_KEY / CONTACT_NOTIFY_FROM / CONTACT_NOTIFY_TO");
     return res.status(500).json({ error: "Server misconfigured" });

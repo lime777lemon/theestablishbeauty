@@ -1,4 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null
+  "framework": null,
+  "devCommand": "sh -c 'python3 -m http.server \"${PORT:-5280}\"'",
+  "redirects": [
+    { "source": "/emr-tek.html", "destination": "/", "permanent": true }
+  ]
 }

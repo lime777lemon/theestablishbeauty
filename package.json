@@ -2,10 +2,15 @@
   "name": "the-establish-beauty-site",
   "private": true,
   "version": "0.0.0",
-  "description": "The Establish Beauty メイン（index.html）+ EMR-TEK 日本語ストア（emr-tek.html ほか全商品ページ）静的サイト",
+  "description": "EMR-TEK ストア + The Establish Beauty。npm run dev は Node（静的 + /api）。純 Python 表示のみは npm run dev:static。本番相当は npm run dev:vercel。",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "ws": "^8.18.0"
+  },
   "scripts": {
-    "dev": "python3 -m http.server 5173",
+    "dev": "node scripts/dev-server.mjs",
     "dev:vercel": "npx vercel dev --listen 5173",
+    "dev:static": "python3 -m http.server 5173",
     "dev:5174": "python3 -m http.server 5174",
     "start": "python3 -m http.server 5173"
   }

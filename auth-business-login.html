@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var k = "establish_site_lang";
+          var v = localStorage.getItem(k) || "ja";
+          if (v !== "ja" && v !== "en") v = "ja";
+          document.documentElement.setAttribute("data-site-lang", v);
+          document.documentElement.setAttribute("lang", v === "en" ? "en" : "ja");
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title data-i18n-title="auth.business.login.docTitle">法人ログイン – The Establish Beauty</title>
+    <meta name="description" data-i18n-desc="auth.business.login.desc" content="法人ログイン" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./i18n.css" />
+  </head>
+  <body class="page-establish" data-auth-mode="business-login">
+    <a class="skip-link" href="#main" data-i18n="teb.skip">本文へスキップ</a>
+
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <div class="topbar__left">
+          <span class="badge">theestablishbeauty.com</span>
+        </div>
+        <div
+          class="topbar__right micro subtle"
+          style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end"
+        >
+          <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label">
+            <button type="button" class="pill pill--lang" data-lang-switch="ja">日本語</button>
+            <button type="button" class="pill pill--lang" data-lang-switch="en">English</button>
+          </div>
+          <span data-i18n="teb.topbar.tagline">Unified account · checkout · split fulfillment</span>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="container header__inner">
+        <div class="brand">
+          <a
+            class="brand__link establishBrand__link"
+            href="./index.html"
+            data-i18n-attr="aria-label:teb.brand.aria"
+            aria-label="The Establish Beauty ホーム"
+          >
+            <img
+              class="establishBrand__logo--header"
+              src="./assets/teb-logo.png"
+              width="200"
+              height="200"
+              decoding="async"
+              data-i18n-attr="alt:teb.brand.logoAlt"
+              alt="The Establish Beauty ロゴ"
+            />
+          </a>
+        </div>
+        <nav class="nav" data-i18n-attr="aria-label:teb.nav.main" aria-label="メイン">
+          <a class="nav__link" href="./index.html" data-i18n="teb.nav.home">ホーム</a>
+          <a class="nav__link" href="./establish-beauty.html#model" data-i18n="teb.nav.model">仕組み</a>
+          <a class="nav__link" href="./establish-beauty.html#infrastructure" data-i18n="teb.nav.infra">インフラ</a>
+          <a class="nav__link" href="./establish-beauty.html#marketplace" data-i18n="teb.nav.marketplace">Marketplace</a>
+          <a class="nav__link" href="./establish-beauty.html#partners" data-i18n="teb.nav.partners">取引先</a>
+          <a class="nav__link" href="./index.html" data-i18n="teb.nav.emr">EMR-TEK ストア</a>
+          <a class="nav__link" href="./auth-business-register.html" data-i18n="teb.nav.b2b.register">法人登録</a>
+          <a class="nav__link nav__link--active" href="./auth-business-login.html" data-i18n="teb.nav.b2b.login">法人ログイン</a>
+          <a class="nav__link" href="./contact.html" data-i18n="teb.nav.contact">お問い合わせ</a>
+        </nav>
+        <div class="header__actions" aria-hidden="true"></div>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <section class="hero">
+        <div class="container hero__inner">
+          <div class="breadcrumbs" data-i18n-attr="aria-label:teb.crumb.label" aria-label="パンくず">
+            <a href="./index.html" data-i18n="teb.crumb.home">ホーム</a>
+            <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+            <span aria-current="page" data-i18n="auth.crumb.business">法人アカウント</span>
+          </div>
+          <div class="hero__titleRow">
+            <div>
+              <p class="authKicker" style="margin-bottom: 6px" data-i18n="auth.crumb.business">法人アカウント</p>
+              <h1 class="h1" data-i18n="auth.business.login.title">法人ログイン</h1>
+              <p class="subtle authCard__lead" style="max-width: 42rem; margin-top: 10px" data-i18n="auth.business.login.desc">
+                法人登録済みのワークスペースメール、または Google でサインインしてください。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container page" style="padding-bottom: 48px">
+        <div class="authShell">
+          <div class="authCard">
+            <button type="button" class="authGoogleBtn" data-auth-google>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="#4285F4"
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                />
+                <path
+                  fill="#34A853"
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                />
+                <path
+                  fill="#FBBC05"
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                />
+                <path
+                  fill="#EA4335"
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                />
+              </svg>
+              <span data-i18n="auth.oauth.google">Google で続ける（Gmail）</span>
+            </button>
+            <p class="micro subtle authMuted" data-auth-oauth-note hidden role="status"></p>
+
+            <div class="authDivider"><span data-i18n="auth.or">または</span></div>
+
+            <form class="authForm" data-auth-form>
+              <label class="field">
+                <span data-i18n="auth.field.workEmail">メールアドレス（業務用）</span>
+                <input name="email" type="email" autocomplete="email" required placeholder="you@company.com" />
+              </label>
+              <label class="field">
+                <span data-i18n="auth.field.password">パスワード</span>
+                <input name="password" type="password" autocomplete="current-password" required />
+              </label>
+              <div class="authForgot">
+                <a class="link" href="#" onclick="return false" data-i18n="auth.forgot">パスワードをお忘れの方</a>
+              </div>
+              <label class="authCheck">
+                <input name="remember" type="checkbox" value="1" />
+                <span data-i18n="auth.remember">ログイン状態を保持する</span>
+              </label>
+              <div class="authActions">
+                <button class="btn" type="submit" data-i18n="auth.submit.login">ログイン</button>
+              </div>
+              <p class="micro subtle" data-auth-form-note role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="authCard__foot">
+              <span data-i18n="auth.link.toRegister">新規登録はこちら</span> —
+              <a class="link" href="./auth-business-register.html" data-i18n="teb.nav.b2b.register">法人登録</a>
+              <br />
+              <span data-i18n="auth.link.consumerPortal">個人のお客様はこちら</span> —
+              <a class="link" href="./auth-consumer-login.html" data-i18n="emr.nav.login">ログイン</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__bottom">
+        <nav class="footer__legal micro" data-i18n-attr="aria-label:teb.footer.legalnav" aria-label="法的情報">
+          <a class="link" href="./privacy.html" data-i18n="teb.footer.privacy">プライバシーポリシー</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./terms.html" data-i18n="teb.footer.terms">利用規約</a>
+        </nav>
+        <div class="footer__bottomCredits">
+          <div class="micro subtle">© 2026 The Establish Beauty</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./i18n.js" defer></script>
+    <script src="./auth-forms.js" defer></script>
+  </body>
+</html>

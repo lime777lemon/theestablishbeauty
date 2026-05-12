@@ -16,11 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
     <link rel="icon" href="./assets/teb-logo.png" type="image/png" />
-    <title data-i18n-title="teb.doc.title">The Establish Beauty — ホーム</title>
+    <title data-i18n-title="teb.about.doc.title">私たちについて — The Establish Beauty</title>
     <meta
       name="description"
-      data-i18n-desc="teb.doc.desc"
-      content="The Establish Beauty — Beauty Commerce Infrastructure。ブランド専用LP（/brands/...）で世界観を分け、アカウント・カート・Checkoutは統合。split fulfillment。マルチベンダー・キュレーション・手数料モデル。"
+      data-i18n-desc="teb.about.doc.desc"
+      content="The Establish Beauty のミッション、Beauty Commerce Infrastructure、マーケットプレイスの仕組みについて。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -469,7 +469,7 @@
 
         <nav class="nav" data-i18n-attr="aria-label:teb.nav.main" aria-label="メイン">
           <a class="nav__link" href="./index.html" data-i18n="teb.nav.home">ホーム</a>
-          <a class="nav__link" href="./about-us.html" data-i18n="teb.nav.about">私たちについて</a>
+          <a class="nav__link nav__link--active" href="./about-us.html" data-i18n="teb.nav.about">私たちについて</a>
           <a class="nav__link" href="#model" data-i18n="teb.nav.model">仕組み</a>
           <a class="nav__link" href="#infrastructure" data-i18n="teb.nav.infra">インフラ</a>
           <a class="nav__link" href="#marketplace" data-i18n="teb.nav.marketplace">Marketplace</a>
@@ -484,7 +484,7 @@
           </summary>
           <div class="navDropdown__panel">
             <a class="nav__link" href="./index.html" data-i18n="teb.nav.home">ホーム</a>
-            <a class="nav__link" href="./about-us.html" data-i18n="teb.nav.about">私たちについて</a>
+            <a class="nav__link nav__link--active" href="./about-us.html" data-i18n="teb.nav.about">私たちについて</a>
             <a class="nav__link" href="#model" data-i18n="teb.nav.model">仕組み</a>
             <a class="nav__link" href="#infrastructure" data-i18n="teb.nav.infra">インフラ</a>
             <a class="nav__link" href="#marketplace" data-i18n="teb.nav.marketplace">Marketplace</a>
@@ -500,13 +500,15 @@
       <section class="hero establishHero">
         <div class="container hero__inner">
           <div class="breadcrumbs" data-i18n-attr="aria-label:teb.crumb.label" aria-label="パンくず">
-            <span aria-current="page" data-i18n="teb.crumb.home">ホーム</span>
+            <a href="./index.html" data-i18n="teb.about.crumb.store">EMR-TEK ストア</a>
+            <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+            <span aria-current="page" data-i18n="teb.about.crumb.page">私たちについて</span>
           </div>
 
           <div class="hero__titleRow">
             <div>
               <p class="establishKicker" data-i18n="teb.hero.kicker">Beauty Commerce Infrastructure</p>
-              <h1 class="h1" data-i18n="teb.hero.h1">美しさを、正直に届ける。</h1>
+              <h1 class="h1" data-i18n="teb.about.h1">The Establish Beauty について</h1>
               <p
                 class="subtle"
                 style="max-width: 42rem; margin-top: 10px"
@@ -909,12 +911,6 @@
             </li>
             <li>
               <a class="link" href="./contact.html" data-i18n="teb.footer.link.contact">お問い合わせ</a>
-            </li>
-            <li>
-              <a class="link" href="./auth-business-register.html" data-i18n="teb.footer.link.b2b.register">法人・取引先登録</a>
-            </li>
-            <li>
-              <a class="link" href="./auth-business-login.html" data-i18n="teb.footer.link.b2b.login">B2B ログイン</a>
             </li>
           </ul>
         </div>

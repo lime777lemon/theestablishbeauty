@@ -35,21 +35,18 @@
 
     <div class="topbar">
       <div class="container topbar__inner">
-        <div class="topbar__left">
+        <div class="topbar__left" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px">
+          <a class="link micro" href="./about-us.html" data-i18n="emr.topbar.teb" style="font-weight: 600; white-space: nowrap"
+            >The Establish Beauty — メインページ</a
+          >
           <span class="badge" data-i18n="emr.topbar.badge">出荷2〜5営業日・お届け7〜14日目安</span>
         </div>
+
         <div class="topbar__right" aria-label="言語と通貨" data-i18n-attr="aria-label:emr.topbar.langcurrency" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:flex-end">
           <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label">
             <button type="button" class="pill pill--lang" data-lang-switch="ja">日本語</button>
             <button type="button" class="pill pill--lang" data-lang-switch="en">English</button>
           </div>
-
-          <button class="pill" type="button" data-action="open-language" data-i18n="emr.pill.lang">
-            日本語 <span class="chev" aria-hidden="true">▾</span>
-          </button>
-          <button class="pill" type="button" data-action="open-currency" data-i18n="emr.pill.currency">
-            日本 (JPY ¥) <span class="chev" aria-hidden="true">▾</span>
-          </button>
         </div>
       </div>
     </div>
@@ -57,16 +54,34 @@
     <header class="header">
       <div class="container header__inner">
         <div class="brand">
-          <a class="brand__link" href="./emr-tek.html" data-i18n-attr="aria-label:emr.brand.aria" aria-label="EMR-TEK ホーム">
-            <span class="brand__name">EMR-TEK</span>
+          <a
+            class="brand__link establishBrand__link"
+            href="./index.html"
+            data-i18n-attr="aria-label:emr.brand.aria"
+            aria-label="EMR-TEK ホーム"
+          >
+            <img
+              class="establishBrand__logo--header"
+              src="./assets/teb-logo.png"
+              width="200"
+              height="200"
+              decoding="async"
+              data-i18n-attr="alt:teb.brand.logoAlt"
+              alt="The Establish Beauty ロゴ"
+            />
           </a>
         </div>
 
+
         <nav class="nav" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
+          <a class="nav__link" href="./about-us.html" data-i18n="emr.nav.teb">私たちについて</a>
           <a class="nav__link" href="./collection-all.html" data-i18n="emr.nav.shop">ショップ</a>
           <a class="nav__link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a>
           <a class="nav__link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a>
+          <a class="nav__link" href="./index.html#track" data-i18n="emr.nav.track">注文追跡</a>
           <a class="nav__link" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
+          <a class="nav__link" href="./auth-consumer-register.html" data-i18n="emr.nav.register">新規登録</a>
+          <a class="nav__link" href="./auth-consumer-login.html" data-i18n="emr.nav.login">ログイン</a>
           <a class="nav__link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
         </nav>
 
@@ -377,7 +392,7 @@
           </div>
           <div class="micro subtle">Toronto, ON, Canada</div>
           <div class="micro">
-            <a class="link" href="mailto:info@theestablish.jp">info@theestablish.jp</a>
+            <a class="link" href="mailto:info@theestablishbeauty.com">info@theestablishbeauty.com</a>
           </div>
         </div>
 

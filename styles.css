@@ -4284,3 +4284,163 @@ select {
 .productSpecTable tbody tr:nth-child(even) td {
   background: rgba(15, 23, 42, 0.02);
 }
+
+/* 認証（個人・法人・登録・ログイン） */
+.authShell {
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.authCard {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px 20px 20px;
+  background: #fff;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
+}
+
+.authKicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(185, 28, 28, 0.88);
+  margin: 0 0 6px;
+}
+
+.authCard__lead {
+  margin: 8px 0 0;
+  line-height: 1.55;
+}
+
+.authForm {
+  margin-top: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.authForm .field {
+  margin: 0;
+}
+
+.authRow2 {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 520px) {
+  .authRow2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.authActions {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.authActions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.authDivider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.authDivider::before,
+.authDivider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.authGoogleBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--fg);
+  box-sizing: border-box;
+}
+
+.authGoogleBtn:hover {
+  background: #f8fafc;
+}
+
+.authGoogleBtn:focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+.authGoogleBtn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.authCard__foot {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.authCheck {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.authCheck input {
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.authMuted {
+  margin-top: 10px;
+}
+
+.authForgot {
+  font-size: 13px;
+  text-align: right;
+}
+
+.authForgot a {
+  font-weight: 500;
+}
+
+/* TEB ロゴ（法人認証ページのヘッダー） */
+.establishBrand__link {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.establishBrand__logo--header {
+  display: block;
+  height: 48px;
+  width: auto;
+  max-width: min(220px, 52vw);
+  object-fit: contain;
+}

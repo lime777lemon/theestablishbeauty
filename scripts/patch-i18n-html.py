@@ -61,20 +61,13 @@ def patch(path: Path) -> bool:
         t = t.replace(old_right, new_right, 1)
         changed = True
 
-    reps = [
-        (
-            '<button class="pill" type="button" data-action="open-language">',
-            '<button class="pill" type="button" data-action="open-language" data-i18n="emr.pill.lang">',
-        ),
-        (
-            '<button class="pill" type="button" data-action="open-currency">',
-            '<button class="pill" type="button" data-action="open-currency" data-i18n="emr.pill.currency">',
-        ),
-    ]
-    for a, b in reps:
-        if b not in t and a in t:
-            t = t.replace(a, b, 1)
-            changed = True
+    if 'href="./about-us.html"' in t and 'data-i18n="emr.topbar.teb"' not in t:
+        t = t.replace(
+            '<a class="link micro" href="./about-us.html"',
+            '<a class="link micro" href="./about-us.html" data-i18n="emr.topbar.teb"',
+            1,
+        )
+        changed = True
 
     if 'href="./establish-beauty.html"' in t and 'data-i18n="emr.topbar.teb"' not in t:
         t = t.replace(
@@ -98,8 +91,8 @@ def patch(path: Path) -> bool:
 
     if 'class="brand__link"' in t and "data-i18n-attr=\"aria-label:emr.brand.aria\"" not in t:
         t = t.replace(
-            '<a class="brand__link" href="./emr-tek.html" aria-label="EMR-TEK ホーム">',
-            '<a class="brand__link" href="./emr-tek.html" data-i18n-attr="aria-label:emr.brand.aria" aria-label="EMR-TEK ホーム">',
+            '<a class="brand__link" href="./index.html" aria-label="EMR-TEK ホーム">',
+            '<a class="brand__link" href="./index.html" data-i18n-attr="aria-label:emr.brand.aria" aria-label="EMR-TEK ホーム">',
             1,
         )
         changed = True
@@ -113,6 +106,8 @@ def patch(path: Path) -> bool:
         changed = True
 
     nav_reps = [
+        ('href="./about-us.html">私たちについて</a>', 'href="./about-us.html" data-i18n="emr.nav.teb">私たちについて</a>'),
+        ('href="./about-us.html">TEB ホーム</a>', 'href="./about-us.html" data-i18n="emr.nav.teb">TEB ホーム</a>'),
         ('href="./establish-beauty.html">TEB ホーム</a>', 'href="./establish-beauty.html" data-i18n="emr.nav.teb">TEB ホーム</a>'),
         ('href="./collection-all.html">ショップ</a>', 'href="./collection-all.html" data-i18n="emr.nav.shop">ショップ</a>'),
         ('href="./science.html">科学を学ぶ</a>', 'href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a>'),
@@ -125,10 +120,10 @@ def patch(path: Path) -> bool:
             t = t.replace(a, b, 1)
             changed = True
 
-    if 'href="./emr-tek.html#track"' in t:
+    if 'href="./index.html#track"' in t:
         t = t.replace(
-            'href="./emr-tek.html#track">注文追跡</a>',
-            'href="./emr-tek.html#track" data-i18n="emr.nav.track">注文追跡</a>',
+            'href="./index.html#track">注文追跡</a>',
+            'href="./index.html#track" data-i18n="emr.nav.track">注文追跡</a>',
             1,
         )
         changed = True
