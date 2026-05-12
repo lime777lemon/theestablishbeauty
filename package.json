@@ -5,6 +5,7 @@
   "description": "The Establish Beauty メイン（index.html）+ EMR-TEK 日本語ストア（emr-tek.html ほか全商品ページ）静的サイト",
   "scripts": {
     "dev": "python3 -m http.server 5173",
+    "dev:vercel": "npx vercel dev --listen 5173",
     "dev:5174": "python3 -m http.server 5174",
     "start": "python3 -m http.server 5173"
   }
