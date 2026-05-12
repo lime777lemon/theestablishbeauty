@@ -1,10 +1,10 @@
 /**
  * GET /api/auth-google-start?target=consumer|business
- * Returns { ok, url } for Google OAuth (Supabase Auth). Browser opens url.
+ * Legacy: returns { ok, url } using server-side signInWithOAuth (PKCE verifier はサーバーに残り失敗しやすい)。
+ * 本番フローは auth-forms.js のブラウザ PKCE（/api/auth-supabase-public + @supabase/supabase-js）を使用。
  *
  * Supabase Dashboard → Authentication → URL Configuration に次を追加:
  *   {PUBLIC_SITE_URL}/auth/oauth-callback.html
- *   例: http://localhost:5173/auth/oauth-callback.html
  */
 
 const { createClient } = require("@supabase/supabase-js");

@@ -15,50 +15,125 @@
   </head>
   <body>
     <p id="msg">Google ログインを完了しています…</p>
-    <script>
-      (function () {
-        var SESSION_KEY = "establish_sb_session_v1";
-        var msg = document.getElementById("msg");
-        var q = new URLSearchParams(window.location.search);
-        if (q.get("error")) {
-          msg.textContent =
-            "ログインに失敗しました: " + (q.get("error_description") || q.get("error") || "unknown");
-          return;
-        }
-        var hash = window.location.hash ? window.location.hash.slice(1) : "";
-        if (!hash) {
-          msg.textContent = "セッション情報がありません。もう一度「Google で続ける」からお試しください。";
-          return;
-        }
-        var params = new URLSearchParams(hash);
-        var access_token = params.get("access_token");
-        var refresh_token = params.get("refresh_token");
-        var expires_in = params.get("expires_in");
-        var expires_at = params.get("expires_at");
-        var token_type = params.get("token_type");
-        if (!access_token) {
-          msg.textContent = "アクセストークンを取得できませんでした。Supabase の Redirect URLs にこのページの URL を追加してください。";
-          return;
-        }
-        var session = {
+    <script type="module">
+      const SESSION_KEY = "establish_sb_session_v1";
+      const GOTRUE_STORAGE_KEY = "establish_sb_gotrue";
+
+      const msg = document.getElementById("msg");
+      const sp = new URLSearchParams(window.location.search);
+
+      if (sp.get("error")) {
+        msg.textContent =
+          "ログインに失敗しました: " + (sp.get("error_description") || sp.get("error") || "unknown");
+        throw new Error("oauth_error");
+      }
+
+      const target = sp.get("target") === "business" ? "business" : "consumer";
+      const dest = target === "business" ? "../establish-beauty.html" : "../index.html";
+
+      async function syncRegistration(accessToken) {
+        try {
+          await fetch("/api/auth-oauth-sync-registration", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + accessToken,
+            },
+            body: JSON.stringify({ target: target }),
+            credentials: "same-origin",
+          });
+        } catch (_) {}
+      }
+
+      function persistManualSession(access_token, refresh_token, expires_in, expires_at, token_type) {
+        const session = {
           access_token: access_token,
           refresh_token: refresh_token || "",
           expires_in: expires_in ? Number(expires_in) : undefined,
           expires_at: expires_at ? Number(expires_at) : undefined,
           token_type: token_type || "bearer",
         };
+        localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+      }
+
+      function clearPkceScratch() {
         try {
-          localStorage.setItem(SESSION_KEY, JSON.stringify(session));
-        } catch (e) {
-          msg.textContent = "ブラウザに保存できませんでした。";
-          return;
+          localStorage.removeItem(GOTRUE_STORAGE_KEY);
+          localStorage.removeItem(GOTRUE_STORAGE_KEY + "-code-verifier");
+        } catch (_) {}
+      }
+
+      const hash = window.location.hash ? window.location.hash.slice(1) : "";
+      if (hash) {
+        const hp = new URLSearchParams(hash);
+        const access_token = hp.get("access_token");
+        if (access_token) {
+          persistManualSession(
+            access_token,
+            hp.get("refresh_token"),
+            hp.get("expires_in"),
+            hp.get("expires_at"),
+            hp.get("token_type")
+          );
+          await syncRegistration(access_token);
+          msg.textContent = "リダイレクトしています…";
+          window.location.replace(dest);
+          throw new Error("done_implicit");
         }
-        var sp = new URLSearchParams(window.location.search);
-        var target = sp.get("target") === "business" ? "business" : "consumer";
-        var dest = target === "business" ? "../establish-beauty.html" : "../index.html";
-        msg.textContent = "リダイレクトしています…";
-        window.location.replace(dest);
-      })();
+      }
+
+      if (!sp.get("code")) {
+        msg.textContent =
+          "セッション情報がありません。もう一度「Google で続ける」からお試しください。";
+        throw new Error("no_session");
+      }
+
+      const cfgR = await fetch("/api/auth-supabase-public", { credentials: "same-origin" });
+      const cfg = await cfgR.json().catch(() => ({}));
+      if (!cfgR.ok || !cfg.ok || !cfg.supabaseUrl || !cfg.supabaseAnonKey) {
+        msg.textContent =
+          "サーバー設定を確認してください（SUPABASE_URL / SUPABASE_ANON_KEY）。Redirect URLs にこのページの URL を追加してください。";
+        throw new Error("bad_config");
+      }
+
+      const { createClient } = await import("https://esm.sh/@supabase/supabase-js@2.49.1");
+      const supabase = createClient(cfg.supabaseUrl, cfg.supabaseAnonKey, {
+        auth: {
+          persistSession: true,
+          storage: localStorage,
+          storageKey: GOTRUE_STORAGE_KEY,
+          flowType: "pkce",
+          detectSessionInUrl: true,
+          autoRefreshToken: false,
+        },
+      });
+
+      await supabase.auth.initialize();
+      const {
+        data: { session },
+        error,
+      } = await supabase.auth.getSession();
+
+      if (error || !session || !session.access_token) {
+        msg.textContent =
+          "アクセストークンを取得できませんでした。Supabase の Redirect URLs に " +
+          window.location.origin +
+          "/auth/oauth-callback.html を追加し、Google ログインをやり直してください。";
+        if (error) console.error(error);
+        throw new Error("no_pkce_session");
+      }
+
+      persistManualSession(
+        session.access_token,
+        session.refresh_token,
+        String(session.expires_in),
+        session.expires_at != null ? String(session.expires_at) : "",
+        session.token_type
+      );
+      clearPkceScratch();
+      await syncRegistration(session.access_token);
+      msg.textContent = "リダイレクトしています…";
+      window.location.replace(dest);
     </script>
   </body>
 </html>

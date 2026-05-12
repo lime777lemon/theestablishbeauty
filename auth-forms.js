@@ -80,30 +80,46 @@
           out.hidden = false;
           out.textContent = t("auth.oauth.redirecting");
         }
-        fetch("/api/auth-google-start?target=" + encodeURIComponent(target), { credentials: "same-origin" })
+        fetch("/api/auth-supabase-public", { credentials: "same-origin" })
           .then(function (r) {
-            return r.text().then(function (text) {
-              var data = {};
-              try {
-                data = text ? JSON.parse(text) : {};
-              } catch (e) {
-                data = {};
-              }
+            return r.json().then(function (data) {
               return { httpOk: r.ok, data: data };
             });
           })
           .then(function (res) {
-            if (res.httpOk && res.data && res.data.ok && res.data.url) {
-              window.location.href = res.data.url;
-              return;
+            if (!res.httpOk || !res.data || !res.data.ok) {
+              if (out) {
+                var err = res.data && res.data.error;
+                if (err === "server_misconfigured") out.textContent = t("auth.api.error.misconfigured");
+                else if (err === "forbidden") out.textContent = t("auth.api.error.forbidden");
+                else out.textContent = t("auth.oauth.start_failed");
+              }
+              return null;
             }
-            if (out) {
-              var err = res.data && res.data.error;
-              if (err === "missing_site_origin") out.textContent = t("auth.oauth.missing_site_origin");
-              else if (err === "server_misconfigured") out.textContent = t("auth.api.error.misconfigured");
-              else if (err === "forbidden") out.textContent = t("auth.api.error.forbidden");
-              else out.textContent = t("auth.oauth.start_failed");
-            }
+            return res.data;
+          })
+          .then(function (cfg) {
+            if (!cfg) return;
+            return import("https://esm.sh/@supabase/supabase-js@2.49.1").then(function (mod) {
+              var redirectTo =
+                window.location.origin +
+                "/auth/oauth-callback.html?target=" +
+                encodeURIComponent(target);
+              var supabase = mod.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey, {
+                auth: {
+                  persistSession: true,
+                  storage: localStorage,
+                  storageKey: "establish_sb_gotrue",
+                  flowType: "pkce",
+                  detectSessionInUrl: false,
+                  autoRefreshToken: false,
+                },
+              });
+              return supabase.auth.signInWithOAuth({
+                provider: "google",
+                options: { redirectTo: redirectTo, skipBrowserRedirect: false },
+              });
+            });
           })
           .catch(function () {
             if (out) out.textContent = t("auth.api.network");
