@@ -1,5 +1,6 @@
 -- 個人・法人の会員登録を Supabase Studio の Table Editor（public）で一覧できるようにする。
 -- /api/auth-sign-up が auth.users 作成後に挿入。RLS 有効・anon からは直接触れない想定（service_role のみ API から）。
+-- SQL Editor に貼る単体版: supabase/sql/registration_tables_for_sql_editor.sql
 
 create extension if not exists "pgcrypto";
 
