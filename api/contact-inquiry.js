@@ -13,7 +13,16 @@
  *   例: https://theestablishbeauty.com,http://localhost:5173
  */
 
-const TOPICS = new Set(["product", "order", "returns", "wholesale", "other"]);
+const TOPICS = new Set([
+  "product",
+  "order",
+  "returns",
+  "wholesale",
+  "partner_media",
+  "partner_affiliate",
+  "partner_dropship",
+  "other",
+]);
 
 /** Vercel が付与する req.body（オブジェクト / 文字列 / Buffer）を JSON オブジェクトに統一 */
 function readJsonBody(req) {

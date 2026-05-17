@@ -34,7 +34,7 @@
   <body>
     <a class="skip-link" href="#main" data-i18n="emr.skip">本文へスキップ</a>
 
-    <div class="topbar">
+<div class="topbar">
       <div class="container topbar__inner">
         <div class="topbar__left" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px">
           <a class="link micro" href="./about-us.html" data-i18n="emr.topbar.teb" style="font-weight: 600; white-space: nowrap"
@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <header class="header">
+<header class="header">
       <div class="container header__inner">
         <div class="brand">
           <a
@@ -74,7 +74,7 @@
         </div>
 
 
-        <nav class="nav" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
+                <nav class="nav" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
           <a class="nav__link" href="./about-us.html" data-i18n="emr.nav.teb">私たちについて</a>
           <a class="nav__link" href="./collection-all.html" data-i18n="emr.nav.shop">ショップ</a>
           <a class="nav__link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a>
@@ -85,6 +85,24 @@
           <a class="nav__link" href="./auth-consumer-login.html" data-i18n="emr.nav.login">ログイン</a>
           <a class="nav__link nav__link--active" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
         </nav>
+
+        <details class="navDropdown" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
+          <summary>
+            <span data-i18n="emr.nav.menu">メニュー</span>
+            <span class="navDropdown__caret" aria-hidden="true"></span>
+          </summary>
+          <div class="navDropdown__panel">
+            <a class="nav__link" href="./about-us.html" data-i18n="emr.nav.teb">私たちについて</a>
+            <a class="nav__link" href="./collection-all.html" data-i18n="emr.nav.shop">ショップ</a>
+            <a class="nav__link" href="./science.html" data-i18n="emr.nav.science">科学を学ぶ</a>
+            <a class="nav__link" href="./blog.html" data-i18n="emr.nav.blog">ブログ</a>
+            <a class="nav__link" href="./index.html#track" data-i18n="emr.nav.track">注文追跡</a>
+            <a class="nav__link" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
+            <a class="nav__link" href="./auth-consumer-register.html" data-i18n="emr.nav.register">新規登録</a>
+            <a class="nav__link" href="./auth-consumer-login.html" data-i18n="emr.nav.login">ログイン</a>
+            <a class="nav__link nav__link--active" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
+          </div>
+        </details>
 
         <div class="header__actions">
           <button class="icon-btn" type="button" data-action="open-search" data-i18n-attr="aria-label:emr.aria.search" aria-label="検索">
@@ -152,6 +170,9 @@
                     <option value="order" data-i18n="contact.topic.order">注文・配送について</option>
                     <option value="returns" data-i18n="contact.topic.returns">返品・返金について</option>
                     <option value="wholesale" data-i18n="contact.topic.wholesale">卸・法人について</option>
+                    <option value="partner_media" data-i18n="contact.topic.partner_media">メディア・コンテンツ提携（業者）</option>
+                    <option value="partner_affiliate" data-i18n="contact.topic.partner_affiliate">アフィリエイト・紹介プログラム（業者）</option>
+                    <option value="partner_dropship" data-i18n="contact.topic.partner_dropship">ドロップシッピング・出品・物流（業者）</option>
                     <option value="other" data-i18n="contact.topic.other">その他</option>
                   </select>
                 </label>
@@ -367,9 +388,22 @@
           if (msg.length > 200) msg = msg.slice(0, 197) + "…";
           return msg;
         }
+        function applyTopicFromQuery() {
+          var form = document.querySelector("[data-contact-form]");
+          if (!form) return;
+          var sel = form.querySelector('[name="topic"]');
+          if (!sel) return;
+          var topic = new URLSearchParams(window.location.search).get("topic");
+          if (!topic) return;
+          if (sel.querySelector('option[value="' + topic.replace(/"/g, "") + '"]')) {
+            sel.value = topic;
+          }
+        }
+
         function bind() {
           var form = document.querySelector("[data-contact-form]");
           if (!form || form.nodeName !== "FORM") return;
+          applyTopicFromQuery();
           form.addEventListener("submit", async function (e) {
             e.preventDefault();
             if (!form.reportValidity()) return;

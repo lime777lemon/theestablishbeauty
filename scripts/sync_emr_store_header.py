@@ -55,10 +55,20 @@ BRAND = """        <div class="brand">
 NAV_OPEN = '        <nav class="nav" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">\n'
 NAV_CLOSE = "        </nav>"
 
+NAV_DROPDOWN_OPEN = """        <details class="navDropdown" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
+          <summary>
+            <span data-i18n="emr.nav.menu">メニュー</span>
+            <span class="navDropdown__caret" aria-hidden="true"></span>
+          </summary>
+          <div class="navDropdown__panel">
+"""
+NAV_DROPDOWN_CLOSE = """          </div>
+        </details>"""
 
-def nav_link(href: str, i18n: str, label: str, active: bool) -> str:
+
+def nav_link(href: str, i18n: str, label: str, active: bool, indent: str = "          ") -> str:
     cls = "nav__link nav__link--active" if active else "nav__link"
-    return f'          <a class="{cls}" href="{href}" data-i18n="{i18n}">{label}</a>'
+    return f'{indent}<a class="{cls}" href="{href}" data-i18n="{i18n}">{label}</a>'
 
 
 def active_key_for(filename: str) -> str | None:
@@ -79,31 +89,44 @@ def active_key_for(filename: str) -> str | None:
     return None
 
 
-def build_nav(filename: str) -> str:
+def nav_items(filename: str) -> list[tuple[str, str, str, bool]]:
     track_href = "#track" if filename == "index.html" else "./index.html#track"
     ak = active_key_for(filename)
-
-    parts = [
-        nav_link("./about-us.html", "emr.nav.teb", "私たちについて", ak == "teb"),
-        nav_link("./collection-all.html", "emr.nav.shop", "ショップ", ak == "shop"),
-        nav_link("./science.html", "emr.nav.science", "科学を学ぶ", ak == "science"),
-        nav_link("./blog.html", "emr.nav.blog", "ブログ", ak == "blog"),
-        nav_link(track_href, "emr.nav.track", "注文追跡", ak == "track"),
-        nav_link("./faq.html", "emr.nav.faq", "FAQ", ak == "faq"),
-        nav_link(
+    items: list[tuple[str, str, str, bool]] = [
+        ("./about-us.html", "emr.nav.teb", "私たちについて", ak == "teb"),
+        ("./collection-all.html", "emr.nav.shop", "ショップ", ak == "shop"),
+        ("./science.html", "emr.nav.science", "科学を学ぶ", ak == "science"),
+        ("./blog.html", "emr.nav.blog", "ブログ", ak == "blog"),
+        (track_href, "emr.nav.track", "注文追跡", ak == "track"),
+        ("./faq.html", "emr.nav.faq", "FAQ", ak == "faq"),
+        (
             "./auth-consumer-register.html",
             "emr.nav.register",
             "新規登録",
             ak == "register",
         ),
-        nav_link("./auth-consumer-login.html", "emr.nav.login", "ログイン", ak == "login"),
-        nav_link("./contact.html", "emr.nav.contact", "お問い合わせ", ak == "contact"),
+        ("./auth-consumer-login.html", "emr.nav.login", "ログイン", ak == "login"),
+        ("./contact.html", "emr.nav.contact", "お問い合わせ", ak == "contact"),
     ]
     if filename == "sql-editor.html":
-        parts.append(nav_link("./sql-editor.html", "emr.nav.sql", "SQL メモ", True))
+        items.append(("./sql-editor.html", "emr.nav.sql", "SQL メモ", True))
     elif filename == "contact-inquiries-admin.html":
-        parts.append(nav_link("./sql-editor.html", "emr.nav.sql", "SQL メモ", False))
+        items.append(("./sql-editor.html", "emr.nav.sql", "SQL メモ", False))
+    return items
+
+
+def build_nav(filename: str) -> str:
+    parts = [nav_link(h, i, l, a) for h, i, l, a in nav_items(filename)]
     return NAV_OPEN + "\n".join(parts) + "\n" + NAV_CLOSE
+
+
+def build_nav_dropdown(filename: str) -> str:
+    parts = [nav_link(h, i, l, a, indent="            ") for h, i, l, a in nav_items(filename)]
+    return NAV_DROPDOWN_OPEN + "\n".join(parts) + "\n" + NAV_DROPDOWN_CLOSE
+
+
+def build_nav_block(filename: str) -> str:
+    return build_nav(filename) + "\n\n" + build_nav_dropdown(filename)
 
 
 def replace_topbar(text: str) -> str:
@@ -127,12 +150,23 @@ def replace_brand_old(text: str) -> tuple[str, int]:
     return old_brand.subn("\n" + BRAND + "\n", text, count=1)
 
 
+def strip_nav_dropdown(text: str) -> str:
+    return re.sub(
+        r"\s*<details class=\"navDropdown\"[^>]*>.*?</details>",
+        "",
+        text,
+        count=1,
+        flags=re.DOTALL,
+    )
+
+
 def replace_nav(text: str, filename: str) -> tuple[str, int]:
+    text = strip_nav_dropdown(text)
     nav_re = re.compile(
         r'<nav class="nav" data-i18n-attr="aria-label:emr\.nav\.main" aria-label="メイン">.*?</nav>',
         re.DOTALL,
     )
-    return nav_re.subn(build_nav(filename), text, count=1)
+    return nav_re.subn(build_nav_block(filename), text, count=1)
 
 
 def patch_file(path: Path) -> bool:

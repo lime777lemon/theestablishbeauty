@@ -246,6 +246,30 @@
         position: relative;
         z-index: 1;
       }
+      .page-establish .establishPanel--consumer {
+        position: relative;
+        overflow: hidden;
+        border-color: rgba(234, 88, 12, 0.28);
+        background: linear-gradient(145deg, #fff7ed 0%, #ffedd5 42%, #fdba74 100%);
+      }
+      .page-establish .establishPanel--consumer::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(70% 90% at 88% 18%, rgba(249, 115, 22, 0.38) 0%, rgba(249, 115, 22, 0) 58%),
+          radial-gradient(60% 75% at 10% 78%, rgba(251, 146, 60, 0.32) 0%, rgba(251, 146, 60, 0) 62%),
+          linear-gradient(160deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 237, 213, 0) 48%);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .page-establish .establishPanel--consumer > * {
+        position: relative;
+        z-index: 1;
+      }
+      .page-establish .establishPanel--consumer .establishKicker {
+        color: rgba(154, 52, 18, 0.92);
+      }
       .page-establish .establishPanel--muted {
         background: var(--soft);
       }
@@ -351,6 +375,75 @@
         text-transform: uppercase;
         color: rgba(185, 28, 28, 0.85);
         margin-bottom: 8px;
+      }
+      .page-establish .establishBizModel {
+        display: grid;
+        gap: 14px;
+        margin-top: 22px;
+      }
+      @media (min-width: 768px) {
+        .page-establish .establishBizModel {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      .page-establish .establishBizModel__card {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 18px 16px 20px;
+        background: #fff;
+        min-width: 0;
+      }
+      .page-establish .establishBizModel__num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        background: rgba(185, 28, 28, 0.12);
+        color: #b91c1c;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .page-establish .establishBizModel__title {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+      .page-establish .establishAudienceList {
+        margin: 14px 0 0;
+        padding-left: 1.2em;
+        line-height: 1.8;
+        color: rgba(51, 65, 85, 0.96);
+      }
+      .page-establish .establishContactHub {
+        display: grid;
+        gap: 18px;
+        margin-top: 22px;
+      }
+      @media (min-width: 768px) {
+        .page-establish .establishContactHub {
+          grid-template-columns: 1fr 1fr;
+          align-items: stretch;
+        }
+      }
+      .page-establish .establishContactHub__actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .page-establish .establishContactHub__actions .btn {
+        justify-content: center;
+        text-align: center;
+      }
+      .page-establish .establishContactHub__note {
+        margin: 12px 0 0;
+        font-size: 12px;
+        line-height: 1.55;
+        color: rgba(71, 85, 105, 0.95);
       }
       .page-establish .header__inner {
         grid-template-columns: auto 1fr;
@@ -470,6 +563,10 @@
         <nav class="nav" data-i18n-attr="aria-label:teb.nav.main" aria-label="メイン">
           <a class="nav__link" href="./index.html" data-i18n="teb.nav.home">ホーム</a>
           <a class="nav__link nav__link--active" href="./about-us.html" data-i18n="teb.nav.about">私たちについて</a>
+          <a class="nav__link" href="#site-model" data-i18n="teb.nav.sitemodel">このサイトについて</a>
+          <a class="nav__link" href="#for-business" data-i18n="teb.nav.forbusiness">業者の方へ</a>
+          <a class="nav__link" href="#for-consumers" data-i18n="teb.nav.forconsumers">一般の方へ</a>
+          <a class="nav__link" href="#contact-us" data-i18n="teb.nav.contactus">お問い合わせ</a>
           <a class="nav__link" href="#model" data-i18n="teb.nav.model">仕組み</a>
           <a class="nav__link" href="#infrastructure" data-i18n="teb.nav.infra">インフラ</a>
           <a class="nav__link" href="#marketplace" data-i18n="teb.nav.marketplace">Marketplace</a>
@@ -485,6 +582,10 @@
           <div class="navDropdown__panel">
             <a class="nav__link" href="./index.html" data-i18n="teb.nav.home">ホーム</a>
             <a class="nav__link nav__link--active" href="./about-us.html" data-i18n="teb.nav.about">私たちについて</a>
+            <a class="nav__link" href="#site-model" data-i18n="teb.nav.sitemodel">このサイトについて</a>
+            <a class="nav__link" href="#for-business" data-i18n="teb.nav.forbusiness">業者の方へ</a>
+            <a class="nav__link" href="#for-consumers" data-i18n="teb.nav.forconsumers">一般の方へ</a>
+            <a class="nav__link" href="#contact-us" data-i18n="teb.nav.contactus">お問い合わせ</a>
             <a class="nav__link" href="#model" data-i18n="teb.nav.model">仕組み</a>
             <a class="nav__link" href="#infrastructure" data-i18n="teb.nav.infra">インフラ</a>
             <a class="nav__link" href="#marketplace" data-i18n="teb.nav.marketplace">Marketplace</a>
@@ -531,7 +632,9 @@
               </p>
             </div>
             <div class="hero__cta" style="align-self: end">
-              <a class="btn" href="#model" data-i18n="teb.btn.lp">LP / 統合チェックアウト</a>
+              <a class="btn" href="#site-model" data-i18n="teb.btn.sitemodel">このサイトについて</a>
+              <a class="btn btn--ghost" href="#contact-us" data-i18n="teb.btn.contactus">お問い合わせ</a>
+              <a class="btn btn--ghost" href="#model" data-i18n="teb.btn.lp">LP / 統合チェックアウト</a>
               <a class="btn btn--ghost" href="#infrastructure" data-i18n="teb.btn.infra">インフラとしての価値</a>
               <a class="btn btn--ghost" href="#marketplace" data-i18n="teb.btn.market">Marketplace</a>
               <a class="btn btn--ghost" href="./index.html" data-i18n="teb.btn.emr">EMR-TEK ストアへ</a>
@@ -551,6 +654,147 @@
             />
           </figure>
         </div>
+      </section>
+
+      <section class="container page" id="site-model" aria-labelledby="site-model-heading">
+        <h2 class="h2" id="site-model-heading" data-i18n="teb.sitemodel.h2">このサイトについて</h2>
+        <p class="subtle" style="margin-top: 8px; max-width: 44rem" data-i18n="teb.sitemodel.intro" data-i18n-html>
+          The Establish Beauty は、ビューティー領域で<strong>①メディア</strong>・<strong>②アフィリエイト</strong>・<strong>③一部ドロップシッピング</strong>を組み合わせたマーケットプレイスを構築しています。編集コンテンツで「知る」、透明な紹介導線で「選ぶ」、パートナー在庫と連携して「届ける」——単なる EC ではなく、信頼できる発見と購入の場を目指します。
+        </p>
+        <div class="establishBizModel" aria-label="3つの事業要素">
+          <article class="establishBizModel__card">
+            <div class="establishBizModel__num" aria-hidden="true">①</div>
+            <h3 class="establishBizModel__title" data-i18n="teb.sitemodel.media.title">メディア</h3>
+            <p class="subtle" style="margin: 0; line-height: 1.65" data-i18n="teb.sitemodel.media.body" data-i18n-html>
+              ブランドストーリー、成分・背景、使い方などの<strong>編集コンテンツ</strong>（ブログ・科学を学ぶ など）で、購入前の理解と信頼を支えます。掲載・取材・タイアップのご相談もこちらから受け付けます。
+            </p>
+          </article>
+          <article class="establishBizModel__card">
+            <div class="establishBizModel__num" aria-hidden="true">②</div>
+            <h3 class="establishBizModel__title" data-i18n="teb.sitemodel.affiliate.title">アフィリエイト</h3>
+            <p class="subtle" style="margin: 0; line-height: 1.65" data-i18n="teb.sitemodel.affiliate.body" data-i18n-html>
+              メディア・インフルエンサー・パートナーサイト経由の<strong>紹介導線</strong>を、契約と表示ルールに沿って運用します。手数料・計測・開示の詳細は提携時に個別にご案内します（準備中の機能を含みます）。
+            </p>
+          </article>
+          <article class="establishBizModel__card">
+            <div class="establishBizModel__num" aria-hidden="true">③</div>
+            <h3 class="establishBizModel__title" data-i18n="teb.sitemodel.dropship.title">一部ドロップシッピング</h3>
+            <p class="subtle" style="margin: 0; line-height: 1.65" data-i18n="teb.sitemodel.dropship.body" data-i18n-html>
+              掲載商品の<strong>一部は取引先倉庫から直接お客様へ発送</strong>します（split fulfillment）。当社が全 SKU を抱え込まない inventory-light 型で、メーカー・D2C ブランド・物流パートナーと連携します。
+            </p>
+          </article>
+        </div>
+        <p class="micro subtle" style="margin-top: 16px; max-width: 44rem" data-i18n="teb.sitemodel.note">
+          ※ サイトは順次公開・機能追加中です。表示内容・在庫・配送条件は商品ページおよび特定商取引法に基づく表記をご確認ください。
+        </p>
+      </section>
+
+      <section class="container page" id="for-business" aria-labelledby="for-business-heading">
+        <h2 class="h2" id="for-business-heading" data-i18n="teb.business.h2">業者・パートナーの方へ</h2>
+        <p class="subtle" style="margin-top: 8px; max-width: 44rem" data-i18n="teb.business.intro" data-i18n-html>
+          メーカー、D2C ブランド、卸・物流、メディア、アフィリエイト運営者の皆様向けです。ブランド専用 LP（<span class="establishPath">/brands/…</span>）での世界観づくりと、<strong>共通アカウント・共通 Checkout・注文分配</strong>を組み合わせた掲載モデルをご検討いただけます。
+        </p>
+        <div class="establishPanel" style="margin-top: 20px">
+          <ul class="establishAudienceList subtle">
+            <li data-i18n="teb.business.li1" data-i18n-html>
+              <strong>メディア・コンテンツ</strong> — 取材、タイアップ、編集掲載、サイエンス／ブログ連載などのご相談。
+            </li>
+            <li data-i18n="teb.business.li2" data-i18n-html>
+              <strong>アフィリエイト</strong> — 紹介プログラム、トラッキング、レポート、開示表記の整備（契約ベース）。
+            </li>
+            <li data-i18n="teb.business.li3" data-i18n-html>
+              <strong>ドロップシッピング・出品</strong> — カタログ連携、在庫・出荷フロー、split fulfillment に沿った注文受け渡し。
+            </li>
+            <li data-i18n="teb.business.li4" data-i18n-html>
+              <strong>マーケットプレイス掲載</strong> — キュレーション基準、手数料・契約、ブランド LP テンプレのご提案。
+            </li>
+          </ul>
+          <p class="establishContactHub__note" data-i18n="teb.business.contactnote">
+            お問い合わせの際は、会社名・ご担当者名・希望の提携形態（メディア／アフィリエイト／出品・物流）を明記いただけるとスムーズです。
+          </p>
+          <div class="establishContactHub__actions">
+            <a class="btn" href="./contact.html?topic=partner_media" data-i18n="teb.business.btn.media">メディア・コンテンツ提携</a>
+            <a class="btn btn--ghost" href="./contact.html?topic=partner_affiliate" data-i18n="teb.business.btn.affiliate">アフィリエイト・紹介プログラム</a>
+            <a class="btn btn--ghost" href="./contact.html?topic=partner_dropship" data-i18n="teb.business.btn.dropship">ドロップシッピング・出品・物流</a>
+            <a class="btn btn--ghost" href="./contact.html?topic=wholesale" data-i18n="teb.business.btn.wholesale">卸・法人・その他の取引</a>
+            <a class="btn btn--ghost" href="./auth-business-register.html" data-i18n="teb.business.btn.register">法人・取引先アカウント登録</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="container page" id="for-consumers" aria-labelledby="for-consumers-heading">
+        <h2 class="h2" id="for-consumers-heading" data-i18n="teb.consumers.h2">一般のお客様へ</h2>
+        <p class="subtle" style="margin-top: 8px; max-width: 44rem" data-i18n="teb.consumers.intro" data-i18n-html>
+          個人でご利用いただくお客様向けのご案内です。EMR-TEK をはじめ、厳選ブランドの商品を<strong>ひとつのアカウント・ひとつのカート</strong>でお買い物いただけるマーケットを準備しています。
+        </p>
+        <div class="establishPanel establishPanel--muted" style="margin-top: 20px">
+          <ul class="establishAudienceList subtle">
+            <li data-i18n="teb.consumers.li1" data-i18n-html>
+              <strong>発見から購入まで</strong> — ブログや「科学を学ぶ」などのコンテンツで商品を理解したうえで、ストアからご注文いただけます。
+            </li>
+            <li data-i18n="teb.consumers.li2" data-i18n-html>
+              <strong>お届けについて</strong> — ブランド・商品によって発送元が異なる場合があります（分割配送）。お届けは別便になることがあります。
+            </li>
+            <li data-i18n="teb.consumers.li3" data-i18n-html>
+              <strong>紹介リンクについて</strong> — 提携メディア経由のリンクからご訪問いただく場合があります。表示・開示は順次整備します。
+            </li>
+            <li data-i18n="teb.consumers.li4" data-i18n-html>
+              <strong>ウェルネス製品のご注意</strong> — 当サイトの製品情報は疾病の診断・治療・予防を目的としたものではありません。ご不安な場合は FAQ またはお問い合わせください。
+            </li>
+          </ul>
+          <p class="establishContactHub__note" data-i18n="teb.consumers.contactnote">
+            ご注文番号がある場合は、お問い合わせ本文に記載いただくと対応が早くなります。
+          </p>
+          <div class="establishContactHub__actions">
+            <a class="btn" href="./index.html" data-i18n="teb.consumers.btn.shop">EMR-TEK ストアを見る</a>
+            <a class="btn btn--ghost" href="./contact.html?topic=product" data-i18n="teb.consumers.btn.product">製品・購入前のご質問</a>
+            <a class="btn btn--ghost" href="./contact.html?topic=order" data-i18n="teb.consumers.btn.order">注文・配送について</a>
+            <a class="btn btn--ghost" href="./contact.html?topic=returns" data-i18n="teb.consumers.btn.returns">返品・返金について</a>
+            <a class="btn btn--ghost" href="./faq.html" data-i18n="teb.consumers.btn.faq">よくある質問（FAQ）</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="container page" id="contact-us" aria-labelledby="contact-us-heading">
+        <h2 class="h2" id="contact-us-heading" data-i18n="teb.contact.h2">お問い合わせ</h2>
+        <p class="subtle" style="margin-top: 8px; max-width: 44rem" data-i18n="teb.contact.intro">
+          目的に合わせてフォームをお選びください。送信内容は Supabase に保存され、通常 1〜2 営業日以内にメールでご返信します。
+        </p>
+        <div class="establishContactHub">
+          <article class="establishPanel establishPanel--partner">
+            <p class="establishKicker" data-i18n="teb.contact.business.kicker">For partners</p>
+            <h3 class="h3" style="margin-top: 0" data-i18n="teb.contact.business.h3">業者・パートナー向け</h3>
+            <p class="subtle" style="margin-top: 10px; line-height: 1.65" data-i18n="teb.contact.business.p">
+              メディア提携、アフィリエイト、出品・ドロップシッピング、卸売など、取引・掲載のご相談はこちらから。
+            </p>
+            <div class="establishContactHub__actions">
+              <a class="btn" href="./contact.html?topic=partner_media" data-i18n="teb.business.btn.media">メディア・コンテンツ提携</a>
+              <a class="btn btn--ghost" href="./contact.html?topic=partner_affiliate" data-i18n="teb.business.btn.affiliate">アフィリエイト・紹介プログラム</a>
+              <a class="btn btn--ghost" href="./contact.html?topic=partner_dropship" data-i18n="teb.business.btn.dropship">ドロップシッピング・出品・物流</a>
+            </div>
+            <p class="establishContactHub__note">
+              <a class="link" href="mailto:info@theestablishbeauty.com">info@theestablishbeauty.com</a>
+            </p>
+          </article>
+          <article class="establishPanel establishPanel--consumer">
+            <p class="establishKicker" data-i18n="teb.contact.consumer.kicker">For shoppers</p>
+            <h3 class="h3" style="margin-top: 0" data-i18n="teb.contact.consumer.h3">一般のお客様向け</h3>
+            <p class="subtle" style="margin-top: 10px; line-height: 1.65" data-i18n="teb.contact.consumer.p">
+              商品選び、ご注文、配送、返品など、個人のお客様からのお問い合わせはこちらから。
+            </p>
+            <div class="establishContactHub__actions">
+              <a class="btn" href="./contact.html?topic=product" data-i18n="teb.consumers.btn.product">製品・購入前のご質問</a>
+              <a class="btn btn--ghost" href="./contact.html?topic=order" data-i18n="teb.consumers.btn.order">注文・配送について</a>
+              <a class="btn btn--ghost" href="./contact.html?topic=returns" data-i18n="teb.consumers.btn.returns">返品・返金について</a>
+            </div>
+            <p class="establishContactHub__note">
+              <a class="link" href="mailto:info@theestablishbeauty.com">info@theestablishbeauty.com</a>
+            </p>
+          </article>
+        </div>
+        <p style="margin-top: 18px">
+          <a class="btn btn--ghost" href="./contact.html" data-i18n="teb.contact.btn.all">お問い合わせフォーム（全種別）</a>
+        </p>
       </section>
 
       <section class="container page" id="showroom" aria-labelledby="showroom-heading">
@@ -893,6 +1137,18 @@
           <ul class="footer__list">
             <li>
               <a class="link" href="./establish-beauty.html" data-i18n="teb.footer.link.home">ホーム</a>
+            </li>
+            <li>
+              <a class="link" href="#site-model" data-i18n="teb.nav.sitemodel">このサイトについて</a>
+            </li>
+            <li>
+              <a class="link" href="#for-business" data-i18n="teb.nav.forbusiness">業者の方へ</a>
+            </li>
+            <li>
+              <a class="link" href="#for-consumers" data-i18n="teb.nav.forconsumers">一般の方へ</a>
+            </li>
+            <li>
+              <a class="link" href="#contact-us" data-i18n="teb.nav.contactus">お問い合わせ</a>
             </li>
             <li>
               <a class="link" href="#showroom" data-i18n="teb.footer.link.showroom">キュレーション・ショールーム</a>

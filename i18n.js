@@ -31,6 +31,10 @@
       "teb.nav.emr": "EMR-TEK ストア",
       "teb.nav.contact": "お問い合わせ",
       "teb.nav.about": "私たちについて",
+      "teb.nav.sitemodel": "このサイトについて",
+      "teb.nav.forbusiness": "業者の方へ",
+      "teb.nav.forconsumers": "一般の方へ",
+      "teb.nav.contactus": "お問い合わせ",
       "teb.nav.b2b.register": "法人登録",
       "teb.nav.b2b.login": "法人ログイン",
       "teb.crumb.label": "パンくず",
@@ -39,6 +43,8 @@
       "teb.hero.h1": "美しさを、正直に届ける。",
       "teb.hero.lead":
         "<strong>ブランド専用 LP</strong>で世界観を分け（例：<span class=\"establishPath\">/brands/redlight</span> · <span class=\"establishPath\">/brands/kbeauty</span> · <span class=\"establishPath\">/brands/organic</span>）、一方で<strong>アカウント・カート・Checkout はマーケット共通</strong>の現代的な型です。決済は統合、出荷はベンダーごとに<strong>split fulfillment</strong>。単なる EC ではなく、集積・LP・決済・導線・分配・獲得を束ねる<strong>インフラ</strong>として設計します。",
+      "teb.btn.sitemodel": "このサイトについて",
+      "teb.btn.contactus": "お問い合わせ",
       "teb.btn.lp": "LP / 統合チェックアウト",
       "teb.btn.infra": "インフラとしての価値",
       "teb.btn.market": "Marketplace",
@@ -137,6 +143,72 @@
       "teb.partner.other.h3": "その他のブランド",
       "teb.partner.other.p": "追加の取引先が決まり次第、この欄に掲載します。",
 
+      "teb.sitemodel.h2": "このサイトについて",
+      "teb.sitemodel.intro":
+        "The Establish Beauty は、ビューティー領域で<strong>①メディア</strong>・<strong>②アフィリエイト</strong>・<strong>③一部ドロップシッピング</strong>を組み合わせたマーケットプレイスを構築しています。編集コンテンツで「知る」、透明な紹介導線で「選ぶ」、パートナー在庫と連携して「届ける」——単なる EC ではなく、信頼できる発見と購入の場を目指します。",
+      "teb.sitemodel.media.title": "メディア",
+      "teb.sitemodel.media.body":
+        "ブランドストーリー、成分・背景、使い方などの<strong>編集コンテンツ</strong>（ブログ・科学を学ぶ など）で、購入前の理解と信頼を支えます。掲載・取材・タイアップのご相談もこちらから受け付けます。",
+      "teb.sitemodel.affiliate.title": "アフィリエイト",
+      "teb.sitemodel.affiliate.body":
+        "メディア・インフルエンサー・パートナーサイト経由の<strong>紹介導線</strong>を、契約と表示ルールに沿って運用します。手数料・計測・開示の詳細は提携時に個別にご案内します（準備中の機能を含みます）。",
+      "teb.sitemodel.dropship.title": "一部ドロップシッピング",
+      "teb.sitemodel.dropship.body":
+        "掲載商品の<strong>一部は取引先倉庫から直接お客様へ発送</strong>します（split fulfillment）。当社が全 SKU を抱え込まない inventory-light 型で、メーカー・D2C ブランド・物流パートナーと連携します。",
+      "teb.sitemodel.note":
+        "※ サイトは順次公開・機能追加中です。表示内容・在庫・配送条件は商品ページおよび特定商取引法に基づく表記をご確認ください。",
+
+      "teb.business.h2": "業者・パートナーの方へ",
+      "teb.business.intro":
+        "メーカー、D2C ブランド、卸・物流、メディア、アフィリエイト運営者の皆様向けです。ブランド専用 LP（<span class=\"establishPath\">/brands/…</span>）での世界観づくりと、<strong>共通アカウント・共通 Checkout・注文分配</strong>を組み合わせた掲載モデルをご検討いただけます。",
+      "teb.business.li1":
+        "<strong>メディア・コンテンツ</strong> — 取材、タイアップ、編集掲載、サイエンス／ブログ連載などのご相談。",
+      "teb.business.li2":
+        "<strong>アフィリエイト</strong> — 紹介プログラム、トラッキング、レポート、開示表記の整備（契約ベース）。",
+      "teb.business.li3":
+        "<strong>ドロップシッピング・出品</strong> — カタログ連携、在庫・出荷フロー、split fulfillment に沿った注文受け渡し。",
+      "teb.business.li4":
+        "<strong>マーケットプレイス掲載</strong> — キュレーション基準、手数料・契約、ブランド LP テンプレのご提案。",
+      "teb.business.contactnote":
+        "お問い合わせの際は、会社名・ご担当者名・希望の提携形態（メディア／アフィリエイト／出品・物流）を明記いただけるとスムーズです。",
+      "teb.business.btn.media": "メディア・コンテンツ提携",
+      "teb.business.btn.affiliate": "アフィリエイト・紹介プログラム",
+      "teb.business.btn.dropship": "ドロップシッピング・出品・物流",
+      "teb.business.btn.wholesale": "卸・法人・その他の取引",
+      "teb.business.btn.register": "法人・取引先アカウント登録",
+
+      "teb.consumers.h2": "一般のお客様へ",
+      "teb.consumers.intro":
+        "個人でご利用いただくお客様向けのご案内です。EMR-TEK をはじめ、厳選ブランドの商品を<strong>ひとつのアカウント・ひとつのカート</strong>でお買い物いただけるマーケットを準備しています。",
+      "teb.consumers.li1":
+        "<strong>発見から購入まで</strong> — ブログや「科学を学ぶ」などのコンテンツで商品を理解したうえで、ストアからご注文いただけます。",
+      "teb.consumers.li2":
+        "<strong>お届けについて</strong> — ブランド・商品によって発送元が異なる場合があります（分割配送）。お届けは別便になることがあります。",
+      "teb.consumers.li3":
+        "<strong>紹介リンクについて</strong> — 提携メディア経由のリンクからご訪問いただく場合があります。表示・開示は順次整備します。",
+      "teb.consumers.li4":
+        "<strong>ウェルネス製品のご注意</strong> — 当サイトの製品情報は疾病の診断・治療・予防を目的としたものではありません。ご不安な場合は FAQ またはお問い合わせください。",
+      "teb.consumers.contactnote":
+        "ご注文番号がある場合は、お問い合わせ本文に記載いただくと対応が早くなります。",
+      "teb.consumers.btn.shop": "EMR-TEK ストアを見る",
+      "teb.consumers.btn.product": "製品・購入前のご質問",
+      "teb.consumers.btn.order": "注文・配送について",
+      "teb.consumers.btn.returns": "返品・返金について",
+      "teb.consumers.btn.faq": "よくある質問（FAQ）",
+
+      "teb.contact.h2": "お問い合わせ",
+      "teb.contact.intro":
+        "目的に合わせてフォームをお選びください。送信内容は Supabase に保存され、通常 1〜2 営業日以内にメールでご返信します。",
+      "teb.contact.business.kicker": "For partners",
+      "teb.contact.business.h3": "業者・パートナー向け",
+      "teb.contact.business.p":
+        "メディア提携、アフィリエイト、出品・ドロップシッピング、卸売など、取引・掲載のご相談はこちらから。",
+      "teb.contact.consumer.kicker": "For shoppers",
+      "teb.contact.consumer.h3": "一般のお客様向け",
+      "teb.contact.consumer.p":
+        "商品選び、ご注文、配送、返品など、個人のお客様からのお問い合わせはこちらから。",
+      "teb.contact.btn.all": "お問い合わせフォーム（全種別）",
+
       "teb.footer.note":
         "メインの法人・連絡先・ポリシー文面はドメイン公開時に合わせて整備してください。このページは静的プレースホルダーです。",
       "teb.footer.explore": "探索",
@@ -161,7 +233,17 @@
       "lang.en": "English",
 
       "emr.skip": "本文へスキップ",
+      "emr.home.announce.aria": "サイト開設のお知らせ",
+      "emr.home.announce":
+        "現在、ウェブサイトを開設準備中です。ご不便をおかけしますが、公開まで今しばらくお待ちください。",
+      "emr.home.notify.aria": "プラットフォームのご案内",
+      "emr.home.notify.status": "現在Webサイト開設中",
+      "emr.home.notify.lead":
+        "The Establish Beauty は、編集によるおすすめ、アフィリエイト商品、選りすぐりの直送商品を扱う、キュレーション型のビューティーメディア＆コマースプラットフォームです。",
+      "emr.home.notify.contact":
+        "ブランド提携・ベンダー出品・卸売に関するお問い合わせ：<br><a class=\"homeNotify__email\" href=\"mailto:info@theestablishbeauty.com\">info@theestablishbeauty.com</a>",
       "emr.nav.main": "メイン",
+      "emr.nav.menu": "メニュー",
       "emr.topbar.badge": "出荷2〜5営業日・お届け7〜14日目安",
       "emr.topbar.teb": "The Establish Beauty — 私たちについて",
       "emr.nav.teb": "私たちについて",
@@ -309,6 +391,9 @@
       "contact.topic.order": "注文・配送について",
       "contact.topic.returns": "返品・返金について",
       "contact.topic.wholesale": "卸・法人について",
+      "contact.topic.partner_media": "メディア・コンテンツ提携（業者）",
+      "contact.topic.partner_affiliate": "アフィリエイト・紹介プログラム（業者）",
+      "contact.topic.partner_dropship": "ドロップシッピング・出品・物流（業者）",
       "contact.topic.other": "その他",
       "contact.consent": "入力内容に同意して送信します",
       "contact.submit": "送信",
@@ -417,6 +502,10 @@
       "teb.nav.emr": "EMR-TEK store",
       "teb.nav.contact": "Contact",
       "teb.nav.about": "About us",
+      "teb.nav.sitemodel": "About this site",
+      "teb.nav.forbusiness": "For partners",
+      "teb.nav.forconsumers": "For shoppers",
+      "teb.nav.contactus": "Contact",
       "teb.nav.b2b.register": "Business signup",
       "teb.nav.b2b.login": "Business login",
       "teb.crumb.label": "Breadcrumb",
@@ -425,6 +514,8 @@
       "teb.hero.h1": "Beauty, delivered with integrity.",
       "teb.hero.lead":
         "Each brand gets its own <strong>dedicated LP</strong> (e.g. <span class=\"establishPath\">/brands/redlight</span> · <span class=\"establishPath\">/brands/kbeauty</span> · <span class=\"establishPath\">/brands/organic</span>), while <strong>account, cart, and checkout stay shared</strong> across the market. One payment flow; <strong>split fulfillment</strong> by vendor. We are building <strong>infrastructure</strong>—not just a store—for aggregation, LPs, payments, journeys, routing, and growth.",
+      "teb.btn.sitemodel": "About this site",
+      "teb.btn.contactus": "Contact",
       "teb.btn.lp": "LP & unified checkout",
       "teb.btn.infra": "Platform value",
       "teb.btn.market": "Marketplace",
@@ -523,6 +614,72 @@
       "teb.partner.other.h3": "More brands",
       "teb.partner.other.p": "We will list additional partners here as they join.",
 
+      "teb.sitemodel.h2": "About this site",
+      "teb.sitemodel.intro":
+        "The Establish Beauty is building a beauty marketplace that combines <strong>① media</strong>, <strong>② affiliate</strong>, and <strong>③ partial dropshipping</strong>. Learn through editorial content, choose through transparent referral paths, and receive products via partner fulfillment—not just another storefront, but a trusted place to discover and buy.",
+      "teb.sitemodel.media.title": "Media",
+      "teb.sitemodel.media.body":
+        "Editorial content—brand stories, ingredients, science, and how-to guides (blog, Learn the science, and more)—supports trust before purchase. We welcome media, features, and content partnerships.",
+      "teb.sitemodel.affiliate.title": "Affiliate",
+      "teb.sitemodel.affiliate.body":
+        "Referral paths from media, creators, and partner sites run under contracts and disclosure rules. Commission, tracking, and labeling details are shared when you partner with us (some features are still in progress).",
+      "teb.sitemodel.dropship.title": "Partial dropshipping",
+      "teb.sitemodel.dropship.body":
+        "<strong>Some items ship directly from partner warehouses</strong> to customers (split fulfillment). We use an inventory-light model—working with manufacturers, D2C brands, and logistics partners rather than holding every SKU ourselves.",
+      "teb.sitemodel.note":
+        "※ The site is launching in stages. Please check product pages and legal notices (e.g. specified commercial transactions) for stock and shipping terms.",
+
+      "teb.business.h2": "For partners & vendors",
+      "teb.business.intro":
+        "For manufacturers, D2C brands, wholesale/logistics, media, and affiliate operators. Explore listing on brand LPs (<span class=\"establishPath\">/brands/…</span>) with <strong>shared account, shared checkout, and order routing</strong>.",
+      "teb.business.li1":
+        "<strong>Media & content</strong> — Features, takeovers, editorial placements, science/blog series, and more.",
+      "teb.business.li2":
+        "<strong>Affiliate</strong> — Referral programs, tracking, reporting, and disclosure (contract-based).",
+      "teb.business.li3":
+        "<strong>Dropshipping & catalog</strong> — Catalog sync, stock/ship flows, and order handoff for split fulfillment.",
+      "teb.business.li4":
+        "<strong>Marketplace listing</strong> — Curation criteria, fees, contracts, and brand LP templates.",
+      "teb.business.contactnote":
+        "Please include your company name, contact person, and desired partnership type (media / affiliate / catalog & logistics) in your message.",
+      "teb.business.btn.media": "Media & content partnership",
+      "teb.business.btn.affiliate": "Affiliate & referral program",
+      "teb.business.btn.dropship": "Dropshipping, listing & logistics",
+      "teb.business.btn.wholesale": "Wholesale, B2B & other trade",
+      "teb.business.btn.register": "Business partner registration",
+
+      "teb.consumers.h2": "For individual shoppers",
+      "teb.consumers.intro":
+        "For personal use. We are preparing a market where you can shop curated brands—including EMR-TEK—with <strong>one account and one cart</strong>.",
+      "teb.consumers.li1":
+        "<strong>From discovery to purchase</strong> — Understand products through blog and science content, then order from the store.",
+      "teb.consumers.li2":
+        "<strong>Delivery</strong> — Ship-from locations may differ by brand or SKU (split fulfillment). Items may arrive in separate packages.",
+      "teb.consumers.li3":
+        "<strong>Referral links</strong> — You may arrive via partner media links. Disclosure labeling is being expanded.",
+      "teb.consumers.li4":
+        "<strong>Wellness products</strong> — Product information is not intended to diagnose, treat, cure, or prevent disease. See FAQ or contact us with questions.",
+      "teb.consumers.contactnote":
+        "If you have an order number, include it in your message for faster support.",
+      "teb.consumers.btn.shop": "Open EMR-TEK store",
+      "teb.consumers.btn.product": "Product & pre-purchase questions",
+      "teb.consumers.btn.order": "Orders & shipping",
+      "teb.consumers.btn.returns": "Returns & refunds",
+      "teb.consumers.btn.faq": "FAQ",
+
+      "teb.contact.h2": "Contact",
+      "teb.contact.intro":
+        "Choose the form that matches your need. Submissions are stored in Supabase; we usually reply by email within 1–2 business days.",
+      "teb.contact.business.kicker": "For partners",
+      "teb.contact.business.h3": "Partners & vendors",
+      "teb.contact.business.p":
+        "Media, affiliate, listing, dropshipping, wholesale, and other trade or listing inquiries.",
+      "teb.contact.consumer.kicker": "For shoppers",
+      "teb.contact.consumer.h3": "Individual customers",
+      "teb.contact.consumer.p":
+        "Product questions, orders, shipping, returns, and other personal shopper inquiries.",
+      "teb.contact.btn.all": "Contact form (all topics)",
+
       "teb.footer.note":
         "Legal entity, contact, and policy copy will be finalized at domain launch. This page is a static placeholder.",
       "teb.footer.explore": "Explore",
@@ -547,7 +704,17 @@
       "lang.en": "English",
 
       "emr.skip": "Skip to content",
+      "emr.home.announce.aria": "Site launch notice",
+      "emr.home.announce":
+        "This website is currently under construction. Thank you for your patience while we prepare for launch.",
+      "emr.home.notify.aria": "Platform notice",
+      "emr.home.notify.status": "Website currently under construction",
+      "emr.home.notify.lead":
+        "The Establish Beauty is a curated beauty media and commerce platform featuring editorial recommendations, affiliate products, and selected direct-shipping items.",
+      "emr.home.notify.contact":
+        "For brand partnerships, vendor applications, or wholesale inquiries:<br><a class=\"homeNotify__email\" href=\"mailto:info@theestablishbeauty.com\">info@theestablishbeauty.com</a>",
       "emr.nav.main": "Main",
+      "emr.nav.menu": "Menu",
       "emr.topbar.badge": "Ships in 2–5 business days · delivery ~7–14 days",
       "emr.topbar.teb": "The Establish Beauty — About",
       "emr.nav.teb": "About us",
@@ -695,6 +862,9 @@
       "contact.topic.order": "Order & shipping",
       "contact.topic.returns": "Returns & refunds",
       "contact.topic.wholesale": "Wholesale / business",
+      "contact.topic.partner_media": "Media & content partnership (B2B)",
+      "contact.topic.partner_affiliate": "Affiliate & referral program (B2B)",
+      "contact.topic.partner_dropship": "Dropshipping, listing & logistics (B2B)",
       "contact.topic.other": "Other",
       "contact.consent": "I agree to submit the information above",
       "contact.submit": "Submit",
