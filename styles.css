@@ -1243,6 +1243,44 @@ a {
   }
 }
 
+.siteNotify {
+  background: linear-gradient(90deg, #9a3412 0%, #ea580c 48%, #c2410c 100%);
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.siteNotify__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.siteNotify__text {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+}
+
+.siteNotify--minimal {
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.siteNotify--minimal .siteNotify__text {
+  margin: 0;
+}
+
+.siteAnnounce + .topbar,
+.siteNotify + .topbar {
+  border-top: none;
+}
+
 .siteAnnounce {
   background: linear-gradient(90deg, #7f1d1d 0%, #b91c1c 42%, #991b1b 100%);
   color: #fff;

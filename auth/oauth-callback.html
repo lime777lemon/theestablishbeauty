@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Google ログイン処理中…</title>
+    <link rel="stylesheet" href="../styles.css" />
     <style>
       body {
         font-family: system-ui, sans-serif;
@@ -14,7 +15,11 @@
     </style>
   </head>
   <body>
-    <p id="msg">Google ログインを完了しています…</p>
+        <div class="siteNotify siteNotify--minimal" role="status" aria-label="サイト構築のお知らせ">
+      <p class="siteNotify__text">現在Webサイト構築中 · Website currently under construction</p>
+    </div>
+
+<p id="msg">Google ログインを完了しています…</p>
     <script type="module">
       const SESSION_KEY = "establish_sb_session_v1";
       const GOTRUE_STORAGE_KEY = "establish_sb_gotrue";

@@ -602,6 +602,20 @@ function yen(n) {
   return new Intl.NumberFormat("ja-JP", { style: "currency", currency: "JPY" }).format(n);
 }
 
+function uiLang() {
+  const si = window.siteI18n;
+  return si && typeof si.getLang === "function" ? si.getLang() : "ja";
+}
+
+function uiT(key, fallback) {
+  const si = window.siteI18n;
+  if (si && typeof si.t === "function") {
+    const v = si.t(uiLang(), key);
+    if (v && v !== key) return v;
+  }
+  return fallback ?? key;
+}
+
 function safeText(s) {
   return typeof s === "string" ? s : "";
 }
@@ -1099,26 +1113,28 @@ function sortProducts(items, sortKey) {
 }
 
 function categoryLabel(cat) {
-  switch (cat) {
-    case "red":
-      return "赤色光・近赤外";
-    case "mask":
-      return "LEDマスク";
-    case "uv":
-      return "UV";
-    case "glasses":
-      return "ブルーライトカット";
-    case "cosmetics":
-      return "コスメ";
-    case "indoor":
-      return "室内照明";
-    case "stands":
-      return "スタンド";
-    case "emf":
-      return "EMF対策";
-    default:
-      return "商品";
-  }
+  const keys = {
+    red: "emr.index.shop.cat.red",
+    mask: "emr.index.shop.cat.mask",
+    uv: "emr.index.shop.cat.uv",
+    glasses: "emr.index.shop.cat.glasses",
+    cosmetics: "emr.index.shop.cat.cosmetics",
+    indoor: "emr.index.shop.cat.indoor",
+    stands: "emr.index.shop.cat.stands",
+    emf: "emr.index.shop.cat.emf",
+  };
+  const fallbacks = {
+    red: "赤色光・近赤外",
+    mask: "LEDマスク",
+    uv: "UV",
+    glasses: "ブルーライトカット",
+    cosmetics: "コスメ",
+    indoor: "室内照明",
+    stands: "スタンド",
+    emf: "EMF対策",
+  };
+  if (keys[cat]) return uiT(keys[cat], fallbacks[cat]);
+  return uiT("emr.index.shop.cat.default", "商品");
 }
 
 function renderGrid() {
@@ -1132,7 +1148,11 @@ function renderGrid() {
   const items = sortProducts(filtered, sortKey);
 
   const meta = document.querySelector("[data-results-meta]");
-  if (meta) meta.textContent = `${items.length}件 / 全${PRODUCTS.length}件`;
+  if (meta) {
+    meta.textContent = uiT("emr.index.shop.resultsMeta", `${items.length}件 / 全${PRODUCTS.length}件`)
+      .replace("{shown}", String(items.length))
+      .replace("{total}", String(PRODUCTS.length));
+  }
 
   const isShopAllGrid = grid.classList.contains("shopAll__grid");
   const isUniformProductGrid =
@@ -1152,8 +1172,8 @@ function renderGrid() {
 
     const collectionRow = isShopAllGrid
       ? `<p class="product__collection">
-          <span class="sr-only">コレクション名：</span>
-          <a class="product__collectionLink" href="./collection-all.html">全商品</a>
+          <span class="sr-only">${uiT("emr.index.shop.collectionSr", "コレクション名：")}</span>
+          <a class="product__collectionLink" href="./collection-all.html">${uiT("emr.index.shop.collectionAll", "全商品")}</a>
         </p>`
       : "";
 
@@ -1165,21 +1185,23 @@ function renderGrid() {
       </div>`;
 
     const onSale = Boolean(p.was && p.was > p.now);
+    const addLabel = uiT("emr.index.btn.addToCart", "カートに追加");
+    const detailsLabel = uiT("emr.index.btn.details", "詳細");
     const actionsHtml = isUniformProductGrid
       ? `<div class="product__actions">
-          <button class="btn" type="button" data-add>カートに追加</button>
+          <button class="btn" type="button" data-add>${addLabel}</button>
         </div>`
       : `<div class="product__actions">
-          <button class="btn" type="button" data-add>カートに追加</button>
-          <button class="btn btn--ghost" type="button" data-view>詳細</button>
+          <button class="btn" type="button" data-add>${addLabel}</button>
+          <button class="btn btn--ghost" type="button" data-view>${detailsLabel}</button>
         </div>`;
     const priceInner = onSale
-      ? `<span class="sr-only">販売価格</span>
+      ? `<span class="sr-only">${uiT("emr.index.price.sale", "販売価格")}</span>
           <span class="price__now"></span>
-          <span class="sr-only">通常価格</span>
+          <span class="sr-only">${uiT("emr.index.price.regular", "通常価格")}</span>
           <span class="price__was"></span>
           <span class="save"></span>`
-      : `<span class="sr-only">価格</span>
+      : `<span class="sr-only">${uiT("emr.index.price.label", "価格")}</span>
           <span class="price__now"></span>
           <span class="price__was" hidden></span>
           <span class="save" hidden></span>`;
@@ -1190,7 +1212,7 @@ function renderGrid() {
         ${collectionRow}
         <div class="product__tags" data-product-tags></div>
         <h3 class="product__title"></h3>
-        <div class="stars" aria-label="評価 ${p.rating.toFixed(1)} / 5">
+        <div class="stars" aria-label="${uiT("emr.index.aria.ratingValue", "評価 ${p.rating.toFixed(1)} / 5").replace("{rating}", p.rating.toFixed(1))}">
           <span class="stars__dots" aria-hidden="true">★★★★★</span>
           <span>${p.rating.toFixed(1)}</span>
         </div>
@@ -1292,7 +1314,7 @@ function renderGrid() {
     const saveEl = $(".save", card);
     if (onSale) {
       wasEl.textContent = yen(p.was);
-      saveEl.textContent = `${yen(save)} お得`;
+      saveEl.textContent = uiT("emr.index.saveDeal", `${yen(save)} お得`).replace("{amount}", yen(save));
     } else if (wasEl && saveEl) {
       wasEl.textContent = "";
       saveEl.textContent = "";
@@ -1418,7 +1440,16 @@ function initForms() {
     const order = String(fd.get("order") ?? "").trim();
     const email = String(fd.get("email") ?? "").trim();
     const out = document.querySelector("[data-track-result]");
-    if (out) out.textContent = `注文 ${order}（${email}）は「発送準備中」です。`;
+    const trackKey = form.getAttribute("data-i18n-track-result");
+    const si = window.siteI18n;
+    const lang = si && typeof si.getLang === "function" ? si.getLang() : "ja";
+    const tpl =
+      trackKey && si && typeof si.t === "function"
+        ? si.t(lang, trackKey)
+        : `注文 ${order}（${email}）は「発送準備中」です。`;
+    if (out) {
+      out.textContent = tpl.replace("{order}", order).replace("{email}", email);
+    }
   });
 
   // お問い合わせは contact-form.js が担当（app.js の他初期化が失敗しても送信できるようにする）
@@ -2293,6 +2324,9 @@ function main() {
   initProductGallery();
   updateCartUI();
   renderGrid();
+  document.addEventListener("site-lang-change", () => {
+    if (document.querySelector("[data-grid]")) renderGrid();
+  });
 }
 
 document.addEventListener("DOMContentLoaded", main);

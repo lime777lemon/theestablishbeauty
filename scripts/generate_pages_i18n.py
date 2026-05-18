@@ -1,0 +1,535 @@
+#!/usr/bin/env python3
+"""Generate i18n-pages-messages.js for collection, science, blog, and FAQ pages."""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT_JS = ROOT / "i18n-pages-messages.js"
+
+MESSAGES: dict[str, dict[str, str]] = {
+    "ja": {
+        # — common —
+        "emr.common.breadcrumb.home": "ホーム",
+        # — collection-all (hero + footer) —
+        "emr.collection.doc.title": "全商品 – EMR-TEK",
+        "emr.collection.doc.desc": (
+            "EMR-TEK 全商品（All Products）— 並べ替え・フィルター、カテゴリからの導線、"
+            "赤色光セラピー関連記事まで。公式 en-jp/collections/all と同じ構成の静的版です。"
+        ),
+        "emr.collection.breadcrumb.parent": "コレクション",
+        "emr.collection.breadcrumb.current": "全商品",
+        "emr.collection.hero.h1": "全商品",
+        "emr.collection.hero.sub": (
+            "公式ストアの「All Products」と同様、一覧のほかカテゴリ別のおすすめや学習記事まで"
+            "このページにまとめています。フィルター・並べ替え・キーワード検索に対応します。"
+        ),
+        "emr.collection.footer.disclaimer": (
+            "<strong>重要な注意事項</strong>: "
+            "赤色および赤外線治療装置、青色遮光メガネ、その他の製品に関してこのサイトで提供されるすべての情報は、"
+            "病気の診断、治療、治癒、予防を目的としたものではありません。"
+        ),
+        # — science.html —
+        "emr.science.doc.title": "科学を学ぶ – EMR-TEK",
+        "emr.science.doc.desc": "EMR-TEK 日本語版 – 赤信号（赤色光・近赤外）の背後にある科学",
+        "emr.science.breadcrumb.current": "科学を学ぶ",
+        "emr.science.hero.kicker": "赤信号の背後にある科学",
+        "emr.science.hero.h1": "日々のウェルネスに、光のパワーを",
+        "emr.science.hero.lead": (
+            "ミトコンドリアから波長・放射照度まで、研究に基づいてわかりやすくまとめています。"
+        ),
+        "emr.science.kpi.aria": "要点",
+        "emr.science.kpi.mechanism.label": "主要メカニズム",
+        "emr.science.kpi.mechanism.value": "ATP↑ / 血流↑",
+        "emr.science.kpi.factors.label": "重要因子",
+        "emr.science.kpi.factors.value": "波長・放射照度",
+        "emr.science.kpi.dose.label": "用量反応",
+        "emr.science.kpi.dose.value": "二相性",
+        "emr.science.mechanisms.h2": "赤色光治療：2つの同時メカニズム",
+        "emr.science.mechanisms.p1": (
+            "赤色光とNIR（近赤外）光はミトコンドリアのシトクロムcオキシダーゼ（複合体IV）に吸収され、"
+            "<strong>ATP産生が増加</strong>します。細胞エネルギーは多くの生理機能の下流を駆動します。"
+            "これは理論ではなく、PubMedで公開された6,000件以上の研究で再現されています。"
+        ),
+        "emr.science.mechanisms.p2": (
+            "2つ目の同時メカニズムとして、光は酵素から一酸化窒素を光解離し、酵素を解放して"
+            "<strong>局所的な血管拡張剤</strong>として機能します。結果として治療された組織への血流が増加します。"
+            "1つのセッションで2つの効果が重なります。"
+        ),
+        "emr.science.callout.title": "重要",
+        "emr.science.callout.body": (
+            "波長・放射照度・テクノロジーによって、デバイスが実際に機能するかどうかが決まります。"
+        ),
+        "emr.science.wavelength.h2": "波長と放射照度：効く/効かないを分ける要素",
+        "emr.science.wavelength.p1": (
+            "シトクロムcオキシダーゼの吸収ピークは <strong>約630nm / 約670nm / 約830nm</strong> です。"
+            "これは多くのパネルが採用する汎用的な660nm/850nmとは異なります。"
+        ),
+        "emr.science.wavelength.p2": (
+            "組織に送達される放射照度（mW/cm²）は、ワット数ではなく<strong>線量</strong>を決定します。"
+            "EMR-TEKのCOB（Chip-on-Board）テクノロジーは、標準SMDパネルの約200mW/cm²に対して、"
+            "<strong>パネル面で1,400mW/cm²</strong>を実現します。この差が、現実的な距離での治療投与を可能にします。"
+        ),
+        "emr.science.biphasic.h2": "二相用量反応：多ければ良い、ではない",
+        "emr.science.biphasic.p1": (
+            "光バイオモジュレーションは二相用量反応に従います。少なすぎると反応なし、適切な量で狙う効果、"
+            "多すぎると同じ経路が阻害される可能性があります。放射照度、距離、セッション時間、一貫性はすべて重要です。"
+        ),
+        "emr.science.biphasic.p2": (
+            "EMR-TEKデバイスは、高精度の波長、COB放射照度、サードパーティ検証済み出力を中心に構築されています。"
+            "テクノロジーの差が、実際の結果と高価なプラセボを区別します。"
+        ),
+        "emr.science.benefits.h2": "フルメリットのレッドライトセラピー",
+        "emr.science.benefits.lead": "代表的なテーマをまとめました。",
+        "emr.science.split.skin.imgAlt": "自宅でFirewaveを使っている女性",
+        "emr.science.split.skin.h3": "皮膚とコラーゲン",
+        "emr.science.split.skin.li1": (
+            "630nmは線維芽細胞（コラーゲン/エラスチン生成に関与）との相互作用が研究されています。"
+        ),
+        "emr.science.split.skin.li2": (
+            "研究はシトクロムC酸化酵素の活性化と細胞エネルギーの関連に焦点を当てています。"
+        ),
+        "emr.science.split.skin.li3": (
+            "数百件の公開研究（Avci et al., 2013; Chung et al., 2012）にわたって文書化されています。"
+        ),
+        "emr.science.split.circulation.imgAlt": "",
+        "emr.science.split.circulation.h3": "循環と血流",
+        "emr.science.split.circulation.li1": (
+            "一酸化窒素の光解離が、局所血管拡張剤として働くことが研究されています。"
+        ),
+        "emr.science.split.circulation.li2": (
+            "このメカニズムは、曝露領域への血流増加と関連付けられています。"
+        ),
+        "emr.science.split.circulation.li3": (
+            "医薬品の血管拡張薬の標的となる同じ分子が、ここでは光で放出されます。"
+        ),
+        "emr.science.split.technology.imgAlt": "Firewaveをオンにして使用するゴージャスな女性",
+        "emr.science.split.technology.h3": "実際に重要なテクノロジー",
+        "emr.science.split.technology.li1": (
+            "標準SMDパネルに対するCOB（チップオンボード）：1,400 mW/cm² vs 200 mW/cm²"
+        ),
+        "emr.science.split.technology.li2": (
+            "ゼロフリッカー：医療機器と同じ規格のMeanwell工業グレードドライバー"
+        ),
+        "emr.science.split.technology.li3": "ゼロEMF：サードパーティテスト済み（ユーザーに磁場なし）",
+        "emr.science.split.sleep.imgAlt": "ベッドでインフェルノを使っている人",
+        "emr.science.split.sleep.h3": "睡眠と概日生物学",
+        "emr.science.split.sleep.li1": "メラノプシンは400–570nmに反応します（赤色光は範囲外）。",
+        "emr.science.split.sleep.li2": "概日リズムの乱れが懸念される代替光源として研究されています。",
+        "emr.science.split.sleep.li3": (
+            "サードパーティ検証済み精度波長：630/670/830nm（コモディティ660/850nmではありません）。"
+        ),
+        "emr.science.cta.faq": "FAQを見る",
+        "emr.science.cta.contact": "お問い合わせ",
+        # — blog.html —
+        "emr.blog.doc.title": "ブログ – EMR-TEK",
+        "emr.blog.doc.desc": (
+            "EMR-TEK ブログ — 赤色光、紫外線、スキンケア、光の科学に関する記事。"
+        ),
+        "emr.blog.breadcrumb.current": "ブログ",
+        "emr.blog.hero.h1": "ブログ",
+        "emr.blog.hero.sub": (
+            "光の科学、スキンケア、UV の基礎など — 記事の全文は EMR-TEK 公式サイトでお読みいただけます。"
+        ),
+        "emr.blog.srOnly": "記事一覧",
+        "emr.blog.readMore": "続きを読む",
+        "emr.blog.post1.title": (
+            "あなたは本当に自分の肌にふさわしいものを与えていますか — それともプラスチックで重ねていますか？"
+        ),
+        "emr.blog.post1.excerpt": (
+            "肌がプラスチック製の LED マスク シェルに 15–20 分間出会うたびに、快適さと使いやすさにトレードオフが生じます。"
+            "従来の LED フェイスマスクは皮膚に直接当てられます — プラスチックのシェルを顔に押し込み、暖かい空気を閉じ込めます。…"
+        ),
+        "emr.blog.post2.title": "人間は紫外線を見ることができるのか:謎を解説",
+        "emr.blog.post2.excerpt": (
+            "紫外線の目に見えない世界を探索する 通常は視界から隠されているもの — 紫外線（UV）の微妙で目に見えない波長を認識できることを想像してみてください。"
+            "UV は人間の目で検出できる範囲をはるかに超えていますが、私たちの…"
+        ),
+        "emr.blog.post3.title": "肺に赤色光療法を使用する方法: ステップバイステップ",
+        "emr.blog.post3.excerpt": (
+            "人々が全体的な幸福感をサポートする自然な方法を探すにつれて、赤色光や近赤外線への関心が急速に高まっています。"
+            "赤色光療法は科学界や健康界でよく議論されますが、多くの人が光ベースの治療を楽しんでいます。…"
+        ),
+        "emr.blog.post4.title": "365 と 395 UV ライト: 違いは何ですか？",
+        "emr.blog.post4.excerpt": (
+            "365nm と 395nm の UV 光: 違いと用途を理解する 紫外線（UV）光技術の世界では、法医学、宝石学、セキュリティ、"
+            "ビジュアル デザインなどの分野の専門家にとって、さまざまな波長の動作を知ることが不可欠です。違いは…"
+        ),
+        "emr.blog.post5.title": "UVBライトとは:UVBライト101",
+        "emr.blog.post5.excerpt": (
+            "UVB 光の理解: UVB 光とは何か、そしてなぜ重要なのか UVB 光についてはよく話題になりますが、"
+            "必ずしも完全に理解されているわけではありません。UVB は自然太陽光の一部として最もよく知られていますが、"
+            "私たちの相互作用において独特の役割を果たしています。…"
+        ),
+        "emr.blog.post6.title": "テクスチャーのある肌を取り除く方法: ステップバイステップ",
+        "emr.blog.post6.excerpt": (
+            "テクスチャード スキンを理解する: 原因、ケア、日常の健康アプローチ テクスチャード スキンは、"
+            "あらゆる年齢、あらゆる肌タイプに現れる共通の懸念事項です。小さな凹凸、乾燥、凹凸のある部分、"
+            "または過去の微妙な痕跡に気づいたとしても…"
+        ),
+        # — faq.html —
+        "emr.faq.doc.title": "FAQ – EMR-TEK",
+        "emr.faq.doc.desc": "EMR-TEK 日本語版 – よくある質問（FAQ）",
+        "emr.faq.breadcrumb.current": "FAQ",
+        "emr.faq.hero.h1": "FAQ",
+        "emr.faq.hero.sub": "よくある質問と回答です。",
+        "emr.faq.section.products.h2": "製品",
+        "emr.faq.section.products.hint": "クリックすると回答が開きます。",
+        "emr.faq.products.q1": "セッション中はランプからどのくらい離れたところに立っていればよいですか？",
+        "emr.faq.products.a1": (
+            "<strong>6〜12インチ</strong> の距離をお勧めします。感度と使用目標に応じて、"
+            "ランプから最適な露出を実現します。"
+        ),
+        "emr.faq.products.q2": "セッションはどのくらい続くべきですか？",
+        "emr.faq.products.a2": (
+            "典型的なセッションは <strong>5〜15分</strong>（治療領域ごと）です。"
+            "短いセッションから始めて、必要に応じて徐々に増やします。"
+        ),
+        "emr.faq.products.q3": "あなたのライトはEMFを発しますか？",
+        "emr.faq.products.a3": (
+            "はい。すべての電子機器と同様に、当社の照明は低周波電磁場（EMF）を放出します。"
+            "ただし、必ずしもその場にさらされる必要はありません。"
+            "<strong>約5インチ（約13cm）以上</strong>の距離では、デバイスから実用的にEMFは検出されません。"
+        ),
+        "emr.faq.products.q4": "EMRライトはちらつきますか？",
+        "emr.faq.products.a4.p1": (
+            "白熱灯を含むほぼすべての照明は、AC電源によって点滅します。"
+            "LEDは、低品質のコンポーネントで設計されている場合、特に問題になりやすいです。"
+        ),
+        "emr.faq.products.a4.p2": (
+            "当社のライトは高品質のパワードライバーを使用しており、ちらつきはほとんどありません。"
+            "スローモーションビデオでも検出できないほど、ちらつきを排除しました。"
+            "ちらつきと、ごくわずかなちらつきが起きうる「ちらつき効果」については、ブログ記事もあわせてご覧ください。"
+        ),
+        "emr.faq.products.q5": "ランプと一緒にゴーグルを使用する必要がありますか？",
+        "emr.faq.products.a5": (
+            "ゴーグルが付属しており、デバイスを使用するときは<strong>着用してください</strong>。"
+        ),
+        "emr.faq.section.orders.h2": "注文",
+        "emr.faq.section.orders.hint": "配送・マニュアルなど",
+        "emr.faq.orders.q1": "追加の質問？",
+        "emr.faq.orders.a1": (
+            '<a class="link" href="./contact.html">お問い合わせページ</a>からお問い合わせください。'
+            "喜んでお手伝いさせていただきます。"
+        ),
+        "emr.faq.orders.q2": "ランプにはガイドが付いていますか？",
+        "emr.faq.orders.a2": (
+            "デジタル版は当社のWebサイトの各製品ページの「マニュアル」セクションで入手でき、"
+            "配送には説明書が2枚含まれています。"
+        ),
+        "emr.faq.section.shipping.h2": "配送",
+        "emr.faq.section.shipping.hint": "海外発送・納期・運送業者",
+        "emr.faq.shipping.q1": "海外発送はしますか？",
+        "emr.faq.shipping.a1.p1": (
+            "はい。当社のすべての照明には電圧変換器が統合されているため、"
+            "国によって異なる電圧差は問題になりません。お住まいの国に合わせた正しい電源をお届けします。"
+        ),
+        "emr.faq.shipping.a1.p2": (
+            "間違った電源ケーブルを受け取った場合は、"
+            '<a class="link" href="mailto:info@theestablishbeauty.com">info@theestablishbeauty.com</a>'
+            "までご連絡ください。ご注文番号をお知らせいただければ、正しいものをお送りします。"
+        ),
+        "emr.faq.shipping.q2": "注文を受け取るまでにどれくらい時間がかかりますか？",
+        "emr.faq.shipping.a2.p1": (
+            "配送先によって異なります。当施設で処理されたご注文は、お届けまで目安として "
+            "<strong>5〜7営業日</strong> かかることがあります。海外配送は <strong>7〜16日</strong> "
+            "程度かかる場合があります。配送の詳細・追跡は、確認メールに記載されます。"
+        ),
+        "emr.faq.shipping.a2.p2": (
+            "通関・関税・追跡で不明な点は "
+            '<a class="link" href="mailto:info@theestablishbeauty.com">info@theestablishbeauty.com</a>'
+            " までお問い合わせください。"
+        ),
+        "emr.faq.shipping.q3": "どのような配送業者を利用していますか？",
+        "emr.faq.shipping.a3": (
+            "当社は主要な運送業者および地元の配送パートナーを利用しています。"
+            "チェックアウト時に配送方法を選択するよう求められます。"
+        ),
+        "emr.faq.section.other.h2": "その他",
+        "emr.faq.section.other.hint": "保証・割引・返品",
+        "emr.faq.other.q1": "保証を提供しますか？",
+        "emr.faq.other.a1": (
+            "はい。当社の製品にはすべて <strong>1年間のメーカー保証</strong> が付属します。問題が発生した場合は "
+            '<a class="link" href="mailto:info@theestablishbeauty.com">info@theestablishbeauty.com</a> '
+            "までメールでお問い合わせください。"
+        ),
+        "emr.faq.other.q2": "割引は行っていますか？",
+        "emr.faq.other.a2": (
+            "たまにプロモーションを行っています。ニュースレターに登録するか、"
+            "ソーシャルメディアでフォローして最新情報を入手してください。"
+        ),
+        "emr.faq.other.q3": "中古のランプを返却できますか？",
+        "emr.faq.other.a3": (
+            "返品の資格を得るには、ランプが <strong>未使用</strong> で、元の状態・梱包のまま、"
+            "配達から <strong>30日以内</strong> に返送される必要があります。中古品は返品できません。"
+        ),
+    },
+    "en": {
+        "emr.common.breadcrumb.home": "Home",
+        "emr.collection.doc.title": "All Products – EMR-TEK",
+        "emr.collection.doc.desc": (
+            "EMR-TEK all products (All Products) — sort, filter, category navigation, and red light therapy "
+            "articles. Static version matching the official en-jp/collections/all layout."
+        ),
+        "emr.collection.breadcrumb.parent": "Collection",
+        "emr.collection.breadcrumb.current": "All products",
+        "emr.collection.hero.h1": "All products",
+        "emr.collection.hero.sub": (
+            "Like the official store’s “All Products” page, this page brings together the full catalog "
+            "plus category highlights and learning articles. Supports filters, sorting, and keyword search."
+        ),
+        "emr.collection.footer.disclaimer": (
+            "<strong>Important notice</strong>: "
+            "All information on this site about red/infrared therapy devices, blue-light blocking glasses, "
+            "and other products is not intended to diagnose, treat, cure, or prevent disease."
+        ),
+        "emr.science.doc.title": "Learn the science – EMR-TEK",
+        "emr.science.doc.desc": (
+            "EMR-TEK Japan – the science behind red light (red and near-infrared) therapy"
+        ),
+        "emr.science.breadcrumb.current": "Learn the science",
+        "emr.science.hero.kicker": "The science behind red light",
+        "emr.science.hero.h1": "Harness the power of light for everyday wellness",
+        "emr.science.hero.lead": (
+            "From mitochondria to wavelength and irradiance — explained clearly, grounded in research."
+        ),
+        "emr.science.kpi.aria": "Key points",
+        "emr.science.kpi.mechanism.label": "Primary mechanisms",
+        "emr.science.kpi.mechanism.value": "ATP↑ / blood flow↑",
+        "emr.science.kpi.factors.label": "Critical factors",
+        "emr.science.kpi.factors.value": "Wavelength · irradiance",
+        "emr.science.kpi.dose.label": "Dose response",
+        "emr.science.kpi.dose.value": "Biphasic",
+        "emr.science.mechanisms.h2": "Red light therapy: two simultaneous mechanisms",
+        "emr.science.mechanisms.p1": (
+            "Red and NIR (near-infrared) light are absorbed by mitochondrial cytochrome c oxidase (complex IV), "
+            "increasing <strong>ATP production</strong>. Cellular energy drives many downstream physiological processes. "
+            "This is not theory — it has been replicated in more than 6,000 studies published on PubMed."
+        ),
+        "emr.science.mechanisms.p2": (
+            "A second simultaneous mechanism: light photodissociates nitric oxide from enzymes, freeing the enzyme to act as a "
+            "<strong>local vasodilator</strong>. Blood flow to treated tissue increases as a result. "
+            "Two effects stack in a single session."
+        ),
+        "emr.science.callout.title": "Important",
+        "emr.science.callout.body": (
+            "Whether a device actually works is determined by wavelength, irradiance, and technology."
+        ),
+        "emr.science.wavelength.h2": "Wavelength and irradiance: what separates effective from ineffective",
+        "emr.science.wavelength.p1": (
+            "Cytochrome c oxidase absorption peaks are at approximately "
+            "<strong>630 nm / 670 nm / 830 nm</strong> — not the generic 660 nm / 850 nm many panels use."
+        ),
+        "emr.science.wavelength.p2": (
+            "Irradiance delivered to tissue (mW/cm²) determines <strong>dose</strong>, not wattage alone. "
+            "EMR-TEK COB (chip-on-board) technology delivers <strong>1,400 mW/cm² at the panel surface</strong> "
+            "versus roughly 200 mW/cm² for standard SMD panels. That gap enables realistic treatment dosing at practical distances."
+        ),
+        "emr.science.biphasic.h2": "Biphasic dose response: more is not always better",
+        "emr.science.biphasic.p1": (
+            "Photobiomodulation follows a biphasic dose response: too little yields no response; the right amount produces the intended effect; "
+            "too much can inhibit the same pathways. Irradiance, distance, session time, and consistency all matter."
+        ),
+        "emr.science.biphasic.p2": (
+            "EMR-TEK devices are built around precise wavelengths, COB irradiance, and third-party verified output. "
+            "Technology is what separates real results from an expensive placebo."
+        ),
+        "emr.science.benefits.h2": "The full spectrum of red light therapy benefits",
+        "emr.science.benefits.lead": "Representative themes at a glance.",
+        "emr.science.split.skin.imgAlt": "Woman using Firewave at home",
+        "emr.science.split.skin.h3": "Skin and collagen",
+        "emr.science.split.skin.li1": (
+            "630 nm interactions with fibroblasts (involved in collagen/elastin production) are under study."
+        ),
+        "emr.science.split.skin.li2": (
+            "Research focuses on cytochrome C oxidase activation and its link to cellular energy."
+        ),
+        "emr.science.split.skin.li3": (
+            "Documented across hundreds of published studies (Avci et al., 2013; Chung et al., 2012)."
+        ),
+        "emr.science.split.circulation.imgAlt": "",
+        "emr.science.split.circulation.h3": "Circulation and blood flow",
+        "emr.science.split.circulation.li1": (
+            "Nitric oxide photodissociation acting as a local vasodilator is under study."
+        ),
+        "emr.science.split.circulation.li2": (
+            "This mechanism is associated with increased blood flow to the exposed area."
+        ),
+        "emr.science.split.circulation.li3": (
+            "The same molecule targeted by pharmaceutical vasodilators is released here by light."
+        ),
+        "emr.science.split.technology.imgAlt": "Woman using Firewave with the device powered on",
+        "emr.science.split.technology.h3": "Technology that actually matters",
+        "emr.science.split.technology.li1": (
+            "COB (chip-on-board) vs standard SMD panels: 1,400 mW/cm² vs 200 mW/cm²"
+        ),
+        "emr.science.split.technology.li2": (
+            "Zero flicker: Meanwell industrial-grade drivers — same standard as medical equipment"
+        ),
+        "emr.science.split.technology.li3": (
+            "Zero EMF: third-party tested (no magnetic field at the user position)"
+        ),
+        "emr.science.split.sleep.imgAlt": "Person using Inferno in bed",
+        "emr.science.split.sleep.h3": "Sleep and circadian biology",
+        "emr.science.split.sleep.li1": (
+            "Melanopsin responds to 400–570 nm (red light is outside this range)."
+        ),
+        "emr.science.split.sleep.li2": (
+            "Studied as an alternative light source when circadian disruption is a concern."
+        ),
+        "emr.science.split.sleep.li3": (
+            "Third-party verified precise wavelengths: 630/670/830 nm (not commodity 660/850 nm)."
+        ),
+        "emr.science.cta.faq": "View FAQ",
+        "emr.science.cta.contact": "Contact us",
+        "emr.blog.doc.title": "Blog – EMR-TEK",
+        "emr.blog.doc.desc": (
+            "EMR-TEK blog — articles on red light, ultraviolet, skincare, and the science of light."
+        ),
+        "emr.blog.breadcrumb.current": "Blog",
+        "emr.blog.hero.h1": "Blog",
+        "emr.blog.hero.sub": (
+            "Light science, skincare, UV basics, and more — read full articles on the official EMR-TEK site."
+        ),
+        "emr.blog.srOnly": "Article list",
+        "emr.blog.readMore": "Read more",
+        "emr.blog.post1.title": (
+            "Are you truly giving your skin what it deserves — or weighing it down with plastic?"
+        ),
+        "emr.blog.post1.excerpt": (
+            "Every time skin meets a plastic LED mask shell for 15–20 minutes, there is a trade-off between comfort and usability. "
+            "Traditional LED face masks sit directly on the skin — pressing a plastic shell against the face and trapping warm air.…"
+        ),
+        "emr.blog.post2.title": "Can humans see ultraviolet light? Unpacking the mystery",
+        "emr.blog.post2.excerpt": (
+            "Exploring the invisible world of ultraviolet — imagine perceiving UV’s subtle, invisible wavelengths, "
+            "normally hidden from sight. UV lies far beyond what human eyes detect, yet our…"
+        ),
+        "emr.blog.post3.title": "How to use red light therapy for lungs: step by step",
+        "emr.blog.post3.excerpt": (
+            "As people look for natural ways to support overall well-being, interest in red and near-infrared light is growing rapidly. "
+            "Red light therapy is widely discussed in science and wellness circles, and many enjoy light-based routines.…"
+        ),
+        "emr.blog.post4.title": "365 vs 395 UV light: what’s the difference?",
+        "emr.blog.post4.excerpt": (
+            "365 nm and 395 nm UV light: understanding the difference and uses. In UV technology, professionals in forensics, "
+            "gemology, security, visual design, and more need to know how wavelengths behave. The difference…"
+        ),
+        "emr.blog.post5.title": "What is UVB light? UVB light 101",
+        "emr.blog.post5.excerpt": (
+            "Understanding UVB light: what it is and why it matters. UVB is often discussed but not always fully understood. "
+            "Best known as part of natural sunlight, UVB plays a distinct role in how we interact with light.…"
+        ),
+        "emr.blog.post6.title": "How to get rid of textured skin: step by step",
+        "emr.blog.post6.excerpt": (
+            "Understanding textured skin: causes, care, and everyday wellness approaches. Textured skin is a common concern "
+            "at any age and skin type — whether you notice small bumps, dryness, uneven patches, or subtle marks from the past…"
+        ),
+        "emr.faq.doc.title": "FAQ – EMR-TEK",
+        "emr.faq.doc.desc": "EMR-TEK Japan – frequently asked questions (FAQ)",
+        "emr.faq.breadcrumb.current": "FAQ",
+        "emr.faq.hero.h1": "FAQ",
+        "emr.faq.hero.sub": "Frequently asked questions and answers.",
+        "emr.faq.section.products.h2": "Products",
+        "emr.faq.section.products.hint": "Click to expand an answer.",
+        "emr.faq.products.q1": "How far should I stand from the lamp during a session?",
+        "emr.faq.products.a1": (
+            "We recommend <strong>6–12 inches</strong> away. Adjust distance for your sensitivity and goals "
+            "to achieve optimal exposure."
+        ),
+        "emr.faq.products.q2": "How long should a session last?",
+        "emr.faq.products.a2": (
+            "A typical session is <strong>5–15 minutes</strong> per treatment area. "
+            "Start with shorter sessions and increase gradually as needed."
+        ),
+        "emr.faq.products.q3": "Do your lights emit EMF?",
+        "emr.faq.products.a3": (
+            "Yes. Like all electronics, our lights emit low-frequency electromagnetic fields (EMF). "
+            "You do not need to be right next to the device, however — at <strong>about 5 inches (13 cm) or more</strong>, "
+            "EMF from the device is practically undetectable."
+        ),
+        "emr.faq.products.q4": "Do EMR lights flicker?",
+        "emr.faq.products.a4.p1": (
+            "Nearly all lighting, including incandescent bulbs, flickers because of AC power. "
+            "LEDs can be especially problematic when built with low-quality components."
+        ),
+        "emr.faq.products.a4.p2": (
+            "Our lights use high-quality power drivers with virtually no flicker — eliminated to levels "
+            "undetectable even in slow-motion video. See our blog for more on flicker and the subtle “flicker effect.”"
+        ),
+        "emr.faq.products.q5": "Do I need to use goggles with the lamp?",
+        "emr.faq.products.a5": (
+            "Goggles are included — please <strong>wear them</strong> when using the device."
+        ),
+        "emr.faq.section.orders.h2": "Orders",
+        "emr.faq.section.orders.hint": "Shipping, manuals, and more",
+        "emr.faq.orders.q1": "More questions?",
+        "emr.faq.orders.a1": (
+            'Reach us via the <a class="link" href="./contact.html">contact page</a> — we are happy to help.'
+        ),
+        "emr.faq.orders.q2": "Does the lamp include a guide?",
+        "emr.faq.orders.a2": (
+            "A digital version is available in the Manual section on each product page on our website; "
+            "shipping includes two printed instruction sheets."
+        ),
+        "emr.faq.section.shipping.h2": "Shipping",
+        "emr.faq.section.shipping.hint": "International shipping, delivery times, carriers",
+        "emr.faq.shipping.q1": "Do you ship internationally?",
+        "emr.faq.shipping.a1.p1": (
+            "Yes. All our lights have built-in voltage converters, so country voltage differences are not an issue. "
+            "We ship the correct power supply for your country."
+        ),
+        "emr.faq.shipping.a1.p2": (
+            "If you received the wrong power cable, contact "
+            '<a class="link" href="mailto:info@theestablishbeauty.com">info@theestablishbeauty.com</a> '
+            "with your order number and we will send the correct one."
+        ),
+        "emr.faq.shipping.q2": "How long until I receive my order?",
+        "emr.faq.shipping.a2.p1": (
+            "Timing depends on destination. Orders processed at our facility typically arrive in about "
+            "<strong>5–7 business days</strong>. International delivery may take <strong>7–16 days</strong>. "
+            "Tracking details are in your confirmation email."
+        ),
+        "emr.faq.shipping.a2.p2": (
+            "For customs, duties, or tracking questions, email "
+            '<a class="link" href="mailto:info@theestablishbeauty.com">info@theestablishbeauty.com</a>.'
+        ),
+        "emr.faq.shipping.q3": "Which carriers do you use?",
+        "emr.faq.shipping.a3": (
+            "We use major carriers and local delivery partners. You will choose a shipping method at checkout."
+        ),
+        "emr.faq.section.other.h2": "Other",
+        "emr.faq.section.other.hint": "Warranty, discounts, returns",
+        "emr.faq.other.q1": "Do you offer a warranty?",
+        "emr.faq.other.a1": (
+            "Yes. All products include a <strong>one-year manufacturer warranty</strong>. "
+            "If you have an issue, email "
+            '<a class="link" href="mailto:info@theestablishbeauty.com">info@theestablishbeauty.com</a>.'
+        ),
+        "emr.faq.other.q2": "Do you offer discounts?",
+        "emr.faq.other.a2": (
+            "We run promotions from time to time. Subscribe to our newsletter or follow us on social media for updates."
+        ),
+        "emr.faq.other.q3": "Can I return a used lamp?",
+        "emr.faq.other.a3": (
+            "To qualify for a return, the lamp must be <strong>unused</strong>, in original condition and packaging, "
+            "and returned within <strong>30 days</strong> of delivery. Used items cannot be returned."
+        ),
+    },
+}
+
+
+def write_js() -> None:
+    body = (
+        "/** Collection, science, blog, FAQ page strings — loaded before i18n.js */\n"
+        "(function (g) {\n"
+        f"  g.__PAGES_I18N__ = {json.dumps(MESSAGES, ensure_ascii=False, indent=2)};\n"
+        "})(typeof window !== 'undefined' ? window : globalThis);\n"
+    )
+    OUT_JS.write_text(body, encoding="utf-8")
+    print(f"Wrote {OUT_JS}")
+
+
+if __name__ == "__main__":
+    write_js()

@@ -16,10 +16,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
-    <title>ブログ – EMR-TEK</title>
+    <title data-i18n-title="emr.blog.doc.title">ブログ – EMR-TEK</title>
     <meta
       name="description"
-      content="EMR-TEK ブログ — 赤色光、紫外線、スキンケア、光の科学に関する記事。"
+      data-i18n-desc="emr.blog.doc.desc" content="EMR-TEK ブログ — 赤色光、紫外線、スキンケア、光の科学に関する記事。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,6 +32,18 @@
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="emr.skip">本文へスキップ</a>
+
+
+    <div
+      class="siteNotify"
+      role="region"
+      data-i18n-attr="aria-label:emr.siteNotify.aria"
+      aria-label="サイト構築のお知らせ"
+    >
+      <div class="container siteNotify__inner">
+        <p class="siteNotify__text" data-i18n="emr.siteNotify.text">現在Webサイト構築中</p>
+      </div>
+    </div>
 
 <div class="topbar">
       <div class="container topbar__inner">
@@ -119,15 +131,15 @@
       <section class="hero">
         <div class="container hero__inner">
           <div class="breadcrumbs" aria-label="パンくず">
-            <a href="./index.html">ホーム</a>
+            <a href="./index.html" data-i18n="emr.common.breadcrumb.home">ホーム</a>
             <span class="breadcrumbs__sep" aria-hidden="true">/</span>
-            <span aria-current="page">ブログ</span>
+            <span aria-current="page" data-i18n="emr.blog.breadcrumb.current">ブログ</span>
           </div>
 
           <div class="hero__titleRow">
             <div>
-              <h1 class="h1">ブログ</h1>
-              <p class="subtle">
+              <h1 class="h1" data-i18n="emr.blog.hero.h1">ブログ</h1>
+              <p class="subtle" data-i18n="emr.blog.hero.sub">
                 光の科学、スキンケア、UV の基礎など — 記事の全文は EMR-TEK 公式サイトでお読みいただけます。
               </p>
             </div>
@@ -137,7 +149,7 @@
 
       <section class="blogSection section section--padding" aria-labelledby="blog-heading">
         <div class="container">
-          <h2 id="blog-heading" class="sr-only">記事一覧</h2>
+          <h2 id="blog-heading" class="sr-only" data-i18n="emr.blog.srOnly">記事一覧</h2>
 
           <div class="blogGrid">
             <article class="blogCard">
@@ -176,13 +188,14 @@
                 </div>
                 <h3 class="blogCard__title">
                   <a
+                    data-i18n="emr.blog.post1.title"
                     href="https://emr-tek.com/en-jp/blogs/news/are-you-truly-giving-your-skin-what-it-deserves-or-weighing-it-down-with-plastic"
                     target="_blank"
                     rel="noopener noreferrer"
                     >あなたは本当に自分の肌にふさわしいものを与えていますか — それともプラスチックで重ねていますか？</a
                   >
                 </h3>
-                <p class="blogCard__excerpt">
+                <p class="blogCard__excerpt" data-i18n="emr.blog.post1.excerpt">
                   肌がプラスチック製の LED マスク シェルに 15–20 分間出会うたびに、快適さと使いやすさにトレードオフが生じます。従来の LED フェイスマスクは皮膚に直接当てられます — プラスチックのシェルを顔に押し込み、暖かい空気を閉じ込めます。…
                 </p>
                 <p class="blogCard__more">
@@ -191,7 +204,7 @@
                     href="https://emr-tek.com/en-jp/blogs/news/are-you-truly-giving-your-skin-what-it-deserves-or-weighing-it-down-with-plastic"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >続きを読む</a
+                     data-i18n="emr.index.learn.readMore">続きを読む</a
                   >
                 </p>
               </div>
@@ -233,13 +246,14 @@
                 </div>
                 <h3 class="blogCard__title">
                   <a
+                    data-i18n="emr.blog.post2.title"
                     href="https://emr-tek.com/en-jp/blogs/news/can-humans-see-ultraviolet-light"
                     target="_blank"
                     rel="noopener noreferrer"
                     >人間は紫外線を見ることができるのか:謎を解説</a
                   >
                 </h3>
-                <p class="blogCard__excerpt">
+                <p class="blogCard__excerpt" data-i18n="emr.blog.post2.excerpt">
                   紫外線の目に見えない世界を探索する 通常は視界から隠されているもの — 紫外線（UV）の微妙で目に見えない波長を認識できることを想像してみてください。UV は人間の目で検出できる範囲をはるかに超えていますが、私たちの…
                 </p>
                 <p class="blogCard__more">
@@ -248,7 +262,7 @@
                     href="https://emr-tek.com/en-jp/blogs/news/can-humans-see-ultraviolet-light"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >続きを読む</a
+                     data-i18n="emr.index.learn.readMore">続きを読む</a
                   >
                 </p>
               </div>
@@ -290,13 +304,14 @@
                 </div>
                 <h3 class="blogCard__title">
                   <a
+                    data-i18n="emr.blog.post3.title"
                     href="https://emr-tek.com/en-jp/blogs/news/how-to-use-red-light-therapy-for-lungs"
                     target="_blank"
                     rel="noopener noreferrer"
                     >肺に赤色光療法を使用する方法: ステップバイステップ</a
                   >
                 </h3>
-                <p class="blogCard__excerpt">
+                <p class="blogCard__excerpt" data-i18n="emr.blog.post3.excerpt">
                   人々が全体的な幸福感をサポートする自然な方法を探すにつれて、赤色光や近赤外線への関心が急速に高まっています。赤色光療法は科学界や健康界でよく議論されますが、多くの人が光ベースの治療を楽しんでいます。…
                 </p>
                 <p class="blogCard__more">
@@ -305,7 +320,7 @@
                     href="https://emr-tek.com/en-jp/blogs/news/how-to-use-red-light-therapy-for-lungs"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >続きを読む</a
+                     data-i18n="emr.index.learn.readMore">続きを読む</a
                   >
                 </p>
               </div>
@@ -347,13 +362,14 @@
                 </div>
                 <h3 class="blogCard__title">
                   <a
+                    data-i18n="emr.blog.post4.title"
                     href="https://emr-tek.com/en-jp/blogs/news/365-vs-395-uv-light"
                     target="_blank"
                     rel="noopener noreferrer"
                     >365 と 395 UV ライト: 違いは何ですか？</a
                   >
                 </h3>
-                <p class="blogCard__excerpt">
+                <p class="blogCard__excerpt" data-i18n="emr.blog.post4.excerpt">
                   365nm と 395nm の UV 光: 違いと用途を理解する 紫外線（UV）光技術の世界では、法医学、宝石学、セキュリティ、ビジュアル デザインなどの分野の専門家にとって、さまざまな波長の動作を知ることが不可欠です。違いは…
                 </p>
                 <p class="blogCard__more">
@@ -362,7 +378,7 @@
                     href="https://emr-tek.com/en-jp/blogs/news/365-vs-395-uv-light"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >続きを読む</a
+                     data-i18n="emr.index.learn.readMore">続きを読む</a
                   >
                 </p>
               </div>
@@ -404,13 +420,14 @@
                 </div>
                 <h3 class="blogCard__title">
                   <a
+                    data-i18n="emr.blog.post5.title"
                     href="https://emr-tek.com/en-jp/blogs/news/what-is-uvb-light"
                     target="_blank"
                     rel="noopener noreferrer"
                     >UVBライトとは:UVBライト101</a
                   >
                 </h3>
-                <p class="blogCard__excerpt">
+                <p class="blogCard__excerpt" data-i18n="emr.blog.post5.excerpt">
                   UVB 光の理解: UVB 光とは何か、そしてなぜ重要なのか UVB 光についてはよく話題になりますが、必ずしも完全に理解されているわけではありません。UVB は自然太陽光の一部として最もよく知られていますが、私たちの相互作用において独特の役割を果たしています。…
                 </p>
                 <p class="blogCard__more">
@@ -419,7 +436,7 @@
                     href="https://emr-tek.com/en-jp/blogs/news/what-is-uvb-light"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >続きを読む</a
+                     data-i18n="emr.index.learn.readMore">続きを読む</a
                   >
                 </p>
               </div>
@@ -461,13 +478,14 @@
                 </div>
                 <h3 class="blogCard__title">
                   <a
+                    data-i18n="emr.blog.post6.title"
                     href="https://emr-tek.com/en-jp/blogs/news/how-to-get-rid-of-textured-skin"
                     target="_blank"
                     rel="noopener noreferrer"
                     >テクスチャーのある肌を取り除く方法: ステップバイステップ</a
                   >
                 </h3>
-                <p class="blogCard__excerpt">
+                <p class="blogCard__excerpt" data-i18n="emr.blog.post6.excerpt">
                   テクスチャード スキンを理解する: 原因、ケア、日常の健康アプローチ テクスチャード スキンは、あらゆる年齢、あらゆる肌タイプに現れる共通の懸念事項です。小さな凹凸、乾燥、凹凸のある部分、または過去の微妙な痕跡に気づいたとしても…
                 </p>
                 <p class="blogCard__more">
@@ -476,7 +494,7 @@
                     href="https://emr-tek.com/en-jp/blogs/news/how-to-get-rid-of-textured-skin"
                     target="_blank"
                     rel="noopener noreferrer"
-                    >続きを読む</a
+                     data-i18n="emr.index.learn.readMore">続きを読む</a
                   >
                 </p>
               </div>
@@ -490,11 +508,16 @@
       <div class="container footer__grid">
         <div>
           <div class="footer__brand">EMR-TEK</div>
-          <div class="micro subtle">
-            <p>
-              <strong>重要な注意事項</strong>:
+                    <div class="micro subtle"><p data-i18n="emr.footer.disclaimer1" data-i18n-html><strong>重要な注意事項</strong>:
               赤色および赤外線治療装置、青色遮光メガネ、その他の製品に関してこのサイトで提供されるすべての情報は、
-              病気の診断、治療、治癒、予防を目的としたものではありません。
+              病気の診断、治療、治癒、予防を目的としたものではありません。当社の製品は医療機器と誤解されるべきではなく、
+              治療上の主張も行いません。これらの製品は、2015 年 1 月 20 日に発表された
+              “General Wellness: Policy on Low Risk Devices”草案に従って、FDA の認可を必要としない低リスクの
+              一般的なウェルネス/フィットネス アイテムです。当社の製品は個人使用のみを目的としており、
+              商業用途を目的としたものではありません。
+            </p>
+            <p data-i18n="emr.footer.disclaimer2">
+              ※ これらの記述は食品医薬品局によって評価されていません。この製品は、病気の診断、治療、治癒、予防を目的としたものではありません。
             </p>
           </div>
           <div class="micro subtle">Toronto, ON, Canada</div>
@@ -506,7 +529,7 @@
         <div>
           <div class="footer__title" data-i18n="emr.footer.shop">ショップ</div>
           <ul class="footer__list">
-            <li><a class="link" href="./collection-all.html">全商品</a></li>
+            <li><a class="link" href="./collection-all.html" data-i18n="emr.footer.allproducts">全商品</a></li>
             <li><a class="link" href="./collection-red-light.html">Red Light Therapy Devices</a></li>
             <li><a class="link" href="./collection-blue-light-glasses.html">Blue Light Blocking Glasses</a></li>
             <li><a class="link" href="./collection-indoor-lighting.html">Indoor Lighting Solutions</a></li>
@@ -537,14 +560,14 @@
       </div>
 
       <div class="container footer__bottom">
-        <nav class="footer__legal micro" aria-label="法的情報">
-          <a class="link" href="./privacy.html">プライバシーポリシー</a>
+        <nav class="footer__legal micro" data-i18n-attr="aria-label:emr.footer.legalnav" aria-label="法的情報">
+          <a class="link" href="./privacy.html" data-i18n="emr.footer.privacy_link">プライバシーポリシー</a>
           <span class="footer__legalSep" aria-hidden="true">·</span>
-          <a class="link" href="./terms.html">利用規約</a>
+          <a class="link" href="./terms.html" data-i18n="emr.footer.terms_link">利用規約</a>
           <span class="footer__legalSep" aria-hidden="true">·</span>
-          <a class="link" href="./tokushoho.html">特定商取引法に基づく表記</a>
+          <a class="link" href="./tokushoho.html" data-i18n="emr.footer.tokushoho_link">特定商取引法に基づく表記</a>
           <span class="footer__legalSep" aria-hidden="true">·</span>
-          <a class="link" href="./customer-policies.html">配送・返品・支払い</a>
+          <a class="link" href="./customer-policies.html" data-i18n="emr.footer.policies_link">配送・返品・支払い</a>
         </nav>
         <div class="footer__bottomCredits">
           <div class="micro subtle">© 2025 EMR-TEK</div>
@@ -620,6 +643,8 @@
     </div>
 
     <script src="./app.js?v=20260412" defer></script>
+      <script src="./i18n-index-messages.js"></script>
+    <script src="./i18n-pages-messages.js"></script>
       <script src="./i18n.js" defer></script>
   </body>
 </html>

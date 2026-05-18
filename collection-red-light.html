@@ -33,6 +33,18 @@
   <body>
     <a class="skip-link" href="#main" data-i18n="emr.skip">本文へスキップ</a>
 
+
+    <div
+      class="siteNotify"
+      role="region"
+      data-i18n-attr="aria-label:emr.siteNotify.aria"
+      aria-label="サイト構築のお知らせ"
+    >
+      <div class="container siteNotify__inner">
+        <p class="siteNotify__text" data-i18n="emr.siteNotify.text">現在Webサイト構築中</p>
+      </div>
+    </div>
+
 <div class="topbar">
       <div class="container topbar__inner">
         <div class="topbar__left" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px">
@@ -121,7 +133,7 @@
           <div class="breadcrumbs" aria-label="パンくず">
             <a href="./index.html">コレクション</a>
             <span class="breadcrumbs__sep" aria-hidden="true">/</span>
-            <a href="./collection-all.html">全商品</a>
+            <a href="./collection-all.html" data-i18n="emr.footer.allproducts">全商品</a>
             <span class="breadcrumbs__sep" aria-hidden="true">/</span>
             <span aria-current="page">Red Light Therapy Devices</span>
           </div>
@@ -584,11 +596,16 @@
       <div class="container footer__grid">
         <div>
           <div class="footer__brand">EMR-TEK</div>
-          <div class="micro subtle">
-            <p>
-              <strong>重要な注意事項</strong>:
+                    <div class="micro subtle"><p data-i18n="emr.footer.disclaimer1" data-i18n-html><strong>重要な注意事項</strong>:
               赤色および赤外線治療装置、青色遮光メガネ、その他の製品に関してこのサイトで提供されるすべての情報は、
-              病気の診断、治療、治癒、予防を目的としたものではありません。
+              病気の診断、治療、治癒、予防を目的としたものではありません。当社の製品は医療機器と誤解されるべきではなく、
+              治療上の主張も行いません。これらの製品は、2015 年 1 月 20 日に発表された
+              “General Wellness: Policy on Low Risk Devices”草案に従って、FDA の認可を必要としない低リスクの
+              一般的なウェルネス/フィットネス アイテムです。当社の製品は個人使用のみを目的としており、
+              商業用途を目的としたものではありません。
+            </p>
+            <p data-i18n="emr.footer.disclaimer2">
+              ※ これらの記述は食品医薬品局によって評価されていません。この製品は、病気の診断、治療、治癒、予防を目的としたものではありません。
             </p>
           </div>
           <div class="micro subtle">Toronto, ON, Canada</div>
@@ -600,7 +617,7 @@
         <div>
           <div class="footer__title" data-i18n="emr.footer.shop">ショップ</div>
           <ul class="footer__list">
-            <li><a class="link" href="./collection-all.html">全商品</a></li>
+            <li><a class="link" href="./collection-all.html" data-i18n="emr.footer.allproducts">全商品</a></li>
             <li><a class="link" href="./collection-red-light.html">Red Light Therapy Devices</a></li>
             <li><a class="link" href="./collection-blue-light-glasses.html">Blue Light Blocking Glasses</a></li>
             <li><a class="link" href="./collection-indoor-lighting.html">Indoor Lighting Solutions</a></li>

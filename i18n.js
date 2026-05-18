@@ -238,6 +238,8 @@
         "現在、ウェブサイトを開設準備中です。ご不便をおかけしますが、公開まで今しばらくお待ちください。",
       "emr.home.notify.aria": "プラットフォームのご案内",
       "emr.home.notify.status": "現在Webサイト開設中",
+      "emr.siteNotify.aria": "サイト構築のお知らせ",
+      "emr.siteNotify.text": "現在Webサイト構築中",
       "emr.home.notify.lead":
         "The Establish Beauty は、編集によるおすすめ、アフィリエイト商品、選りすぐりの直送商品を扱う、キュレーション型のビューティーメディア＆コマースプラットフォームです。",
       "emr.home.notify.contact":
@@ -292,6 +294,10 @@
       "emr.footer.about": "EMR-TEKについて",
       "emr.footer.faq": "よくある質問",
       "emr.footer.allproducts": "全商品",
+      "emr.footer.disclaimer1":
+        "<strong>重要な注意事項</strong>: 赤色および赤外線治療装置、青色遮光メガネ、その他の製品に関してこのサイトで提供されるすべての情報は、病気の診断、治療、治癒、予防を目的としたものではありません。当社の製品は医療機器と誤解されるべきではなく、治療上の主張も行いません。これらの製品は、2015 年 1 月 20 日に発表された “General Wellness: Policy on Low Risk Devices”草案に従って、FDA の認可を必要としない低リスクの 一般的なウェルネス/フィットネス アイテムです。当社の製品は個人使用のみを目的としており、商業用途を目的としたものではありません。",
+      "emr.footer.disclaimer2":
+        "※ これらの記述は食品医薬品局によって評価されていません。この製品は、病気の診断、治療、治癒、予防を目的としたものではありません。",
       "emr.footer.legal": "法的情報",
 
       "auth.oauth.stub":
@@ -709,6 +715,8 @@
         "This website is currently under construction. Thank you for your patience while we prepare for launch.",
       "emr.home.notify.aria": "Platform notice",
       "emr.home.notify.status": "Website currently under construction",
+      "emr.siteNotify.aria": "Site under construction",
+      "emr.siteNotify.text": "Website currently under construction",
       "emr.home.notify.lead":
         "The Establish Beauty is a curated beauty media and commerce platform featuring editorial recommendations, affiliate products, and selected direct-shipping items.",
       "emr.home.notify.contact":
@@ -763,6 +771,10 @@
       "emr.footer.about": "About EMR-TEK",
       "emr.footer.faq": "FAQ",
       "emr.footer.allproducts": "All products",
+      "emr.footer.disclaimer1":
+        "<strong>Important notice</strong>: All information on this site about red/infrared therapy devices, blue-light blocking glasses, and other products is not intended to diagnose, treat, cure, or prevent disease. Our products should not be considered medical devices and we make no therapeutic claims. These are low-risk general wellness/fitness items that, per the FDA draft “General Wellness: Policy on Low Risk Devices” (Jan 20, 2015), do not require FDA clearance. Products are for personal use only, not commercial resale.",
+      "emr.footer.disclaimer2":
+        "* These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent disease.",
       "emr.footer.legal": "Legal",
 
       "auth.oauth.stub":
@@ -955,6 +967,16 @@
       "emr.search.close": "Close",
     },
   };
+
+  if (typeof window !== "undefined" && window.__INDEX_I18N__) {
+    Object.assign(MESSAGES.ja, window.__INDEX_I18N__.ja || {});
+    Object.assign(MESSAGES.en, window.__INDEX_I18N__.en || {});
+  }
+
+  if (typeof window !== "undefined" && window.__PAGES_I18N__) {
+    Object.assign(MESSAGES.ja, window.__PAGES_I18N__.ja || {});
+    Object.assign(MESSAGES.en, window.__PAGES_I18N__.en || {});
+  }
 
   function getLang() {
     try {

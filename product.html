@@ -30,6 +30,18 @@
   <body>
     <a class="skip-link" href="#main" data-i18n="emr.skip">本文へスキップ</a>
 
+
+    <div
+      class="siteNotify"
+      role="region"
+      data-i18n-attr="aria-label:emr.siteNotify.aria"
+      aria-label="サイト構築のお知らせ"
+    >
+      <div class="container siteNotify__inner">
+        <p class="siteNotify__text" data-i18n="emr.siteNotify.text">現在Webサイト構築中</p>
+      </div>
+    </div>
+
 <div class="topbar">
       <div class="container topbar__inner">
         <div class="topbar__left" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px">
@@ -178,98 +190,16 @@
 
             <div class="price price--lg" aria-label="価格">
               <div>
-                <div class="micro subtle">販売価格</div>
-                <div class="price__now" data-product-price-now>—</div>
-              </div>
-              <div>
-                <div class="micro subtle">通常価格</div>
-                <div class="price__was" data-product-price-was hidden>—</div>
-              </div>
-              <div class="save" data-product-price-save hidden>—</div>
-            </div>
-
-            <div class="stock" aria-label="在庫状況">
-              <span class="stock__dot" aria-hidden="true"></span>
-              <span><strong>在庫あり</strong>（すぐに発送）</span>
-            </div>
-
-            <div class="field" style="margin: 0">
-              <span class="micro subtle">数量</span>
-              <div class="qty" data-product-qty>
-                <button type="button" data-product-qty-delta="-1" aria-label="減らす">−</button>
-                <span data-product-qty-value>1</span>
-                <button type="button" data-product-qty-delta="1" aria-label="増やす">+</button>
-              </div>
-            </div>
-
-            <div class="productPage__actions">
-              <button class="btn" type="button" data-product-add data-add-id="">カートに追加</button>
-              <button class="btn btn--ghost" type="button" data-action="open-cart">カートを見る</button>
-            </div>
-
-            <div class="productPage__badges" aria-label="バッジ">
-              <div class="badgeCard">EMR品質</div>
-              <div class="badgeCard">保証</div>
-              <div class="badgeCard">在庫あり</div>
-            </div>
-
-            <div class="prose">
-              <h2 class="h3" data-product-desc-title>この商品の概要</h2>
-              <div data-product-desc></div>
-              <p class="micro subtle" style="margin: 12px 0 0">
-                公式ストアも確認する場合は
-                <a class="link" data-product-shop-link href="https://emr-tek.com/en-jp">こちら</a>
-                から開けます。
-              </p>
-            </div>
-
-            <details class="productPage__detail" open data-product-safety-details>
-              <summary class="productPage__summary" data-product-safety-summary>重要な安全情報</summary>
-              <div class="productPage__detailBody prose" data-product-safety-body>
-                <p>
-                  指示されたとおりにのみ使用してください。デバイスが熱くなる可能性があります—皮膚への直接接触を避けてください。屋内専用。睡眠中は使用しないでください。必ず付属の目の保護具を着用してください。
-                </p>
-                <p>
-                  これは一般的な健康増進装置であり、病気の診断、治療、治癒、予防を目的としたものではありません。医療上の懸念がある場合は、医療提供者に相談してください。
-                </p>
-              </div>
-            </details>
-
-            <details class="productPage__detail" data-product-usage-details>
-              <summary class="productPage__summary" data-product-usage-summary>光の使い方（推奨使用方法 – 赤/NIR モード）</summary>
-              <div class="productPage__detailBody prose" data-product-usage-body>
-                <ul class="list">
-                  <li>LEDのみで5分から開始</li>
-                  <li>時間の経過とともにセッションあたり20分（片面あたり10分）に増加</li>
-                  <li>許容したら、より深い強度を得るためにCOBを追加</li>
-                  <li>顔に使用する場合は、18–24インチのLEDモードのみを使用</li>
-                  <li>ターゲットエリアから12–24インチの位置に配置</li>
-                  <li>週に最大5回使用</li>
-                </ul>
-              </div>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <section class="container page" data-product-notfound hidden>
-        <div class="panel prose">
-          <h2 class="h3">商品が見つかりませんでした <span class="micro subtle" data-product-missing-id></span></h2>
-          <p>URLの `id` が不正な可能性があります。全商品一覧からお選びください。</p>
-          <p><a class="btn" href="./collection-all.html">全商品へ戻る</a></p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container footer__grid">
-        <div>
-          <div class="footer__brand">EMR-TEK</div>
-          <div class="micro subtle">
-            <p>
-              <strong>重要な注意事項</strong>:
+                          <div class="micro subtle"><p data-i18n="emr.footer.disclaimer1" data-i18n-html><strong>重要な注意事項</strong>:
               赤色および赤外線治療装置、青色遮光メガネ、その他の製品に関してこのサイトで提供されるすべての情報は、
-              病気の診断、治療、治癒、予防を目的としたものではありません。
+              病気の診断、治療、治癒、予防を目的としたものではありません。当社の製品は医療機器と誤解されるべきではなく、
+              治療上の主張も行いません。これらの製品は、2015 年 1 月 20 日に発表された
+              “General Wellness: Policy on Low Risk Devices”草案に従って、FDA の認可を必要としない低リスクの
+              一般的なウェルネス/フィットネス アイテムです。当社の製品は個人使用のみを目的としており、
+              商業用途を目的としたものではありません。
+            </p>
+            <p data-i18n="emr.footer.disclaimer2">
+              ※ これらの記述は食品医薬品局によって評価されていません。この製品は、病気の診断、治療、治癒、予防を目的としたものではありません。
             </p>
           </div>
           <div class="micro subtle">Toronto, ON, Canada</div>
@@ -281,7 +211,7 @@
         <div>
           <div class="footer__title" data-i18n="emr.footer.shop">ショップ</div>
           <ul class="footer__list">
-            <li><a class="link" href="./collection-all.html">全商品</a></li>
+            <li><a class="link" href="./collection-all.html" data-i18n="emr.footer.allproducts">全商品</a></li>
             <li><a class="link" href="./collection-red-light.html">Red Light Therapy Devices</a></li>
             <li><a class="link" href="./collection-blue-light-glasses.html">Blue Light Blocking Glasses</a></li>
             <li><a class="link" href="./collection-indoor-lighting.html">Indoor Lighting Solutions</a></li>

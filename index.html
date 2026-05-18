@@ -16,10 +16,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
-    <title>ホーム – EMR-TEK</title>
+    <title data-i18n-title="emr.index.doc.title">ホーム – EMR-TEK</title>
     <meta
       name="description"
-      content="EMR-TEK 日本公式ストアのホーム。赤色光・近赤外・UV・LEDマスク・ブルーライトカット・コスメなど。全商品一覧は専用ページから。"
+      data-i18n-desc="emr.index.doc.desc" content="EMR-TEK 日本公式ストアのホーム。赤色光・近赤外・UV・LEDマスク・ブルーライトカット・コスメなど。全商品一覧は専用ページから。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,6 +32,18 @@
   </head>
   <body class="page-home">
     <a class="skip-link" href="#main" data-i18n="emr.skip">本文へスキップ</a>
+
+
+    <div
+      class="siteNotify"
+      role="region"
+      data-i18n-attr="aria-label:emr.siteNotify.aria"
+      aria-label="サイト構築のお知らせ"
+    >
+      <div class="container siteNotify__inner">
+        <p class="siteNotify__text" data-i18n="emr.siteNotify.text">現在Webサイト構築中</p>
+      </div>
+    </div>
 
 <div class="topbar">
       <div class="container topbar__inner">
@@ -122,7 +134,6 @@
         aria-label="プラットフォームのご案内"
       >
         <div class="container homeNotify__inner">
-          <p class="homeNotify__status" data-i18n="emr.home.notify.status">現在Webサイト開設中</p>
           <p class="homeNotify__lead" data-i18n="emr.home.notify.lead" data-i18n-html>
             The Establish Beauty は、編集によるおすすめ、アフィリエイト商品、選りすぐりの直送商品を扱う、キュレーション型のビューティーメディア＆コマースプラットフォームです。
           </p>
@@ -135,16 +146,16 @@
 
       <section class="hero">
         <div class="container hero__inner">
-          <div class="breadcrumbs" aria-label="パンくず">
+          <div class="breadcrumbs" data-i18n-attr="aria-label:emr.index.breadcrumb.aria" aria-label="パンくず">
             <a href="./about-us.html">The Establish Beauty</a>
             <span class="breadcrumbs__sep" aria-hidden="true">/</span>
-            <span aria-current="page">EMR-TEK ストア</span>
+            <span aria-current="page" data-i18n="emr.index.hero.breadcrumb">EMR-TEK ストア</span>
           </div>
 
           <div class="hero__titleRow">
             <div>
-              <h1 class="h1">EMR-TEK TOKYO公式ストア</h1>
-              <p class="subtle">
+              <h1 class="h1" data-i18n="emr.index.hero.h1">EMR-TEK TOKYO公式ストア</h1>
+              <p class="subtle" data-i18n="emr.index.hero.sub">
                 赤色光・近赤外、UV、LEDマスク、ブルーライトカット、コスメ、室内照明など。
               </p>
             </div>
@@ -152,7 +163,7 @@
             </div>
           </div>
 
-          <div class="heroVideo" aria-label="プロモーション動画">
+          <div class="heroVideo" data-i18n-attr="aria-label:emr.index.hero.videoAria" aria-label="プロモーション動画">
             <video
               class="heroVideo__video"
               playsinline="true"
@@ -168,7 +179,7 @@
               />
               <img
                 src="https://emr-tek.com/cdn/shop/files/preview_images/9dc888953519445198844d4c7bbe5aed.thumbnail.0000000000_800x.jpg?v=1754592497"
-                alt="EMR-TEK プロモーション"
+                data-i18n-attr="alt:emr.index.hero.videoAlt" alt="EMR-TEK プロモーション"
               />
             </video>
           </div>
@@ -177,20 +188,20 @@
 
       <section class="uvPromo section section--padding" aria-labelledby="uv-promo-heading" lang="ja">
         <div class="container uvPromo__inner">
-          <p class="uvPromo__kicker">自然光を、新たに</p>
+          <p class="uvPromo__kicker" data-i18n="emr.index.uv.kicker">自然光を、新たに</p>
           <h2 id="uv-promo-heading" class="uvPromo__title">
-            自然なUV光がもたらす、活力ある力を
-            <span class="uvPromo__highlight">安全に、効果的に、どこからでも。</span>
+            <span data-i18n="emr.index.uv.title">自然なUV光がもたらす、活力ある力を</span>
+            <span class="uvPromo__highlight" data-i18n="emr.index.uv.highlight">安全に、効果的に、どこからでも。</span>
           </h2>
           <div class="uvPromo__rte">
-            <p>
+            <p data-i18n="emr.index.uv.body" data-i18n-html>
               体内リズムや季節のバランスの維持から、日々のウェルビーイングまで。
               <strong>EMR-TEK のUVライト</strong>は、過度な曝露のリスク<strong><em>を避けながら</em></strong>、太陽の有益な性質のひとつを取り入れられるよう設計されています。
             </p>
           </div>
           <p class="uvPromo__cta">
             <a class="uvPromo__btn btn icon-with-text" href="./collection-uv.html">
-              <span class="btn-text"
+              <span class="btn-text" data-i18n="emr.index.uv.cta"
                 >UVコレクションを見る
                 <svg
                   class="uvPromo__icon"
@@ -223,7 +234,7 @@
               <picture class="imageTextSection__picture imageTextSection__picture--main">
                 <img
                   src="https://emr-tek.com/cdn/shop/files/image_4_07840b97-97b8-4fec-bf26-17fa0096375f.png?v=1741293317&amp;width=732"
-                  alt="EMR-TEK ライトセラピーデバイス"
+                  data-i18n-attr="alt:emr.index.fire.alt" alt="EMR-TEK ライトセラピーデバイス"
                   srcset="
                     https://emr-tek.com/cdn/shop/files/image_4_07840b97-97b8-4fec-bf26-17fa0096375f.png?v=1741293317&amp;width=360 360w,
                     https://emr-tek.com/cdn/shop/files/image_4_07840b97-97b8-4fec-bf26-17fa0096375f.png?v=1741293317&amp;width=732 732w
@@ -256,11 +267,11 @@
           </div>
           <div class="imageTextSection__copy">
             <h2 id="image-text-fire-heading" class="imageTextSection__title">
-              <span class="imageTextSection__em">違う造り。</span>
-              <strong class="imageTextSection__strong">それを証明するためにテストされました。</strong>
+              <span class="imageTextSection__em" data-i18n="emr.index.fire.titleEm">違う造り。</span>
+              <strong class="imageTextSection__strong" data-i18n="emr.index.fire.titleStrong">それを証明するためにテストされました。</strong>
             </h2>
             <div class="imageTextSection__rte">
-              <p>
+              <p data-i18n="emr.index.fire.body">
                 1,400 mW/cm² — 標準 SMD パネルの出力の 7 倍を実現する COB テクノロジー。630nm、670nm、830nm
                 での精度波長はシトクロム c オキシダーゼの吸収ピークと一致しました。Meanwell 産業グレードのドライバー
                 — ちらつきゼロ、磁場ゼロ。自己申告の仕様ではなく、第三者が検証した放射照度。光バイオモジュレーションが実際に機能するかどうかを判断する科学に基づいて構築されたすべてのデバイス:
@@ -274,7 +285,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span class="btn-text"
+                <span class="btn-text" data-i18n="emr.index.fire.cta"
                   >ショップ ライトセラピー
                   <svg
                     class="imageTextSection__icon"
@@ -301,12 +312,12 @@
       <section class="portfolioSection" aria-labelledby="portfolio-heading">
         <div class="container">
           <header class="portfolioSection__header">
-            <p class="portfolioSection__kicker">ロック解除</p>
-            <h2 id="portfolio-heading" class="portfolioSection__title">
+            <p class="portfolioSection__kicker" data-i18n="emr.index.portfolio.kicker">ロック解除</p>
+            <h2 id="portfolio-heading" class="portfolioSection__title" data-i18n="emr.index.portfolio.title" data-i18n-html>
               ライトのパワーが、<br class="portfolioSection__titleBr" />
               バランスの取れた、活性化したあなたのために
             </h2>
-            <p class="portfolioSection__lead">
+            <p class="portfolioSection__lead" data-i18n="emr.index.portfolio.lead">
               バランスをサポートし、活力を高め、日常の健康を高めるように設計された最先端の照明システム—科学と日常のパフォーマンスが融合する場所。
             </p>
           </header>
@@ -330,7 +341,7 @@
                 />
               </div>
               <div class="profileCard__footer">
-                <p class="profileCard__heading" id="profile-heading-restore">光を復元する</p>
+                <p class="profileCard__heading" id="profile-heading-restore" data-i18n="emr.index.profile.restore.title">光を復元する</p>
                 <button
                   type="button"
                   class="profileCard__open"
@@ -339,7 +350,7 @@
                   aria-haspopup="dialog"
                   data-profile-dialog
                 >
-                  <span class="sr-only">詳細を開く</span>
+                  <span class="sr-only" data-i18n="emr.index.profile.openSr">詳細を開く</span>
                   <svg class="profileCard__openIcon" viewBox="0 0 14 14" width="18" height="18" aria-hidden="true" focusable="false">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M7 1v12M13 7H1" />
                   </svg>
@@ -373,7 +384,7 @@
                 </picture>
               </div>
               <div class="profileCard__footer">
-                <p class="profileCard__heading" id="profile-heading-performance">ルーチンとパフォーマンスを向上させます</p>
+                <p class="profileCard__heading" id="profile-heading-performance" data-i18n="emr.index.profile.performance.title">ルーチンとパフォーマンスを向上させます</p>
                 <button
                   type="button"
                   class="profileCard__open"
@@ -382,7 +393,7 @@
                   aria-haspopup="dialog"
                   data-profile-dialog
                 >
-                  <span class="sr-only">詳細を開く</span>
+                  <span class="sr-only" data-i18n="emr.index.profile.openSr">詳細を開く</span>
                   <svg class="profileCard__openIcon" viewBox="0 0 14 14" width="18" height="18" aria-hidden="true" focusable="false">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M7 1v12M13 7H1" />
                   </svg>
@@ -407,7 +418,7 @@
                 />
               </div>
               <div class="profileCard__footer">
-                <p class="profileCard__heading" id="profile-heading-energy">エネルギーを充電しましょう</p>
+                <p class="profileCard__heading" id="profile-heading-energy" data-i18n="emr.index.profile.energy.title">エネルギーを充電しましょう</p>
                 <button
                   type="button"
                   class="profileCard__open"
@@ -416,7 +427,7 @@
                   aria-haspopup="dialog"
                   data-profile-dialog
                 >
-                  <span class="sr-only">詳細を開く</span>
+                  <span class="sr-only" data-i18n="emr.index.profile.openSr">詳細を開く</span>
                   <svg class="profileCard__openIcon" viewBox="0 0 14 14" width="18" height="18" aria-hidden="true" focusable="false">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M7 1v12M13 7H1" />
                   </svg>
@@ -442,7 +453,7 @@
                 />
               </div>
               <div class="profileCard__footer">
-                <p class="profileCard__heading" id="profile-heading-wellness">全体的なウェルネスをサポートします</p>
+                <p class="profileCard__heading" id="profile-heading-wellness" data-i18n="emr.index.profile.wellness.title">全体的なウェルネスをサポートします</p>
                 <button
                   type="button"
                   class="profileCard__open"
@@ -451,7 +462,7 @@
                   aria-haspopup="dialog"
                   data-profile-dialog
                 >
-                  <span class="sr-only">詳細を開く</span>
+                  <span class="sr-only" data-i18n="emr.index.profile.openSr">詳細を開く</span>
                   <svg class="profileCard__openIcon" viewBox="0 0 14 14" width="18" height="18" aria-hidden="true" focusable="false">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M7 1v12M13 7H1" />
                   </svg>
@@ -464,18 +475,18 @@
         <dialog id="profile-dialog-restore" class="profileDialog" aria-labelledby="profile-dialog-title-restore">
           <div class="profileDialog__panel">
             <header class="profileDialog__header">
-              <h3 id="profile-dialog-title-restore" class="profileDialog__title">光を復元する</h3>
-              <button type="button" class="icon-btn profileDialog__close" data-profile-dialog-close aria-label="閉じる">
+              <h3 id="profile-dialog-title-restore" class="profileDialog__title" data-i18n="emr.index.profile.restore.title">光を復元する</h3>
+              <button type="button" class="icon-btn profileDialog__close" data-profile-dialog-close data-i18n-attr="aria-label:emr.index.profile.close" aria-label="閉じる">
                 <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M5 15L15 5M5 5l10 10" />
                 </svg>
               </button>
             </header>
             <div class="profileDialog__body">
-              <p>
+              <p data-i18n="emr.index.profile.restore.p1">
                 毎日赤色光にさらされると、リフレッシュされ、バランスが取れ、輝く外見をサポートできます—過酷な処理や化学物質は必要ありません。EMR-TEK デバイスは、日常のスキンケア ルーチン向けに設計された一貫した快適な光を提供するように設計されています。
               </p>
-              <p>
+              <p data-i18n="emr.index.profile.restore.p2">
                 局所用製品とは異なり、当社のライト システムは接触せずに動作し、お気に入りのスキンケア ステップを補完する穏やかな照明を提供します。定期的に使用することで、自然に活性化された外見と、楽に感じる健康的な輝きをお楽しみください。
               </p>
             </div>
@@ -485,18 +496,18 @@
         <dialog id="profile-dialog-performance" class="profileDialog" aria-labelledby="profile-dialog-title-performance">
           <div class="profileDialog__panel">
             <header class="profileDialog__header">
-              <h3 id="profile-dialog-title-performance" class="profileDialog__title">ルーチンとパフォーマンスを向上させます</h3>
-              <button type="button" class="icon-btn profileDialog__close" data-profile-dialog-close aria-label="閉じる">
+              <h3 id="profile-dialog-title-performance" class="profileDialog__title" data-i18n="emr.index.profile.performance.title">ルーチンとパフォーマンスを向上させます</h3>
+              <button type="button" class="icon-btn profileDialog__close" data-profile-dialog-close data-i18n-attr="aria-label:emr.index.profile.close" aria-label="閉じる">
                 <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M5 15L15 5M5 5l10 10" />
                 </svg>
               </button>
             </header>
             <div class="profileDialog__body">
-              <p>
+              <p data-i18n="emr.index.profile.performance.p1">
                 アスリート、フィットネス愛好家、または単にアクティブなライフスタイルを送っている場合でも、EMR-TEK ライト システムは回復とパフォーマンスのルーチンを補完するように設計されています。継続的に使用すると、リフレッシュし、元気を取り戻し、次のことに備えることができます。
               </p>
-              <p>
+              <p data-i18n="emr.index.profile.performance.p2">
                 トレーニングの前後に数分間の光への曝露を追加して、バランス、リラクゼーション、全体的な活力をサポートします—一貫性を保ち、毎日最高のパフォーマンスを発揮するのに役立ちます。
               </p>
             </div>
@@ -506,18 +517,18 @@
         <dialog id="profile-dialog-energy" class="profileDialog" aria-labelledby="profile-dialog-title-energy">
           <div class="profileDialog__panel">
             <header class="profileDialog__header">
-              <h3 id="profile-dialog-title-energy" class="profileDialog__title">エネルギーを充電しましょう</h3>
-              <button type="button" class="icon-btn profileDialog__close" data-profile-dialog-close aria-label="閉じる">
+              <h3 id="profile-dialog-title-energy" class="profileDialog__title" data-i18n="emr.index.profile.energy.title">エネルギーを充電しましょう</h3>
+              <button type="button" class="icon-btn profileDialog__close" data-profile-dialog-close data-i18n-attr="aria-label:emr.index.profile.close" aria-label="閉じる">
                 <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M5 15L15 5M5 5l10 10" />
                 </svg>
               </button>
             </header>
             <div class="profileDialog__body">
-              <p>
+              <p data-i18n="emr.index.profile.energy.p1">
                 疲れを感じたり、だるくなりますか？EMR-TEK ライト システムは、バランスの取れた自然な照明によってリフレッシュされ、元気を取り戻せるように設計されています。これは、集中力、活力、全体的な健康—自宅、職場、または長い一日の後の回復などをサポートする毎日の光ブーストであると考えてください。
               </p>
-              <p>
+              <p data-i18n="emr.index.profile.energy.p2">
                 定期的に使用すると、特に暗い季節や長時間のスクリーンタイムの後、よりバランスが取れ、ルーチンに取り組む準備ができていると感じることができます。
               </p>
             </div>
@@ -527,18 +538,18 @@
         <dialog id="profile-dialog-wellness" class="profileDialog" aria-labelledby="profile-dialog-title-wellness">
           <div class="profileDialog__panel">
             <header class="profileDialog__header">
-              <h3 id="profile-dialog-title-wellness" class="profileDialog__title">全体的なウェルネスをサポートします</h3>
-              <button type="button" class="icon-btn profileDialog__close" data-profile-dialog-close aria-label="閉じる">
+              <h3 id="profile-dialog-title-wellness" class="profileDialog__title" data-i18n="emr.index.profile.wellness.title">全体的なウェルネスをサポートします</h3>
+              <button type="button" class="icon-btn profileDialog__close" data-profile-dialog-close data-i18n-attr="aria-label:emr.index.profile.close" aria-label="閉じる">
                 <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M5 15L15 5M5 5l10 10" />
                 </svg>
               </button>
             </header>
             <div class="profileDialog__body">
-              <p>
+              <p data-i18n="emr.index.profile.wellness.p1">
                 光は日常生活と幸福において重要な役割を果たします。EMR-TEK デバイスは、赤色、近赤外線、および一部のモデルでは UV 光—を組み合わせており、ルーチンを補完し、マインドフルな光への曝露を通じてバランスの取れたライフスタイルを促進するように作られています。
               </p>
-              <p>
+              <p data-i18n="emr.index.profile.wellness.p2">
                 くつろぎたい場合でも、集中力を維持したい場合でも、毎日のリズムを高めたい場合でも、当社のライト システムは、全体的な活力と健康感をサポートするシンプルで自然な方法を提供します。
               </p>
             </div>
@@ -546,13 +557,13 @@
         </dialog>
       </section>
 
-      <section class="container favs" aria-label="お気に入り">
+      <section class="container favs" data-i18n-attr="aria-label:emr.index.favs.aria" aria-label="お気に入り">
         <div class="favs__head">
           <div>
             <div class="favs__kicker">EMR-TEK</div>
-            <h2 class="h2" style="margin-top: 6px">お気に入り</h2>
+            <h2 class="h2" style="margin-top: 6px" data-i18n="emr.index.favs.title">お気に入り</h2>
           </div>
-          <a class="btn btn--ghost btn--sm" href="./collection-all.html" aria-label="全商品一覧へ">すべて表示</a>
+          <a class="btn btn--ghost btn--sm" href="./collection-all.html" data-i18n-attr="aria-label:emr.index.favs.viewAllAria" aria-label="全商品一覧へ" data-i18n="emr.index.favs.viewAll">すべて表示</a>
         </div>
 
         <div class="favs__row" role="list">
@@ -578,27 +589,27 @@
                     alt=""
                   />
                 </video>
-                <div class="pilltag">モバイル</div>
+                <div class="pilltag"><span data-i18n="emr.index.tag.mobile">モバイル</span></div>
               </div>
               <div class="favcard__body">
-              <div class="stars" aria-label="評価">
+              <div class="stars" data-i18n-attr="aria-label:emr.index.aria.rating" aria-label="評価">
                 <span class="stars__dots" aria-hidden="true">★★★★★</span>
                 <span>5.0</span>
               </div>
-              <div class="tags" aria-label="特徴">
-                <span class="tag">モバイル</span>
-                <span class="tag">ポータブル</span>
+              <div class="tags" data-i18n-attr="aria-label:emr.index.aria.features" aria-label="特徴">
+                <span class="tag"><span data-i18n="emr.index.tag.mobile">モバイル</span></span>
+                <span class="tag"><span data-i18n="emr.index.tag.portable">ポータブル</span></span>
               </div>
               <h3 class="product__title">Firefly ポータブル赤色・近赤外線光デバイス</h3>
-              <div class="price" aria-label="価格">
+              <div class="price" data-i18n-attr="aria-label:emr.index.aria.price" aria-label="価格">
                 <div class="price__now">¥40,587</div>
                 <div class="price__was">¥56,823</div>
-                <div class="save">保存 ¥16,236</div>
+                <div class="save"><span data-i18n="emr.index.saveLabel">保存</span> ¥16,236</div>
               </div>
               </div>
             </a>
             <div class="product__actions">
-              <button class="btn" type="button" data-add-id="firefly-portable">カートに追加</button>
+              <button class="btn" type="button" data-add-id="firefly-portable"><span data-i18n="emr.index.btn.addToCart">カートに追加</span></button>
             </div>
           </article>
 
@@ -624,26 +635,26 @@
                   alt=""
                 />
               </video>
-              <div class="pilltag">肌を滑らかにします</div>
+              <div class="pilltag"><span data-i18n="emr.index.tag.smoothSkin">肌を滑らかにします</span></div>
             </div>
             <div class="favcard__body">
-              <div class="stars" aria-label="評価">
+              <div class="stars" data-i18n-attr="aria-label:emr.index.aria.rating" aria-label="評価">
                 <span class="stars__dots" aria-hidden="true">★★★★★</span>
                 <span>4.9</span>
               </div>
-              <div class="tags" aria-label="特徴">
-                <span class="tag">肌を滑らかにします</span>
+              <div class="tags" data-i18n-attr="aria-label:emr.index.aria.features" aria-label="特徴">
+                <span class="tag"><span data-i18n="emr.index.tag.smoothSkin">肌を滑らかにします</span></span>
               </div>
               <h3 class="product__title">ETERNO マスク - LED スキンケア マルチライト リジュビネーション</h3>
-              <div class="price" aria-label="価格">
+              <div class="price" data-i18n-attr="aria-label:emr.index.aria.price" aria-label="価格">
                 <div class="price__now">¥40,599</div>
                 <div class="price__was">¥64,960</div>
-                <div class="save">保存 ¥24,361</div>
+                <div class="save"><span data-i18n="emr.index.saveLabel">保存</span> ¥24,361</div>
               </div>
             </div>
             </a>
             <div class="product__actions">
-              <button class="btn" type="button" data-add-id="eterno-mask">カートに追加</button>
+              <button class="btn" type="button" data-add-id="eterno-mask"><span data-i18n="emr.index.btn.addToCart">カートに追加</span></button>
             </div>
           </article>
 
@@ -669,26 +680,26 @@
                   src="https://emr-tek.com/cdn/shop/files/preview_images/Updated_96cd362136c549429a4662e061c30348.thumbnail.0000000000_800x800_db7710b6-f652-43a4-b9f6-8ade5b25db20_800x.jpg?v=1774360286"
                 />
               </video>
-              <div class="pilltag">モバイル</div>
+              <div class="pilltag"><span data-i18n="emr.index.tag.mobile">モバイル</span></div>
             </div>
             <div class="favcard__body">
-              <div class="stars" aria-label="評価">
+              <div class="stars" data-i18n-attr="aria-label:emr.index.aria.rating" aria-label="評価">
                 <span class="stars__dots" aria-hidden="true">★★★★★</span>
                 <span>4.8</span>
               </div>
-              <div class="tags" aria-label="特徴">
-                <span class="tag">モバイル</span>
+              <div class="tags" data-i18n-attr="aria-label:emr.index.aria.features" aria-label="特徴">
+                <span class="tag"><span data-i18n="emr.index.tag.mobile">モバイル</span></span>
               </div>
               <h3 class="product__title">Firewave コンパクトレッド&amp;近赤外線ライトパネルデバイス</h3>
-              <div class="price" aria-label="価格">
+              <div class="price" data-i18n-attr="aria-label:emr.index.aria.price" aria-label="価格">
                 <div class="price__now">¥40,599</div>
                 <div class="price__was">¥64,960</div>
-                <div class="save">保存 ¥24,361</div>
+                <div class="save"><span data-i18n="emr.index.saveLabel">保存</span> ¥24,361</div>
               </div>
             </div>
             </a>
             <div class="product__actions">
-              <button class="btn" type="button" data-add-id="firewave-compact">カートに追加</button>
+              <button class="btn" type="button" data-add-id="firewave-compact"><span data-i18n="emr.index.btn.addToCart">カートに追加</span></button>
             </div>
           </article>
 
@@ -714,40 +725,40 @@
                   src="https://emr-tek.com/cdn/shop/files/preview_images/Firedragon_-_Red_and_Near_Infrared_Light_Updated_800x.jpg?v=1774360509"
                 />
               </video>
-              <div class="pilltag">ベストセラー</div>
-              <div class="pilltag">マルチスペクトル</div>
+              <div class="pilltag"><span data-i18n="emr.index.tag.bestseller">ベストセラー</span></div>
+              <div class="pilltag"><span data-i18n="emr.index.tag.multispectral">マルチスペクトル</span></div>
             </div>
             <div class="favcard__body">
-              <div class="stars" aria-label="評価">
+              <div class="stars" data-i18n-attr="aria-label:emr.index.aria.rating" aria-label="評価">
                 <span class="stars__dots" aria-hidden="true">★★★★★</span>
                 <span>4.8</span>
               </div>
-              <div class="tags" aria-label="特徴">
-                <span class="tag">ベストセラー</span>
-                <span class="tag">マルチスペクトル</span>
+              <div class="tags" data-i18n-attr="aria-label:emr.index.aria.features" aria-label="特徴">
+                <span class="tag"><span data-i18n="emr.index.tag.bestseller">ベストセラー</span></span>
+                <span class="tag"><span data-i18n="emr.index.tag.multispectral">マルチスペクトル</span></span>
               </div>
               <h3 class="product__title">Firedragon - 赤色および近赤外線</h3>
-              <div class="price" aria-label="価格">
+              <div class="price" data-i18n-attr="aria-label:emr.index.aria.price" aria-label="価格">
                 <div class="price__now">¥65,085</div>
                 <div class="price__was">¥89,349</div>
-                <div class="save">保存 ¥24,368</div>
+                <div class="save"><span data-i18n="emr.index.saveLabel">保存</span> ¥24,368</div>
               </div>
             </div>
             </a>
             <div class="product__actions">
-              <button class="btn" type="button" data-add-id="firedragon">カートに追加</button>
+              <button class="btn" type="button" data-add-id="firedragon"><span data-i18n="emr.index.btn.addToCart">カートに追加</span></button>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="marqueeSection section section--padding" aria-label="スクロールバナー">
+      <section class="marqueeSection section section--padding" data-i18n-attr="aria-label:emr.index.marquee.aria" aria-label="スクロールバナー">
         <div class="container">
           <div class="marqueeSection__inner">
             <div
               class="marquee"
               role="img"
-              aria-label="ブランドバナー"
+              data-i18n-attr="aria-label:emr.index.marquee.banner" aria-label="ブランドバナー"
               style="--marquee-duration: 23s"
               data-marquee-speed="10"
               data-marquee-direction="left"
@@ -1155,17 +1166,17 @@
         <div class="container">
           <div class="reviewsSection__inner">
             <div class="reviewsSection__text">
-              <p class="reviewsSection__kicker">実際のレビュー</p>
+              <p class="reviewsSection__kicker" data-i18n="emr.index.reviews.kicker">実際のレビュー</p>
               <h2 id="reviews-heading" class="reviewsSection__title">
-                <span class="reviewsSection__titleWord">サポート</span>
-                <span class="reviewsSection__titleWord">あなたの</span>
-                <span class="reviewsSection__titleWord">ライト</span>
-                <span class="reviewsSection__titleWord">旅</span>
+                <span class="reviewsSection__titleWord" data-i18n="emr.index.reviews.word1">サポート</span>
+                <span class="reviewsSection__titleWord" data-i18n="emr.index.reviews.word2">あなたの</span>
+                <span class="reviewsSection__titleWord" data-i18n="emr.index.reviews.word3">ライト</span>
+                <span class="reviewsSection__titleWord" data-i18n="emr.index.reviews.word4">旅</span>
               </h2>
             </div>
             <p class="reviewsSection__cta">
               <a
-                class="btn btn--ghost reviewsSection__link"
+                class="btn btn--ghost reviewsSection__link" data-i18n="emr.index.reviews.viewAll"
                 href="https://emr-tek.com/en-jp/pages/reviews"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -1194,8 +1205,8 @@
         <div class="container testimonialsNarrow">
           <div class="testimonials" data-testimonials>
             <div class="testimonials__nav">
-              <button type="button" class="icon-btn testimonials__btn" data-t-prev aria-label="前のレビュー">&lsaquo;</button>
-              <button type="button" class="icon-btn testimonials__btn" data-t-next aria-label="次のレビュー">&rsaquo;</button>
+              <button type="button" class="icon-btn testimonials__btn" data-t-prev data-i18n-attr="aria-label:emr.index.reviews.prev" aria-label="前のレビュー">&lsaquo;</button>
+              <button type="button" class="icon-btn testimonials__btn" data-t-next data-i18n-attr="aria-label:emr.index.reviews.next" aria-label="次のレビュー">&rsaquo;</button>
             </div>
             <div
               class="testimonials__scroller"
@@ -1203,14 +1214,14 @@
               tabindex="0"
               role="region"
               aria-roledescription="carousel"
-              aria-label="お客様の声"
+              data-i18n-attr="aria-label:emr.index.reviews.carousel" aria-label="お客様の声"
             >
               <article class="testimonial">
                 <blockquote class="testimonial__quote">
-                  <div class="stars testimonial__stars" aria-label="5つ星うち5つ">
+                  <div class="stars testimonial__stars" data-i18n-attr="aria-label:emr.index.reviews.stars5" aria-label="5つ星うち5つ">
                     <span class="stars__dots" aria-hidden="true">★★★★★</span>
                   </div>
-                  <p>
+                  <p data-i18n="emr.index.review.1.body">
                     私のファイアドラゴンと青い光を遮断するメガネはわずか数日で到着しました。私のマシンが大好きです。特に冬がとても暗いカナダに住んでいると、毎日欠かせないマシンになっています。
                   </p>
                   <figure class="testimonial__figure">
@@ -1222,15 +1233,15 @@
                       height="409"
                     />
                   </figure>
-                  <cite class="testimonial__cite">— マット・アユエン</cite>
+                  <cite class="testimonial__cite" data-i18n="emr.index.review.1.cite">— マット・アユエン</cite>
                 </blockquote>
               </article>
               <article class="testimonial">
                 <blockquote class="testimonial__quote">
-                  <div class="stars testimonial__stars" aria-label="5つ星うち5つ">
+                  <div class="stars testimonial__stars" data-i18n-attr="aria-label:emr.index.reviews.stars5" aria-label="5つ星うち5つ">
                     <span class="stars__dots" aria-hidden="true">★★★★★</span>
                   </div>
-                  <p>
+                  <p data-i18n="emr.index.review.2.body">
                     12月24日にファイアストームを注文しましたが、なんと素晴らしいマシンでしょう。私は橋本病と呼ばれる自己免疫性甲状腺の問題に苦しんでいます（テストステロンレベルが低下し、したがって一般的なエネルギーレベルが低下します）。このマシンを使用して以来、私のテストレベルは正常に戻り、新しい男になったような気分になりました。私たちは今、体の残りの部分を覆うための 2 台目の機械（インフェルノ）を注文しました。自己免疫治療には強くおすすめします。ありがとう
                   </p>
                   <figure class="testimonial__figure">
@@ -1242,15 +1253,15 @@
                       height="600"
                     />
                   </figure>
-                  <cite class="testimonial__cite">— マイケル・ウィルキンソン</cite>
+                  <cite class="testimonial__cite" data-i18n="emr.index.review.2.cite">— マイケル・ウィルキンソン</cite>
                 </blockquote>
               </article>
               <article class="testimonial">
                 <blockquote class="testimonial__quote">
-                  <div class="stars testimonial__stars" aria-label="5つ星うち5つ">
+                  <div class="stars testimonial__stars" data-i18n-attr="aria-label:emr.index.reviews.stars5" aria-label="5つ星うち5つ">
                     <span class="stars__dots" aria-hidden="true">★★★★★</span>
                   </div>
-                  <p>
+                  <p data-i18n="emr.index.review.3.body">
                     EMR TEK 光療法装置は私にとって状況を一変させました。月経痛を効果的に軽減し、肌を落ち着かせ、夜の睡眠を改善します。
                   </p>
                   <figure class="testimonial__figure">
@@ -1262,15 +1273,15 @@
                       height="199"
                     />
                   </figure>
-                  <cite class="testimonial__cite">— ナタリア・モラレス・パティニョ</cite>
+                  <cite class="testimonial__cite" data-i18n="emr.index.review.3.cite">— ナタリア・モラレス・パティニョ</cite>
                 </blockquote>
               </article>
               <article class="testimonial">
                 <blockquote class="testimonial__quote">
-                  <div class="stars testimonial__stars" aria-label="5つ星うち5つ">
+                  <div class="stars testimonial__stars" data-i18n-attr="aria-label:emr.index.reviews.stars5" aria-label="5つ星うち5つ">
                     <span class="stars__dots" aria-hidden="true">★★★★★</span>
                   </div>
-                  <p>
+                  <p data-i18n="emr.index.review.4.body">
                     ゲーム内で絶対的に最高の赤色光療法。私は彼らの製品を毎日使用しており、より元気になり、より健康になったと感じています。これはトレーニングの回復のためのゲームチェンジャーです。
                   </p>
                   <figure class="testimonial__figure">
@@ -1282,15 +1293,15 @@
                       height="737"
                     />
                   </figure>
-                  <cite class="testimonial__cite">— マイケル・ウリベ</cite>
+                  <cite class="testimonial__cite" data-i18n="emr.index.review.4.cite">— マイケル・ウリベ</cite>
                 </blockquote>
               </article>
               <article class="testimonial">
                 <blockquote class="testimonial__quote">
-                  <div class="stars testimonial__stars" aria-label="5つ星うち5つ">
+                  <div class="stars testimonial__stars" data-i18n-attr="aria-label:emr.index.reviews.stars5" aria-label="5つ星うち5つ">
                     <span class="stars__dots" aria-hidden="true">★★★★★</span>
                   </div>
-                  <p>
+                  <p data-i18n="emr.index.review.5.body">
                     EMR-TEK はパフォーマンスが最も優れています。私の赤色光療法が大好きです。2年間、特に太陽のない寒い場所に住んでいると、それなしでは生きていけません。
                   </p>
                   <figure class="testimonial__figure">
@@ -1302,15 +1313,15 @@
                       height="960"
                     />
                   </figure>
-                  <cite class="testimonial__cite">— トレバー・ウィリアムズ</cite>
+                  <cite class="testimonial__cite" data-i18n="emr.index.review.5.cite">— トレバー・ウィリアムズ</cite>
                 </blockquote>
               </article>
               <article class="testimonial">
                 <blockquote class="testimonial__quote">
-                  <div class="stars testimonial__stars" aria-label="5つ星うち5つ">
+                  <div class="stars testimonial__stars" data-i18n-attr="aria-label:emr.index.reviews.stars5" aria-label="5つ星うち5つ">
                     <span class="stars__dots" aria-hidden="true">★★★★★</span>
                   </div>
-                  <p>
+                  <p data-i18n="emr.index.review.6.body">
                     ブルーライトグラスを注文したのですが、全体的にとても気分が良くなり、デバイスを見るのがずっと良くなりました。とても素晴らしいです。コンサートにも持っていって、ライトが私にとってそれほど悪くなく、ブルーライトグラスで守られていることを確認しました。ありがとうございます！！
                   </p>
                   <figure class="testimonial__figure">
@@ -1322,15 +1333,15 @@
                       height="201"
                     />
                   </figure>
-                  <cite class="testimonial__cite">— セイディ・ハリデー</cite>
+                  <cite class="testimonial__cite" data-i18n="emr.index.review.6.cite">— セイディ・ハリデー</cite>
                 </blockquote>
               </article>
               <article class="testimonial">
                 <blockquote class="testimonial__quote">
-                  <div class="stars testimonial__stars" aria-label="5つ星うち5つ">
+                  <div class="stars testimonial__stars" data-i18n-attr="aria-label:emr.index.reviews.stars5" aria-label="5つ星うち5つ">
                     <span class="stars__dots" aria-hidden="true">★★★★★</span>
                   </div>
-                  <p>
+                  <p data-i18n="emr.index.review.7.body">
                     私はここ数週間、赤色光療法を継続的に使用していますが、その結果は信じられないほどです。トレーニング後の回復が早くなり、肩の炎症が軽減され、エネルギーと気分が全体的に向上したことに気づきました。デバイスの品質は一流で使いやすく、プロフェッショナルに感じられます。これは間違いなく私の毎日のウェルネスルーチンの重要な部分になっています。健康と回復に真剣に取り組んでいる人には強くおすすめします！
                   </p>
                   <figure class="testimonial__figure">
@@ -1342,15 +1353,15 @@
                       height="600"
                     />
                   </figure>
-                  <cite class="testimonial__cite">— ジョエル・マーティン</cite>
+                  <cite class="testimonial__cite" data-i18n="emr.index.review.7.cite">— ジョエル・マーティン</cite>
                 </blockquote>
               </article>
               <article class="testimonial">
                 <blockquote class="testimonial__quote">
-                  <div class="stars testimonial__stars" aria-label="5つ星うち5つ">
+                  <div class="stars testimonial__stars" data-i18n-attr="aria-label:emr.index.reviews.stars5" aria-label="5つ星うち5つ">
                     <span class="stars__dots" aria-hidden="true">★★★★★</span>
                   </div>
-                  <p>
+                  <p data-i18n="emr.index.review.8.body">
                     最初は赤外線に何を期待すればいいのかわかりませんでしたが、今では夢中になっています。1か月ちょっと経ちましたが、それは私の日課の欠かせない部分です。肌がより透明になり、滑らかになり、全体的に健康的になったように感じます。
                   </p>
                   <figure class="testimonial__figure">
@@ -1362,15 +1373,15 @@
                       height="416"
                     />
                   </figure>
-                  <cite class="testimonial__cite">— クリス</cite>
+                  <cite class="testimonial__cite" data-i18n="emr.index.review.8.cite">— クリス</cite>
                 </blockquote>
               </article>
               <article class="testimonial">
                 <blockquote class="testimonial__quote">
-                  <div class="stars testimonial__stars" aria-label="5つ星うち5つ">
+                  <div class="stars testimonial__stars" data-i18n-attr="aria-label:emr.index.reviews.stars5" aria-label="5つ星うち5つ">
                     <span class="stars__dots" aria-hidden="true">★★★★★</span>
                   </div>
-                  <p>
+                  <p data-i18n="emr.index.review.9.body">
                     光は私の人生を変えました。使うたびにエネルギーが充電されたような気分になります。けいれんがあるときも、けいれんを落ち着かせるために使うのが好きです。一番良いのは、肌が毎日より美しく見えることです。
                   </p>
                   <figure class="testimonial__figure">
@@ -1382,11 +1393,11 @@
                       height="960"
                     />
                   </figure>
-                  <cite class="testimonial__cite">— サラ・パディーリョ</cite>
+                  <cite class="testimonial__cite" data-i18n="emr.index.review.9.cite">— サラ・パディーリョ</cite>
                 </blockquote>
               </article>
             </div>
-            <div class="testimonials__dots" data-t-dots role="tablist" aria-label="レビューのページ"></div>
+            <div class="testimonials__dots" data-t-dots role="tablist" data-i18n-attr="aria-label:emr.index.reviews.dots" aria-label="レビューのページ"></div>
           </div>
         </div>
 
@@ -1395,63 +1406,63 @@
       <section class="benefitsSection" aria-labelledby="benefits-heading">
         <div class="container">
           <div class="benefitsSection__head">
-            <h2 id="benefits-heading" class="h2">メリット：赤色光と近赤外線（NIR）ライト</h2>
-            <p class="subtle">
+            <h2 id="benefits-heading" class="h2" data-i18n="emr.index.benefits.title">メリット：赤色光と近赤外線（NIR）ライト</h2>
+            <p class="subtle" data-i18n="emr.index.benefits.lead">
               一貫した高品質の光へのエクスポージャー（曝露）を通じて、ウェルネスを多方面からサポートするポイントの整理です。
             </p>
           </div>
           <div class="benefitsGrid">
             <article class="benefitCard">
-              <h3 class="benefitCard__title">細胞のエネルギーと活力</h3>
-              <p class="benefitCard__desc">
+              <h3 class="benefitCard__title" data-i18n="emr.index.benefit.1.title">細胞のエネルギーと活力</h3>
+              <p class="benefitCard__desc" data-i18n="emr.index.benefit.1.desc">
                 赤色光と近赤外線は、体内の自然なエネルギーバランスをサポートし、一貫した高品質の光への曝露を通じて活力の感覚を促進することに関連しています。
               </p>
             </article>
             <article class="benefitCard">
-              <h3 class="benefitCard__title">循環と流れ</h3>
-              <p class="benefitCard__desc">
+              <h3 class="benefitCard__title" data-i18n="emr.index.benefit.2.title">循環と流れ</h3>
+              <p class="benefitCard__desc" data-i18n="emr.index.benefit.2.desc">
                 赤色光と近赤外線は、自然なバランスと快適さをサポートし、体全体の流れと活力の感覚を促進するのに役立ちます。
               </p>
             </article>
             <article class="benefitCard">
-              <h3 class="benefitCard__title">皮膚の構造と輝き</h3>
-              <p class="benefitCard__desc">
+              <h3 class="benefitCard__title" data-i18n="emr.index.benefit.3.title">皮膚の構造と輝き</h3>
+              <p class="benefitCard__desc" data-i18n="emr.index.benefit.3.desc">
                 これらの波長は、しっかりとした滑らかな肌の外観をサポートし、健康的で輝く外観を促進することに関連しており—時間の経過とともに目に見える弾力性とバランスを維持するのに役立ちます。
               </p>
             </article>
             <article class="benefitCard">
-              <h3 class="benefitCard__title">落ち着きとバランス</h3>
-              <p class="benefitCard__desc">
+              <h3 class="benefitCard__title" data-i18n="emr.index.benefit.4.title">落ち着きとバランス</h3>
+              <p class="benefitCard__desc" data-i18n="emr.index.benefit.4.desc">
                 赤色光と近赤外線は、快適さとリラクゼーションの感覚をサポートすることに関連しています。これらは、日常活動後のバランスと回復を促進し、全体的な幸福を促進するルーチンを補完するのに役立ちます。
               </p>
             </article>
             <article class="benefitCard">
-              <h3 class="benefitCard__title">ヘア&amp;スカルプケア</h3>
-              <p class="benefitCard__desc">
+              <h3 class="benefitCard__title" data-i18n="emr.index.benefit.5.title">ヘア&amp;スカルプケア</h3>
+              <p class="benefitCard__desc" data-i18n="emr.index.benefit.5.desc">
                 赤色および近赤外線は、健康的に見える頭皮をサポートし、強くて鮮やかな髪の外観を促進することに関連しています。これらは、髪全体の活力を高めるように設計された定期的なグルーミングルーティンを補完します。
               </p>
             </article>
             <article class="benefitCard">
-              <h3 class="benefitCard__title">気分とリズムのサポート</h3>
-              <p class="benefitCard__desc">
+              <h3 class="benefitCard__title" data-i18n="emr.index.benefit.6.title">気分とリズムのサポート</h3>
+              <p class="benefitCard__desc" data-i18n="emr.index.benefit.6.desc">
                 朝の赤色光への曝露は、夕方のリラクゼーションを促進しながら、一日を通してバランスと集中力の感覚を促進するのに役立ちます。自然なリズム、気分、全体的な健康をサポートするルーチンを補完します。
               </p>
             </article>
             <article class="benefitCard">
-              <h3 class="benefitCard__title">回復と更新</h3>
-              <p class="benefitCard__desc">
+              <h3 class="benefitCard__title" data-i18n="emr.index.benefit.7.title">回復と更新</h3>
+              <p class="benefitCard__desc" data-i18n="emr.index.benefit.7.desc">
                 赤色光と近赤外線は、体の自然な回復感とバランスをサポートすることに関連しています。これらは、毎日の活動後の快適さと再生を促進し、全体的な健康と活力を促進するルーチンを補完するのに役立ちます。
               </p>
             </article>
             <article class="benefitCard">
-              <h3 class="benefitCard__title">筋肉のリラクゼーションと回復</h3>
-              <p class="benefitCard__desc">
+              <h3 class="benefitCard__title" data-i18n="emr.index.benefit.8.title">筋肉のリラクゼーションと回復</h3>
+              <p class="benefitCard__desc" data-i18n="emr.index.benefit.8.desc">
                 赤色および近赤外線は、活動後のリラクゼーションと全体的な快適さのサポートに関連しています。運動や毎日の運動後のバランスと楽さを促進することで、アクティブなライフスタイルを補完します。
               </p>
             </article>
             <article class="benefitCard">
-              <h3 class="benefitCard__title">焦点と明確さ</h3>
-              <p class="benefitCard__desc">
+              <h3 class="benefitCard__title" data-i18n="emr.index.benefit.9.title">焦点と明確さ</h3>
+              <p class="benefitCard__desc" data-i18n="emr.index.benefit.9.desc">
                 近赤外線は、明確で集中した精神状態と全体的な精神的バランスをサポートすることに関連しています。集中力、注意力、幸福感を促進する日常生活を補完します。
               </p>
             </article>
@@ -1462,73 +1473,73 @@
       <span id="all-products" class="anchor" aria-hidden="true"></span>
       <section class="section section--padding shopAll" aria-labelledby="shop-all-heading">
         <div class="container">
-          <h2 id="shop-all-heading" class="sr-only">商品一覧</h2>
+          <h2 id="shop-all-heading" class="sr-only" data-i18n="emr.index.shop.srTitle">商品一覧</h2>
 
           <div class="shopAll__bar">
             <p class="shopAll__count subtle" role="status">
               <span data-results-meta>—</span>
             </p>
             <div class="shopAll__sort">
-              <label class="shopAll__sortLabel" for="shop-all-sort">並べ替え</label>
+              <label class="shopAll__sortLabel" for="shop-all-sort" data-i18n="emr.index.shop.sortLabel">並べ替え</label>
               <div class="select collectionToolbar__selectWrap">
                 <select id="shop-all-sort" class="collectionToolbar__select" data-sort>
-                  <option value="best" selected>おすすめ</option>
-                  <option value="bestselling">売れ筋順</option>
-                  <option value="price_asc">価格：安い順</option>
-                  <option value="price_desc">価格：高い順</option>
-                  <option value="az">名前：あいうえお順</option>
-                  <option value="za">名前：逆順</option>
-                  <option value="new_desc">新着順</option>
-                  <option value="old_asc">発売が古い順</option>
+                  <option value="best" selected data-i18n="emr.index.shop.sort.best">おすすめ</option>
+                  <option value="bestselling" data-i18n="emr.index.shop.sort.bestselling">売れ筋順</option>
+                  <option value="price_asc" data-i18n="emr.index.shop.sort.priceAsc">価格：安い順</option>
+                  <option value="price_desc" data-i18n="emr.index.shop.sort.priceDesc">価格：高い順</option>
+                  <option value="az" data-i18n="emr.index.shop.sort.az">名前：あいうえお順</option>
+                  <option value="za" data-i18n="emr.index.shop.sort.za">名前：逆順</option>
+                  <option value="new_desc" data-i18n="emr.index.shop.sort.newDesc">新着順</option>
+                  <option value="old_asc" data-i18n="emr.index.shop.sort.oldAsc">発売が古い順</option>
                 </select>
               </div>
             </div>
           </div>
 
           <details class="shopFacets">
-            <summary class="shopFacets__summary">フィルターを表示</summary>
+            <summary class="shopFacets__summary" data-i18n="emr.index.shop.facetsSummary">フィルターを表示</summary>
             <div class="shopFacets__body panel">
               <div class="search">
-                <label class="search__label" for="shop-all-q">キーワード</label>
+                <label class="search__label" for="shop-all-q" data-i18n="emr.index.shop.keyword">キーワード</label>
                 <input
                   id="shop-all-q"
                   class="search__input"
                   type="search"
                   data-search
-                  placeholder="例：Firefly / マスク / 630nm"
+                  data-i18n-attr="placeholder:emr.index.shop.searchPlaceholder" placeholder="例：Firefly / マスク / 630nm"
                   autocomplete="off"
                 />
               </div>
 
               <fieldset class="shopFacets__fieldset">
-                <legend class="shopFacets__legend">カテゴリ</legend>
+                <legend class="shopFacets__legend" data-i18n="emr.index.shop.categoryLegend">カテゴリ</legend>
                 <div class="shopFacets__chips">
                   <label class="shopFacets__chip"
-                    ><input type="checkbox" data-filter="category" value="red" /> 赤色光・近赤外</label
+                    ><input type="checkbox" data-filter="category" value="red" /> <span data-i18n="emr.index.shop.cat.red">赤色光・近赤外</span></label
                   >
                   <label class="shopFacets__chip"
-                    ><input type="checkbox" data-filter="category" value="mask" /> LEDマスク</label
+                    ><input type="checkbox" data-filter="category" value="mask" /> <span data-i18n="emr.index.shop.cat.mask">LEDマスク</span></label
                   >
                   <label class="shopFacets__chip"
-                    ><input type="checkbox" data-filter="category" value="uv" /> UV</label
+                    ><input type="checkbox" data-filter="category" value="uv" /> <span data-i18n="emr.index.shop.cat.uv">UV</span></label
                   >
                   <label class="shopFacets__chip"
-                    ><input type="checkbox" data-filter="category" value="glasses" /> ブルーライトカット</label
+                    ><input type="checkbox" data-filter="category" value="glasses" /> <span data-i18n="emr.index.shop.cat.glasses">ブルーライトカット</span></label
                   >
                   <label class="shopFacets__chip"
-                    ><input type="checkbox" data-filter="category" value="cosmetics" /> コスメ</label
+                    ><input type="checkbox" data-filter="category" value="cosmetics" /> <span data-i18n="emr.index.shop.cat.cosmetics">コスメ</span></label
                   >
                   <label class="shopFacets__chip"
-                    ><input type="checkbox" data-filter="category" value="indoor" /> 室内照明</label
+                    ><input type="checkbox" data-filter="category" value="indoor" /> <span data-i18n="emr.index.shop.cat.indoor">室内照明</span></label
                   >
                   <label class="shopFacets__chip"
-                    ><input type="checkbox" data-filter="category" value="stands" /> スタンド</label
+                    ><input type="checkbox" data-filter="category" value="stands" /> <span data-i18n="emr.index.shop.cat.stands">スタンド</span></label
                   >
                 </div>
               </fieldset>
 
               <div class="shopFacets__priceRow">
-                <span class="shopFacets__legend">価格（円・税込目安）</span>
+                <span class="shopFacets__legend" data-i18n="emr.index.shop.priceLegend">価格（円・税込目安）</span>
                 <div class="shopFacets__priceInputs">
                   <input
                     class="shopFacets__priceInput"
@@ -1536,8 +1547,8 @@
                     inputmode="numeric"
                     min="0"
                     data-filter-min
-                    placeholder="最低"
-                    aria-label="最低価格"
+                    data-i18n-attr="placeholder:emr.index.shop.priceMin" placeholder="最低"
+                    data-i18n-attr="aria-label:emr.index.shop.priceMinAria" aria-label="最低価格"
                   />
                   <span class="shopFacets__priceSep">—</span>
                   <input
@@ -1546,13 +1557,13 @@
                     inputmode="numeric"
                     min="0"
                     data-filter-max
-                    placeholder="最高"
-                    aria-label="最高価格"
+                    data-i18n-attr="placeholder:emr.index.shop.priceMax" placeholder="最高"
+                    data-i18n-attr="aria-label:emr.index.shop.priceMaxAria" aria-label="最高価格"
                   />
                 </div>
                 <div class="shopFacets__priceActions">
-                  <button type="button" class="btn btn--sm" data-action="apply-price">価格を適用</button>
-                  <button type="button" class="btn btn--ghost btn--sm" data-action="clear-filters">
+                  <button type="button" class="btn btn--sm" data-action="apply-price" data-i18n="emr.index.shop.applyPrice">価格を適用</button>
+                  <button type="button" class="btn btn--ghost btn--sm" data-action="clear-filters" data-i18n="emr.index.shop.clearFilters">
                     条件をクリア
                   </button>
                 </div>
@@ -1563,21 +1574,21 @@
           <div class="grid shopAll__grid productGrid--uniform" data-grid aria-live="polite" aria-busy="false"></div>
 
           <div class="collectionAll__below">
-            <h2 class="collectionAll__subhead h2">カテゴリーから探す</h2>
-            <p class="subtle collectionAll__sublead">
+            <h2 class="collectionAll__subhead h2" data-i18n="emr.index.shop.categoriesTitle">カテゴリーから探す</h2>
+            <p class="subtle collectionAll__sublead" data-i18n="emr.index.shop.categoriesLead" data-i18n-html>
               ベストセラー・用途別のコレクションへすぐ移動できます（
               <a href="https://emr-tek.com/en-jp/collections/all" target="_blank" rel="noopener noreferrer"
                 >公式の Shop All</a
               >
               と同じ導線イメージ）。
             </p>
-            <div class="cards collectionAll__promos" aria-label="カテゴリ別コレクション">
+            <div class="cards collectionAll__promos" data-i18n-attr="aria-label:emr.index.shop.promosAria" aria-label="カテゴリ別コレクション">
               <a class="cardlink" href="./collection-red-light.html" aria-label="Red Light Therapy Devices">
                 <div class="cardlink__media cardlink__media--red"></div>
                 <div class="cardlink__body">
-                  <div class="cardlink__kicker">ベストセラー</div>
+                  <div class="cardlink__kicker" data-i18n="emr.index.tag.bestseller">ベストセラー</div>
                   <div class="cardlink__title">Red Light Therapy Devices</div>
-                  <div class="cardlink__desc">
+                  <div class="cardlink__desc" data-i18n="emr.index.shop.promo.redDesc">
                     肌・リカバリー・エネルギー向けに調整された赤色・近赤外のライトセラピー。
                   </div>
                 </div>
@@ -1585,7 +1596,7 @@
               <a class="cardlink" href="./collection-uv.html" aria-label="Ultraviolet Devices">
                 <div class="cardlink__media cardlink__media--uv"></div>
                 <div class="cardlink__body">
-                  <div class="cardlink__kicker">ベストセラー</div>
+                  <div class="cardlink__kicker" data-i18n="emr.index.tag.bestseller">ベストセラー</div>
                   <div class="cardlink__title">UV</div>
                   <div class="cardlink__desc">太陽光に近い体験を室内で。UV ライト関連製品。</div>
                 </div>
@@ -1593,9 +1604,9 @@
               <a class="cardlink" href="./collection-red-light.html" aria-label="LEDマスク">
                 <div class="cardlink__media cardlink__media--mask"></div>
                 <div class="cardlink__body">
-                  <div class="cardlink__kicker">ベストセラー</div>
+                  <div class="cardlink__kicker" data-i18n="emr.index.tag.bestseller">ベストセラー</div>
                   <div class="cardlink__title">LEDマスク</div>
-                  <div class="cardlink__desc">
+                  <div class="cardlink__desc" data-i18n="emr.index.shop.promo.maskDesc">
                     ライトセラピーと相性の良いセラム・スキンケア（公式の Face Mask / Cosmetics 相当）。
                   </div>
                 </div>
@@ -1618,16 +1629,16 @@
 
             <section id="learn" class="learn" aria-labelledby="learn-heading-all">
               <div class="learn__head">
-                <h2 id="learn-heading-all" class="h2">赤色光セラピーのメリットを学ぶ</h2>
-                <a class="btn btn--ghost" href="./blog.html" aria-label="すべての記事">すべての記事</a>
+                <h2 id="learn-heading-all" class="h2" data-i18n="emr.index.learn.title">赤色光セラピーのメリットを学ぶ</h2>
+                <a class="btn btn--ghost" href="./blog.html" data-i18n-attr="aria-label:emr.index.learn.allPostsAria" aria-label="すべての記事" data-i18n="emr.index.learn.allPosts">すべての記事</a>
               </div>
               <div class="learn__grid">
                 <article class="post">
                   <div class="post__meta">2025/10/28</div>
-                  <h3 class="post__title">
+                  <h3 class="post__title" data-i18n="emr.index.learn.post1.title">
                     肌に本当に必要なものは？— プラスチックの“重さ”を見直す
                   </h3>
-                  <p class="post__desc">
+                  <p class="post__desc" data-i18n="emr.index.learn.post1.desc">
                     従来のLEDマスクは密着型。快適性と使い勝手のトレードオフをどう考えるか…
                   </p>
                   <a
@@ -1635,14 +1646,13 @@
                     href="https://emr-tek.com/en-jp/blogs/news/are-you-truly-giving-your-skin-what-it-deserves-or-weighing-it-down-with-plastic"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="続きを読む"
-                    >続きを読む</a
-                  >
+                    data-i18n-attr="aria-label:emr.index.learn.readMoreAria" aria-label="続きを読む"
+                    data-i18n="emr.index.learn.readMore">続きを読む</a>
                 </article>
                 <article class="post">
                   <div class="post__meta">2025/03/12</div>
-                  <h3 class="post__title">人は紫外線を見られる？見えない光の謎</h3>
-                  <p class="post__desc">
+                  <h3 class="post__title" data-i18n="emr.index.learn.post2.title">人は紫外線を見られる？見えない光の謎</h3>
+                  <p class="post__desc" data-i18n="emr.index.learn.post2.desc">
                     可視光の外側にある紫外線。見えない波長が私たちに与える影響を探ります。
                   </p>
                   <a
@@ -1650,14 +1660,13 @@
                     href="https://emr-tek.com/en-jp/blogs/news/can-humans-see-ultraviolet-light"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="続きを読む"
-                    >続きを読む</a
-                  >
+                    data-i18n-attr="aria-label:emr.index.learn.readMoreAria" aria-label="続きを読む"
+                    data-i18n="emr.index.learn.readMore">続きを読む</a>
                 </article>
                 <article class="post">
                   <div class="post__meta">2025/03/09</div>
-                  <h3 class="post__title">赤色光を“肺”に使うには：ステップ別ガイド</h3>
-                  <p class="post__desc">
+                  <h3 class="post__title" data-i18n="emr.index.learn.post3.title">赤色光を“肺”に使うには：ステップ別ガイド</h3>
+                  <p class="post__desc" data-i18n="emr.index.learn.post3.desc">
                     赤色光・近赤外の活用は広がっています。安全に楽しむための基本手順を紹介。
                   </p>
                   <a
@@ -1665,35 +1674,34 @@
                     href="https://emr-tek.com/en-jp/blogs/news/how-to-use-red-light-therapy-for-lungs"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="続きを読む"
-                    >続きを読む</a
-                  >
+                    data-i18n-attr="aria-label:emr.index.learn.readMoreAria" aria-label="続きを読む"
+                    data-i18n="emr.index.learn.readMore">続きを読む</a>
                 </article>
               </div>
             </section>
 
-            <section class="collectionAll__trust" aria-label="サービスと安心">
+            <section class="collectionAll__trust" data-i18n-attr="aria-label:emr.index.trust.aria" aria-label="サービスと安心">
               <div class="collectionAll__trustGrid">
                 <div class="collectionAll__trustItem">
-                  <div class="collectionAll__trustTitle">カスタマーサポート</div>
-                  <p class="micro subtle">
+                  <div class="collectionAll__trustTitle" data-i18n="emr.index.trust.support.title">カスタマーサポート</div>
+                  <p class="micro subtle" data-i18n="emr.index.trust.support.body">
                     ご不明点はいつでもお問い合わせください。チームがサポートします。
                   </p>
                 </div>
                 <div class="collectionAll__trustItem">
-                  <div class="collectionAll__trustTitle">送料について</div>
-                  <p class="micro subtle">一定金額以上のご注文で送料無料になる場合があります（地域・キャンペーンにより異なります）。</p>
+                  <div class="collectionAll__trustTitle" data-i18n="emr.index.trust.shipping.title">送料について</div>
+                  <p class="micro subtle" data-i18n="emr.index.trust.shipping.body">一定金額以上のご注文で送料無料になる場合があります（地域・キャンペーンにより異なります）。</p>
                 </div>
                 <div class="collectionAll__trustItem">
-                  <div class="collectionAll__trustTitle">お友だち紹介</div>
-                  <p class="micro subtle">紹介プログラムにより双方に割引がある場合があります（公式の案内に準拠）。</p>
+                  <div class="collectionAll__trustTitle" data-i18n="emr.index.trust.referral.title">お友だち紹介</div>
+                  <p class="micro subtle" data-i18n="emr.index.trust.referral.body">紹介プログラムにより双方に割引がある場合があります（公式の案内に準拠）。</p>
                 </div>
                 <div class="collectionAll__trustItem">
-                  <div class="collectionAll__trustTitle">安全なお支払い</div>
-                  <p class="micro subtle">決済情報は暗号化され安全に処理されます。</p>
+                  <div class="collectionAll__trustTitle" data-i18n="emr.index.trust.payment.title">安全なお支払い</div>
+                  <p class="micro subtle" data-i18n="emr.index.trust.payment.body">決済情報は暗号化され安全に処理されます。</p>
                 </div>
               </div>
-              <p class="micro subtle collectionAll__cert">認証の例: FCC / RoHS / CE（製品により異なります）</p>
+              <p class="micro subtle collectionAll__cert" data-i18n="emr.index.trust.cert">認証の例: FCC / RoHS / CE（製品により異なります）</p>
             </section>
           </div>
         </div>
@@ -1701,18 +1709,18 @@
 
       <section id="track" class="container track">
         <div class="panel">
-          <h2 class="h2">注文を追跡</h2>
-          <p class="subtle">注文番号とメールアドレスを入力してください。</p>
-          <form class="track__form" data-track-form>
+          <h2 class="h2" data-i18n="emr.index.track.title">注文を追跡</h2>
+          <p class="subtle" data-i18n="emr.index.track.lead">注文番号とメールアドレスを入力してください。</p>
+          <form class="track__form" data-track-form data-i18n-track-result="emr.index.track.result">
             <label class="field">
-              <span>注文番号</span>
-              <input required name="order" autocomplete="off" placeholder="例：#1234" />
+              <span data-i18n="emr.index.track.orderLabel">注文番号</span>
+              <input required name="order" autocomplete="off" data-i18n-attr="placeholder:emr.index.track.orderPlaceholder" placeholder="例：#1234" />
             </label>
             <label class="field">
-              <span>メールアドレス</span>
+              <span data-i18n="emr.index.track.emailLabel">メールアドレス</span>
               <input required name="email" type="email" autocomplete="email" placeholder="you@example.com" />
             </label>
-            <button class="btn" type="submit">追跡する</button>
+            <button class="btn" type="submit" data-i18n="emr.index.track.submit">追跡する</button>
           </form>
           <p class="micro subtle" data-track-result></p>
         </div>
@@ -1723,9 +1731,7 @@
       <div class="container footer__grid">
         <div>
           <div class="footer__brand">EMR-TEK</div>
-          <div class="micro subtle">
-            <p>
-              <strong>重要な注意事項</strong>:
+          <div class="micro subtle"><p data-i18n="emr.footer.disclaimer1" data-i18n-html><strong>重要な注意事項</strong>:
               赤色および赤外線治療装置、青色遮光メガネ、その他の製品に関してこのサイトで提供されるすべての情報は、
               病気の診断、治療、治癒、予防を目的としたものではありません。当社の製品は医療機器と誤解されるべきではなく、
               治療上の主張も行いません。これらの製品は、2015 年 1 月 20 日に発表された
@@ -1733,7 +1739,7 @@
               一般的なウェルネス/フィットネス アイテムです。当社の製品は個人使用のみを目的としており、
               商業用途を目的としたものではありません。
             </p>
-            <p>
+            <p data-i18n="emr.footer.disclaimer2">
               ※ これらの記述は食品医薬品局によって評価されていません。この製品は、病気の診断、治療、治癒、予防を目的としたものではありません。
             </p>
           </div>
@@ -1746,7 +1752,7 @@
         <div>
           <div class="footer__title" data-i18n="emr.footer.shop">ショップ</div>
           <ul class="footer__list">
-            <li><a class="link" href="./collection-all.html">全商品</a></li>
+            <li><a class="link" href="./collection-all.html" data-i18n="emr.footer.allproducts">全商品</a></li>
             <li><a class="link" href="./collection-red-light.html">Red Light Therapy Devices</a></li>
             <li><a class="link" href="./collection-blue-light-glasses.html">Blue Light Blocking Glasses</a></li>
             <li><a class="link" href="./collection-indoor-lighting.html">Indoor Lighting Solutions</a></li>
@@ -1840,7 +1846,7 @@
             <input type="search" data-i18n-attr="placeholder:emr.search.placeholder" placeholder="例：Firewave / マスク / 近赤外" data-search-modal-input />
           </label>
           <div class="micro subtle">
-            この検索は一覧（全商品）に反映されます。
+            <span data-i18n="emr.index.search.modalHint">この検索は一覧（全商品）に反映されます。</span>
           </div>
           <menu class="modal__menu">
             <button class="btn" value="default" data-action="search-apply" data-i18n="emr.search.apply">適用</button>
@@ -1867,6 +1873,7 @@
       </div>
     </div>
 
+    <script src="./i18n-index-messages.js"></script>
     <script src="./app.js?v=20260517" defer></script>
       <script src="./i18n.js" defer></script>
   </body>
