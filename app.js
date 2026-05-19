@@ -554,10 +554,116 @@ const SHOP_JP_PRODUCT_HANDLE = {
   "ultron-fullbody": "ultron-patent-pending",
 };
 
-function getShopJpProductUrl(productId) {
-  const handle = SHOP_JP_PRODUCT_HANDLE[productId] ?? productId;
-  return `https://emr-tek.com/en-jp/products/${handle}`;
+function getSnowballCode() {
+  if (typeof window.__getSnowballCode === "function") return window.__getSnowballCode();
+  try {
+    return localStorage.getItem("emrtek_snowball_code") || "";
+  } catch {
+    return "";
+  }
 }
+
+function appendSnowballToShopUrl(url) {
+  if (typeof window.__appendSnowballToUrl === "function") {
+    return window.__appendSnowballToUrl(url);
+  }
+  const code = getSnowballCode();
+  if (!code) return url;
+  try {
+    const u = new URL(url);
+    if (!u.searchParams.has("snowball")) u.searchParams.set("snowball", code);
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
+function getReferralShopUrl() {
+  if (typeof window.__getReferralShopUrl === "function") {
+    return window.__getReferralShopUrl();
+  }
+  return String(window.__SNOWBALL_CONFIG__?.referralShopUrl || "").trim();
+}
+
+function getShopJpProductUrl(productId) {
+  const referral = getReferralShopUrl();
+  if (referral) return referral;
+  const handle = SHOP_JP_PRODUCT_HANDLE[productId] ?? productId;
+  return appendSnowballToShopUrl(`https://www.emr-tek.com/en-jp/products/${handle}`);
+}
+
+/** @returns {boolean} */
+function openAffiliateShop(productId) {
+  const url = productId ? getShopJpProductUrl(productId) : getReferralShopUrl();
+  if (!url) return false;
+  window.open(url, "_blank", "noopener,noreferrer");
+  return true;
+}
+
+function productIdFromAffiliateButton(btn) {
+  return (
+    btn.getAttribute("data-add-id") ||
+    btn.getAttribute("data-product-id") ||
+    btn.getAttribute("data-view-id") ||
+    btn.closest("[data-product-id]")?.getAttribute("data-product-id") ||
+    null
+  );
+}
+
+function isAffiliateCheckoutLink(el) {
+  if (!(el instanceof HTMLAnchorElement)) return false;
+  const href = el.getAttribute("href") ?? "";
+  if (href !== "./checkout.html" && href !== "checkout.html") return false;
+  return Boolean(
+    el.closest(
+      ".cartPage, .cart__summary, .product__actions, .productPage__buy, [data-cart-page], .modal, .cartPage__actions, [data-payment-card-page], [data-checkout-page]"
+    )
+  );
+}
+
+function initAffiliateProductButtons() {
+  if (window.__emrAffiliateButtonsBound) return;
+  window.__emrAffiliateButtonsBound = true;
+
+  document.addEventListener(
+    "click",
+    (e) => {
+      if (!(e.target instanceof Element)) return;
+      if (!getReferralShopUrl()) return;
+
+      if (
+        e.target.closest(
+          '[data-action="checkout"], [data-checkout-submit-card], [data-checkout-submit-order]'
+        )
+      ) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        openAffiliateShop();
+        return;
+      }
+
+      const checkoutLink = e.target.closest('a[href="./checkout.html"], a[href="checkout.html"]');
+      if (checkoutLink && isAffiliateCheckoutLink(checkoutLink)) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        openAffiliateShop();
+        return;
+      }
+
+      const productBtn = e.target.closest(
+        "button[data-add-id], button[data-add], button[data-product-add], button[data-view], button[data-view-id]"
+      );
+      if (productBtn instanceof HTMLButtonElement) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        openAffiliateShop(productIdFromAffiliateButton(productBtn));
+      }
+    },
+    true
+  );
+}
+
+initAffiliateProductButtons();
 
 /** このサイト内で用意している商品詳細ページ（存在するものだけ） */
 const LOCAL_PRODUCT_PAGES = {
@@ -1188,13 +1294,19 @@ function renderGrid() {
     const onSale = Boolean(p.was && p.was > p.now);
     const addLabel = uiT("emr.index.btn.addToCart", "カートに追加");
     const detailsLabel = uiT("emr.index.btn.details", "詳細");
+    const referralUrl = getReferralShopUrl();
+    const affiliateShopBtn = referralUrl
+      ? `<a class="btn btn--ghost btn--sm" href="${referralUrl}" target="_blank" rel="noopener noreferrer" data-affiliate-shop data-affiliate-product-btn>${uiT("emr.product.shopOfficial", "公式ストアで購入")}</a>`
+      : "";
     const actionsHtml = isUniformProductGrid
       ? `<div class="product__actions">
-          <button class="btn" type="button" data-add>${addLabel}</button>
+          <button class="btn" type="button" data-add data-affiliate-product-btn>${addLabel}</button>
+          ${affiliateShopBtn}
         </div>`
       : `<div class="product__actions">
-          <button class="btn" type="button" data-add>${addLabel}</button>
-          <button class="btn btn--ghost" type="button" data-view>${detailsLabel}</button>
+          <button class="btn" type="button" data-add data-affiliate-product-btn>${addLabel}</button>
+          <button class="btn btn--ghost" type="button" data-view data-affiliate-product-btn>${detailsLabel}</button>
+          ${affiliateShopBtn}
         </div>`;
     const priceInner = onSale
       ? `<span class="sr-only">${uiT("emr.index.price.sale", "販売価格")}</span>
@@ -2118,6 +2230,10 @@ function initCheckoutPage() {
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+      if (getReferralShopUrl()) {
+        openAffiliateShop();
+        return;
+      }
       if (cartCount(getCart()) === 0) return;
 
       const payMethod = form.querySelector('input[name="payment"]:checked')?.value;
@@ -2220,6 +2336,10 @@ function initPaymentCardPage() {
   if (form instanceof HTMLFormElement) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+      if (getReferralShopUrl()) {
+        openAffiliateShop();
+        return;
+      }
       if (cartCount(getCart()) === 0) return;
 
       const numEl = form.querySelector('[name="cardNumber"]');

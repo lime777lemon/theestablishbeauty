@@ -4634,3 +4634,10 @@ select {
   max-width: min(220px, 52vw);
   object-fit: contain;
 }
+
+.affiliateSectionCta {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+  padding-top: 0.5rem;
+}
