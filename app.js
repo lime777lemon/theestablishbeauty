@@ -799,6 +799,7 @@ function initProductTemplatePage() {
   video.preload = "metadata";
   video.setAttribute("aria-label", safeText(p.videoLabel) || p.title);
   video.setAttribute("data-gallery-video", "");
+  video.setAttribute("data-analytics-product", p.id);
   const poster = p.video?.poster || p.image?.src || "";
   if (poster) video.setAttribute("poster", poster);
   if (p.video?.src) {
@@ -1236,6 +1237,7 @@ function renderGrid() {
       v.preload = "metadata";
       v.poster = p.video.poster;
       v.setAttribute("aria-label", p.videoLabel || `${p.title}の紹介動画`);
+      v.setAttribute("data-analytics-product", p.id);
       const src = document.createElement("source");
       src.src = p.video.src;
       src.type = "video/mp4";
@@ -1340,13 +1342,19 @@ function initCookieBanner() {
   const consent = localStorage.getItem(STORAGE.cookie);
   if (!consent) wrap.hidden = false;
 
+  const notifyConsent = (status) => {
+    document.dispatchEvent(new CustomEvent("emr-cookie-consent", { detail: { status } }));
+  };
+
   document.querySelector('[data-action="cookie-accept"]')?.addEventListener("click", () => {
     localStorage.setItem(STORAGE.cookie, "accepted");
     wrap.hidden = true;
+    notifyConsent("accepted");
   });
   document.querySelector('[data-action="cookie-decline"]')?.addEventListener("click", () => {
     localStorage.setItem(STORAGE.cookie, "declined");
     wrap.hidden = true;
+    notifyConsent("declined");
   });
 }
 
