@@ -1551,6 +1551,7 @@ a {
 .brand__name {
   font-weight: 700;
   letter-spacing: 0.06em;
+  color: #0f172a;
 }
 
 .nav {
@@ -1563,7 +1564,7 @@ a {
 .nav__link {
   font-weight: 600;
   font-size: 14px;
-  color: rgba(15, 23, 42, 0.8);
+  color: #0f172a;
   padding: 10px 10px;
   border-radius: 999px;
 }
@@ -2852,7 +2853,7 @@ select {
 }
 
 /* Establish pages: keep media responsive by default */
-.page-establish img,
+.page-establish img:not(.establishBrand__logo--header):not(.establishBrand__logo--footer),
 .page-establish video {
   max-width: 100%;
   height: auto;
@@ -4629,10 +4630,30 @@ select {
 
 .establishBrand__logo--header {
   display: block;
-  height: 48px;
+  height: 32px;
   width: auto;
-  max-width: min(220px, 52vw);
+  max-width: min(180px, 48vw);
   object-fit: contain;
+}
+
+.establishBrand__logo--footer {
+  display: block;
+  height: 28px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+}
+
+@media (max-width: 520px) {
+  .establishBrand__logo--header {
+    height: 28px;
+    max-width: min(160px, 60vw);
+  }
+
+  .establishBrand__logo--footer {
+    height: 24px;
+    max-width: 140px;
+  }
 }
 
 .affiliateSectionCta {

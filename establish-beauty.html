@@ -17,7 +17,12 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
-    <link rel="icon" href="./assets/teb-logo.png" type="image/png" />
+    <link rel="shortcut icon" href="/favicon.ico?v=17" />
+    <link rel="icon" href="/favicon.ico?v=17" sizes="48x48" />
+    <link rel="icon" href="/assets/favicon-48.png?v=17" type="image/png" sizes="48x48" />
+    <link rel="icon" href="/assets/favicon-32.png?v=17" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/assets/favicon-16.png?v=17" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=17" />
     <title data-i18n-title="teb.doc.title">The Establish Beauty — ホーム</title>
     <meta
       name="description"
@@ -38,25 +43,25 @@
         align-items: center;
         line-height: 0;
       }
-      .page-establish .establishBrand__logo {
+      .page-establish .establishBrand__logo--header {
         display: block;
-        height: 64px;
+        height: 32px;
         width: auto;
-        max-width: min(260px, 56vw);
+        max-width: min(180px, 48vw);
         object-fit: contain;
       }
       .page-establish .establishBrand__logo--footer {
-        height: 52px;
-        max-width: 240px;
+        height: 28px;
+        max-width: 160px;
       }
       @media (max-width: 520px) {
-        .page-establish .establishBrand__logo {
-          height: 56px;
-          max-width: min(240px, 70vw);
+        .page-establish .establishBrand__logo--header {
+          height: 28px;
+          max-width: min(160px, 60vw);
         }
         .page-establish .establishBrand__logo--footer {
-          height: 48px;
-          max-width: 220px;
+          height: 24px;
+          max-width: 140px;
         }
       }
       .page-establish .establishHero {
@@ -469,14 +474,14 @@
             data-i18n-attr="aria-label:teb.brand.aria"
             aria-label="The Establish Beauty ホーム"
           >
-            <img
-              class="establishBrand__logo"
-              src="./assets/teb-logo.png"
-              width="200"
-              height="200"
+                        <img
+              class="establishBrand__logo--header"
+              src="./assets/site-logo.png"
+              width="84"
+              height="32"
               decoding="async"
               data-i18n-attr="alt:teb.brand.logoAlt"
-              alt="The Establish Beauty ロゴ"
+              alt="The Establish Beauty"
             />
           </a>
         </div>
@@ -887,7 +892,7 @@
           <div class="footer__brand">
             <img
               class="establishBrand__logo establishBrand__logo--footer"
-              src="./assets/teb-logo.png"
+              src="./assets/site-logo.png"
               width="200"
               height="200"
               decoding="async"

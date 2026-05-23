@@ -8,9 +8,14 @@
     "@vercel/analytics": "^2.0.1",
     "ws": "^8.18.0"
   },
+  "devDependencies": {
+    "sharp": "^0.34.2",
+    "to-ico": "^1.1.5"
+  },
   "scripts": {
     "postinstall": "node scripts/copy-vercel-analytics.mjs",
     "vendor:analytics": "node scripts/copy-vercel-analytics.mjs",
+    "favicons": "node scripts/generate-favicons.mjs",
     "dev": "node scripts/dev-server.mjs",
     "dev:vercel": "npx vercel dev --listen 5173",
     "dev:static": "python3 -m http.server 5173",

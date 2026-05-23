@@ -155,7 +155,7 @@ function safeResolveStatic(urlPath) {
   return abs;
 }
 
-function serveStatic(absPath, nodeRes) {
+function serveStatic(absPath, nodeRes, noCache = false) {
   fs.stat(absPath, (err, st) => {
     if (err || !st.isFile()) {
       nodeRes.statusCode = 404;
@@ -164,6 +164,11 @@ function serveStatic(absPath, nodeRes) {
     }
     const ext = path.extname(absPath).toLowerCase();
     nodeRes.setHeader("Content-Type", MIME[ext] || "application/octet-stream");
+    if (noCache) {
+      nodeRes.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+      nodeRes.setHeader("Pragma", "no-cache");
+      nodeRes.setHeader("Expires", "0");
+    }
     fs.createReadStream(absPath).pipe(nodeRes);
   });
 }
@@ -211,7 +216,11 @@ const server = http.createServer(async (req, nodeRes) => {
       nodeRes.end("Not found");
       return;
     }
-    serveStatic(abs, nodeRes);
+    const isFavicon =
+      url.pathname === "/favicon.ico" ||
+      url.pathname.startsWith("/assets/favicon") ||
+      url.pathname === "/assets/apple-touch-icon.png";
+    serveStatic(abs, nodeRes, isFavicon);
   } catch (e) {
     console.error(e);
     if (!nodeRes.headersSent) {
