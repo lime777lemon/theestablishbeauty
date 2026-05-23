@@ -1296,7 +1296,7 @@ function renderGrid() {
     const detailsLabel = uiT("emr.index.btn.details", "詳細");
     const referralUrl = getReferralShopUrl();
     const affiliateShopBtn = referralUrl
-      ? `<a class="btn btn--ghost btn--sm" href="${referralUrl}" target="_blank" rel="noopener noreferrer" data-affiliate-shop data-affiliate-product-btn>${uiT("emr.product.shopOfficial", "公式ストアで購入")}</a>`
+      ? `<a class="btn btn--ghost btn--sm" href="${referralUrl}" target="_blank" rel="noopener noreferrer" data-affiliate-shop data-affiliate-product-btn>${uiT("emr.product.shopOfficial", "ShopOfficial")}</a>`
       : "";
     const actionsHtml = isUniformProductGrid
       ? `<div class="product__actions">

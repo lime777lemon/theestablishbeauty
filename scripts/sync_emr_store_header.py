@@ -72,16 +72,12 @@ def nav_link(href: str, i18n: str, label: str, active: bool, indent: str = "    
 
 
 def active_key_for(filename: str) -> str | None:
-    if filename == "science.html":
-        return "science"
-    if filename == "blog.html":
-        return "blog"
     if filename == "faq.html":
         return "faq"
     if filename == "contact.html":
         return "contact"
     if filename == "collection-all.html" or filename.startswith("collection-"):
-        return "shop"
+        return None
     if filename == "auth-consumer-register.html":
         return "register"
     if filename == "auth-consumer-login.html":
@@ -94,9 +90,6 @@ def nav_items(filename: str) -> list[tuple[str, str, str, bool]]:
     ak = active_key_for(filename)
     items: list[tuple[str, str, str, bool]] = [
         ("./about-us.html", "emr.nav.teb", "私たちについて", ak == "teb"),
-        ("./collection-all.html", "emr.nav.shop", "ショップ", ak == "shop"),
-        ("./science.html", "emr.nav.science", "科学を学ぶ", ak == "science"),
-        ("./blog.html", "emr.nav.blog", "ブログ", ak == "blog"),
         (track_href, "emr.nav.track", "注文追跡", ak == "track"),
         ("./faq.html", "emr.nav.faq", "FAQ", ak == "faq"),
         (
