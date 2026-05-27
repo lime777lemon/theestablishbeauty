@@ -86,11 +86,9 @@ def active_key_for(filename: str) -> str | None:
 
 
 def nav_items(filename: str) -> list[tuple[str, str, str, bool]]:
-    track_href = "#track" if filename == "index.html" else "./index.html#track"
     ak = active_key_for(filename)
     items: list[tuple[str, str, str, bool]] = [
         ("./about-us.html", "emr.nav.teb", "私たちについて", ak == "teb"),
-        (track_href, "emr.nav.track", "注文追跡", ak == "track"),
         ("./faq.html", "emr.nav.faq", "FAQ", ak == "faq"),
         (
             "./auth-consumer-register.html",
