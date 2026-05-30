@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 389" role="img" aria-label="EMR-TEK">
+  <rect width="1024" height="389" fill="#000000"/>
+  <g fill="#ffffff">
+    <rect x="72" y="72" width="18" height="245" rx="1"/>
+    <rect x="90" y="72" width="118" height="18" rx="1"/>
+    <rect x="90" y="185" width="92" height="18" rx="1"/>
+    <rect x="90" y="299" width="118" height="18" rx="1"/>
+    <text
+      x="248"
+      y="248"
+      font-family="Inter, Arial, Helvetica, sans-serif"
+      font-size="118"
+      font-weight="700"
+      letter-spacing="0.06em"
+    >EMR-TEK</text>
+  </g>
+</svg>

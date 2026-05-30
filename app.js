@@ -552,7 +552,44 @@ const SHOP_JP_PRODUCT_HANDLE = {
   "krypton-micro-portable": "krypton-micro",
   "krypton-floor-stand": "krpyton-floor-stand",
   "ultron-fullbody": "ultron-patent-pending",
+  firedragon: "firedragon",
+  "firestorm-pro": "firestorm-pro",
 };
+
+const LOCAL_PRODUCT_PAGE_TO_ID = Object.fromEntries(
+  Object.entries({
+    "product-firewave-compact.html": "firewave-compact",
+    "product-emr-light-stand.html": "emr-light-stand",
+    "product-eterno.html": "eterno-mask",
+    "product-firedragon.html": "firedragon",
+    "product-freya.html": "freya-glasses",
+    "product-inferno.html": "inferno-fullbody",
+    "product-firewave-pro.html": "firewave-pro",
+    "product-firefly.html": "firefly-portable",
+    "product-nyx.html": "nyx-glasses",
+    "product-odin-magnesium.html": "odin-magnesium-glasses",
+    "product-athena-24k.html": "athena-24k-glasses",
+    "product-ares-aviator.html": "ares-aviator-glasses",
+    "product-apollo.html": "apollo-glasses",
+    "product-firedragon-pro.html": "firedragon-pro-panel",
+    "product-anubis-glasses.html": "anubis-glasses",
+    "product-skoll-glasses.html": "skoll-glasses",
+    "product-inferno-pro.html": "inferno-pro-fullbody",
+    "product-krypton-uv-606w.html": "krypton-uv-606w",
+    "product-electronic-premium-stand.html": "electronic-premium-stand",
+    "product-heavy-duty-stand.html": "heavy-duty-stand",
+    "product-atlas-glasses.html": "atlas-glasses",
+    "product-valkyrie-glasses.html": "valkyrie-glasses",
+    "product-krypton-uv-1612w.html": "krypton-uv-1612w",
+    "product-nova-kids-glasses.html": "nova-kids-glasses",
+    "product-krypton-mini-pro.html": "krypton-mini-pro",
+    "product-firestorm-pro.html": "firestorm-pro",
+    "product-krypton-micro-portable.html": "krypton-micro-portable",
+    "product-krypton-floor-stand.html": "krypton-floor-stand",
+    "product-firehawk.html": "firehawk-fullbody",
+    "product-ultron.html": "ultron-fullbody",
+  }).map(([file, id]) => [`./${file}`, id])
+);
 
 function getSnowballCode() {
   if (typeof window.__getSnowballCode === "function") return window.__getSnowballCode();
@@ -585,11 +622,20 @@ function getReferralShopUrl() {
   return String(window.__SNOWBALL_CONFIG__?.referralShopUrl || "").trim();
 }
 
+function getProductAffiliateUrl(productId) {
+  const map = window.__SNOWBALL_CONFIG__?.productAffiliateUrls;
+  if (map && typeof map === "object") {
+    const url = String(map[productId] || "").trim();
+    if (url) return url;
+  }
+  return "";
+}
+
 function getShopJpProductUrl(productId) {
-  const referral = getReferralShopUrl();
-  if (referral) return referral;
+  const affiliateUrl = getProductAffiliateUrl(productId);
+  if (affiliateUrl) return affiliateUrl;
   const handle = SHOP_JP_PRODUCT_HANDLE[productId] ?? productId;
-  return appendSnowballToShopUrl(`https://www.emr-tek.com/en-jp/products/${handle}`);
+  return appendSnowballToShopUrl(`https://www.emr-tek.com/products/${handle}`);
 }
 
 /** @returns {boolean} */
@@ -700,8 +746,28 @@ const LOCAL_PRODUCT_PAGES = {
 };
 
 function getProductDetailUrl(productId) {
-  // 個別に用意した紹介ページがあればそれを優先。無ければ汎用の商品紹介ページへ。
-  return LOCAL_PRODUCT_PAGES[productId] ?? `./product.html?id=${encodeURIComponent(productId)}`;
+  return getShopJpProductUrl(productId);
+}
+
+function decorateAffiliateProductLinks(root = document) {
+  root.querySelectorAll("a[href]").forEach((el) => {
+    if (!(el instanceof HTMLAnchorElement)) return;
+    const href = el.getAttribute("href") ?? "";
+    const productId =
+      el.getAttribute("data-product-id") ||
+      LOCAL_PRODUCT_PAGE_TO_ID[href] ||
+      (() => {
+        const m = href.match(/^\.\/product-([^.]+)\.html$/);
+        if (!m) return "";
+        const file = `./product-${m[1]}.html`;
+        return LOCAL_PRODUCT_PAGE_TO_ID[file] ?? "";
+      })();
+    if (!productId) return;
+    el.href = getShopJpProductUrl(productId);
+    el.target = "_blank";
+    el.rel = "noopener noreferrer";
+    el.setAttribute("data-product-id", productId);
+  });
 }
 
 function yen(n) {
@@ -722,6 +788,38 @@ function uiT(key, fallback) {
   return fallback ?? key;
 }
 
+const SUBTITLE_I18N_KEYS = {
+  モバイル: "emr.index.tag.mobile",
+  ポータブル: "emr.index.tag.portable",
+  肌を滑らかにします: "emr.index.tag.smoothSkin",
+  マルチスペクトル: "emr.index.tag.multispectral",
+  "Full Body": "emr.index.tag.fullBody",
+  全身: "emr.index.tag.fullBody",
+  "Multi Spectrum": "emr.index.tag.multispectral",
+  フルスペクトル: "emr.index.tag.fullSpectrum",
+  プロ: "emr.index.tag.pro",
+  子供向け: "emr.index.tag.kids",
+};
+
+function productDisplayTitle(p) {
+  if (uiLang() === "en") {
+    return uiT(`emr.catalog.${p.id}.title`, p.title);
+  }
+  return p.title;
+}
+
+function translateSubtitleLabel(text) {
+  const key = SUBTITLE_I18N_KEYS[text];
+  if (key) return uiT(key, text);
+  return text;
+}
+
+function productDisplaySubtitles(p) {
+  if (!p.subtitle) return [];
+  const labels = Array.isArray(p.subtitle) ? p.subtitle : [p.subtitle];
+  return labels.map(translateSubtitleLabel);
+}
+
 function safeText(s) {
   return typeof s === "string" ? s : "";
 }
@@ -729,8 +827,7 @@ function safeText(s) {
 function productTagsForDisplay(p) {
   const tags = [];
   if (p.subtitle) {
-    if (Array.isArray(p.subtitle)) tags.push(...p.subtitle);
-    else tags.push(p.subtitle);
+    tags.push(...productDisplaySubtitles(p));
   } else {
     tags.push(categoryLabel(p.category));
   }
@@ -759,6 +856,184 @@ function productDescriptionJa(p) {
     return "室内の光環境を整えるための照明ソリューション。生活リズムに配慮し、自然光に近い体験を目指します。";
   }
   return "赤色光・近赤外線を中心としたライトデバイス。日々のルーチンに取り入れやすい運用を想定しています。";
+}
+
+function productDescriptionEn(p) {
+  const key = `emr.catalog.${p.id}.desc`;
+  const custom = uiT(key, "");
+  if (custom && custom !== key) return custom;
+  if (p.category === "glasses") {
+    return "Blue-light blocking glasses for screen-heavy days and evening light exposure. Built for everyday wear with a balance of weight and comfort.";
+  }
+  if (p.category === "uv") {
+    return "Bring a sun-like spectrum indoors. A UV light system designed for responsible, purpose-driven use.";
+  }
+  if (p.category === "mask") {
+    return "An LED mask designed to pair with skincare routines. Multiple wavelengths support consistent daily care protocols.";
+  }
+  if (p.category === "stands") {
+    if (p.id === "emr-light-stand") {
+      return "Optimize positioning and comfort for red-light sessions with EMR-TEK's light stand — maximize each session with stable, adjustable placement.";
+    }
+    return "Accessories for mounting and angling light devices — stability and flexibility for your setup.";
+  }
+  if (p.category === "indoor") {
+    return "Indoor lighting solutions that support circadian-friendly environments and a more natural light experience.";
+  }
+  return "Red and near-infrared light device designed for easy integration into daily wellness routines.";
+}
+
+function productDescription(p) {
+  return uiLang() === "en" ? productDescriptionEn(p) : productDescriptionJa(p);
+}
+
+function productIdFromPathname() {
+  const path = window.location.pathname.split("/").pop() || "";
+  if (!path.startsWith("product-") || !path.endsWith(".html")) return "";
+  for (const [id, page] of Object.entries(LOCAL_PRODUCT_PAGES)) {
+    if (page.endsWith(path)) return id;
+  }
+  return "";
+}
+
+function productPageShortName(p) {
+  const title = productDisplayTitle(p);
+  const dash = title.split(/[—–-]/)[0].trim();
+  return dash || title;
+}
+
+function isProductBuyPanelCorrupted(buy) {
+  if (!(buy instanceof HTMLElement)) return false;
+  return Boolean(
+    buy.querySelector('[data-i18n="emr.footer.disclaimer1"]') ||
+      buy.querySelector(".footer__title") ||
+      !buy.querySelector(".productPage__actions, [data-product-add], [data-add-id]")
+  );
+}
+
+function renderProductBuyPanel(buy, p) {
+  if (!(buy instanceof HTMLElement)) return;
+
+  const displayTitle = productDisplayTitle(p);
+  const tagLabels = productDisplaySubtitles(p);
+  const tags = tagLabels.length ? tagLabels : [categoryLabel(p.category)];
+  const onSale = Boolean(p.was && p.was > p.now);
+  const save = onSale ? p.was - p.now : 0;
+  const referralUrl = getReferralShopUrl();
+  const addLabel = uiT("emr.index.btn.addToCart", "カートに追加");
+  const shopLabel = uiT("emr.product.shopOfficial", "ShopOfficial");
+  const priceInner = onSale
+    ? `<span class="sr-only">${uiT("emr.index.price.sale", "販売価格")}</span>
+        <span class="price__now">${yen(p.now)}</span>
+        <span class="sr-only">${uiT("emr.index.price.regular", "通常価格")}</span>
+        <span class="price__was">${yen(p.was)}</span>
+        <span class="save">${uiT("emr.index.saveDeal", `${yen(save)} お得`).replace("{amount}", yen(save))}</span>`
+    : `<span class="sr-only">${uiT("emr.index.price.label", "価格")}</span>
+        <span class="price__now">${yen(p.now)}</span>`;
+
+  buy.innerHTML = `
+    <div class="tags" data-product-tags-host aria-label="${uiT("emr.product.featuresAria", "特徴")}"></div>
+    <div class="stars" aria-label="${uiT("emr.index.aria.rating", "評価")}">
+      <span class="stars__dots" aria-hidden="true">★★★★★</span>
+      <span data-product-rating-num>${p.rating.toFixed(1)}</span>
+    </div>
+    <div class="price price--lg ${onSale ? "price--sale" : ""}" aria-label="${uiT("emr.index.price.label", "価格")}">
+      ${priceInner}
+    </div>
+    <div class="productPage__actions">
+      <button class="btn" type="button" data-product-add data-add-id="${p.id}" data-affiliate-product-btn>${addLabel}</button>
+      ${
+        referralUrl
+          ? `<a class="btn btn--ghost" href="${referralUrl}" target="_blank" rel="noopener noreferrer" data-affiliate-shop data-affiliate-product-btn>${shopLabel}</a>`
+          : ""
+      }
+    </div>
+    <div class="productPage__desc panel" data-product-desc-wrap>
+      <h2 class="h3" data-product-desc-title>${uiT("emr.product.aboutTitle", "商品概要")}</h2>
+      <div class="prose" data-product-desc-body></div>
+    </div>
+  `;
+
+  const tagsHost = buy.querySelector("[data-product-tags-host]");
+  if (tagsHost) {
+    tagsHost.innerHTML = tags.map((t) => `<span class="tag">${t}</span>`).join("");
+  }
+
+  const descBody = buy.querySelector("[data-product-desc-body]");
+  if (descBody) {
+    if (p.id === "freya-glasses" && uiLang() === "ja") {
+      descBody.innerHTML = freyaProductDescriptionHtml();
+    } else {
+      descBody.textContent = productDescription(p);
+    }
+  }
+
+  const addBtn = buy.querySelector("[data-product-add]");
+  if (addBtn) addBtn.addEventListener("click", () => addToCart(p.id, 1));
+}
+
+function hydrateProductHero(p) {
+  const displayTitle = productDisplayTitle(p);
+  const shortName = productPageShortName(p);
+
+  document.title = `${displayTitle} – EMR-TEK`;
+
+  const h1 = document.querySelector(".hero__titleRow .h1, .hero .h1");
+  if (h1) h1.textContent = displayTitle;
+
+  const crumbShop = document.querySelector(".breadcrumbs a[href*='collection-all']");
+  if (crumbShop) crumbShop.textContent = uiT("emr.product.breadcrumbShop", "ショップ");
+
+  const crumbCurrent = document.querySelector(".breadcrumbs [aria-current='page']");
+  if (crumbCurrent) crumbCurrent.textContent = shortName;
+
+  const breadcrumbs = document.querySelector(".breadcrumbs");
+  if (breadcrumbs) {
+    breadcrumbs.setAttribute("aria-label", uiT("emr.index.breadcrumb.aria", "パンくず"));
+  }
+
+  const mainVideo = document.querySelector(".productPage__video[data-gallery-video], .productPage__video");
+  if (mainVideo) {
+    mainVideo.setAttribute("aria-label", safeText(p.videoLabel) || displayTitle);
+  }
+}
+
+function initProductStaticPage() {
+  if (document.querySelector("[data-product-template]")) return;
+
+  const pageRoot = document.querySelector("[data-product-static], .productPage");
+  if (!pageRoot) return;
+
+  const productId = pageRoot.getAttribute("data-product-id") || productIdFromPathname();
+  if (!productId) return;
+
+  const p = PRODUCTS.find((x) => x.id === productId);
+  if (!p) return;
+
+  const officialUrl = getShopJpProductUrl(productId);
+  if (officialUrl) {
+    window.location.replace(officialUrl);
+    return;
+  }
+
+  hydrateProductHero(p);
+
+  const buy = document.querySelector(".productPage__buy");
+  if (buy && (pageRoot.hasAttribute("data-product-static") || isProductBuyPanelCorrupted(buy))) {
+    renderProductBuyPanel(buy, p);
+  } else if (buy) {
+    const tagsHost = buy.querySelector(".tags");
+    if (tagsHost) {
+      const tags = productDisplaySubtitles(p);
+      const labels = tags.length ? tags : [categoryLabel(p.category)];
+      tagsHost.setAttribute("aria-label", uiT("emr.product.featuresAria", "特徴"));
+      tagsHost.innerHTML = labels.map((t) => `<span class="tag">${t}</span>`).join("");
+    }
+    const ratingNum = buy.querySelector(".stars > span:not(.stars__dots):not(.micro)");
+    if (ratingNum) ratingNum.textContent = p.rating.toFixed(1);
+  }
+
+  initProductBuyQty();
 }
 
 function setMetaDescription(text) {
@@ -810,11 +1085,11 @@ function initProductTemplatePage() {
   if (notFound) notFound.hidden = true;
   if (panel) panel.hidden = false;
 
-  document.title = `${p.title} – EMR-TEK`;
+  document.title = `${productDisplayTitle(p)} – EMR-TEK`;
   const h1 = document.querySelector("[data-product-title]");
-  if (h1) h1.textContent = p.title;
+  if (h1) h1.textContent = productDisplayTitle(p);
   const breadcrumb = document.querySelector("[data-product-breadcrumb]");
-  if (breadcrumb) breadcrumb.textContent = p.title.split("–")[0].trim() || p.title;
+  if (breadcrumb) breadcrumb.textContent = productPageShortName(p);
 
   const ratingEl = document.querySelector("[data-product-rating]");
   if (ratingEl) ratingEl.textContent = p.rating.toFixed(1);
@@ -831,7 +1106,9 @@ function initProductTemplatePage() {
     wasEl.hidden = !onSale;
   }
   if (saveEl) {
-    saveEl.textContent = onSale ? `保存 ${yen(p.was - p.now)}` : "";
+    saveEl.textContent = onSale
+      ? uiT("emr.index.saveDeal", `${yen(p.was - p.now)} お得`).replace("{amount}", yen(p.was - p.now))
+      : "";
     saveEl.hidden = !onSale;
   }
 
@@ -860,22 +1137,24 @@ function initProductTemplatePage() {
 
   if (p.id === "freya-glasses") {
     setMetaDescription(
-      "Freyaは昼夜の使い分けを想定したブルーライト対策メガネ。アセテートフレーム、二系統レンズ、PD指定や度数カスタムに対応。EMR-TEK公式情報を日本語で整理した紹介ページです。"
+      uiLang() === "en"
+        ? "Freya blue-light blocking glasses with day/night lens options, acetate frames, and custom PD support — based on EMR-TEK official specs."
+        : "Freyaは昼夜の使い分けを想定したブルーライト対策メガネ。アセテートフレーム、二系統レンズ、PD指定や度数カスタムに対応。EMR-TEK公式情報を日本語で整理した紹介ページです。"
     );
-    if (descTitle) descTitle.textContent = "Freyaについて";
-    if (desc) desc.innerHTML = freyaProductDescriptionHtml();
+    if (descTitle) descTitle.textContent = uiLang() === "en" ? "About Freya" : "Freyaについて";
+    if (desc) desc.innerHTML = uiLang() === "en" ? productDescriptionEn(p) : freyaProductDescriptionHtml();
   } else if (desc) {
-    desc.textContent = productDescriptionJa(p);
+    desc.textContent = productDescription(p);
   }
 
   if (p.category === "glasses") {
-    if (safetySummary) safetySummary.textContent = "大切なご注意（アイウェア）";
+    if (safetySummary) safetySummary.textContent = uiT("emr.product.safetyEyewear", "大切なご注意（アイウェア）");
     if (safetyBody) safetyBody.innerHTML = genericEyewearSafetyHtml();
     if (p.id === "freya-glasses") {
-      if (usageSummary) usageSummary.textContent = "昼夜レンズの使い分け（目安）";
+      if (usageSummary) usageSummary.textContent = uiT("emr.product.usageFreya", "昼夜レンズの使い分け（目安）");
       if (usageBody) usageBody.innerHTML = freyaProductUsageHtml();
     } else {
-      if (usageSummary) usageSummary.textContent = "使い方の目安";
+      if (usageSummary) usageSummary.textContent = uiT("emr.product.usageEyewear", "使い方の目安");
       if (usageBody) usageBody.innerHTML = genericEyewearUsageHtml();
     }
   }
@@ -903,7 +1182,7 @@ function initProductTemplatePage() {
   video.autoplay = true;
   video.loop = true;
   video.preload = "metadata";
-  video.setAttribute("aria-label", safeText(p.videoLabel) || p.title);
+  video.setAttribute("aria-label", safeText(p.videoLabel) || productDisplayTitle(p));
   video.setAttribute("data-gallery-video", "");
   video.setAttribute("data-analytics-product", p.id);
   const poster = p.video?.poster || p.image?.src || "";
@@ -918,7 +1197,7 @@ function initProductTemplatePage() {
   if (poster) {
     const img = document.createElement("img");
     img.src = poster;
-    img.alt = p.title;
+    img.alt = productDisplayTitle(p);
     img.loading = "lazy";
     video.appendChild(img);
   }
@@ -1083,7 +1362,7 @@ function updateCartUI() {
       </div>
     `;
 
-      $(".cartitem__title", li).textContent = p.title;
+      $(".cartitem__title", li).textContent = productDisplayTitle(p);
       $(".cartitem__meta", li).textContent = `${yen(p.now)} / 個`;
 
       const bump = (delta) => {
@@ -1187,8 +1466,8 @@ function matchesFilters(p, f) {
     }
   }
   if (f.q) {
-    const sub = Array.isArray(p.subtitle) ? p.subtitle.join(" ") : (p.subtitle ?? "");
-    const hay = `${p.title} ${sub}`.toLowerCase();
+    const sub = productDisplaySubtitles(p).join(" ");
+    const hay = `${p.title} ${productDisplayTitle(p)} ${sub}`.toLowerCase();
     if (!hay.includes(f.q)) return false;
   }
   if (typeof f.min === "number" && p.now < f.min) return false;
@@ -1271,11 +1550,9 @@ function renderGrid() {
     card.className = isShopAllGrid ? "product product--shopCardHit" : "product";
 
     const save = computeSave(p.now, p.was);
-    const tagLabel = p.subtitle
-      ? Array.isArray(p.subtitle)
-        ? p.subtitle[0]
-        : p.subtitle
-      : categoryLabel(p.category);
+    const displayTitle = productDisplayTitle(p);
+    const displaySubtitles = productDisplaySubtitles(p);
+    const tagLabel = displaySubtitles.length ? displaySubtitles[0] : categoryLabel(p.category);
 
     const collectionRow = isShopAllGrid
       ? `<p class="product__collection">
@@ -1348,7 +1625,7 @@ function renderGrid() {
       v.loop = true;
       v.preload = "metadata";
       v.poster = p.video.poster;
-      v.setAttribute("aria-label", p.videoLabel || `${p.title}の紹介動画`);
+      v.setAttribute("aria-label", p.videoLabel || `${displayTitle}の紹介動画`);
       v.setAttribute("data-analytics-product", p.id);
       const src = document.createElement("source");
       src.src = p.video.src;
@@ -1367,7 +1644,7 @@ function renderGrid() {
       wrap.className = "product__media product__media--video";
       const img = document.createElement("img");
       img.className = "product__mediaVideo";
-      img.alt = p.image.alt ?? p.title;
+      img.alt = p.image.alt ?? displayTitle;
       img.src = p.image.src;
       img.loading = "lazy";
       img.decoding = "async";
@@ -1380,9 +1657,8 @@ function renderGrid() {
     const tagsEl = $("[data-product-tags]", card);
     if (tagsEl) {
       tagsEl.innerHTML = "";
-      if (p.subtitle) {
-        const labels = Array.isArray(p.subtitle) ? p.subtitle : [p.subtitle];
-        for (const text of labels) {
+      if (displaySubtitles.length) {
+        for (const text of displaySubtitles) {
           const span = document.createElement("span");
           span.className = "product__tag";
           span.textContent = text;
@@ -1404,10 +1680,10 @@ function renderGrid() {
         a.target = "_blank";
         a.rel = "noopener noreferrer";
       }
-      a.textContent = p.title;
+      a.textContent = displayTitle;
       titleHost.appendChild(a);
     } else {
-      titleHost.textContent = p.title;
+      titleHost.textContent = displayTitle;
     }
 
     if (isShopAllGrid) {
@@ -1419,7 +1695,10 @@ function renderGrid() {
         hit.target = "_blank";
         hit.rel = "noopener noreferrer";
       }
-      hit.setAttribute("aria-label", `${p.title}の公式商品ページを開く`);
+      hit.setAttribute(
+        "aria-label",
+        uiT("emr.index.shop.openProduct", `${displayTitle} — 公式商品ページを開く`).replace("{title}", displayTitle)
+      );
       card.appendChild(hit);
     }
     $(".price__now", card).textContent = yen(p.now);
@@ -1437,15 +1716,58 @@ function renderGrid() {
     $("[data-add]", card).addEventListener("click", () => addToCart(p.id, 1));
     const viewBtn = $("[data-view]", card);
     if (viewBtn) {
-      viewBtn.addEventListener("click", () => {
-        alert(`詳細ページは未実装です。\n\n${p.title}\n価格：${yen(p.now)}`);
-      });
+      viewBtn.addEventListener("click", () => openAffiliateShop(p.id));
     }
 
     grid.appendChild(card);
   }
 
   grid.setAttribute("aria-busy", "false");
+}
+
+function hydrateFavCards() {
+  document.querySelectorAll(".favs .favcard").forEach((card) => {
+    const productId =
+      card.getAttribute("data-product-id") ||
+      card.querySelector("[data-add-id]")?.getAttribute("data-add-id");
+    if (!productId) return;
+
+    const p = PRODUCTS.find((x) => x.id === productId);
+    if (!p) return;
+
+    const displayTitle = productDisplayTitle(p);
+    const openLabel = uiT("emr.index.favs.openProduct", `${displayTitle} — 公式商品ページを開く`).replace(
+      "{title}",
+      displayTitle
+    );
+
+    card.setAttribute("aria-label", displayTitle);
+    card.setAttribute("data-product-id", productId);
+
+    const link = card.querySelector(".favcard__link");
+    if (link) link.setAttribute("aria-label", openLabel);
+
+    const titleEl = card.querySelector(".product__title");
+    if (titleEl) titleEl.textContent = displayTitle;
+
+    const video = card.querySelector(".favcard__video");
+    if (video) {
+      video.setAttribute(
+        "aria-label",
+        uiLang() === "en" ? displayTitle : safeText(p.videoLabel) || displayTitle
+      );
+    }
+
+    const nowEl = card.querySelector(".price__now");
+    const wasEl = card.querySelector(".price__was");
+    const saveEl = card.querySelector(".save");
+    if (nowEl) nowEl.textContent = yen(p.now);
+    if (wasEl && p.was) wasEl.textContent = yen(p.was);
+    if (saveEl && p.was) {
+      const save = p.was - p.now;
+      saveEl.textContent = uiT("emr.index.saveDeal", `${yen(save)} お得`).replace("{amount}", yen(save));
+    }
+  });
 }
 
 function initCookieBanner() {
@@ -1665,10 +1987,7 @@ function initQuickActions() {
     if (viewBtn) {
       const id = viewBtn.getAttribute("data-view-id");
       if (!id) return;
-      const p = PRODUCTS.find((x) => x.id === id);
-      const title = p?.title ?? "商品";
-      const price = p ? yen(p.now) : "";
-      alert(`詳細ページは未実装です。\n\n${title}${price ? `\n価格：${price}` : ""}`);
+      openAffiliateShop(id);
     }
   });
 }
@@ -2444,6 +2763,7 @@ function main() {
   initPortfolioProfiles();
   initTestimonials();
   initProductTemplatePage();
+  initProductStaticPage();
   initFilters();
   initForms();
   initHeaderStubs();
@@ -2452,8 +2772,14 @@ function main() {
   initProductGallery();
   updateCartUI();
   renderGrid();
+  hydrateFavCards();
+  decorateAffiliateProductLinks();
   document.addEventListener("site-lang-change", () => {
     if (document.querySelector("[data-grid]")) renderGrid();
+    hydrateFavCards();
+    initProductTemplatePage();
+    initProductStaticPage();
+    updateCartUI();
   });
 }
 

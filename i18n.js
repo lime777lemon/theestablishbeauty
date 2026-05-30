@@ -986,6 +986,11 @@
     Object.assign(MESSAGES.en, window.__PAGES_I18N__.en || {});
   }
 
+  if (typeof window !== "undefined" && window.__CATALOG_I18N__) {
+    Object.assign(MESSAGES.ja, window.__CATALOG_I18N__.ja || {});
+    Object.assign(MESSAGES.en, window.__CATALOG_I18N__.en || {});
+  }
+
   function getLang() {
     try {
       const v = localStorage.getItem(STORAGE_KEY);
