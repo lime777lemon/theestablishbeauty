@@ -24,10 +24,10 @@
     <link rel="icon" href="/assets/favicon-32.png?v=17" type="image/png" sizes="32x32" />
     <link rel="icon" href="/assets/favicon-16.png?v=17" type="image/png" sizes="16x16" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=17" />
-    <title>Indoor Lighting Solutions – EMR-TEK</title>
+    <title data-i18n-title="emr.collection.indoorLighting.doc.title">Indoor Lighting Solutions – EMR-TEK</title>
     <meta
       name="description"
-      content="Indoor Lighting Solutions — サーカディアン配慮の室内照明・電球など。"
+      data-i18n-desc="emr.collection.indoorLighting.doc.desc" content="Indoor Lighting Solutions — サーカディアン配慮の室内照明・電球など。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -114,18 +114,18 @@
     <main id="main" class="main">
       <section class="hero">
         <div class="container hero__inner">
-          <div class="breadcrumbs" aria-label="パンくず">
-            <a href="./index.html">コレクション</a>
+          <div class="breadcrumbs" data-i18n-attr="aria-label:emr.collection.breadcrumb.aria" aria-label="パンくず">
+            <a href="./index.html" data-i18n="emr.collection.breadcrumb.parent">コレクション</a>
             <span class="breadcrumbs__sep" aria-hidden="true">/</span>
             <a href="./collection-all.html" data-i18n="emr.footer.allproducts">全商品</a>
             <span class="breadcrumbs__sep" aria-hidden="true">/</span>
-            <span aria-current="page">Indoor Lighting Solutions</span>
+            <span aria-current="page" data-i18n="emr.collection.indoorLighting.breadcrumb.current">Indoor Lighting Solutions</span>
           </div>
 
           <div class="hero__titleRow">
             <div>
-              <h1 class="h1">Indoor Lighting Solutions</h1>
-              <p class="subtle">
+              <h1 class="h1" data-i18n="emr.collection.indoorLighting.hero.h1">Indoor Lighting Solutions</h1>
+              <p class="subtle" data-i18n="emr.collection.indoorLighting.hero.sub">
                 夜のリズムに配慮した室内照明。サーカディアン配慮の電球・デイライトバルブなど。詳細は公式商品ページをご確認ください。
               </p>
             </div>
@@ -135,23 +135,23 @@
 
       <section class="collectionPage section section--padding" aria-labelledby="collection-heading">
         <div class="container">
-          <h2 id="collection-heading" class="sr-only">商品一覧</h2>
+          <h2 id="collection-heading" class="sr-only" data-i18n="emr.collection.page.srTitle">商品一覧</h2>
 
           <div class="collectionToolbar">
             <p class="collectionToolbar__count" role="status">
-              <span data-collection-count>1</span> 件の商品
+              <span data-collection-count>1</span><span data-collection-count-suffix> 件の商品</span>
             </p>
             <div class="collectionToolbar__sort">
-              <label class="collectionToolbar__sortLabel" for="collection-sort">並び順</label>
+              <label class="collectionToolbar__sortLabel" for="collection-sort" data-i18n="emr.collection.page.sortLabel">並び順</label>
               <div class="select collectionToolbar__selectWrap">
                 <select id="collection-sort" class="collectionToolbar__select" data-collection-sort>
-                  <option value="bestselling" selected>売れ筋</option>
-                  <option value="price-asc">価格：安い順</option>
-                  <option value="price-desc">価格：高い順</option>
-                  <option value="title-asc">名前：あいうえお順</option>
-                  <option value="title-desc">名前：逆順</option>
-                  <option value="date-desc">新着順</option>
-                  <option value="date-asc">発売が古い順</option>
+                  <option value="bestselling" selected data-i18n="emr.collection.page.sort.bestselling">売れ筋</option>
+                  <option value="price-asc" data-i18n="emr.collection.page.sort.priceAsc">価格：安い順</option>
+                  <option value="price-desc" data-i18n="emr.collection.page.sort.priceDesc">価格：高い順</option>
+                  <option value="title-asc" data-i18n="emr.collection.page.sort.titleAsc">名前：あいうえお順</option>
+                  <option value="title-desc" data-i18n="emr.collection.page.sort.titleDesc">名前：逆順</option>
+                  <option value="date-desc" data-i18n="emr.collection.page.sort.dateDesc">新着順</option>
+                  <option value="date-asc" data-i18n="emr.collection.page.sort.dateAsc">発売が古い順</option>
                 </select>
               </div>
             </div>
@@ -172,6 +172,7 @@
                   href="https://www.emr-tek.com/products/daylight-bulb?snowball=YUKI03417"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-product-id="daylight-bulb"
                   aria-label="Daylight bulb — EMR-TEK 公式商品ページ"
                 >
                   <img
@@ -183,20 +184,20 @@
                     decoding="async"
                   />
                 </a>
-                <div class="collectionCard__rating" title="レビュー">
+                <div class="collectionCard__rating" data-i18n-attr="title:emr.collection.page.ratingTitle" title="レビュー">
                   <span class="collectionCard__star" aria-hidden="true">★</span>
                   <span>4.6</span>
                 </div>
               </div>
               <div class="collectionCard__body">
-                <p class="collectionCard__kicker">室内照明</p>
+                <p class="collectionCard__kicker" data-i18n="emr.collection.page.kickerIndoor">室内照明</p>
                 <h3 class="collectionCard__title">
-                  <a href="https://www.emr-tek.com/products/daylight-bulb?snowball=YUKI03417" target="_blank" rel="noopener noreferrer"
+                  <a href="https://www.emr-tek.com/products/daylight-bulb?snowball=YUKI03417" target="_blank" rel="noopener noreferrer" data-product-id="daylight-bulb"
                     >サーカディアン フレンドリー 電球（赤系）</a
                   >
                 </h3>
                 <div class="collectionCard__tags">
-                  <span class="collectionCard__tag">公式ストア</span>
+                  <span class="collectionCard__tag" data-i18n="emr.collection.page.tagOfficial">公式ストア</span>
                 </div>
                 <div class="collectionCard__price">
                   <span class="price__now">¥3,980</span>
@@ -245,11 +246,10 @@
           <div class="footer__title" data-i18n="emr.footer.shop">ショップ</div>
           <ul class="footer__list">
             <li><a class="link" href="./collection-all.html" data-i18n="emr.footer.allproducts">全商品</a></li>
-            <li><a class="link" href="./collection-red-light.html">Red Light Therapy Devices</a></li>
-            <li><a class="link" href="./collection-blue-light-glasses.html">Blue Light Blocking Glasses</a></li>
-            <li><a class="link" href="./collection-indoor-lighting.html">Indoor Lighting Solutions</a></li>
-            <li><a class="link" href="./collection-emf-protection.html">EMF Protection</a></li>
-            <li><a class="link" href="./collection-uv.html">UV</a></li>
+            <li><a class="link" href="./collection-red-light.html" data-i18n="emr.index.shop.promo.redTitle">Red Light Therapy Devices</a></li>
+            <li><a class="link" href="./collection-blue-light-glasses.html" data-i18n="emr.index.shop.promo.glassesTitle">Blue Light Blocking Glasses</a></li>
+            <li><a class="link" href="./collection-indoor-lighting.html" data-i18n="emr.index.shop.promo.indoorTitle">Indoor Lighting Solutions</a></li>
+            <li><a class="link" href="./collection-uv.html" data-i18n="emr.index.shop.promo.uvTitle">UV</a></li>
           </ul>
         </div>
 
@@ -257,7 +257,7 @@
           <div class="footer__title" data-i18n="emr.footer.learn">学ぶ</div>
           <ul class="footer__list">
             <li><a class="link" href="./faq.html" data-i18n="emr.footer.faq">よくある質問</a></li>
-            <li><a class="link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a></li>
+            <li><a class="link" href="./contact.html" data-i18n="emr.footer.contact">お問い合わせ</a></li>
           </ul>
         </div>
 
@@ -356,6 +356,9 @@
     </div>
 
     <script src="./app.js?v=50260412" defer></script>
+      <script src="./i18n-index-messages.js"></script>
+    <script src="./i18n-pages-messages.js"></script>
+    <script src="./i18n-catalog-messages.js"></script>
       <script src="./i18n.js" defer></script>
           <script type="module" src="./analytics.mjs"></script>
         <script type="module" src="./video-analytics.mjs"></script>

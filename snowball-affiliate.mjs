@@ -146,10 +146,21 @@ function decorateShopLinks(root = document) {
   });
 }
 
-function affiliateSectionLabel() {
-  return document.documentElement.getAttribute("data-site-lang") === "en"
-    ? "Shop at EMR-TEK official store"
-    : "EMR-TEK 公式ストアで購入";
+const AFFILIATE_SECTION_CTA_KEY = "emr.affiliate.section_cta";
+
+function currentSiteLang() {
+  return document.documentElement.getAttribute("data-site-lang") === "en" ? "en" : "ja";
+}
+
+function affiliateSectionLabel(lang = currentSiteLang()) {
+  if (window.siteI18n?.t) return window.siteI18n.t(lang, AFFILIATE_SECTION_CTA_KEY);
+  return lang === "en" ? "Shop at the EMR-TEK official store" : "EMR-TEK 公式ストアで購入";
+}
+
+function refreshAffiliateSectionLabels(lang = currentSiteLang()) {
+  document.querySelectorAll("[data-affiliate-section-cta] [data-i18n]").forEach((el) => {
+    el.textContent = affiliateSectionLabel(lang);
+  });
 }
 
 function injectAffiliateSectionLinks() {
@@ -173,6 +184,7 @@ function injectAffiliateSectionLinks() {
     a.target = "_blank";
     a.rel = "noopener noreferrer";
     a.setAttribute("data-affiliate-shop", "");
+    a.setAttribute("data-i18n", AFFILIATE_SECTION_CTA_KEY);
     a.textContent = affiliateSectionLabel();
     wrap.appendChild(a);
 
@@ -280,6 +292,10 @@ window.__getReferralShopUrl = getReferralShopUrl;
 
 document.addEventListener(CONSENT_EVENT, (e) => {
   if (e.detail?.status === "accepted") loadReferralScript();
+});
+
+document.addEventListener("site-lang-change", (e) => {
+  refreshAffiliateSectionLabels(e.detail?.lang);
 });
 
 if (document.readyState === "loading") {

@@ -297,8 +297,10 @@
       "emr.footer.teb_main": "The Establish Beauty（私たちについて）",
       "emr.footer.about": "EMR-TEKについて",
       "emr.footer.faq": "よくある質問",
+      "emr.footer.contact": "お問い合わせ",
       "emr.footer.allproducts": "全商品",
       "emr.footer.affiliate_program": "アフィリエイトプログラム",
+      "emr.affiliate.section_cta": "EMR-TEK 公式ストアで購入",
       "emr.footer.disclaimer1":
         "<strong>重要な注意事項</strong>: 赤色および赤外線治療装置、青色遮光メガネ、その他の製品に関してこのサイトで提供されるすべての情報は、病気の診断、治療、治癒、予防を目的としたものではありません。当社の製品は医療機器と誤解されるべきではなく、治療上の主張も行いません。これらの製品は、2015 年 1 月 20 日に発表された “General Wellness: Policy on Low Risk Devices”草案に従って、FDA の認可を必要としない低リスクの 一般的なウェルネス/フィットネス アイテムです。当社の製品は個人使用のみを目的としており、商業用途を目的としたものではありません。",
       "emr.footer.disclaimer2":
@@ -498,6 +500,12 @@
       "teb.doc.title": "The Establish Beauty — Home",
       "teb.doc.desc":
         "The Establish Beauty — beauty commerce infrastructure. Brand LPs at /brands/…, unified account, cart, and checkout, with split fulfillment. Multi-vendor, curated, commission-based marketplace.",
+      "teb.about.doc.title": "About us — The Establish Beauty",
+      "teb.about.doc.desc":
+        "Mission, beauty commerce infrastructure, and how The Establish Beauty marketplace works.",
+      "teb.about.crumb.store": "EMR-TEK Store",
+      "teb.about.crumb.page": "About us",
+      "teb.about.h1": "About The Establish Beauty",
 
       "teb.skip": "Skip to content",
       "teb.topbar.tagline": "Unified account · checkout · split fulfillment",
@@ -779,8 +787,10 @@
       "emr.footer.teb_main": "The Establish Beauty (about us)",
       "emr.footer.about": "About EMR-TEK",
       "emr.footer.faq": "FAQ",
+      "emr.footer.contact": "Contact",
       "emr.footer.allproducts": "All products",
       "emr.footer.affiliate_program": "Affiliate program",
+      "emr.affiliate.section_cta": "Shop at the EMR-TEK official store",
       "emr.footer.disclaimer1":
         "<strong>Important notice</strong>: All information on this site about red/infrared therapy devices, blue-light blocking glasses, and other products is not intended to diagnose, treat, cure, or prevent disease. Our products should not be considered medical devices and we make no therapeutic claims. These are low-risk general wellness/fitness items that, per the FDA draft “General Wellness: Policy on Low Risk Devices” (Jan 20, 2015), do not require FDA clearance. Products are for personal use only, not commercial resale.",
       "emr.footer.disclaimer2":
@@ -991,6 +1001,11 @@
   if (typeof window !== "undefined" && window.__CATALOG_I18N__) {
     Object.assign(MESSAGES.ja, window.__CATALOG_I18N__.ja || {});
     Object.assign(MESSAGES.en, window.__CATALOG_I18N__.en || {});
+  }
+
+  if (typeof window !== "undefined" && window.__LEGAL_I18N__) {
+    Object.assign(MESSAGES.ja, window.__LEGAL_I18N__.ja || {});
+    Object.assign(MESSAGES.en, window.__LEGAL_I18N__.en || {});
   }
 
   function getLang() {

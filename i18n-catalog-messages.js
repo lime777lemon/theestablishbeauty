@@ -30,7 +30,8 @@
       "emr.catalog.krypton-micro-portable.title": "Krypton Micro Portable Red and Near Infrared Device",
       "emr.catalog.krypton-floor-stand.title": "Krypton Floor Stand",
       "emr.catalog.firehawk-fullbody.title": "Firehawk Full-Body Red & Near Infrared Light System (Patent Pending)",
-      "emr.catalog.ultron-fullbody.title": "Ultron Full-Body Multi-Spectrum Light System (Patent Pending)"
+      "emr.catalog.ultron-fullbody.title": "Ultron Full-Body Multi-Spectrum Light System (Patent Pending)",
+      "emr.catalog.daylight-bulb.title": "Circadian-Friendly Bulb (Red Spectrum)"
     }
   };
 })(typeof window !== "undefined" ? window : globalThis);

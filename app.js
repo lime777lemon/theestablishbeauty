@@ -555,6 +555,11 @@ const SHOP_JP_PRODUCT_HANDLE = {
   firedragon: "firedragon",
   "firestorm-pro": "firestorm-pro",
   "eterno-bundle": "eterno-mask-light-fusion-sheet-mask-bundle",
+  "daylight-bulb": "daylight-bulb",
+};
+
+const COLLECTION_CARD_TITLES = {
+  "daylight-bulb": "サーカディアン フレンドリー 電球（赤系）",
 };
 
 const LOCAL_PRODUCT_PAGE_TO_ID = Object.fromEntries(
@@ -1691,6 +1696,75 @@ function renderGrid() {
   grid.setAttribute("aria-busy", "false");
 }
 
+function collectionCardTitle(productId, p) {
+  if (p) return productDisplayTitle(p);
+  if (productId && COLLECTION_CARD_TITLES[productId]) {
+    return uiT(`emr.catalog.${productId}.title`, COLLECTION_CARD_TITLES[productId]);
+  }
+  return "";
+}
+
+function hydrateCollectionCardKicker(kickerEl, p) {
+  if (!kickerEl || !p) return;
+  if (p.category === "glasses") {
+    kickerEl.textContent = uiT("emr.collection.page.kickerBlueLight", "ブルーライトカット");
+  } else if (p.category === "red" || p.category === "mask") {
+    kickerEl.textContent = uiT("emr.collection.page.kickerRedLight", "レッドおよび近赤外線ライトデバイス");
+  } else if (p.category === "uv") {
+    kickerEl.textContent = uiT("emr.collection.page.kickerUv", "UV");
+  } else if (p.category === "indoor") {
+    kickerEl.textContent = uiT("emr.collection.page.kickerIndoor", "室内照明");
+  }
+}
+
+function hydrateCollectionCards() {
+  const grid = document.querySelector("[data-collection-grid]");
+  if (!grid) return;
+
+  grid.querySelectorAll("[data-collection-item]").forEach((item) => {
+    const productId =
+      item.querySelector("[data-product-id]")?.getAttribute("data-product-id") ||
+      item.querySelector("a[href*='emr-tek.com/products/']")?.getAttribute("data-product-id") ||
+      "";
+    const p = productId ? PRODUCTS.find((x) => x.id === productId) : null;
+    const title = productId ? collectionCardTitle(productId, p) : "";
+
+    if (productId && title) {
+      item.querySelectorAll('a[href*="emr-tek.com/products/"]').forEach((a) => {
+        if (!a.querySelector("img")) a.textContent = title;
+        a.href = getShopJpProductUrl(productId);
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.setAttribute("data-product-id", productId);
+      });
+      item.setAttribute("data-title", title);
+      hydrateCollectionCardKicker(item.querySelector(".collectionCard__kicker"), p || { category: "indoor" });
+
+      const tagEl = item.querySelector(".collectionCard__tag");
+      if (tagEl) {
+        const tagText = tagEl.textContent.trim();
+        if (tagText === "公式ストア" || tagText === "Official store") {
+          tagEl.textContent = uiT("emr.collection.page.tagOfficial", "公式ストア");
+        } else if (p?.subtitle) {
+          const subs = productDisplaySubtitles(p);
+          if (subs[0]) tagEl.textContent = subs[0];
+        }
+      }
+    }
+
+    item.querySelectorAll(".collectionCard__rating[title]").forEach((ratingEl) => {
+      const countMatch = ratingEl.getAttribute("title")?.match(/(\d+)/);
+      const count = countMatch ? countMatch[1] : "";
+      const label = uiT("emr.collection.page.ratingTitle", "レビュー");
+      ratingEl.setAttribute("title", count ? `${count} ${label}` : label);
+    });
+  });
+
+  document.querySelectorAll("[data-collection-count-suffix]").forEach((el) => {
+    el.textContent = uiT("emr.collection.page.countSuffix", " 件の商品");
+  });
+}
+
 function hydrateFavCards() {
   document.querySelectorAll(".favs .favcard").forEach((card) => {
     const productId = card.getAttribute("data-product-id");
@@ -2255,9 +2329,9 @@ function initCollectionSort() {
         case "price-desc":
           return b.price - a.price;
         case "title-asc":
-          return a.title.localeCompare(b.title, "ja");
+          return a.title.localeCompare(b.title, uiLang() === "en" ? "en" : "ja");
         case "title-desc":
-          return b.title.localeCompare(a.title, "ja");
+          return b.title.localeCompare(a.title, uiLang() === "en" ? "en" : "ja");
         case "date-desc":
           return b.date.localeCompare(a.date);
         case "date-asc":
@@ -2722,10 +2796,12 @@ function main() {
   updateCartUI();
   renderGrid();
   hydrateFavCards();
+  hydrateCollectionCards();
   decorateAffiliateProductLinks();
   document.addEventListener("site-lang-change", () => {
     if (document.querySelector("[data-grid]")) renderGrid();
     hydrateFavCards();
+    hydrateCollectionCards();
     initProductTemplatePage();
     initProductStaticPage();
     updateCartUI();

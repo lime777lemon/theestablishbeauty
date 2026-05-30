@@ -24,10 +24,10 @@
     <link rel="icon" href="/assets/favicon-32.png?v=17" type="image/png" sizes="32x32" />
     <link rel="icon" href="/assets/favicon-16.png?v=17" type="image/png" sizes="16x16" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=17" />
-    <title>配送・返品・支払い・価格について – EMR-TEK</title>
+    <title data-i18n-title="emr.legal.policies.doc.title">配送・返品・支払い・価格について – EMR-TEK</title>
     <meta
       name="description"
-      content="配送ポリシー（海外発送・所要日数・関税）、返品・返金、お支払い方法、価格表示について。"
+      data-i18n-desc="emr.legal.policies.doc.desc" content="配送ポリシー（海外発送・所要日数・関税）、返品・返金、お支払い方法、価格表示について。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -112,15 +112,17 @@
     <main id="main" class="main">
       <section class="hero">
         <div class="container hero__inner">
-          <div class="breadcrumbs" aria-label="パンくず">
-            <a href="./index.html">ホーム</a>
+          <div class="breadcrumbs" data-i18n-attr="aria-label:emr.legal.breadcrumb.aria" aria-label="パンくず">
+            <a href="./index.html" data-i18n="emr.common.breadcrumb.home">ホーム</a>
             <span class="breadcrumbs__sep" aria-hidden="true">/</span>
-            <span aria-current="page">配送・返品・支払い・価格</span>
+            <span aria-current="page" data-i18n="emr.legal.policies.crumb">配送・返品・支払い・価格</span>
           </div>
           <div class="hero__titleRow">
             <div>
-              <h1 class="h1">配送・返品・支払い・価格について</h1>
-              <p class="subtle">輸入EC・海外発送を前提としたご案内</p>
+              <h1 class="h1" data-i18n="emr.legal.policies.hero.h1">配送・返品・支払い・価格について</h1>
+              <p class="subtle" data-i18n="emr.legal.policies.hero.sub">
+                輸入EC・海外発送を前提としたご案内
+              </p>
             </div>
           </div>
         </div>
@@ -128,7 +130,8 @@
 
       <section class="container page">
         <div class="panel prose legalDoc">
-          <p class="legalMeta">最終更新日：2026年4月11日</p>
+          <p class="legalMeta" data-i18n="emr.legal.updated">最終更新日：2026年4月11日</p>
+          <div data-i18n="emr.legal.policies.body" data-i18n-html>
 
           <div class="callout" role="note">
             <div class="callout__title">海外からの配送について（重要）</div>
@@ -248,6 +251,7 @@
             ／
             <a class="link" href="./tokushoho.html">特定商取引法に基づく表記</a>
           </p>
+                  </div>
         </div>
       </section>
     </main>
@@ -267,7 +271,7 @@
             />
           </div>
           <div class="micro subtle">
-            <p>輸入EC・ドロップシッピングによるウェルネス製品のご提供。</p>
+            <p data-i18n="emr.legal.footer.tagline">輸入EC・ドロップシッピングによるウェルネス製品のご提供。</p>
           </div>
           <div class="micro subtle">Toronto, ON, Canada</div>
           <div class="micro">
@@ -281,7 +285,6 @@
             <li><a class="link" href="./collection-red-light.html">Red Light Therapy Devices</a></li>
             <li><a class="link" href="./collection-blue-light-glasses.html">Blue Light Blocking Glasses</a></li>
             <li><a class="link" href="./collection-indoor-lighting.html">Indoor Lighting Solutions</a></li>
-            <li><a class="link" href="./collection-emf-protection.html">EMF Protection</a></li>
             <li><a class="link" href="./collection-uv.html">UV</a></li>
           </ul>
         </div>
@@ -289,7 +292,7 @@
           <div class="footer__title" data-i18n="emr.footer.learn">学ぶ</div>
           <ul class="footer__list">
             <li><a class="link" href="./faq.html" data-i18n="emr.footer.faq">よくある質問</a></li>
-            <li><a class="link" href="./contact.html">お問い合わせ</a></li>
+            <li><a class="link" href="./contact.html" data-i18n="emr.footer.contact">お問い合わせ</a></li>
           </ul>
         </div>
         <div class="newsletter">
@@ -384,6 +387,7 @@
     </div>
 
     <script src="./app.js?v=50260412" defer></script>
+          <script src="./i18n-legal-messages.js"></script>
       <script src="./i18n.js" defer></script>
           <script type="module" src="./analytics.mjs"></script>
         <script type="module" src="./video-analytics.mjs"></script>
