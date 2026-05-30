@@ -554,6 +554,7 @@ const SHOP_JP_PRODUCT_HANDLE = {
   "ultron-fullbody": "ultron-patent-pending",
   firedragon: "firedragon",
   "firestorm-pro": "firestorm-pro",
+  "eterno-bundle": "eterno-mask-light-fusion-sheet-mask-bundle",
 };
 
 const LOCAL_PRODUCT_PAGE_TO_ID = Object.fromEntries(
@@ -622,20 +623,14 @@ function getReferralShopUrl() {
   return String(window.__SNOWBALL_CONFIG__?.referralShopUrl || "").trim();
 }
 
-function getProductAffiliateUrl(productId) {
-  const map = window.__SNOWBALL_CONFIG__?.productAffiliateUrls;
-  if (map && typeof map === "object") {
-    const url = String(map[productId] || "").trim();
-    if (url) return url;
-  }
-  return "";
-}
-
 function getShopJpProductUrl(productId) {
-  const affiliateUrl = getProductAffiliateUrl(productId);
-  if (affiliateUrl) return affiliateUrl;
   const handle = SHOP_JP_PRODUCT_HANDLE[productId] ?? productId;
-  return appendSnowballToShopUrl(`https://www.emr-tek.com/products/${handle}`);
+  const code =
+    getSnowballCode() ||
+    String(window.__SNOWBALL_CONFIG__?.defaultSnowballCode || "").trim();
+  const url = new URL(`https://www.emr-tek.com/products/${handle}`);
+  if (code) url.searchParams.set("snowball", code);
+  return url.toString();
 }
 
 /** @returns {boolean} */

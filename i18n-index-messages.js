@@ -213,14 +213,15 @@
     "emr.index.krypton.promo.itemMini": "Krypton Mini Pro <strong>$617.49</strong>",
     "emr.index.krypton.promo.note": "Krypton 606 は上記リンクから。シリーズ全体は <a href=\"https://www.emr-tek.com/YUKI03417\" target=\"_blank\" rel=\"noopener noreferrer\" data-affiliate-shop>公式ストア</a>（コード <strong>YUKI03417</strong>）でもご購入いただけます。",
     "emr.index.krypton.promo.cta606": "Krypton 606を公式で見る",
-    "emr.index.eterno.imgAlt": "スキンケア製品入りLEDフェイスマスク",
+    "emr.index.eterno.imgAlt": "Eterno Mask",
+    "emr.index.eterno.imgLinkAria": "Eterno Mask — 公式商品ページ",
     "emr.index.eterno.lead": "Eternoの購入者の84%が、2回目の注文としてこのセット商品を再購入しています。",
     "emr.index.eterno.p1": "Eterno LEDフェイスマスクは、630nmと660nmの赤色、525nmの緑色、580nmの黄色の4つの波長で動作します。",
     "emr.index.eterno.p2": "ライトフュージョンシートマスクは、3種類の韓国製アンプル処方でできており、マスクの各波長ごとに1種類ずつ配合されています。",
     "emr.index.eterno.listRed": "<strong>レッドライトフュージョン</strong> — 海洋性コラーゲン、ビタミンC、アセチルヘキサペプチド-8",
     "emr.index.eterno.listGreen": "<strong>グリーン ライト フュージョン</strong> — ナイアシンアミド、α-アルブチン、CoQ10",
     "emr.index.eterno.listYellow": "<strong>イエローライトフュージョン</strong> — ツボクサエキス、アラントイン、ベータグルカン",
-    "emr.index.eterno.p3": "シートマスクを貼ってください。15分待ちます。その後、対応するライトをエテルノに当ててください。フォーミュラが生物学的反応を準備します。光が反応を促進します。<br /><a class=\"btn\" href=\"https://www.emr-tek.com/YUKI03417\" target=\"_blank\" rel=\"noopener noreferrer\" data-affiliate-shop>バンドルをご覧ください</a>",
+    "emr.index.eterno.p3": "シートマスクを貼ってください。15分待ちます。その後、対応するライトをエテルノに当ててください。フォーミュラが生物学的反応を準備します。光が反応を促進します。<br /><a class=\"btn\" href=\"https://www.emr-tek.com/products/eterno-mask-light-fusion-sheet-mask-bundle?snowball=YUKI03417\" target=\"_blank\" rel=\"noopener noreferrer\" data-product-id=\"eterno-bundle\">バンドルをご覧ください</a>",
     "emr.index.eterno.p4": "バンドル価格：コード <strong>EMR30</strong> 適用で188.99ドル。別々に購入するよりも76ドル節約できます。"
   },
   "en": {
@@ -435,14 +436,15 @@
     "emr.index.krypton.promo.itemMini": "Krypton Mini Pro <strong>$617.49</strong>",
     "emr.index.krypton.promo.note": "Shop Krypton 606 via the link above. Browse the full Krypton line at the <a href=\"https://www.emr-tek.com/YUKI03417\" target=\"_blank\" rel=\"noopener noreferrer\" data-affiliate-shop>official store</a> with code <strong>YUKI03417</strong>.",
     "emr.index.krypton.promo.cta606": "Shop Krypton 606 at EMR-TEK",
-    "emr.index.eterno.imgAlt": "LED face mask with skincare products",
+    "emr.index.eterno.imgAlt": "Eterno Mask",
+    "emr.index.eterno.imgLinkAria": "Eterno Mask — official product page",
     "emr.index.eterno.lead": "84% of Eterno buyers come back for this set on their second order.",
     "emr.index.eterno.p1": "The Eterno LED Face Mask runs four wavelengths: 630nm and 660nm red, 525nm green, and 580nm yellow.",
     "emr.index.eterno.p2": "The Light Fusion Sheet Masks are built from three Korean ampoule formulas — one matched to each wavelength in the mask.",
     "emr.index.eterno.listRed": "<strong>Red Light Fusion</strong> — Marine collagen, vitamin C, acetyl hexapeptide-8",
     "emr.index.eterno.listGreen": "<strong>Green Light Fusion</strong> — Niacinamide, alpha-arbutin, CoQ10",
     "emr.index.eterno.listYellow": "<strong>Yellow Light Fusion</strong> — Centella asiatica extract, allantoin, beta-glucan",
-    "emr.index.eterno.p3": "Apply the sheet mask. Wait 15 minutes. Then run the corresponding light on Eterno. The formula prepares the biological response. The light drives it.<br /><a class=\"btn\" href=\"https://www.emr-tek.com/YUKI03417\" target=\"_blank\" rel=\"noopener noreferrer\" data-affiliate-shop>See the bundle</a>",
+    "emr.index.eterno.p3": "Apply the sheet mask. Wait 15 minutes. Then run the corresponding light on Eterno. The formula prepares the biological response. The light drives it.<br /><a class=\"btn\" href=\"https://www.emr-tek.com/products/eterno-mask-light-fusion-sheet-mask-bundle?snowball=YUKI03417\" target=\"_blank\" rel=\"noopener noreferrer\" data-product-id=\"eterno-bundle\">See the bundle</a>",
     "emr.index.eterno.p4": "Bundle price: $188.99 with code <strong>EMR30</strong>. Save $76 vs buying separately."
   }
 };
