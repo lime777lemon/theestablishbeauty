@@ -230,7 +230,17 @@
     "emr.index.eterno.listGreen": "<strong>グリーン ライト フュージョン</strong> — ナイアシンアミド、α-アルブチン、CoQ10",
     "emr.index.eterno.listYellow": "<strong>イエローライトフュージョン</strong> — ツボクサエキス、アラントイン、ベータグルカン",
     "emr.index.eterno.p3": "シートマスクを貼ってください。15分待ちます。その後、対応するライトをエテルノに当ててください。フォーミュラが生物学的反応を準備します。光が反応を促進します。<br /><a class=\"btn\" href=\"https://www.emr-tek.com/products/eterno-mask-light-fusion-sheet-mask-bundle?snowball=YUKI03417\" target=\"_blank\" rel=\"noopener noreferrer\" data-product-id=\"eterno-bundle\">バンドルをご覧ください</a>",
-    "emr.index.eterno.p4": "バンドル価格：コード <strong>EMR30</strong> 適用で188.99ドル。別々に購入するよりも76ドル節約できます。"
+    "emr.index.eterno.p4": "バンドル価格：コード <strong>EMR30</strong> 適用で188.99ドル。別々に購入するよりも76ドル節約できます。",
+    "emr.index.promoBanners.aria": "おすすめプロモーション",
+    "emr.index.firefly.bannerSectionAria": "Firefly プロモーション",
+    "emr.index.firefly.bannerLinkAria": "Firefly — 公式商品ページ",
+    "emr.index.firefly.bannerAlt": "FIREFLY — 赤色光セラピーデバイス",
+    "emr.index.bulbs.bannerSectionAria": "室内照明ソリューション プロモーション",
+    "emr.index.bulbs.bannerLinkAria": "Indoor Lighting Solutions — 公式商品ページ",
+    "emr.index.bulbs.bannerAlt": "INDOOR LIGHTING SOLUTIONS — フリッカーフリー赤色電球",
+    "emr.index.glasses.bannerSectionAria": "ブルーライトカット メガネ プロモーション",
+    "emr.index.glasses.bannerLinkAria": "Blue Light Blocking Glasses — コレクション",
+    "emr.index.glasses.bannerAlt": "BLUE LIGHT GLASSES — Daily Use. Minimal Design."
   },
   "en": {
     "emr.index.doc.title": "Home – EMR-TEK",
@@ -461,7 +471,17 @@
     "emr.index.eterno.listGreen": "<strong>Green Light Fusion</strong> — Niacinamide, alpha-arbutin, CoQ10",
     "emr.index.eterno.listYellow": "<strong>Yellow Light Fusion</strong> — Centella asiatica extract, allantoin, beta-glucan",
     "emr.index.eterno.p3": "Apply the sheet mask. Wait 15 minutes. Then run the corresponding light on Eterno. The formula prepares the biological response. The light drives it.<br /><a class=\"btn\" href=\"https://www.emr-tek.com/products/eterno-mask-light-fusion-sheet-mask-bundle?snowball=YUKI03417\" target=\"_blank\" rel=\"noopener noreferrer\" data-product-id=\"eterno-bundle\">See the bundle</a>",
-    "emr.index.eterno.p4": "Bundle price: $188.99 with code <strong>EMR30</strong>. Save $76 vs buying separately."
+    "emr.index.eterno.p4": "Bundle price: $188.99 with code <strong>EMR30</strong>. Save $76 vs buying separately.",
+    "emr.index.promoBanners.aria": "Featured promotions",
+    "emr.index.firefly.bannerSectionAria": "Firefly promotion",
+    "emr.index.firefly.bannerLinkAria": "Firefly — official product page",
+    "emr.index.firefly.bannerAlt": "FIREFLY — Red Light Therapy Device",
+    "emr.index.bulbs.bannerSectionAria": "Indoor lighting promotion",
+    "emr.index.bulbs.bannerLinkAria": "Indoor Lighting Solutions — official product page",
+    "emr.index.bulbs.bannerAlt": "INDOOR LIGHTING SOLUTIONS — Flicker-Free Red Light Bulb",
+    "emr.index.glasses.bannerSectionAria": "Blue-light blocking glasses promotion",
+    "emr.index.glasses.bannerLinkAria": "Blue Light Blocking Glasses — collection",
+    "emr.index.glasses.bannerAlt": "BLUE LIGHT GLASSES — Daily Use. Minimal Design."
   }
 };
 })(typeof window !== 'undefined' ? window : globalThis);

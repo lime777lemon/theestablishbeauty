@@ -125,6 +125,40 @@ function resolveShopHref(href) {
   return appendSnowballToUrl(href);
 }
 
+function getShopCollectionUrl(collectionHandle) {
+  const handle = String(collectionHandle || "").trim();
+  if (!handle) return "";
+  const code =
+    getSnowballCode() ||
+    String(cfg().defaultSnowballCode || "").trim();
+  const url = new URL(`https://www.emr-tek.com/collections/${handle}`);
+  if (code) url.searchParams.set("snowball", code);
+  return url.toString();
+}
+
+function decoratePromoBanners(root = document) {
+  root.querySelectorAll("[data-affiliate-promo-banner]").forEach((el) => {
+    if (!(el instanceof HTMLAnchorElement)) return;
+
+    const collectionHandle = el.getAttribute("data-affiliate-collection");
+    if (collectionHandle) {
+      const next = getShopCollectionUrl(collectionHandle);
+      if (next) el.href = next;
+    } else {
+      const href = el.getAttribute("href") ?? "";
+      if (href.includes("emr-tek.com")) {
+        const next = resolveShopHref(href);
+        if (next !== href) el.setAttribute("href", next);
+      }
+    }
+
+    if (el.href.startsWith("http")) {
+      el.target = "_blank";
+      el.rel = "noopener noreferrer";
+    }
+  });
+}
+
 function decorateShopLinks(root = document) {
   root.querySelectorAll('a[href*="emr-tek.com"]').forEach((a) => {
     const href = a.getAttribute("href");
@@ -268,6 +302,7 @@ function init() {
   captureFromPathRedirect();
   captureFromQuery();
   decorateShopLinks();
+  decoratePromoBanners();
   decorateProductButtons();
   injectAffiliateSectionLinks();
   ensureProductAffiliateCta();
@@ -279,6 +314,7 @@ function init() {
       for (const node of m.addedNodes) {
         if (node instanceof Element) {
           decorateShopLinks(node);
+          decoratePromoBanners(node);
           decorateProductButtons(node);
         }
       }
