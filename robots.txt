@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+Disallow: /auth/
+Disallow: /stripe-connect-sinatra/
+Disallow: /contact-inquiries-admin.html
+Disallow: /sql-editor.html
+Disallow: /cart.html
+Disallow: /checkout.html
+Disallow: /payment-card.html
+Disallow: /product-
+Disallow: /product.html
+
+Sitemap: https://theestablishbeauty.com/sitemap.xml

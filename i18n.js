@@ -1077,6 +1077,10 @@
       const key = titleKeyEl.getAttribute("data-i18n-title");
       if (key) document.title = t(lang, key);
     }
+
+    if (typeof window.__refreshSeo === "function") {
+      window.__refreshSeo();
+    }
   }
 
   function syncLangButtons(lang) {
