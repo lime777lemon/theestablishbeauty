@@ -346,7 +346,7 @@ const PRODUCTS = [
     createdAt: "2024-08-01",
     featuredRank: 20,
     image: {
-      src: "https://emr-tek.com/cdn/shop/files/2.jpg?v=1750168496&width=900",
+      src: "https://emr-tek.com/cdn/shop/files/heavy-duty-standemr-tek-7350196.jpg?v=1778604623&width=900",
       alt: "ヘビーデューティースタンド",
     },
   },
