@@ -147,10 +147,16 @@ export function refreshSeo() {
   const description = getDescription();
   const url = canonicalUrl();
   const image = absoluteUrl(cfg().defaultOgImage || "/assets/site-logo.png");
+  const imageWidth = Number(cfg().defaultOgImageWidth) || 1200;
+  const imageHeight = Number(cfg().defaultOgImageHeight) || 630;
+  const googleVerification = String(cfg().googleSiteVerification || "").trim();
 
   upsertLink("canonical", url);
 
   upsertMeta("name", "robots", getRobotsDirective());
+  if (googleVerification) {
+    upsertMeta("name", "google-site-verification", googleVerification);
+  }
 
   upsertMeta("property", "og:type", "website");
   upsertMeta("property", "og:site_name", cfg().siteName || "The Establish Beauty");
@@ -158,6 +164,9 @@ export function refreshSeo() {
   upsertMeta("property", "og:description", description);
   upsertMeta("property", "og:url", url);
   upsertMeta("property", "og:image", image);
+  upsertMeta("property", "og:image:width", String(imageWidth));
+  upsertMeta("property", "og:image:height", String(imageHeight));
+  upsertMeta("property", "og:image:alt", `${cfg().brandName || "EMR-TEK"} — ${cfg().siteName || "The Establish Beauty"}`);
   upsertMeta("property", "og:locale", ogLocale(lang));
   upsertMeta("property", "og:locale:alternate", lang === "ja" ? ogLocale("en") : ogLocale("ja"));
 
