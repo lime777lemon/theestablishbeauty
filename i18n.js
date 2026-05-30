@@ -226,6 +226,7 @@
       "teb.footer.privacy": "プライバシーポリシー",
       "teb.footer.terms": "利用規約",
       "teb.footer.tokushoho": "特定商取引法に基づく表記",
+      "teb.footer.policies": "配送・返品・支払い",
       "teb.footer.legalnav": "法的情報",
       "teb.footer.credit2": "EMR-TEK 商品ページは従来どおり維持",
 
@@ -704,9 +705,10 @@
       "teb.footer.link.b2b.register": "Business / partner signup",
       "teb.footer.link.b2b.login": "Business login",
       "teb.footer.legal": "Legal (EMR-TEK store)",
-      "teb.footer.privacy": "Privacy policy",
-      "teb.footer.terms": "Terms of use",
-      "teb.footer.tokushoho": "Specified commercial transactions act",
+      "teb.footer.privacy": "Privacy Policy",
+      "teb.footer.terms": "Terms of Service",
+      "teb.footer.tokushoho": "Specified Commercial Transactions Act",
+      "teb.footer.policies": "Shipping, Returns & Payment",
       "teb.footer.legalnav": "Legal",
       "teb.footer.credit2": "EMR-TEK product pages unchanged",
 
@@ -968,10 +970,10 @@
       "sql.runwhere.term.hint": "scripts/sql-shell.sh reads SUPABASE_DATABASE_URL and, if set, SUPABASE_DB_PASSWORD from .env.local.",
 
       "emr.footer.legalnav": "Legal",
-      "emr.footer.privacy_link": "Privacy policy",
-      "emr.footer.terms_link": "Terms of use",
-      "emr.footer.tokushoho_link": "Specified commercial transactions",
-      "emr.footer.policies_link": "Shipping, returns & payment",
+      "emr.footer.privacy_link": "Privacy Policy",
+      "emr.footer.terms_link": "Terms of Service",
+      "emr.footer.tokushoho_link": "Specified Commercial Transactions Act",
+      "emr.footer.policies_link": "Shipping, Returns & Payment",
       "emr.search.close": "Close",
     },
   };

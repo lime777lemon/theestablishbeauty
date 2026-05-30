@@ -182,7 +182,7 @@ function injectAffiliateSectionLinks() {
 }
 
 const PRODUCT_BTN_SELECTOR =
-  "button[data-add-id], button[data-add], button[data-product-add], button[data-action=\"checkout\"], button[data-view], button[data-view-id], button[data-checkout-submit-card], button[data-checkout-submit-order]";
+  'button[data-action="checkout"], button[data-view], button[data-view-id], button[data-checkout-submit-card], button[data-checkout-submit-order]';
 
 function decorateProductButtons(root = document) {
   const url = getReferralShopUrl();
@@ -210,24 +210,7 @@ function decorateProductButtons(root = document) {
 }
 
 function ensureProductAffiliateCta() {
-  const url = getReferralShopUrl();
-  if (!url || document.querySelector("[data-product-affiliate-cta]")) return;
-
-  const host =
-    document.querySelector(".productPage__buy.panel") ||
-    document.querySelector(".productPage__buy") ||
-    document.querySelector(".productPage");
-  if (!host) return;
-
-  const a = document.createElement("a");
-  a.className = "btn btn--ghost";
-  a.href = url;
-  a.target = "_blank";
-  a.rel = "noopener noreferrer";
-  a.setAttribute("data-affiliate-shop", "");
-  a.setAttribute("data-product-affiliate-cta", "");
-  a.textContent = affiliateSectionLabel();
-  host.appendChild(a);
+  return;
 }
 
 let scriptLoaded = false;

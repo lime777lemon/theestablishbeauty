@@ -643,7 +643,6 @@ function openAffiliateShop(productId) {
 
 function productIdFromAffiliateButton(btn) {
   return (
-    btn.getAttribute("data-add-id") ||
     btn.getAttribute("data-product-id") ||
     btn.getAttribute("data-view-id") ||
     btn.closest("[data-product-id]")?.getAttribute("data-product-id") ||
@@ -691,9 +690,7 @@ function initAffiliateProductButtons() {
         return;
       }
 
-      const productBtn = e.target.closest(
-        "button[data-add-id], button[data-add], button[data-product-add], button[data-view], button[data-view-id]"
-      );
+      const productBtn = e.target.closest("button[data-view], button[data-view-id]");
       if (productBtn instanceof HTMLButtonElement) {
         e.preventDefault();
         e.stopImmediatePropagation();
@@ -901,8 +898,7 @@ function isProductBuyPanelCorrupted(buy) {
   if (!(buy instanceof HTMLElement)) return false;
   return Boolean(
     buy.querySelector('[data-i18n="emr.footer.disclaimer1"]') ||
-      buy.querySelector(".footer__title") ||
-      !buy.querySelector(".productPage__actions, [data-product-add], [data-add-id]")
+      buy.querySelector(".footer__title")
   );
 }
 
@@ -914,9 +910,6 @@ function renderProductBuyPanel(buy, p) {
   const tags = tagLabels.length ? tagLabels : [categoryLabel(p.category)];
   const onSale = Boolean(p.was && p.was > p.now);
   const save = onSale ? p.was - p.now : 0;
-  const referralUrl = getReferralShopUrl();
-  const addLabel = uiT("emr.index.btn.addToCart", "カートに追加");
-  const shopLabel = uiT("emr.product.shopOfficial", "ShopOfficial");
   const priceInner = onSale
     ? `<span class="sr-only">${uiT("emr.index.price.sale", "販売価格")}</span>
         <span class="price__now">${yen(p.now)}</span>
@@ -934,14 +927,6 @@ function renderProductBuyPanel(buy, p) {
     </div>
     <div class="price price--lg ${onSale ? "price--sale" : ""}" aria-label="${uiT("emr.index.price.label", "価格")}">
       ${priceInner}
-    </div>
-    <div class="productPage__actions">
-      <button class="btn" type="button" data-product-add data-add-id="${p.id}" data-affiliate-product-btn>${addLabel}</button>
-      ${
-        referralUrl
-          ? `<a class="btn btn--ghost" href="${referralUrl}" target="_blank" rel="noopener noreferrer" data-affiliate-shop data-affiliate-product-btn>${shopLabel}</a>`
-          : ""
-      }
     </div>
     <div class="productPage__desc panel" data-product-desc-wrap>
       <h2 class="h3" data-product-desc-title>${uiT("emr.product.aboutTitle", "商品概要")}</h2>
@@ -962,9 +947,6 @@ function renderProductBuyPanel(buy, p) {
       descBody.textContent = productDescription(p);
     }
   }
-
-  const addBtn = buy.querySelector("[data-product-add]");
-  if (addBtn) addBtn.addEventListener("click", () => addToCart(p.id, 1));
 }
 
 function hydrateProductHero(p) {
@@ -1120,7 +1102,7 @@ function initProductTemplatePage() {
 
   const addBtn = document.querySelector("[data-product-add]");
   if (addBtn instanceof HTMLButtonElement) {
-    addBtn.setAttribute("data-add-id", p.id);
+    addBtn.remove();
   }
 
   const desc = document.querySelector("[data-product-desc]");
@@ -1564,21 +1546,11 @@ function renderGrid() {
       </div>`;
 
     const onSale = Boolean(p.was && p.was > p.now);
-    const addLabel = uiT("emr.index.btn.addToCart", "カートに追加");
     const detailsLabel = uiT("emr.index.btn.details", "詳細");
-    const referralUrl = getReferralShopUrl();
-    const affiliateShopBtn = referralUrl
-      ? `<a class="btn btn--ghost btn--sm" href="${referralUrl}" target="_blank" rel="noopener noreferrer" data-affiliate-shop data-affiliate-product-btn>${uiT("emr.product.shopOfficial", "ShopOfficial")}</a>`
-      : "";
     const actionsHtml = isUniformProductGrid
-      ? `<div class="product__actions">
-          <button class="btn" type="button" data-add data-affiliate-product-btn>${addLabel}</button>
-          ${affiliateShopBtn}
-        </div>`
+      ? ""
       : `<div class="product__actions">
-          <button class="btn" type="button" data-add data-affiliate-product-btn>${addLabel}</button>
           <button class="btn btn--ghost" type="button" data-view data-affiliate-product-btn>${detailsLabel}</button>
-          ${affiliateShopBtn}
         </div>`;
     const priceInner = onSale
       ? `<span class="sr-only">${uiT("emr.index.price.sale", "販売価格")}</span>
@@ -1708,7 +1680,6 @@ function renderGrid() {
       saveEl.textContent = "";
     }
 
-    $("[data-add]", card).addEventListener("click", () => addToCart(p.id, 1));
     const viewBtn = $("[data-view]", card);
     if (viewBtn) {
       viewBtn.addEventListener("click", () => openAffiliateShop(p.id));
@@ -1722,9 +1693,7 @@ function renderGrid() {
 
 function hydrateFavCards() {
   document.querySelectorAll(".favs .favcard").forEach((card) => {
-    const productId =
-      card.getAttribute("data-product-id") ||
-      card.querySelector("[data-add-id]")?.getAttribute("data-add-id");
+    const productId = card.getAttribute("data-product-id");
     if (!productId) return;
 
     const p = PRODUCTS.find((x) => x.id === productId);
@@ -1962,21 +1931,6 @@ function initProductBuyQty() {
 function initQuickActions() {
   document.addEventListener("click", (e) => {
     if (!(e.target instanceof Element)) return;
-    const addBtn = e.target.closest("button[data-add-id]");
-    if (addBtn) {
-      const id = addBtn.getAttribute("data-add-id");
-      if (id) {
-        const buy = addBtn.closest(".productPage__buy");
-        const valEl = buy?.querySelector("[data-product-qty-value]");
-        let n = 1;
-        if (valEl) {
-          const v = Number.parseInt(valEl.textContent?.trim() ?? "1", 10);
-          if (Number.isFinite(v) && v > 0) n = clamp(v, 1, 99);
-        }
-        addToCart(id, n);
-      }
-      return;
-    }
 
     const viewBtn = e.target.closest("button[data-view-id]");
     if (viewBtn) {
