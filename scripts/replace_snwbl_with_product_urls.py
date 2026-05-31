@@ -25,7 +25,7 @@ HANDLES = {
     "firewave-pro": "firewave-pro-300-watts-red-and-near-infrared-light",
     "eterno-mask": "eterno-mask",
     "firefly-portable": "firefly-1",
-    "eterno-bundle": "eterno-mask-light-fusion-sheet-mask-bundle",
+    "eterno-bundle": "eterno-mask-light-fusion-pack",
     "firedragon": "firedragon",
     "firestorm-pro": "firestorm-pro",
     "inferno-fullbody": "inferno",

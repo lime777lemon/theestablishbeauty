@@ -12,6 +12,11 @@ const CONSENT_EVENT = "emr-cookie-consent";
 const cfg = () => window.__SNOWBALL_CONFIG__ || {};
 const shop = () => String(cfg().shop || "").trim();
 
+function isValidAffiliateCode(code) {
+  const trimmed = String(code || "").trim();
+  return /^[A-Za-z0-9_-]{3,64}$/.test(trimmed);
+}
+
 function getReferralShopUrl() {
   return String(cfg().referralShopUrl || "").trim();
 }
@@ -61,7 +66,7 @@ function attributionMs() {
 
 function persistCode(code) {
   const trimmed = String(code || "").trim();
-  if (!trimmed) return;
+  if (!isValidAffiliateCode(trimmed)) return;
   try {
     localStorage.setItem(STORAGE_CODE, trimmed);
     localStorage.setItem(STORAGE_EXPIRES, String(Date.now() + attributionMs()));
@@ -73,12 +78,18 @@ function persistCode(code) {
 function getSnowballCode() {
   try {
     const exp = Number(localStorage.getItem(STORAGE_EXPIRES) || 0);
+    const stored = localStorage.getItem(STORAGE_CODE) || "";
     if (exp && Date.now() > exp) {
       localStorage.removeItem(STORAGE_CODE);
       localStorage.removeItem(STORAGE_EXPIRES);
       return "";
     }
-    return localStorage.getItem(STORAGE_CODE) || "";
+    if (stored && !isValidAffiliateCode(stored)) {
+      localStorage.removeItem(STORAGE_CODE);
+      localStorage.removeItem(STORAGE_EXPIRES);
+      return "";
+    }
+    return stored;
   } catch {
     return "";
   }

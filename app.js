@@ -554,7 +554,7 @@ const SHOP_JP_PRODUCT_HANDLE = {
   "ultron-fullbody": "ultron-patent-pending",
   firedragon: "firedragon",
   "firestorm-pro": "firestorm-pro",
-  "eterno-bundle": "eterno-mask-light-fusion-sheet-mask-bundle",
+  "eterno-bundle": "eterno-mask-light-fusion-pack",
   "daylight-bulb": "daylight-bulb",
 };
 
@@ -597,10 +597,16 @@ const LOCAL_PRODUCT_PAGE_TO_ID = Object.fromEntries(
   }).map(([file, id]) => [`./${file}`, id])
 );
 
+function isValidSnowballCode(code) {
+  const trimmed = String(code || "").trim();
+  return /^[A-Za-z0-9_-]{3,64}$/.test(trimmed);
+}
+
 function getSnowballCode() {
   if (typeof window.__getSnowballCode === "function") return window.__getSnowballCode();
   try {
-    return localStorage.getItem("emrtek_snowball_code") || "";
+    const stored = localStorage.getItem("emrtek_snowball_code") || "";
+    return isValidSnowballCode(stored) ? stored : "";
   } catch {
     return "";
   }
@@ -630,9 +636,9 @@ function getReferralShopUrl() {
 
 function getShopJpProductUrl(productId) {
   const handle = SHOP_JP_PRODUCT_HANDLE[productId] ?? productId;
-  const code =
-    getSnowballCode() ||
-    String(window.__SNOWBALL_CONFIG__?.defaultSnowballCode || "").trim();
+  const stored = getSnowballCode();
+  const fallback = String(window.__SNOWBALL_CONFIG__?.defaultSnowballCode || "").trim();
+  const code = stored || (isValidSnowballCode(fallback) ? fallback : "");
   const url = new URL(`https://www.emr-tek.com/products/${handle}`);
   if (code) url.searchParams.set("snowball", code);
   return url.toString();
