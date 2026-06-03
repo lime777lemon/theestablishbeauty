@@ -1942,6 +1942,10 @@ a {
   min-width: 0;
 }
 
+.heroPromoBanner--wide {
+  grid-column: 1 / -1;
+}
+
 .heroPromoBanner .heroBanner {
   margin-top: 0;
   width: 100%;
