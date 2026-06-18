@@ -1946,6 +1946,129 @@ a {
   grid-column: 1 / -1;
 }
 
+.heroPromo--fathersDay {
+  margin-top: 0;
+}
+
+.fathersDaySplitWrap {
+  overflow: hidden;
+}
+
+.fathersDaySplit {
+  display: grid;
+  gap: 20px;
+  align-items: start;
+}
+
+.fathersDaySplit__media {
+  min-width: 0;
+}
+
+.fathersDaySplit__media .heroBanner {
+  margin-top: 0;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+.fathersDaySplit__body {
+  min-width: 0;
+}
+
+.fathersDaySplit__title {
+  margin: 0 0 14px;
+  font-size: clamp(1.1rem, 2.5vw, 1.42rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: #991b1b;
+}
+
+@media (min-width: 768px) {
+  .fathersDaySplit {
+    grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+    gap: 24px;
+    align-items: center;
+  }
+
+  .fathersDaySplit__media .heroBanner {
+    max-width: none;
+    margin-inline: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fathersDaySplit {
+    grid-template-columns: minmax(0, 0.36fr) minmax(0, 0.64fr);
+    gap: 32px;
+  }
+}
+
+.heroPromo__intro,
+.heroPromo__lead {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: rgba(15, 23, 42, 0.9);
+}
+
+.heroPromo__lead {
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.heroPromo__code {
+  margin: 8px 0 0;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: rgba(15, 23, 42, 0.88);
+}
+
+.heroPromo__code strong {
+  font-size: 1.15em;
+  color: #991b1b;
+  letter-spacing: 0.02em;
+}
+
+.fathersDayPromo__picks {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 1100px) {
+  .fathersDaySplit .fathersDayPromo__picks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+.fathersDayPromo__pick {
+  margin: 0;
+  padding: 16px 18px;
+  border: 1px solid rgba(185, 28, 28, 0.14);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.fathersDayPromo__pickTitle {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #991b1b;
+}
+
+.fathersDayPromo__pickDesc {
+  margin: 10px 0 0;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: rgba(15, 23, 42, 0.86);
+}
+
+.fathersDayPromo__pick .heroPromo__cta {
+  margin-top: 12px;
+}
+
 .heroPromoBanner .heroBanner {
   margin-top: 0;
   width: 100%;
