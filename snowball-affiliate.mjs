@@ -209,6 +209,7 @@ function refreshAffiliateSectionLabels(lang = currentSiteLang()) {
 }
 
 function injectAffiliateSectionLinks() {
+  if (document.querySelector("[data-skip-affiliate-section-cta]")) return;
   const url = getReferralShopUrl();
   if (!url) return;
 

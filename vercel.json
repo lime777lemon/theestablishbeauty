@@ -4,5 +4,8 @@
   "devCommand": "sh -c 'python3 -m http.server \"${PORT:-5280}\"'",
   "redirects": [
     { "source": "/emr-tek.html", "destination": "/", "permanent": true }
+  ],
+  "crons": [
+    { "path": "/api/beauty-column-daily", "schedule": "0 0 * * *" }
   ]
 }

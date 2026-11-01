@@ -24,3 +24,5 @@ __pycache__/
 .vscode/
 .vercel
 .env*.local
+data/dropship-orders.json
+data/beauty-columns.json

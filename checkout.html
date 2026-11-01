@@ -5,6 +5,7 @@
 
     <meta charset="UTF-8" />
     <script src="./snowball-config.js"></script>
+    <script src="./dropship-catalog.js"></script>
 
     <script>
       (function () {
@@ -29,7 +30,7 @@
     <title>購入手続き – EMR-TEK</title>
     <meta
       name="description"
-      content="EMR-TEK — お届け先の入力とご注文内容の確認。実際の決済は行われません。"
+      content="EMR-TEK — お届け先の入力とご注文。注文はこのサイトで記録し、受注先へ振り分けます。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -85,6 +86,7 @@
 
                 <nav class="nav" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
           <a class="nav__link" href="./about-us.html" data-i18n="emr.nav.teb">私たちについて</a>
+          <a class="nav__link" href="./beauty-column.html" data-i18n="emr.nav.beauty">美容コラム</a>
           <a class="nav__link" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
           <a class="nav__link" href="./auth-consumer-register.html" data-i18n="emr.nav.register">新規登録</a>
           <a class="nav__link" href="./auth-consumer-login.html" data-i18n="emr.nav.login">ログイン</a>
@@ -98,7 +100,8 @@
           </summary>
           <div class="navDropdown__panel">
             <a class="nav__link" href="./about-us.html" data-i18n="emr.nav.teb">私たちについて</a>
-            <a class="nav__link" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
+            <a class="nav__link" href="./beauty-column.html" data-i18n="emr.nav.beauty">美容コラム</a>
+          <a class="nav__link" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
             <a class="nav__link" href="./auth-consumer-register.html" data-i18n="emr.nav.register">新規登録</a>
             <a class="nav__link" href="./auth-consumer-login.html" data-i18n="emr.nav.login">ログイン</a>
             <a class="nav__link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
@@ -126,7 +129,7 @@
             <div>
               <h1 class="h1">購入手続き</h1>
               <p class="subtle">
-                お届け先を入力し、内容をご確認のうえお進みください。本サイトでは実際の決済は行われません。
+                EMR-TEKの商品は公式ストアへ移動します。今後追加する他社の商品だけ、このサイトで注文を記録します。
               </p>
             </div>
           </div>
@@ -150,12 +153,10 @@
         <div class="checkoutSuccess panel" data-checkout-success hidden>
           <div class="checkoutSuccess__icon" aria-hidden="true">✓</div>
           <h2 class="h2">ご注文を受け付けました</h2>
-          <p class="subtle">
-            サーバーには送信していません。実際の購入は
-            <a class="link" href="https://emr-tek.com/en-jp" target="_blank" rel="noopener noreferrer">
-              EMR-TEK 公式ストア
-            </a>
-            をご利用ください。
+          <p class="subtle">注文番号 <strong data-dropship-order-id></strong></p>
+          <p class="subtle" data-dropship-suppliers></p>
+          <p class="micro subtle">
+            カード番号はこのサイトに保存していません。EMR-TEK以外の受注先は、その会社のStripe接続後に引き落とします。
           </p>
           <p>
             <a class="btn" href="./collection-all.html">ショップへ戻る</a>
@@ -204,7 +205,7 @@
               <fieldset class="checkoutPayMethods">
                 <legend class="checkoutPayMethods__legend">お支払い方法</legend>
                 <p class="micro subtle checkoutPayMethods__lead">
-                  いずれかを選択してください。実際の決済は行われません。
+                  EMR-TEKの商品は Snowball のトラッキング付きで公式ストアへ進みます。他社の商品だけ、この画面で注文を記録します。カード番号は送信しません。
                 </p>
                 <div class="checkoutPayList" role="radiogroup" aria-label="お支払い方法">
                   <label class="checkoutPayOption">
@@ -516,7 +517,7 @@
       </div>
     </div>
 
-    <script src="./app.js?v=50260412" defer></script>
+    <script src="./app.js?v=20261018" defer></script>
       <script src="./i18n.js" defer></script>
           <script type="module" src="./analytics.mjs"></script>
         <script type="module" src="./video-analytics.mjs"></script>

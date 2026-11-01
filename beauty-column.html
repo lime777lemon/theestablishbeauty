@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <script src="./seo-config.js"></script>
+
+    <meta charset="UTF-8" />
+    <script src="./snowball-config.js"></script>
+    <script src="./dropship-catalog.js"></script>
+    <script src="./beauty-affiliate-config.js"></script>
+
+    <script>
+      (function () {
+        try {
+          var k = "establish_site_lang";
+          var v = localStorage.getItem(k) || "ja";
+          if (v !== "ja" && v !== "en") v = "ja";
+          document.documentElement.setAttribute("data-site-lang", v);
+          document.documentElement.setAttribute("lang", v === "en" ? "en" : "ja");
+        } catch (e) {}
+      })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <link rel="shortcut icon" href="/favicon.ico?v=17" />
+    <link rel="icon" href="/favicon.ico?v=17" sizes="48x48" />
+    <link rel="icon" href="/assets/favicon-48.png?v=17" type="image/png" sizes="48x48" />
+    <link rel="icon" href="/assets/favicon-32.png?v=17" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/assets/favicon-16.png?v=17" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=17" />
+    <title data-i18n-title="emr.beauty.doc.title">美容コラム – The Establish Beauty</title>
+    <meta
+      name="description"
+      data-i18n-desc="emr.beauty.doc.desc"
+      content="ヘアケア、化粧品、ネイルなど、カテゴリから美容商品を選べるコラムです。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./i18n.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="emr.skip">本文へスキップ</a>
+
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <div class="topbar__left" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px">
+          <a class="link micro" href="./about-us.html" data-i18n="emr.topbar.teb" style="font-weight: 600; white-space: nowrap"
+            >The Establish Beauty — メインページ</a
+          >
+        </div>
+
+        <div class="topbar__right" aria-label="言語と通貨" data-i18n-attr="aria-label:emr.topbar.langcurrency" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:flex-end">
+          <div class="lang-switch" role="group" data-i18n-attr="aria-label:lang.label">
+            <button type="button" class="pill pill--lang" data-lang-switch="ja">日本語</button>
+            <button type="button" class="pill pill--lang" data-lang-switch="en">English</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="container header__inner">
+        <div class="brand">
+          <a
+            class="brand__link establishBrand__link"
+            href="./index.html"
+            data-i18n-attr="aria-label:teb.brand.aria"
+            aria-label="The Establish Beauty ホーム"
+          >
+            <img
+              class="establishBrand__logo--header"
+              src="./assets/site-logo.png"
+              width="84"
+              height="32"
+              decoding="async"
+              data-i18n-attr="alt:teb.brand.logoAlt"
+              alt="The Establish Beauty"
+            />
+          </a>
+        </div>
+
+        <nav class="nav" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
+          <a class="nav__link" href="./about-us.html" data-i18n="emr.nav.teb">私たちについて</a>
+          <a class="nav__link nav__link--active" href="./beauty-column.html" data-i18n="emr.nav.beauty" aria-current="page">美容コラム</a>
+          <a class="nav__link" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
+          <a class="nav__link" href="./auth-consumer-register.html" data-i18n="emr.nav.register">新規登録</a>
+          <a class="nav__link" href="./auth-consumer-login.html" data-i18n="emr.nav.login">ログイン</a>
+          <a class="nav__link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
+        </nav>
+
+        <details class="navDropdown" data-i18n-attr="aria-label:emr.nav.main" aria-label="メイン">
+          <summary>
+            <span data-i18n="emr.nav.menu">メニュー</span>
+            <span class="navDropdown__caret" aria-hidden="true"></span>
+          </summary>
+          <div class="navDropdown__panel">
+            <a class="nav__link" href="./about-us.html" data-i18n="emr.nav.teb">私たちについて</a>
+            <a class="nav__link nav__link--active" href="./beauty-column.html" data-i18n="emr.nav.beauty" aria-current="page">美容コラム</a>
+            <a class="nav__link" href="./faq.html" data-i18n="emr.nav.faq">FAQ</a>
+            <a class="nav__link" href="./auth-consumer-register.html" data-i18n="emr.nav.register">新規登録</a>
+            <a class="nav__link" href="./auth-consumer-login.html" data-i18n="emr.nav.login">ログイン</a>
+            <a class="nav__link" href="./contact.html" data-i18n="emr.nav.contact">お問い合わせ</a>
+          </div>
+        </details>
+
+        <div class="header__actions">
+          <button class="icon-btn" type="button" data-action="open-search" data-i18n-attr="aria-label:emr.aria.search" aria-label="検索">
+            <span aria-hidden="true">⌕</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="main" data-skip-affiliate-section-cta>
+      <section class="hero">
+        <div class="container hero__inner">
+          <div class="breadcrumbs" aria-label="パンくず">
+            <a href="./index.html" data-i18n="emr.common.breadcrumb.home">ホーム</a>
+            <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+            <span aria-current="page" data-i18n="emr.beauty.breadcrumb.current">美容コラム</span>
+          </div>
+
+          <div class="hero__titleRow">
+            <div>
+              <h1 class="h1" data-i18n="emr.beauty.hero.h1">美容コラム</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="beauty-catalog" class="section section--padding beautyCatalog" aria-labelledby="beauty-catalog-heading">
+        <div class="container">
+          <h2 id="beauty-catalog-heading" class="h2" data-i18n="emr.beauty.catalog.h2">美容商品</h2>
+          <div class="beautyCatBar" role="tablist" data-i18n-attr="aria-label:emr.beauty.catalog.tabs" aria-label="商品カテゴリ" data-beauty-categories></div>
+          <p class="subtle beautyCatLead" data-beauty-category-lead hidden></p>
+          <div class="beautyProductGrid" data-beauty-products hidden></div>
+          <p class="beautyCatalog__empty" data-beauty-products-empty>
+            各カテゴリの商品はこれから追加します。
+          </p>
+        </div>
+      </section>
+
+      <section class="blogSection section section--padding" aria-labelledby="beauty-columns-heading">
+        <div class="container">
+          <h2 id="beauty-columns-heading" class="h2" data-i18n="emr.beauty.columns.h2">コラム</h2>
+          <p class="subtle" style="margin-bottom: 20px" data-i18n="emr.beauty.columns.lead">
+            日常の美容ルーティンに役立つ読みもの。商品リンクは提携プログラム経由です。
+          </p>
+
+          <article class="beautyColumnReader" data-beauty-column-reader hidden></article>
+          <div class="blogGrid" data-beauty-auto-columns hidden></div>
+          <div class="blogGrid">
+            <article class="blogCard">
+              <div class="blogCard__content">
+                <div class="blogCard__meta">
+                  <time class="blogCard__time" datetime="2026-11-01">2026年11月1日</time>
+                </div>
+                <h3 class="blogCard__title">
+                  <a href="#skincare" data-i18n="emr.beauty.col1.title">朝5分で整える、保湿の順番</a>
+                </h3>
+                <p class="blogCard__excerpt" data-i18n="emr.beauty.col1.excerpt">
+                  洗顔のあとに何を重ねるかで、日中のうるおいが大きく変わります。化粧水→美容液→クリームの基本を短くまとめました。
+                </p>
+                <p class="blogCard__more">
+                  <a class="link" href="#skincare" data-i18n="emr.beauty.col1.cta">スキンケアの商品を見る</a>
+                </p>
+              </div>
+            </article>
+
+            <article class="blogCard">
+              <div class="blogCard__content">
+                <div class="blogCard__meta">
+                  <time class="blogCard__time" datetime="2026-10-20">2026年10月20日</time>
+                </div>
+                <h3 class="blogCard__title">
+                  <a href="#haircare" data-i18n="emr.beauty.col2.title">洗髪のしすぎをやめて、頭皮を休ませる</a>
+                </h3>
+                <p class="blogCard__excerpt" data-i18n="emr.beauty.col2.excerpt">
+                  毎日シャンプーが当たり前でも、頻度を少し落とすだけでパサつきが落ち着くことがあります。洗い方の見直しポイントです。
+                </p>
+                <p class="blogCard__more">
+                  <a class="link" href="#haircare" data-i18n="emr.beauty.col2.cta">ヘアケアの商品を見る</a>
+                </p>
+              </div>
+            </article>
+
+            <article class="blogCard">
+              <div class="blogCard__content">
+                <div class="blogCard__meta">
+                  <time class="blogCard__time" datetime="2026-10-05">2026年10月5日</time>
+                </div>
+                <h3 class="blogCard__title">
+                  <a href="#inner" data-i18n="emr.beauty.col3.title">内側からのケアを始めるなら、まずここ</a>
+                </h3>
+                <p class="blogCard__excerpt" data-i18n="emr.beauty.col3.excerpt">
+                  ドリンクやサプリを選ぶとき、続けやすさと成分のバランスを見るのが近道です。インナービューティーの入口を整理しました。
+                </p>
+                <p class="blogCard__more">
+                  <a class="link" href="#inner" data-i18n="emr.beauty.col3.cta">インナービューティーの商品を見る</a>
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div>
+          <div class="footer__brand">
+            <img class="establishBrand__logo--footer" src="./assets/site-logo.png" width="120" height="46" alt="The Establish Beauty" />
+          </div>
+          <p class="micro subtle" data-i18n="emr.beauty.footer.note">
+            美容コラム内の商品リンクにはアフィリエイトが含まれる場合があります。EMR-TEK ストアの購入導線（Snowball）とは別です。
+          </p>
+        </div>
+        <div>
+          <div class="footer__heading" data-i18n="emr.footer.explore">案内</div>
+          <ul class="footer__list">
+            <li><a class="link" href="./index.html" data-i18n="emr.footer.home">ホーム</a></li>
+            <li><a class="link" href="./beauty-column.html" data-i18n="emr.nav.beauty">美容コラム</a></li>
+            <li><a class="link" href="./faq.html" data-i18n="emr.footer.faq">よくある質問</a></li>
+            <li><a class="link" href="./contact.html" data-i18n="emr.footer.contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer__bottom">
+        <nav class="footer__legal micro" aria-label="法的情報">
+          <a class="link" href="./privacy.html" data-i18n="emr.footer.privacy_link">プライバシーポリシー</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./terms.html" data-i18n="emr.footer.terms_link">利用規約</a>
+          <span class="footer__legalSep" aria-hidden="true">·</span>
+          <a class="link" href="./tokushoho.html" data-i18n="emr.footer.tokushoho_link">特定商取引法に基づく表記</a>
+        </nav>
+        <div class="footer__bottomCredits">
+          <div class="micro subtle">© The Establish Beauty</div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="cookie" data-cookie hidden>
+      <div class="container cookie__inner" role="dialog" data-i18n-attr="aria-label:emr.cookie.dialog" aria-label="Cookieの利用">
+        <div>
+          <div class="cookie__title" data-i18n="emr.cookie.title">Cookieを使用しています</div>
+          <div class="micro subtle" data-i18n="emr.cookie.body">
+            体験向上と分析のためにCookieを利用します。設定はいつでも変更できます。
+          </div>
+        </div>
+        <div class="cookie__actions">
+          <button class="btn btn--sm btn--ghost" type="button" data-action="cookie-decline" data-i18n="emr.cookie.decline">拒否</button>
+          <button class="btn btn--sm" type="button" data-action="cookie-accept" data-i18n="emr.cookie.accept">同意</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js?v=20261018" defer></script>
+    <script src="./i18n-index-messages.js"></script>
+    <script src="./i18n-pages-messages.js"></script>
+    <script src="./i18n.js" defer></script>
+    <script type="module" src="./analytics.mjs"></script>
+    <script type="module" src="./seo.mjs"></script>
+    <script type="module" src="./snowball-affiliate.mjs"></script>
+    <script type="module" src="./beauty-affiliate.mjs"></script>
+    <script type="module" src="./beauty-columns.mjs"></script>
+  </body>
+</html>

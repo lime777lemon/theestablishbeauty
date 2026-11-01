@@ -644,6 +644,26 @@ function getShopJpProductUrl(productId) {
   return url.toString();
 }
 
+function supplierForProduct(productId, category) {
+  const catalog = window.__DROPSHIP_CATALOG__;
+  if (!catalog?.suppliers) return null;
+  const override = catalog.productSupplier?.[productId];
+  if (override) return catalog.suppliers.find((s) => s.id === override) || null;
+  return catalog.suppliers.find((s) => (s.categories || []).includes(category)) || null;
+}
+
+/** EMR-TEK uses the official store. Future companies use fulfillment: "stripe". */
+function productFulfillment(productId) {
+  const product = typeof PRODUCTS !== "undefined" ? PRODUCTS.find((x) => x.id === productId) : null;
+  const supplier = supplierForProduct(productId, product?.category || "");
+  if (supplier?.fulfillment === "stripe") return "stripe";
+  return "affiliate";
+}
+
+function cartHasStripeFulfillment() {
+  return Object.keys(getCart()).some((id) => productFulfillment(id) === "stripe");
+}
+
 /** @returns {boolean} */
 function openAffiliateShop(productId) {
   const url = productId ? getShopJpProductUrl(productId) : getReferralShopUrl();
@@ -687,6 +707,7 @@ function initAffiliateProductButtons() {
           '[data-action="checkout"], [data-checkout-submit-card], [data-checkout-submit-order]'
         )
       ) {
+        if (cartHasStripeFulfillment()) return;
         e.preventDefault();
         e.stopImmediatePropagation();
         openAffiliateShop();
@@ -703,9 +724,11 @@ function initAffiliateProductButtons() {
 
       const productBtn = e.target.closest("button[data-view], button[data-view-id]");
       if (productBtn instanceof HTMLButtonElement) {
+        const productId = productIdFromAffiliateButton(productBtn);
+        if (productId && productFulfillment(productId) === "stripe") return;
         e.preventDefault();
         e.stopImmediatePropagation();
-        openAffiliateShop(productIdFromAffiliateButton(productBtn));
+        openAffiliateShop(productId);
       }
     },
     true
@@ -1693,7 +1716,10 @@ function renderGrid() {
 
     const viewBtn = $("[data-view]", card);
     if (viewBtn) {
-      viewBtn.addEventListener("click", () => openAffiliateShop(p.id));
+      viewBtn.addEventListener("click", () => {
+        if (productFulfillment(p.id) === "stripe") return;
+        openAffiliateShop(p.id);
+      });
     }
 
     grid.appendChild(card);
@@ -2015,7 +2041,7 @@ function initQuickActions() {
     const viewBtn = e.target.closest("button[data-view-id]");
     if (viewBtn) {
       const id = viewBtn.getAttribute("data-view-id");
-      if (!id) return;
+      if (!id || productFulfillment(id) === "stripe") return;
       openAffiliateShop(id);
     }
   });
@@ -2473,6 +2499,83 @@ function luhnValid(numDigits) {
   return sum % 10 === 0;
 }
 
+async function submitDropshipCheckout(form, ui) {
+  if (cartCount(getCart()) === 0) return;
+  const items = Object.entries(getCart())
+    .filter(([id]) => productFulfillment(id) === "stripe")
+    .map(([id, qty]) => {
+      const p = PRODUCTS.find((x) => x.id === id);
+      return {
+        productId: id,
+        title: p?.title || id,
+        category: p?.category || "",
+        qty,
+        unitPrice: p?.now || 0,
+      };
+    });
+  if (!items.length) {
+    openAffiliateShop();
+    return;
+  }
+  const data = new FormData(form);
+  const payload = {
+    name: data.get("name"),
+    email: data.get("email"),
+    tel: data.get("tel"),
+    postal: data.get("postal"),
+    region: data.get("region"),
+    address1: data.get("address1"),
+    address2: data.get("address2"),
+    note: data.get("note"),
+    paymentMethod: data.get("payment"),
+    items,
+  };
+  if (ui.cardNumberInput instanceof HTMLInputElement) ui.cardNumberInput.value = "";
+  if (ui.cardExpiryInput instanceof HTMLInputElement) ui.cardExpiryInput.value = "";
+  if (ui.cardCvcInput instanceof HTMLInputElement) ui.cardCvcInput.value = "";
+
+  const submitBtn = form.querySelector('[type="submit"]');
+  if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = true;
+  try {
+    const res = await fetch("/api/dropship-orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      if (json.affiliateOnly) {
+        openAffiliateShop();
+        return;
+      }
+      alert(json.error || "注文を記録できませんでした。");
+      return;
+    }
+    clearCart();
+    updateCartUI();
+    if (ui.panelEl) ui.panelEl.hidden = true;
+    if (ui.emptyEl) ui.emptyEl.hidden = true;
+    if (ui.successEl) {
+      ui.successEl.hidden = false;
+      const idEl = ui.successEl.querySelector("[data-dropship-order-id]");
+      const supEl = ui.successEl.querySelector("[data-dropship-suppliers]");
+      if (idEl) idEl.textContent = json.orderId || "";
+      if (supEl) {
+        const names = [...new Set((json.suppliers || []).map((s) => s.supplierName).filter(Boolean))];
+        supEl.textContent = names.length
+          ? `受注先: ${names.join("、")}`
+          : "商品の一部は受注先の確認待ちです。";
+      }
+    }
+    form.reset();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } catch {
+    alert("注文を記録できませんでした。通信を確認してください。");
+  } finally {
+    if (submitBtn instanceof HTMLButtonElement) submitBtn.disabled = false;
+  }
+}
+
 function initCheckoutPage() {
   const page = document.querySelector("[data-checkout-page]");
   if (!page) return;
@@ -2578,6 +2681,17 @@ function initCheckoutPage() {
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+      if (cartHasStripeFulfillment()) {
+        submitDropshipCheckout(form, {
+          panelEl,
+          emptyEl,
+          successEl,
+          cardNumberInput,
+          cardExpiryInput,
+          cardCvcInput,
+        });
+        return;
+      }
       if (getReferralShopUrl()) {
         openAffiliateShop();
         return;

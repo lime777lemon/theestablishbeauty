@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>受注先ダッシュボード – The Establish Beauty</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      .supplierDash {
+        display: grid;
+        gap: 16px;
+        margin: 24px 0 48px;
+      }
+      .supplierDash__bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: end;
+      }
+      .supplierDash__bar .field {
+        min-width: 220px;
+        flex: 1;
+      }
+      .supplierTable {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.92rem;
+      }
+      .supplierTable th,
+      .supplierTable td {
+        text-align: left;
+        padding: 10px 8px;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        vertical-align: top;
+      }
+      .supplierTable th {
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        color: rgba(15, 23, 42, 0.62);
+      }
+      .supplierNote {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container supplierDash" id="main">
+      <header>
+        <p class="micro subtle">The Establish Beauty</p>
+        <h1 class="h1">受注先ダッシュボード</h1>
+        <p class="supplierNote">
+          このサイトで確定した注文のうち、あなたの会社に振り分けられた商品だけを表示します。自動振り分けの上限は
+          <strong data-cap>8</strong> 社です。対応表にない商品は確認待ちになり、勝手には割り当てません。
+        </p>
+      </header>
+
+      <form class="panel supplierDash__bar" data-dash-form>
+        <label class="field">
+          <span>ダッシュボード用トークン</span>
+          <input name="token" type="password" autocomplete="current-password" required />
+        </label>
+        <label class="field">
+          <span>受注先</span>
+          <select name="supplier" data-supplier>
+            <option value="all">すべて（運営）</option>
+          </select>
+        </label>
+        <button class="btn" type="submit">表示</button>
+      </form>
+
+      <p class="subtle" data-status hidden></p>
+
+      <div class="panel" style="overflow-x: auto">
+        <table class="supplierTable">
+          <thead>
+            <tr>
+              <th>日時</th>
+              <th>注文</th>
+              <th>商品</th>
+              <th>お届け先</th>
+              <th>状態</th>
+            </tr>
+          </thead>
+          <tbody data-rows></tbody>
+        </table>
+      </div>
+    </main>
+    <script>
+      const TOKEN_KEY = "teb_dropship_dashboard_token";
+      const form = document.querySelector("[data-dash-form]");
+      const statusEl = document.querySelector("[data-status]");
+      const rowsEl = document.querySelector("[data-rows]");
+      const supplierEl = document.querySelector("[data-supplier]");
+      const tokenInput = form.querySelector('[name="token"]');
+      try {
+        tokenInput.value = sessionStorage.getItem(TOKEN_KEY) || "";
+      } catch (e) {}
+
+      function esc(s) {
+        return String(s ?? "").replace(/[&<>"']/g, (c) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        }[c]));
+      }
+
+      function yen(n) {
+        return new Intl.NumberFormat("ja-JP", { style: "currency", currency: "JPY" }).format(Number(n) || 0);
+      }
+
+      function fillSuppliers(list) {
+        const current = supplierEl.value;
+        const options = ['<option value="all">すべて（運営）</option>'].concat(
+          (list || []).map((s) => `<option value="${s.id}">${s.name}</option>`)
+        );
+        supplierEl.innerHTML = options.join("");
+        if ([...supplierEl.options].some((o) => o.value === current)) supplierEl.value = current;
+      }
+
+      function render(rows) {
+        rowsEl.innerHTML = "";
+        if (!rows.length) {
+          rowsEl.innerHTML = '<tr><td colspan="5">該当する注文はありません。</td></tr>';
+          return;
+        }
+        for (const order of rows) {
+          const tr = document.createElement("tr");
+          const when = order.createdAt ? new Date(order.createdAt).toLocaleString("ja-JP") : "";
+          const items = (order.items || [])
+            .map((item) => `${esc(item.title)} × ${esc(item.qty)}（${esc(item.supplierName || "確認待ち")}）`)
+            .join("<br />");
+          const ship = order.customer || {};
+          const address = [ship.postal, ship.region, ship.address1, ship.address2].filter(Boolean).join(" ");
+          tr.innerHTML = `
+            <td>${esc(when)}</td>
+            <td><code>${esc(order.id || "")}</code><br />${esc(ship.name || "")}<br />${esc(ship.email || "")}</td>
+            <td>${items}<br />${esc(yen(order.subtotal))}</td>
+            <td>${esc(address)}<br />${esc(ship.tel || "")}</td>
+            <td>${esc(order.status || "")}<br />${esc(order.paymentStatus || "")}</td>`;
+          rowsEl.appendChild(tr);
+        }
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const token = tokenInput.value.trim();
+        const supplier = supplierEl.value || "all";
+        statusEl.hidden = false;
+        statusEl.textContent = "読み込み中…";
+        try {
+          sessionStorage.setItem(TOKEN_KEY, token);
+        } catch (err) {}
+        const res = await fetch(`/api/dropship-orders?supplier=${encodeURIComponent(supplier)}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          statusEl.textContent = json.error || "表示できませんでした。";
+          rowsEl.innerHTML = "";
+          return;
+        }
+        if (json.maxAutoSuppliers) {
+          document.querySelector("[data-cap]").textContent = String(json.maxAutoSuppliers);
+        }
+        fillSuppliers(json.suppliers);
+        supplierEl.value = supplier;
+        render(json.rows || []);
+        statusEl.textContent = `${(json.rows || []).length} 件`;
+      });
+    </script>
+  </body>
+</html>
