@@ -49,6 +49,41 @@ const A8_MENS =
   '<img border="0" width="300" height="250" alt="" src="https://www24.a8.net/svt/bgt?aid=261102062685&wid=001&eno=01&mid=s00000014286022006000&mc=1"></a>\n' +
   '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBN2+BBTY5U+328C+3N0NDT" alt="">';
 
+const A8_MENS_2 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+FHAIA+1KO+6AA069" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www26.a8.net/svt/bgt?aid=261102064026&wid=001&eno=01&mid=s00000000204038006000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBN4+FHAIA+1KO+6AA069" alt="">';
+
+const A8_MENS_3 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+FRE4AA+328C+ZRQ0X" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www21.a8.net/svt/bgt?aid=261102063953&wid=001&eno=01&mid=s00000014286006008000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBN3+FRE4AA+328C+ZRQ0X" alt="">';
+
+const A8_HAIRREMOVAL =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+WQV1U+3W7I+BXYE9" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=261102064055&wid=001&eno=01&mid=s00000018171002006000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBN4+WQV1U+3W7I+BXYE9" alt="">';
+
+const A8_HAIRREMOVAL_2 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+GI6MIA+2NSW+C28PT" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=261102063998&wid=001&eno=01&mid=s00000012416002026000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBN3+GI6MIA+2NSW+C28PT" alt="">';
+
+const A8_MAKEUP =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+G6VE0I+3PVQ+TVBF5" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www22.a8.net/svt/bgt?aid=261102063979&wid=001&eno=01&mid=s00000017351005017000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBN3+G6VE0I+3PVQ+TVBF5" alt="">';
+
+const A8_MAKEUP_2 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+FQ792Q+1KO+8LNC0H" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www22.a8.net/svt/bgt?aid=261102063951&wid=001&eno=01&mid=s00000000204052009000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BGBN3+FQ792Q+1KO+8LNC0H" alt="">';
+
+const A8_MAKEUP_3 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+FXCGC2+5KAA+5YZ75" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www26.a8.net/svt/bgt?aid=261102063963&wid=001&eno=01&mid=s00000025957001003000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=4BGBN3+FXCGC2+5KAA+5YZ75" alt="">';
+
 const A8_DIET =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN2+805TKI+44UC+NV1XD" rel="nofollow">\n' +
   '<img border="0" width="300" height="250" alt="" src="https://www20.a8.net/svt/bgt?aid=261102062484&wid=001&eno=01&mid=s00000019290004008000&mc=1"></a>\n' +
@@ -63,6 +98,76 @@ const A8_BODY_2 =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+B0IPO2+39SK+15Q22P" rel="nofollow">\n' +
   '<img border="0" width="300" height="250" alt="" src="https://www26.a8.net/svt/bgt?aid=261102063666&wid=001&eno=01&mid=s00000015266007008000&mc=1"></a>\n' +
   '<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=4BGBN3+B0IPO2+39SK+15Q22P" alt="">';
+
+const A8_BODY_3 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+19UECY+MP8+7423UP" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www20.a8.net/svt/bgt?aid=261102064077&wid=001&eno=01&mid=s00000002942043008000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGBN4+19UECY+MP8+7423UP" alt="">';
+
+const A8_BODY_4 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+18NJ5E+MP8+6S8829" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=261102064075&wid=001&eno=01&mid=s00000002942041021000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=4BGBN4+18NJ5E+MP8+6S8829" alt="">';
+
+const A8_INNER =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+H9LBM+3IE0+44W2YP" rel="nofollow">\n' +
+  '<img border="0" width="350" height="240" alt="" src="https://www26.a8.net/svt/bgt?aid=261102064029&wid=001&eno=01&mid=s00000016380025008000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BGBN4+H9LBM+3IE0+44W2YP" alt="">';
+
+const A8_INNER_2 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+G53376+3NZO+1TIYU9" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www29.a8.net/svt/bgt?aid=261102063976&wid=001&eno=01&mid=s00000017106011006000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBN3+G53376+3NZO+1TIYU9" alt="">';
+
+const A8_INNER_3 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+G4HNLE+4NL2+61Z81" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www24.a8.net/svt/bgt?aid=261102063975&wid=001&eno=01&mid=s00000021719001017000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGBN3+G4HNLE+4NL2+61Z81" alt="">';
+
+const A8_SURGERY =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+AUKDMA+1KO+6S50BL" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=261102063656&wid=001&eno=01&mid=s00000000204041006000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBN3+AUKDMA+1KO+6S50BL" alt="">';
+
+const A8_SURGERY_2 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+ANF6CY+1KO+4SP7G1" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www22.a8.net/svt/bgt?aid=261102063644&wid=001&eno=01&mid=s00000000204029007000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGBN3+ANF6CY+1KO+4SP7G1" alt="">';
+
+const A8_SURGERY_3 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+AMTQR6+3IE0+2BG45D" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=261102063643&wid=001&eno=01&mid=s00000016380014016000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=4BGBN3+AMTQR6+3IE0+2BG45D" alt="">';
+
+const A8_SKINCARE_2 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+AI29WY+4SU8+609HT" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=261102063635&wid=001&eno=01&mid=s00000022400001009000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BGBN3+AI29WY+4SU8+609HT" alt="">';
+
+const A8_SKINCARE_3 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+123RHU+4E7A+BXIYP" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www20.a8.net/svt/bgt?aid=261102064064&wid=001&eno=01&mid=s00000020503002004000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BGBN4+123RHU+4E7A+BXIYP" alt="">';
+
+const A8_SKINCARE_4 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+GO5PU+1KO+3B6RLD" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=261102064028&wid=001&eno=01&mid=s00000000204020019000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BGBN4+GO5PU+1KO+3B6RLD" alt="">';
+
+const A8_SKINCARE_5 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+FVK5IQ+5YC4+5ZEMP" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=261102063960&wid=001&eno=01&mid=s00000027778001005000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBN3+FVK5IQ+5YC4+5ZEMP" alt="">';
+
+const A8_SKINCARE_6 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+FUYPWY+5YPG+5ZEMP" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www26.a8.net/svt/bgt?aid=261102063959&wid=001&eno=01&mid=s00000027826001005000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGBN3+FUYPWY+5YPG+5ZEMP" alt="">';
+
+const A8_CARE =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+8D9CVM+54TM+BXIYP" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=261102063506&wid=001&eno=01&mid=s00000023953002004000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGBN3+8D9CVM+54TM+BXIYP" alt="">';
 
 const A8_ESTHE =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN2+BVH94I+1OGO+CCBDD" rel="nofollow">\n' +
@@ -88,6 +193,11 @@ const A8_TOOLS_2 =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+6PQ0DU+4GDM+ZQNG1" rel="nofollow">\n' +
   '<img border="0" width="300" height="250" alt="" src="https://www29.a8.net/svt/bgt?aid=261102063406&wid=001&eno=01&mid=s00000020785006003000&mc=1"></a>\n' +
   '<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4BGBN3+6PQ0DU+4GDM+ZQNG1" alt="">';
+
+const A8_TOOLS_4 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+6PQ0DU+4GDM+ZQNG1" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=261102063406&wid=001&eno=01&mid=s00000020785006003000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BGBN3+6PQ0DU+4GDM+ZQNG1" alt="">';
 
 const A8_TOOLS_3 =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+6HDXWY+4QVE+5ZMCH" rel="nofollow">\n' +
@@ -161,6 +271,17 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
         { id: "a8-skincare-2", html: A8_SKINCARE },
         { id: "a8-skincare-3", html: A8_COSMETICS_2 },
         { id: "a8-skincare-device", html: A8_DEVICE },
+        { id: "a8-skincare-surgery", html: A8_SURGERY },
+        { id: "a8-skincare-surgery-2", html: A8_SURGERY_2 },
+        { id: "a8-skincare-surgery-3", html: A8_SURGERY_3 },
+        { id: "a8-skincare-4", html: A8_SKINCARE_2 },
+        { id: "a8-skincare-care", html: A8_CARE },
+        { id: "a8-skincare-tools", html: A8_TOOLS_4 },
+        { id: "a8-skincare-5", html: A8_SKINCARE_3 },
+        { id: "a8-skincare-6", html: A8_SKINCARE_4 },
+        { id: "a8-skincare-makeup", html: A8_MAKEUP_3 },
+        { id: "a8-skincare-7", html: A8_SKINCARE_5 },
+        { id: "a8-skincare-8", html: A8_SKINCARE_6 },
       ],
     },
     {
@@ -170,6 +291,11 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       blurbJa: "ベース、ポイントメイク、仕上げ。",
       blurbEn: "Base, color, and finishing.",
       products: [],
+      banners: [
+        { id: "a8-makeup", html: A8_MAKEUP },
+        { id: "a8-makeup-2", html: A8_MAKEUP_2 },
+        { id: "a8-makeup-3", html: A8_MAKEUP_3 },
+      ],
     },
     {
       id: "body",
@@ -181,6 +307,9 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       banners: [
         { id: "a8-body", html: A8_BODY },
         { id: "a8-body-2", html: A8_BODY_2 },
+        { id: "a8-body-3", html: A8_BODY_3 },
+        { id: "a8-body-4", html: A8_BODY_4 },
+        { id: "a8-body-inner", html: A8_INNER },
       ],
     },
     {
@@ -199,6 +328,9 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
         { id: "a8-mens", html: A8_SHAVING },
         { id: "a8-mens-2", html: A8_MENS },
         { id: "a8-mens-device", html: A8_DEVICE },
+        { id: "a8-mens-3", html: A8_MENS_2 },
+        { id: "a8-mens-4", html: A8_MENS_3 },
+        { id: "a8-mens-skincare", html: A8_SKINCARE_6 },
       ],
     },
     {
@@ -216,6 +348,11 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       blurbJa: "美容サプリ、ドリンク。",
       blurbEn: "Beauty supplements and drinks.",
       products: [],
+      banners: [
+        { id: "a8-inner", html: A8_INNER },
+        { id: "a8-inner-2", html: A8_INNER_2 },
+        { id: "a8-inner-3", html: A8_INNER_3 },
+      ],
     },
     {
       id: "diet",
@@ -225,6 +362,10 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       banners: [
         { id: "a8-diet", html: A8_DIET },
         { id: "a8-diet-body", html: A8_BODY },
+        { id: "a8-diet-body-4", html: A8_BODY_4 },
+        { id: "a8-diet-inner", html: A8_INNER },
+        { id: "a8-diet-inner-2", html: A8_INNER_2 },
+        { id: "a8-diet-inner-3", html: A8_INNER_3 },
       ],
     },
     {
@@ -232,6 +373,11 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       titleJa: "美容整形",
       titleEn: "Cosmetic surgery",
       products: [],
+      banners: [
+        { id: "a8-surgery", html: A8_SURGERY },
+        { id: "a8-surgery-2", html: A8_SURGERY_2 },
+        { id: "a8-surgery-3", html: A8_SURGERY_3 },
+      ],
     },
     {
       id: "esthe",
@@ -241,6 +387,18 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       banners: [
         { id: "a8-esthe", html: A8_ESTHE },
         { id: "a8-esthe-2", html: A8_ESTHE_2 },
+        { id: "a8-esthe-care", html: A8_CARE },
+        { id: "a8-esthe-tools", html: A8_TOOLS_4 },
+      ],
+    },
+    {
+      id: "hairremoval",
+      titleJa: "美容脱毛",
+      titleEn: "Hair removal",
+      products: [],
+      banners: [
+        { id: "a8-hairremoval", html: A8_HAIRREMOVAL },
+        { id: "a8-hairremoval-2", html: A8_HAIRREMOVAL_2 },
       ],
     },
     {
@@ -262,6 +420,8 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
         { id: "a8-tools-device", html: A8_DEVICE },
         { id: "a8-tools-2", html: A8_TOOLS_2 },
         { id: "a8-tools-3", html: A8_TOOLS_3 },
+        { id: "a8-tools-care", html: A8_CARE },
+        { id: "a8-tools-4", html: A8_TOOLS_4 },
       ],
     },
   ],
