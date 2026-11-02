@@ -13,7 +13,6 @@
     categories: [
       "skincare",
       "haircare",
-      "cosmetics",
       "nails",
       "makeup",
       "body",
