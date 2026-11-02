@@ -24,12 +24,38 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       blurbJa: "シャンプー、トリートメント、頭皮ケア。",
       blurbEn: "Shampoo, treatments, and scalp care.",
       products: [],
+      banners: [
+        {
+          id: "a8-haircare-300x250",
+          href: "https://px.a8.net/svt/ejp?a8mat=4BGBMW+CEJ4HE+3HS2+2HCQGX",
+          image:
+            "https://www27.a8.net/svt/bgt?aid=261102056750&wid=001&eno=01&mid=s00000016301015008000&mc=1",
+          width: 300,
+          height: 250,
+          altJa: "ヘアケア",
+          altEn: "Hair care",
+          pixel: "https://www15.a8.net/0.gif?a8mat=4BGBMW+CEJ4HE+3HS2+2HCQGX",
+        },
+      ],
     },
     {
       id: "cosmetics",
       titleJa: "化粧品",
       titleEn: "Cosmetics",
       products: [],
+      banners: [
+        {
+          id: "a8-cosmetics-300x250",
+          href: "https://px.a8.net/svt/ejp?a8mat=4BGBMW+CIP5PU+3AT8+62ENL",
+          image:
+            "https://www29.a8.net/svt/bgt?aid=261102056757&wid=001&eno=01&mid=s00000015398001019000&mc=1",
+          width: 300,
+          height: 250,
+          altJa: "化粧品",
+          altEn: "Cosmetics",
+          pixel: "https://www17.a8.net/0.gif?a8mat=4BGBMW+CIP5PU+3AT8+62ENL",
+        },
+      ],
     },
     {
       id: "nails",
@@ -46,6 +72,30 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       blurbJa: "洗顔、保湿、日中ケア。",
       blurbEn: "Cleansing, moisture, and daytime care.",
       products: [],
+      banners: [
+        {
+          id: "a8-skincare-300x250",
+          href: "https://px.a8.net/svt/ejp?a8mat=4BGBMW+CIP5PU+3AT8+62ENL",
+          image:
+            "https://www29.a8.net/svt/bgt?aid=261102056757&wid=001&eno=01&mid=s00000015398001019000&mc=1",
+          width: 300,
+          height: 250,
+          altJa: "スキンケア",
+          altEn: "Skincare",
+          pixel: "https://www17.a8.net/0.gif?a8mat=4BGBMW+CIP5PU+3AT8+62ENL",
+        },
+        {
+          id: "a8-skincare-300x250-2",
+          href: "https://px.a8.net/svt/ejp?a8mat=4BGBMW+CDC99U+3OIU+631SX",
+          image:
+            "https://www28.a8.net/svt/bgt?aid=261102056748&wid=001&eno=01&mid=s00000017175001022000&mc=1",
+          width: 300,
+          height: 250,
+          altJa: "スキンケア",
+          altEn: "Skincare",
+          pixel: "https://www15.a8.net/0.gif?a8mat=4BGBMW+CDC99U+3OIU+631SX",
+        },
+      ],
     },
     {
       id: "makeup",

@@ -26,6 +26,23 @@ function selectedId() {
   return "all";
 }
 
+function bannersFor(id) {
+  const source = id === "all" ? categories() : [categoryById(id)].filter(Boolean);
+  const banners = source.flatMap((category) => (Array.isArray(category.banners) ? category.banners : []));
+  if (id !== "all") return banners;
+  const seen = new Set();
+  return banners.filter((banner) => {
+    const key = String(banner.href || banner.image || banner.id || "");
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function listingCount(category) {
+  return (category.products?.length || 0) + (category.banners?.length || 0);
+}
+
 function productsFor(id) {
   if (id === "all") {
     return categories().flatMap((category) =>
@@ -73,8 +90,8 @@ function renderCategories() {
   for (const item of items) {
     const count =
       item.id === "all"
-        ? categories().reduce((sum, category) => sum + (category.products?.length || 0), 0)
-        : item.products?.length || 0;
+        ? categories().reduce((sum, category) => sum + (category.products?.length || 0), 0) + bannersFor("all").length
+        : listingCount(item);
     const button = document.createElement("button");
     button.type = "button";
     button.className = "beautyCat" + (item.id === current ? " is-selected" : "");
@@ -104,6 +121,47 @@ function renderCategories() {
     const category = categoryById(current);
     lead.textContent = category ? text(category, "blurbJa", "blurbEn") : "";
     lead.hidden = !lead.textContent;
+  }
+}
+
+function renderBanners() {
+  const root = document.querySelector("[data-beauty-banners]");
+  if (!root) return;
+  const banners = bannersFor(selectedId());
+  root.innerHTML = "";
+  root.hidden = banners.length === 0;
+
+  for (const banner of banners) {
+    const href = String(banner.href || "").trim();
+    const image = String(banner.image || "").trim();
+    if (!href || !image) continue;
+
+    const link = document.createElement("a");
+    link.className = "beautyBanner";
+    link.href = href;
+    link.target = "_blank";
+    link.rel = "nofollow sponsored noopener noreferrer";
+
+    const img = document.createElement("img");
+    img.src = image;
+    img.width = Number(banner.width) || 300;
+    img.height = Number(banner.height) || 250;
+    img.alt = text(banner, "altJa", "altEn");
+    img.loading = "lazy";
+    link.appendChild(img);
+    root.appendChild(link);
+
+    const pixel = String(banner.pixel || "").trim();
+    if (pixel) {
+      const tracker = document.createElement("img");
+      tracker.className = "beautyBanner__pixel";
+      tracker.src = pixel;
+      tracker.width = 1;
+      tracker.height = 1;
+      tracker.alt = "";
+      tracker.setAttribute("aria-hidden", "true");
+      root.appendChild(tracker);
+    }
   }
 }
 
@@ -180,15 +238,17 @@ function renderProducts() {
     root.appendChild(card);
   }
 
+  const hasBanners = bannersFor(current).length > 0;
   root.hidden = products.length === 0;
   if (empty) {
-    empty.hidden = products.length > 0;
+    empty.hidden = products.length > 0 || hasBanners;
     empty.textContent = emptyMessage(current);
   }
 }
 
 function render(options = {}) {
   renderCategories();
+  renderBanners();
   renderProducts();
   if (options.scroll && selectedId() !== "all") {
     document.getElementById("beauty-catalog")?.scrollIntoView({ behavior: "smooth", block: "start" });

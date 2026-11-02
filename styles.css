@@ -749,6 +749,34 @@ a {
   margin: 14px 0 0;
 }
 
+.beautyBannerRow {
+  position: relative;
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.beautyBanner {
+  display: inline-block;
+  line-height: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.beautyBanner img {
+  display: block;
+  width: min(300px, 100%);
+  height: auto;
+}
+
+.beautyBanner__pixel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .beautyCatalog__empty {
   margin: 18px 0 0;
   padding: 22px 18px;
