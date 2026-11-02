@@ -2,6 +2,8 @@
  * GET /api/beauty-columns — published daily columns, newest first.
  */
 
+const libPath = require.resolve("./beauty-columns-lib");
+delete require.cache[libPath];
 const { listColumns } = require("./beauty-columns-lib");
 
 module.exports = async function handler(req, res) {
@@ -14,8 +16,7 @@ module.exports = async function handler(req, res) {
     const columns = await listColumns();
     res.setHeader("Cache-Control", "public, max-age=300");
     return res.status(200).json({ columns });
-  } catch (error) {
-    console.error("beauty-columns:", error.message);
+  } catch {
     res.setHeader("Cache-Control", "no-store");
     return res.status(200).json({ columns: [] });
   }

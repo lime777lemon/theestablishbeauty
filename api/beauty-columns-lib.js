@@ -95,31 +95,51 @@ function writeLocal(rows) {
   fs.writeFileSync(LOCAL_FILE, JSON.stringify(rows.slice(0, 120), null, 2));
 }
 
+function isUnreachable(error) {
+  const code = error?.cause?.code || error?.code || "";
+  return (
+    code === "ENOTFOUND" ||
+    code === "EAI_AGAIN" ||
+    code === "ENOTUNREACH" ||
+    code === "ECONNREFUSED" ||
+    error?.message === "fetch failed"
+  );
+}
+
+function columnsWhenRemoteDown() {
+  if (process.env.VERCEL) return [];
+  return readLocal().map(publicColumn);
+}
+
 async function listColumns() {
   const supabase = supabaseConfig();
   if (supabase) {
-    const response = await fetch(
-      `${supabase.url}/rest/v1/beauty_columns?select=*&order=published_on.desc&limit=30`,
-      {
-        headers: {
-          apikey: supabase.key,
-          Authorization: `Bearer ${supabase.key}`,
-          Accept: "application/json",
+    try {
+      const response = await fetch(
+        `${supabase.url}/rest/v1/beauty_columns?select=*&order=published_on.desc&limit=30`,
+        {
+          headers: {
+            apikey: supabase.key,
+            Authorization: `Bearer ${supabase.key}`,
+            Accept: "application/json",
+          },
         },
-      },
-    );
-    if (!response.ok) {
-      const detail = await response.text();
-      if (response.status === 404 || /does not exist|PGRST205|42P01/i.test(detail)) return [];
-      const error = new Error(detail.slice(0, 300) || "コラムの取得に失敗しました。");
-      error.status = response.status;
+      );
+      if (!response.ok) {
+        const detail = await response.text();
+        if (response.status === 404 || /does not exist|PGRST205|42P01/i.test(detail)) return [];
+        const error = new Error(detail.slice(0, 300) || "コラムの取得に失敗しました。");
+        error.status = response.status;
+        throw error;
+      }
+      const rows = await response.json();
+      return (Array.isArray(rows) ? rows : []).map(publicColumn);
+    } catch (error) {
+      if (isUnreachable(error)) return columnsWhenRemoteDown();
       throw error;
     }
-    const rows = await response.json();
-    return (Array.isArray(rows) ? rows : []).map(publicColumn);
   }
-  if (process.env.VERCEL) return [];
-  return readLocal().map(publicColumn);
+  return columnsWhenRemoteDown();
 }
 
 async function findByDate(dateStr) {
