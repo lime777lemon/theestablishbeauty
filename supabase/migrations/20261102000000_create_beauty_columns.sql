@@ -17,3 +17,12 @@ create index if not exists beauty_columns_published_on_idx
   on public.beauty_columns (published_on desc);
 
 alter table public.beauty_columns enable row level security;
+
+grant select on public.beauty_columns to anon, authenticated;
+
+drop policy if exists "public read beauty columns" on public.beauty_columns;
+create policy "public read beauty columns"
+  on public.beauty_columns
+  for select
+  to anon, authenticated
+  using (true);

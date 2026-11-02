@@ -44,9 +44,10 @@ function normalizeSupabaseUrl(raw) {
 
 function supabaseConfig() {
   const url = normalizeSupabaseUrl(process.env.SUPABASE_URL || "");
-  const key = String(process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
-  if (!url || !key) return null;
-  return { url, key };
+  const serviceKey = String(process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
+  const anonKey = String(process.env.SUPABASE_ANON_KEY || "").trim();
+  if (!url || (!serviceKey && !anonKey)) return null;
+  return { url, serviceKey, anonKey };
 }
 
 function readBearer(req) {
@@ -111,31 +112,43 @@ function columnsWhenRemoteDown() {
   return readLocal().map(publicColumn);
 }
 
+async function readRemoteColumns(url, key) {
+  const response = await fetch(
+    `${url}/rest/v1/beauty_columns?select=*&order=published_on.desc&limit=30`,
+    {
+      headers: {
+        apikey: key,
+        Authorization: `Bearer ${key}`,
+        Accept: "application/json",
+      },
+    },
+  );
+  if (response.status === 401 || response.status === 403) {
+    const error = new Error("unauthorized");
+    error.status = response.status;
+    throw error;
+  }
+  if (!response.ok) {
+    const detail = await response.text();
+    if (response.status === 404 || /does not exist|PGRST205|42P01/i.test(detail)) return [];
+    const error = new Error(detail.slice(0, 300) || "コラムの取得に失敗しました。");
+    error.status = response.status;
+    throw error;
+  }
+  const rows = await response.json();
+  return (Array.isArray(rows) ? rows : []).map(publicColumn);
+}
+
 async function listColumns() {
   const supabase = supabaseConfig();
-  if (supabase) {
+  if (!supabase) return columnsWhenRemoteDown();
+  const keys = [supabase.anonKey, supabase.serviceKey].filter(Boolean);
+  for (const key of keys) {
     try {
-      const response = await fetch(
-        `${supabase.url}/rest/v1/beauty_columns?select=*&order=published_on.desc&limit=30`,
-        {
-          headers: {
-            apikey: supabase.key,
-            Authorization: `Bearer ${supabase.key}`,
-            Accept: "application/json",
-          },
-        },
-      );
-      if (!response.ok) {
-        const detail = await response.text();
-        if (response.status === 404 || /does not exist|PGRST205|42P01/i.test(detail)) return [];
-        const error = new Error(detail.slice(0, 300) || "コラムの取得に失敗しました。");
-        error.status = response.status;
-        throw error;
-      }
-      const rows = await response.json();
-      return (Array.isArray(rows) ? rows : []).map(publicColumn);
+      return await readRemoteColumns(supabase.url, key);
     } catch (error) {
       if (isUnreachable(error)) return columnsWhenRemoteDown();
+      if (error.status === 401 || error.status === 403) continue;
       throw error;
     }
   }
@@ -149,12 +162,12 @@ async function findByDate(dateStr) {
 
 async function insertColumn(column) {
   const supabase = supabaseConfig();
-  if (supabase) {
+  if (supabase?.serviceKey) {
     const response = await fetch(`${supabase.url}/rest/v1/beauty_columns`, {
       method: "POST",
       headers: {
-        apikey: supabase.key,
-        Authorization: `Bearer ${supabase.key}`,
+        apikey: supabase.serviceKey,
+        Authorization: `Bearer ${supabase.serviceKey}`,
         "Content-Type": "application/json",
         Prefer: "return=representation",
       },
@@ -172,7 +185,12 @@ async function insertColumn(column) {
     });
     if (!response.ok) {
       const detail = await response.text();
-      const error = new Error(detail.slice(0, 300) || "コラムの保存に失敗しました。");
+      const unauthorized = response.status === 401 || response.status === 403;
+      const error = new Error(
+        unauthorized
+          ? "SUPABASE_SERVICE_ROLE_KEY が接続先のプロジェクトと一致しません。Dashboard の service_role を入れ直してください。"
+          : detail.slice(0, 300) || "コラムの保存に失敗しました。",
+      );
       error.status = response.status;
       throw error;
     }
