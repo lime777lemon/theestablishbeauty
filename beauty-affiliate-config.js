@@ -14,11 +14,6 @@
  *   priceEn: "¥3,980",
  * }
  */
-const A8_COSMETICS =
-  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBMW+CIP5PU+3AT8+62ENL" rel="nofollow">\n' +
-  '<img border="0" width="300" height="250" alt="" src="https://www29.a8.net/svt/bgt?aid=261102056757&wid=001&eno=01&mid=s00000015398001019000&mc=1"></a>\n' +
-  '<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BGBMW+CIP5PU+3AT8+62ENL" alt="">';
-
 const A8_COSMETICS_2 =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBMW+CIP5PU+3AT8+5ZMCH" rel="nofollow">\n' +
   '<img border="0" width="300" height="250" alt="" src="https://www21.a8.net/svt/bgt?aid=261102056757&wid=001&eno=01&mid=s00000015398001006000&mc=1"></a>\n' +
@@ -51,10 +46,7 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       titleJa: "化粧品",
       titleEn: "Cosmetics",
       products: [],
-      banners: [
-        { id: "a8-cosmetics", html: A8_COSMETICS },
-        { id: "a8-cosmetics-2", html: A8_COSMETICS_2 },
-      ],
+      banners: [{ id: "a8-cosmetics-2", html: A8_COSMETICS_2 }],
     },
     {
       id: "nails",
@@ -72,7 +64,6 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       blurbEn: "Cleansing, moisture, and daytime care.",
       products: [],
       banners: [
-        { id: "a8-skincare", html: A8_COSMETICS },
         { id: "a8-skincare-2", html: A8_SKINCARE },
         { id: "a8-skincare-3", html: A8_COSMETICS_2 },
       ],
