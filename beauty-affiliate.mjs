@@ -32,7 +32,7 @@ function bannersFor(id) {
   if (id !== "all") return banners;
   const seen = new Set();
   return banners.filter((banner) => {
-    const key = String(banner.href || banner.image || banner.id || "");
+    const key = String(banner.html || banner.id || "").trim();
     if (!key || seen.has(key)) return false;
     seen.add(key);
     return true;
@@ -124,6 +124,17 @@ function renderCategories() {
   }
 }
 
+function activateScripts(root) {
+  for (const oldScript of root.querySelectorAll("script")) {
+    const script = document.createElement("script");
+    for (const attr of oldScript.attributes) {
+      script.setAttribute(attr.name, attr.value);
+    }
+    script.text = oldScript.textContent || "";
+    oldScript.replaceWith(script);
+  }
+}
+
 function renderBanners() {
   const root = document.querySelector("[data-beauty-banners]");
   if (!root) return;
@@ -132,36 +143,13 @@ function renderBanners() {
   root.hidden = banners.length === 0;
 
   for (const banner of banners) {
-    const href = String(banner.href || "").trim();
-    const image = String(banner.image || "").trim();
-    if (!href || !image) continue;
-
-    const link = document.createElement("a");
-    link.className = "beautyBanner";
-    link.href = href;
-    link.target = "_blank";
-    link.rel = "nofollow sponsored noopener noreferrer";
-
-    const img = document.createElement("img");
-    img.src = image;
-    img.width = Number(banner.width) || 300;
-    img.height = Number(banner.height) || 250;
-    img.alt = text(banner, "altJa", "altEn");
-    img.loading = "lazy";
-    link.appendChild(img);
-    root.appendChild(link);
-
-    const pixel = String(banner.pixel || "").trim();
-    if (pixel) {
-      const tracker = document.createElement("img");
-      tracker.className = "beautyBanner__pixel";
-      tracker.src = pixel;
-      tracker.width = 1;
-      tracker.height = 1;
-      tracker.alt = "";
-      tracker.setAttribute("aria-hidden", "true");
-      root.appendChild(tracker);
-    }
+    const html = String(banner.html || "").trim();
+    if (!html) continue;
+    const slot = document.createElement("div");
+    slot.className = "beautyBannerSlot";
+    slot.insertAdjacentHTML("beforeend", html);
+    activateScripts(slot);
+    root.appendChild(slot);
   }
 }
 

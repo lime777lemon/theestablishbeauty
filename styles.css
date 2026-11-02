@@ -757,24 +757,8 @@ a {
   gap: 14px;
 }
 
-.beautyBanner {
-  display: inline-block;
-  line-height: 0;
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.beautyBanner img {
-  display: block;
-  width: min(300px, 100%);
-  height: auto;
-}
-
-.beautyBanner__pixel {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+.beautyBannerSlot {
+  max-width: 100%;
 }
 
 .beautyCatalog__empty {

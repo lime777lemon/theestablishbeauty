@@ -14,6 +14,21 @@
  *   priceEn: "¥3,980",
  * }
  */
+const A8_COSMETICS =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBMW+CIP5PU+3AT8+62ENL" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www29.a8.net/svt/bgt?aid=261102056757&wid=001&eno=01&mid=s00000015398001019000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BGBMW+CIP5PU+3AT8+62ENL" alt="">';
+
+const A8_HAIRCARE =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBMW+CEJ4HE+3HS2+2HCQGX" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=261102056750&wid=001&eno=01&mid=s00000016301015008000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBMW+CEJ4HE+3HS2+2HCQGX" alt="">';
+
+const A8_SKINCARE =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBMW+CDC99U+3OIU+631SX" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=261102056748&wid=001&eno=01&mid=s00000017175001022000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBMW+CDC99U+3OIU+631SX" alt="">';
+
 window.__BEAUTY_AFFILIATE_CONFIG__ = {
   programName: "Beauty Column",
   categories: [
@@ -24,38 +39,14 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       blurbJa: "シャンプー、トリートメント、頭皮ケア。",
       blurbEn: "Shampoo, treatments, and scalp care.",
       products: [],
-      banners: [
-        {
-          id: "a8-haircare-300x250",
-          href: "https://px.a8.net/svt/ejp?a8mat=4BGBMW+CEJ4HE+3HS2+2HCQGX",
-          image:
-            "https://www27.a8.net/svt/bgt?aid=261102056750&wid=001&eno=01&mid=s00000016301015008000&mc=1",
-          width: 300,
-          height: 250,
-          altJa: "ヘアケア",
-          altEn: "Hair care",
-          pixel: "https://www15.a8.net/0.gif?a8mat=4BGBMW+CEJ4HE+3HS2+2HCQGX",
-        },
-      ],
+      banners: [{ id: "a8-haircare", html: A8_HAIRCARE }],
     },
     {
       id: "cosmetics",
       titleJa: "化粧品",
       titleEn: "Cosmetics",
       products: [],
-      banners: [
-        {
-          id: "a8-cosmetics-300x250",
-          href: "https://px.a8.net/svt/ejp?a8mat=4BGBMW+CIP5PU+3AT8+62ENL",
-          image:
-            "https://www29.a8.net/svt/bgt?aid=261102056757&wid=001&eno=01&mid=s00000015398001019000&mc=1",
-          width: 300,
-          height: 250,
-          altJa: "化粧品",
-          altEn: "Cosmetics",
-          pixel: "https://www17.a8.net/0.gif?a8mat=4BGBMW+CIP5PU+3AT8+62ENL",
-        },
-      ],
+      banners: [{ id: "a8-cosmetics", html: A8_COSMETICS }],
     },
     {
       id: "nails",
@@ -73,28 +64,8 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       blurbEn: "Cleansing, moisture, and daytime care.",
       products: [],
       banners: [
-        {
-          id: "a8-skincare-300x250",
-          href: "https://px.a8.net/svt/ejp?a8mat=4BGBMW+CIP5PU+3AT8+62ENL",
-          image:
-            "https://www29.a8.net/svt/bgt?aid=261102056757&wid=001&eno=01&mid=s00000015398001019000&mc=1",
-          width: 300,
-          height: 250,
-          altJa: "スキンケア",
-          altEn: "Skincare",
-          pixel: "https://www17.a8.net/0.gif?a8mat=4BGBMW+CIP5PU+3AT8+62ENL",
-        },
-        {
-          id: "a8-skincare-300x250-2",
-          href: "https://px.a8.net/svt/ejp?a8mat=4BGBMW+CDC99U+3OIU+631SX",
-          image:
-            "https://www28.a8.net/svt/bgt?aid=261102056748&wid=001&eno=01&mid=s00000017175001022000&mc=1",
-          width: 300,
-          height: 250,
-          altJa: "スキンケア",
-          altEn: "Skincare",
-          pixel: "https://www15.a8.net/0.gif?a8mat=4BGBMW+CDC99U+3OIU+631SX",
-        },
+        { id: "a8-skincare", html: A8_COSMETICS },
+        { id: "a8-skincare-2", html: A8_SKINCARE },
       ],
     },
     {
