@@ -24,6 +24,16 @@ const A8_HAIRCARE =
   '<img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=261102056750&wid=001&eno=01&mid=s00000016301015008000&mc=1"></a>\n' +
   '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBMW+CEJ4HE+3HS2+2HCQGX" alt="">';
 
+const A8_SHAVING =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN2+6ZUDO2+1JHI+C28PT" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www21.a8.net/svt/bgt?aid=261102062423&wid=001&eno=01&mid=s00000007191002026000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BGBN2+6ZUDO2+1JHI+C28PT" alt="">';
+
+const A8_DIET =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN2+805TKI+44UC+NV1XD" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www20.a8.net/svt/bgt?aid=261102062484&wid=001&eno=01&mid=s00000019290004008000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4BGBN2+805TKI+44UC+NV1XD" alt="">';
+
 const A8_SKINCARE =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBMW+CDC99U+3OIU+631SX" rel="nofollow">\n' +
   '<img border="0" width="300" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=261102056748&wid=001&eno=01&mid=s00000017175001022000&mc=1"></a>\n' +
@@ -85,6 +95,20 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       products: [],
     },
     {
+      id: "shaving",
+      titleJa: "男性用シェービング",
+      titleEn: "Men's shaving",
+      products: [],
+      banners: [{ id: "a8-shaving", html: A8_SHAVING }],
+    },
+    {
+      id: "mens",
+      titleJa: "男性美容",
+      titleEn: "Men's beauty",
+      products: [],
+      banners: [{ id: "a8-mens", html: A8_SHAVING }],
+    },
+    {
       id: "fragrance",
       titleJa: "フレグランス",
       titleEn: "Fragrance",
@@ -99,6 +123,13 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       blurbJa: "美容サプリ、ドリンク。",
       blurbEn: "Beauty supplements and drinks.",
       products: [],
+    },
+    {
+      id: "diet",
+      titleJa: "ダイエット",
+      titleEn: "Diet",
+      products: [],
+      banners: [{ id: "a8-diet", html: A8_DIET }],
     },
     {
       id: "tools",
