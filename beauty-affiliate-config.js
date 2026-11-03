@@ -39,6 +39,11 @@ const A8_HAIRCARE_3 =
   '<img border="0" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=261102063393&wid=001&eno=01&mid=s00000022954001009000&mc=1"></a>\n' +
   '<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGBN3+6HZDIQ+4X44+609HT" alt="">';
 
+const A8_HAIRCARE_4 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+6HDXWY+4X44+TUVZL" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www29.a8.net/svt/bgt?aid=261102064392&wid=001&eno=01&mid=s00000022954005015000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGBN4+6HDXWY+4X44+TUVZL" alt="">';
+
 const A8_SHAVING =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN2+6ZUDO2+1JHI+C28PT" rel="nofollow">\n' +
   '<img border="0" width="300" height="250" alt="" src="https://www21.a8.net/svt/bgt?aid=261102062423&wid=001&eno=01&mid=s00000007191002026000&mc=1"></a>\n' +
@@ -58,6 +63,11 @@ const A8_MENS_3 =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+FRE4AA+328C+ZRQ0X" rel="nofollow">\n' +
   '<img border="0" width="300" height="250" alt="" src="https://www21.a8.net/svt/bgt?aid=261102063953&wid=001&eno=01&mid=s00000014286006008000&mc=1"></a>\n' +
   '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBN3+FRE4AA+328C+ZRQ0X" alt="">';
+
+const A8_MENS_4 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+6GSIB6+328C+2HCB1D" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www25.a8.net/svt/bgt?aid=261102064391&wid=001&eno=01&mid=s00000014286015006000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGBN4+6GSIB6+328C+2HCB1D" alt="">';
 
 const A8_HAIRREMOVAL =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+WQV1U+3W7I+BXYE9" rel="nofollow">\n' +
@@ -109,6 +119,11 @@ const A8_BODY_4 =
   '<img border="0" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=261102064075&wid=001&eno=01&mid=s00000002942041021000&mc=1"></a>\n' +
   '<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=4BGBN4+18NJ5E+MP8+6S8829" alt="">';
 
+const A8_BODY_5 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+6C11GY+MP8+5SH56P" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www22.a8.net/svt/bgt?aid=261102064383&wid=001&eno=01&mid=s00000002942035016000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGBN4+6C11GY+MP8+5SH56P" alt="">';
+
 const A8_INNER =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+H9LBM+3IE0+44W2YP" rel="nofollow">\n' +
   '<img border="0" width="350" height="240" alt="" src="https://www26.a8.net/svt/bgt?aid=261102064029&wid=001&eno=01&mid=s00000016380025008000&mc=1"></a>\n' +
@@ -124,6 +139,16 @@ const A8_INNER_3 =
   '<img border="0" width="300" height="250" alt="" src="https://www24.a8.net/svt/bgt?aid=261102063975&wid=001&eno=01&mid=s00000021719001017000&mc=1"></a>\n' +
   '<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGBN3+G4HNLE+4NL2+61Z81" alt="">';
 
+const A8_INNER_4 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+6FLN3M+1JHI+3N1AJ5" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=261102064389&wid=001&eno=01&mid=s00000007191022009000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGBN4+6FLN3M+1JHI+3N1AJ5" alt="">';
+
+const A8_INNER_5 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+6BFLV6+4TX4+NVHCX" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www26.a8.net/svt/bgt?aid=261102064382&wid=001&eno=01&mid=s00000022540004010000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGBN4+6BFLV6+4TX4+NVHCX" alt="">';
+
 const A8_SURGERY =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+AUKDMA+1KO+6S50BL" rel="nofollow">\n' +
   '<img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=261102063656&wid=001&eno=01&mid=s00000000204041006000&mc=1"></a>\n' +
@@ -138,6 +163,16 @@ const A8_SURGERY_3 =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+AMTQR6+3IE0+2BG45D" rel="nofollow">\n' +
   '<img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=261102063643&wid=001&eno=01&mid=s00000016380014016000&mc=1"></a>\n' +
   '<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=4BGBN3+AMTQR6+3IE0+2BG45D" alt="">';
+
+const A8_SURGERY_4 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+6JROC2+1KYA+2T9EKH" rel="nofollow">\n' +
+  '<img border="0" width="200" height="200" alt="" src="https://www23.a8.net/svt/bgt?aid=261102064396&wid=001&eno=01&mid=s00000007381017008000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=4BGBN4+6JROC2+1KYA+2T9EKH" alt="">';
+
+const A8_SURGERY_5 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+6D7WOI+1KO+7RVNRL" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=261102064385&wid=001&eno=01&mid=s00000000204047009000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBN4+6D7WOI+1KO+7RVNRL" alt="">';
 
 const A8_SKINCARE_2 =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+AI29WY+4SU8+609HT" rel="nofollow">\n' +
@@ -163,6 +198,31 @@ const A8_SKINCARE_6 =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+FUYPWY+5YPG+5ZEMP" rel="nofollow">\n' +
   '<img border="0" width="300" height="250" alt="" src="https://www26.a8.net/svt/bgt?aid=261102063959&wid=001&eno=01&mid=s00000027826001005000&mc=1"></a>\n' +
   '<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=4BGBN3+FUYPWY+5YPG+5ZEMP" alt="">';
+
+const A8_SKINCARE_7 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+6KYJJM+3Q7E+ZS5GH" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www21.a8.net/svt/bgt?aid=261102064398&wid=001&eno=01&mid=s00000017393006010000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBN4+6KYJJM+3Q7E+ZS5GH" alt="">';
+
+const A8_SKINCARE_8 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+6DTCAA+3PSY+1BNYOX" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www22.a8.net/svt/bgt?aid=261102064386&wid=001&eno=01&mid=s00000017341008006000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=4BGBN4+6DTCAA+3PSY+1BNYOX" alt="">';
+
+const A8_SKINCARE_9 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+6J68QA+3Q7E+BYT9D" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=261102064395&wid=001&eno=01&mid=s00000017393002010000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BGBN4+6J68QA+3Q7E+BYT9D" alt="">';
+
+const A8_SKINCARE_10 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+6IKT4I+5CYY+5YZ75" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www22.a8.net/svt/bgt?aid=261102064394&wid=001&eno=01&mid=s00000025009001003000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGBN4+6IKT4I+5CYY+5YZ75" alt="">';
+
+const A8_SKINCARE_11 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN4+6CMH2Q+2L6G+NV1XD" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=261102064384&wid=001&eno=01&mid=s00000012076004008000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=4BGBN4+6CMH2Q+2L6G+NV1XD" alt="">';
 
 const A8_CARE =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+8D9CVM+54TM+BXIYP" rel="nofollow">\n' +
@@ -199,6 +259,11 @@ const A8_TOOLS_4 =
   '<img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=261102063406&wid=001&eno=01&mid=s00000020785006003000&mc=1"></a>\n' +
   '<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BGBN3+6PQ0DU+4GDM+ZQNG1" alt="">';
 
+const A8_TOOLS_5 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+91O4OI+54TM+5ZMCH" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www20.a8.net/svt/bgt?aid=261102063547&wid=001&eno=01&mid=s00000023953001006000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BGBN3+91O4OI+54TM+5ZMCH" alt="">';
+
 const A8_TOOLS_3 =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+6HDXWY+4QVE+5ZMCH" rel="nofollow">\n' +
   '<img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=261102063392&wid=001&eno=01&mid=s00000022145001006000&mc=1"></a>\n' +
@@ -234,6 +299,7 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
         { id: "a8-hair-tool", html: A8_HAIR_TOOL },
         { id: "a8-haircare-2", html: A8_HAIRCARE_2 },
         { id: "a8-haircare-3", html: A8_HAIRCARE_3 },
+        { id: "a8-haircare-4", html: A8_HAIRCARE_4 },
       ],
     },
     {
@@ -282,6 +348,14 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
         { id: "a8-skincare-makeup", html: A8_MAKEUP_3 },
         { id: "a8-skincare-7", html: A8_SKINCARE_5 },
         { id: "a8-skincare-8", html: A8_SKINCARE_6 },
+        { id: "a8-skincare-9", html: A8_SKINCARE_7 },
+        { id: "a8-skincare-surgery-4", html: A8_SURGERY_4 },
+        { id: "a8-skincare-10", html: A8_SKINCARE_8 },
+        { id: "a8-skincare-11", html: A8_SKINCARE_9 },
+        { id: "a8-skincare-12", html: A8_SKINCARE_10 },
+        { id: "a8-skincare-mens", html: A8_MENS_4 },
+        { id: "a8-skincare-surgery-5", html: A8_SURGERY_5 },
+        { id: "a8-skincare-13", html: A8_SKINCARE_11 },
       ],
     },
     {
@@ -310,6 +384,8 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
         { id: "a8-body-3", html: A8_BODY_3 },
         { id: "a8-body-4", html: A8_BODY_4 },
         { id: "a8-body-inner", html: A8_INNER },
+        { id: "a8-body-5", html: A8_BODY_5 },
+        { id: "a8-body-inner-5", html: A8_INNER_5 },
       ],
     },
     {
@@ -331,6 +407,9 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
         { id: "a8-mens-3", html: A8_MENS_2 },
         { id: "a8-mens-4", html: A8_MENS_3 },
         { id: "a8-mens-skincare", html: A8_SKINCARE_6 },
+        { id: "a8-mens-hair", html: A8_HAIRCARE_4 },
+        { id: "a8-mens-5", html: A8_MENS_4 },
+        { id: "a8-mens-inner", html: A8_INNER_4 },
       ],
     },
     {
@@ -352,6 +431,9 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
         { id: "a8-inner", html: A8_INNER },
         { id: "a8-inner-2", html: A8_INNER_2 },
         { id: "a8-inner-3", html: A8_INNER_3 },
+        { id: "a8-inner-4", html: A8_INNER_4 },
+        { id: "a8-inner-body", html: A8_BODY_5 },
+        { id: "a8-inner-5", html: A8_INNER_5 },
       ],
     },
     {
@@ -366,6 +448,7 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
         { id: "a8-diet-inner", html: A8_INNER },
         { id: "a8-diet-inner-2", html: A8_INNER_2 },
         { id: "a8-diet-inner-3", html: A8_INNER_3 },
+        { id: "a8-diet-inner-5", html: A8_INNER_5 },
       ],
     },
     {
@@ -377,6 +460,8 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
         { id: "a8-surgery", html: A8_SURGERY },
         { id: "a8-surgery-2", html: A8_SURGERY_2 },
         { id: "a8-surgery-3", html: A8_SURGERY_3 },
+        { id: "a8-surgery-4", html: A8_SURGERY_4 },
+        { id: "a8-surgery-5", html: A8_SURGERY_5 },
       ],
     },
     {
@@ -389,6 +474,7 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
         { id: "a8-esthe-2", html: A8_ESTHE_2 },
         { id: "a8-esthe-care", html: A8_CARE },
         { id: "a8-esthe-tools", html: A8_TOOLS_4 },
+        { id: "a8-esthe-body", html: A8_BODY_5 },
       ],
     },
     {
@@ -422,6 +508,9 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
         { id: "a8-tools-3", html: A8_TOOLS_3 },
         { id: "a8-tools-care", html: A8_CARE },
         { id: "a8-tools-4", html: A8_TOOLS_4 },
+        { id: "a8-tools-5", html: A8_TOOLS_5 },
+        { id: "a8-tools-hair", html: A8_HAIRCARE_4 },
+        { id: "a8-tools-surgery", html: A8_SURGERY_5 },
       ],
     },
   ],
