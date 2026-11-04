@@ -117,22 +117,25 @@ function buildSyntheticReq(req, url, bodyBuf) {
   };
 }
 
-async function runApiHandler(slug, syntheticReq, nodeRes) {
-  if (!/^[\w-]+$/.test(slug)) {
+async function runApiHandler(parts, syntheticReq, nodeRes) {
+  const slug = parts.join("/");
+  if (!parts.length || !parts.every((p) => /^[\w-]+$/.test(p))) {
     nodeRes.statusCode = 404;
     nodeRes.setHeader("Content-Type", "application/json; charset=utf-8");
     nodeRes.end(JSON.stringify({ error: "invalid_api_path" }));
     return;
   }
-  const filePath = path.join(ROOT, "api", `${slug}.js`);
-  if (!fs.existsSync(filePath)) {
+  const filePath = path.join(ROOT, "api", ...parts) + ".js";
+  const resolved = path.resolve(filePath);
+  const apiRoot = path.join(ROOT, "api") + path.sep;
+  if (!resolved.startsWith(apiRoot) || !fs.existsSync(resolved)) {
     nodeRes.statusCode = 404;
     nodeRes.setHeader("Content-Type", "application/json; charset=utf-8");
     nodeRes.end(JSON.stringify({ error: "api_not_found", slug }));
     return;
   }
-  const st = fs.statSync(filePath);
-  const href = pathToFileURL(filePath).href + `?t=${st.mtimeMs}`;
+  const st = fs.statSync(resolved);
+  const href = pathToFileURL(resolved).href + `?t=${st.mtimeMs}`;
   const mod = await import(href);
   const handler = mod.default;
   if (typeof handler !== "function") {
@@ -184,7 +187,7 @@ const server = http.createServer(async (req, nodeRes) => {
     const url = new URL(req.url || "/", `http://${host}`);
 
     if (url.pathname.startsWith("/api/")) {
-      const slug = url.pathname.slice(5).split("/").filter(Boolean)[0] || "";
+      const parts = url.pathname.slice(5).split("/").filter(Boolean);
       let bodyBuf = Buffer.alloc(0);
       if (req.method !== "GET" && req.method !== "HEAD") {
         try {
@@ -196,7 +199,7 @@ const server = http.createServer(async (req, nodeRes) => {
         }
       }
       const syntheticReq = buildSyntheticReq(req, url, bodyBuf);
-      await runApiHandler(slug, syntheticReq, nodeRes);
+      await runApiHandler(parts, syntheticReq, nodeRes);
       return;
     }
 

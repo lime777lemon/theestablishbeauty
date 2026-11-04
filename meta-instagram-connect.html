@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Meta Instagram 連携（管理）</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 36rem;
+      margin: 3rem auto;
+      padding: 0 1.25rem;
+      line-height: 1.55;
+      color: #1a1a1a;
+      background: #fafafa;
+    }
+    h1 { font-size: 1.25rem; margin: 0 0 0.75rem; }
+    p { margin: 0.5rem 0; color: #333; }
+    .muted { color: #666; font-size: 0.9rem; }
+    a.button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.65rem 1.1rem;
+      background: #1877f2;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    code { font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <h1>Meta Instagram 連携</h1>
+  <p>Unified Login（config_id）で Instagram ビジネスアカウントを接続します。アクセストークンはサーバーのみに保存され、このページには表示されません。</p>
+  <p class="muted">事前に Vercel へ <code>META_APP_ID</code> / <code>META_APP_SECRET</code> / <code>META_LOGIN_CONFIG_ID</code> を設定し、Meta ダッシュボードのリダイレクト URL に <code>/api/auth/meta/callback</code> を登録してください。</p>
+  <p><a class="button" href="/api/auth/meta/start">Meta でログインして連携</a></p>
+  <p class="muted">自動投稿は認証確認が終わるまで有効化しないでください。</p>
+</body>
+</html>
