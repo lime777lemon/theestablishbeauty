@@ -1,14 +1,24 @@
 User-agent: *
 Allow: /
+Allow: /product-
+Allow: /collection-
+Allow: /assets/
+Allow: /blog.html
+Allow: /beauty-column.html
+Allow: /science.html
+Allow: /faq.html
 
+# Auth / personal / checkout (not for search)
 Disallow: /auth/
-Disallow: /stripe-connect-sinatra/
-Disallow: /contact-inquiries-admin.html
-Disallow: /sql-editor.html
+Disallow: /auth-
 Disallow: /cart.html
 Disallow: /checkout.html
 Disallow: /payment-card.html
-Disallow: /product-
-Disallow: /product.html
+
+# Admin / internal tools (must also use auth — robots is not access control)
+Disallow: /contact-inquiries-admin.html
+Disallow: /sql-editor.html
+Disallow: /supplier-dashboard.html
+Disallow: /stripe-connect-sinatra/
 
 Sitemap: https://theestablishbeauty.com/sitemap.xml

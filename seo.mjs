@@ -42,11 +42,26 @@ function getDescription() {
   return el?.getAttribute("content")?.trim() || "";
 }
 
+function getProductRoot() {
+  return document.querySelector("[data-product-static][data-product-id]");
+}
+
+function isProductPage() {
+  return Boolean(getProductRoot());
+}
+
 function isPrivatePage() {
   const path = pagePath().toLowerCase();
-  if (path.startsWith("/auth/")) return true;
+  if (path.startsWith("/auth/") || path.startsWith("/auth-")) return true;
+  if (path.startsWith("/stripe-connect-sinatra/")) return true;
   if (/^\/(cart|checkout|payment-card)\.html$/i.test(path)) return true;
-  if (document.querySelector("[data-product-static]")) return true;
+  if (
+    /^\/(contact-inquiries-admin|sql-editor|supplier-dashboard)\.html$/i.test(path)
+  ) {
+    return true;
+  }
+  // Generic query-param product shell; prefer static product-*.html for indexing.
+  if (/^\/product\.html$/i.test(path)) return true;
   return false;
 }
 
@@ -88,6 +103,87 @@ function upsertJsonLd(id, data) {
     document.head.appendChild(el);
   }
   el.textContent = JSON.stringify(data);
+}
+
+function parseYenPrice(text) {
+  if (!text) return null;
+  const digits = String(text).replace(/[^\d]/g, "");
+  if (!digits) return null;
+  const n = Number(digits);
+  return Number.isFinite(n) ? n : null;
+}
+
+function productAvailability() {
+  const stock = document.querySelector(".stock, [aria-label*='在庫'], [aria-label*='stock']");
+  const text = (stock?.textContent || "").toLowerCase();
+  if (/sold\s*out|売り切れ|在庫なし|out of stock/.test(text)) {
+    return "https://schema.org/OutOfStock";
+  }
+  return "https://schema.org/InStock";
+}
+
+function productImageUrl() {
+  const video = document.querySelector("video[poster], [data-gallery-video][poster]");
+  const poster = video?.getAttribute("poster");
+  if (poster) return absoluteUrl(poster);
+
+  const img = document.querySelector(
+    ".productPage__media img[src], .mediaMainSlider img[src], .productPage img[src]"
+  );
+  const src = img?.getAttribute("src");
+  if (src) return absoluteUrl(src);
+
+  return absoluteUrl(cfg().defaultOgImage || "/assets/site-logo.png");
+}
+
+function productName() {
+  const h1 = document.querySelector("h1.h1, .hero h1, main h1");
+  const text = h1?.textContent?.replace(/\s+/g, " ").trim();
+  if (text) return text;
+  return document.title.replace(/\s*[–—-]\s*EMR-TEK\s*$/i, "").trim() || document.title.trim();
+}
+
+function buildProductJsonLd({ title, description, url }) {
+  const root = getProductRoot();
+  if (!root) {
+    document.getElementById("seo-jsonld-product")?.remove();
+    return null;
+  }
+
+  const brandName = cfg().brandName || "EMR-TEK";
+  const priceText = document.querySelector(".price__now")?.textContent?.trim() || "";
+  const price = parseYenPrice(priceText);
+  const image = productImageUrl();
+  const name = productName() || title;
+
+  /** @type {Record<string, unknown>} */
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name,
+    description: description || undefined,
+    image: image || undefined,
+    sku: root.getAttribute("data-product-id") || undefined,
+    brand: {
+      "@type": "Brand",
+      name: brandName,
+    },
+    url,
+  };
+
+  if (price != null) {
+    data.offers = {
+      "@type": "Offer",
+      url,
+      priceCurrency: "JPY",
+      price: String(price),
+      availability: productAvailability(),
+      itemCondition: "https://schema.org/NewCondition",
+    };
+  }
+
+  upsertJsonLd("seo-jsonld-product", data);
+  return { image, name };
 }
 
 function buildJsonLd({ title, description, url, lang }) {
@@ -136,6 +232,8 @@ function buildJsonLd({ title, description, url, lang }) {
         }
       : undefined,
   });
+
+  return buildProductJsonLd({ title, description, url });
 }
 
 export function refreshSeo() {
@@ -146,10 +244,11 @@ export function refreshSeo() {
   const title = document.title.trim();
   const description = getDescription();
   const url = canonicalUrl();
-  const image = absoluteUrl(cfg().defaultOgImage || "/assets/site-logo.png");
+  const defaultImage = absoluteUrl(cfg().defaultOgImage || "/assets/site-logo.png");
   const imageWidth = Number(cfg().defaultOgImageWidth) || 1200;
   const imageHeight = Number(cfg().defaultOgImageHeight) || 630;
   const googleVerification = String(cfg().googleSiteVerification || "").trim();
+  const productPage = isProductPage();
 
   upsertLink("canonical", url);
 
@@ -158,7 +257,10 @@ export function refreshSeo() {
     upsertMeta("name", "google-site-verification", googleVerification);
   }
 
-  upsertMeta("property", "og:type", "website");
+  const productMeta = buildJsonLd({ title, description, url, lang });
+  const image = (productPage && productMeta?.image) || defaultImage;
+
+  upsertMeta("property", "og:type", productPage ? "product" : "website");
   upsertMeta("property", "og:site_name", cfg().siteName || "The Establish Beauty");
   upsertMeta("property", "og:title", title);
   upsertMeta("property", "og:description", description);
@@ -166,7 +268,11 @@ export function refreshSeo() {
   upsertMeta("property", "og:image", image);
   upsertMeta("property", "og:image:width", String(imageWidth));
   upsertMeta("property", "og:image:height", String(imageHeight));
-  upsertMeta("property", "og:image:alt", `${cfg().brandName || "EMR-TEK"} — ${cfg().siteName || "The Establish Beauty"}`);
+  upsertMeta(
+    "property",
+    "og:image:alt",
+    productMeta?.name || `${cfg().brandName || "EMR-TEK"} — ${cfg().siteName || "The Establish Beauty"}`
+  );
   upsertMeta("property", "og:locale", ogLocale(lang));
   upsertMeta("property", "og:locale:alternate", lang === "ja" ? ogLocale("en") : ogLocale("ja"));
 
@@ -176,8 +282,6 @@ export function refreshSeo() {
   upsertMeta("name", "twitter:image", image);
   const twitterSite = String(cfg().twitterSite || "").trim();
   if (twitterSite) upsertMeta("name", "twitter:site", twitterSite);
-
-  buildJsonLd({ title, description, url, lang });
 }
 
 window.__refreshSeo = refreshSeo;
