@@ -16,4 +16,9 @@ window.__SEO_CONFIG__ = {
     ja: "ja_JP",
     en: "en_US",
   },
+  /** Public name on the storefront. No street address is published. */
+  storeName: "EMR-TEK TOKYO公式ストア",
+  email: "info@theestablishbeauty.com",
+  sameAs: ["https://www.instagram.com/theestablishbeauty/"],
+  areaServed: "JP",
 };

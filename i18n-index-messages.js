@@ -2,8 +2,8 @@
 (function (g) {
   g.__INDEX_I18N__ = {
   "ja": {
-    "emr.index.doc.title": "ホーム – EMR-TEK",
-    "emr.index.doc.desc": "EMR-TEK 日本公式ストアのホーム。赤色光・近赤外・UV・LEDマスク・ブルーライトカット・コスメなど。全商品一覧は専用ページから。",
+    "emr.index.doc.title": "EMR-TEK TOKYO公式ストア – 赤色光・近赤外 | The Establish Beauty",
+    "emr.index.doc.desc": "EMR-TEK TOKYO公式ストア。赤色光・近赤外・UV・LEDマスクを日本全国へ届ける、The Establish Beauty のオンラインストアです。",
     "emr.index.hero.breadcrumb": "EMR-TEK ストア",
     "emr.index.hero.h1": "EMR-TEK TOKYO公式ストア",
     "emr.index.hero.sub": "赤色光・近赤外、UV、LEDマスク、ブルーライトカット、コスメ、室内照明など。",
@@ -263,8 +263,8 @@
     "emr.index.glasses.bannerAlt": "BLUE LIGHT GLASSES — Daily Use. Minimal Design."
   },
   "en": {
-    "emr.index.doc.title": "Home – EMR-TEK",
-    "emr.index.doc.desc": "EMR-TEK Japan official store home. Red & near-infrared light, UV, LED masks, blue-light glasses, cosmetics, indoor lighting, and more. Browse the full catalog on the dedicated page.",
+    "emr.index.doc.title": "EMR-TEK TOKYO Official Store – Red Light | The Establish Beauty",
+    "emr.index.doc.desc": "EMR-TEK TOKYO Official Store. The Establish Beauty online shop for red and near-infrared light, UV, and LED masks, shipping across Japan.",
     "emr.index.hero.breadcrumb": "EMR-TEK Store",
     "emr.index.hero.h1": "EMR-TEK TOKYO Official Store",
     "emr.index.hero.sub": "Red & near-infrared light, UV, LED masks, blue-light blocking, cosmetics, indoor lighting, and more.",

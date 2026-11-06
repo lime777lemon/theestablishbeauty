@@ -13,9 +13,9 @@ OUT_JS = ROOT / "i18n-index-messages.js"
 # Keys shared across index (ja / en)
 MESSAGES: dict[str, dict[str, str]] = {
     "ja": {
-        "emr.index.doc.title": "ホーム – EMR-TEK",
+        "emr.index.doc.title": "EMR-TEK TOKYO公式ストア – 赤色光・近赤外 | The Establish Beauty",
         "emr.index.doc.desc":
-            "EMR-TEK 日本公式ストアのホーム。赤色光・近赤外・UV・LEDマスク・ブルーライトカット・コスメなど。全商品一覧は専用ページから。",
+            "EMR-TEK TOKYO公式ストア。赤色光・近赤外・UV・LEDマスクを日本全国へ届ける、The Establish Beauty のオンラインストアです。",
         "emr.index.hero.breadcrumb": "EMR-TEK ストア",
         "emr.index.hero.h1": "EMR-TEK TOKYO公式ストア",
         "emr.index.hero.sub":
@@ -253,9 +253,9 @@ MESSAGES: dict[str, dict[str, str]] = {
         "emr.index.breadcrumb.aria": "パンくず",
     },
     "en": {
-        "emr.index.doc.title": "Home – EMR-TEK",
+        "emr.index.doc.title": "EMR-TEK TOKYO Official Store – Red Light | The Establish Beauty",
         "emr.index.doc.desc":
-            "EMR-TEK Japan official store home. Red & near-infrared light, UV, LED masks, blue-light glasses, cosmetics, indoor lighting, and more. Browse the full catalog on the dedicated page.",
+            "EMR-TEK TOKYO Official Store. The Establish Beauty online shop for red and near-infrared light, UV, and LED masks, shipping across Japan.",
         "emr.index.hero.breadcrumb": "EMR-TEK Store",
         "emr.index.hero.h1": "EMR-TEK TOKYO Official Store",
         "emr.index.hero.sub":

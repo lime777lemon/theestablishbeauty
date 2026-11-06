@@ -51,12 +51,16 @@ PAGES = {
     "terms.html": {
         "prefix": "terms",
         "doc_title": {
-            "ja": "利用規約 – EMR-TEK",
-            "en": "Terms of Service – EMR-TEK",
+            "ja": "利用規約 – The Establish Beauty",
+            "en": "Terms of Service – The Establish Beauty",
         },
         "doc_desc": {
-            "ja": "EMR-TEK 利用規約 — 輸入EC・ドロップシッピング、支払い、配送、返品等について。",
-            "en": "EMR-TEK Terms — import e-commerce, dropshipping, payment, shipping, returns, and more.",
+            "ja": "The Establish Beauty 利用規約 — 輸入EC・ドロップシッピング、支払い、配送、返品等について。",
+            "en": "The Establish Beauty Terms — import e-commerce, dropshipping, payment, shipping, returns, and more.",
+        },
+        "updated": {
+            "ja": "最終更新日：2026年11月5日",
+            "en": "Last updated: November 5, 2026",
         },
         "crumb": {"ja": "利用規約", "en": "Terms of Service"},
         "h1": {"ja": "利用規約", "en": "Terms of Service"},
@@ -68,12 +72,16 @@ PAGES = {
     "privacy.html": {
         "prefix": "privacy",
         "doc_title": {
-            "ja": "プライバシーポリシー – EMR-TEK",
-            "en": "Privacy Policy – EMR-TEK",
+            "ja": "プライバシーポリシー – The Establish Beauty",
+            "en": "Privacy Policy – The Establish Beauty",
         },
         "doc_desc": {
-            "ja": "EMR-TEK の個人情報の取扱い、輸入EC・ドロップシッピングに伴う第三者提供等について。",
-            "en": "How EMR-TEK handles personal data, including sharing for import e-commerce and dropshipping.",
+            "ja": "The Establish Beauty の個人情報の取扱い。輸入EC、ドロップシッピング、InstagramおよびMetaとの接続について。",
+            "en": "How The Establish Beauty handles personal data, including Instagram and Meta connections, import e-commerce, and dropshipping.",
+        },
+        "updated": {
+            "ja": "最終更新日：2026年11月5日",
+            "en": "Last updated: November 5, 2026",
         },
         "crumb": {"ja": "プライバシーポリシー", "en": "Privacy Policy"},
         "h1": {"ja": "プライバシーポリシー", "en": "Privacy Policy"},
@@ -151,6 +159,9 @@ def build_messages() -> dict[str, dict[str, str]]:
         en[f"{p}.hero.h1"] = cfg["h1"]["en"]
         ja[f"{p}.hero.sub"] = cfg["sub"]["ja"]
         en[f"{p}.hero.sub"] = cfg["sub"]["en"]
+        if "updated" in cfg:
+            ja[f"{p}.updated"] = cfg["updated"]["ja"]
+            en[f"{p}.updated"] = cfg["updated"]["en"]
         ja[f"{p}.body"] = extract_body(html)
         en[f"{p}.body"] = load_en_body(prefix)
 

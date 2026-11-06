@@ -79,6 +79,11 @@ const A8_HAIRREMOVAL_2 =
   '<img border="0" width="300" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=261102063998&wid=001&eno=01&mid=s00000012416002026000&mc=1"></a>\n' +
   '<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BGBN3+GI6MIA+2NSW+C28PT" alt="">';
 
+const A8_HAIRREMOVAL_3 =
+  '<a href="https://px.a8.net/svt/ejp?a8mat=4BGERA+490F8Y+4MJA+609HT" rel="nofollow">\n' +
+  '<img border="0" width="300" height="250" alt="" src="https://www22.a8.net/svt/bgt?aid=261106102257&wid=001&eno=01&mid=s00000021583001009000&mc=1"></a>\n' +
+  '<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BGERA+490F8Y+4MJA+609HT" alt="">';
+
 const A8_MAKEUP =
   '<a href="https://px.a8.net/svt/ejp?a8mat=4BGBN3+G6VE0I+3PVQ+TVBF5" rel="nofollow">\n' +
   '<img border="0" width="300" height="250" alt="" src="https://www22.a8.net/svt/bgt?aid=261102063979&wid=001&eno=01&mid=s00000017351005017000&mc=1"></a>\n' +
@@ -485,6 +490,7 @@ window.__BEAUTY_AFFILIATE_CONFIG__ = {
       banners: [
         { id: "a8-hairremoval", html: A8_HAIRREMOVAL },
         { id: "a8-hairremoval-2", html: A8_HAIRREMOVAL_2 },
+        { id: "a8-hairremoval-3", html: A8_HAIRREMOVAL_3 },
       ],
     },
     {

@@ -12,6 +12,8 @@ const { getPublicSiteOrigin } = require("./auth-welcome-email");
 const GRAPH_API_VERSION = "v26.0";
 const STATE_COOKIE = "teb_meta_oauth_state";
 const STATE_MAX_AGE_SEC = 600;
+const PRODUCTION_OAUTH_REDIRECT_URI =
+  "https://theestablishbeauty.com/api/auth/meta/callback";
 
 function cleanEnv(s) {
   return String(s ?? "")
@@ -27,14 +29,54 @@ function escapeHtml(s) {
     .replace(/"/g, "&quot;");
 }
 
+function isVercelDeploymentUrl(raw) {
+  try {
+    const host = new URL(raw).hostname.toLowerCase();
+    return host === "vercel.app" || host.endsWith(".vercel.app");
+  } catch {
+    return false;
+  }
+}
+
+function publicOriginForOAuth() {
+  const named = [
+    process.env.PUBLIC_SITE_URL,
+    process.env.SITE_URL,
+    process.env.AUTH_PUBLIC_SITE_ORIGIN,
+  ];
+  for (const candidate of named) {
+    const origin = cleanEnv(candidate).replace(/\/+$/, "");
+    if (origin && !isVercelDeploymentUrl(origin)) return origin;
+  }
+  for (const part of String(process.env.CONTACT_ALLOWED_ORIGINS || "").split(",")) {
+    const origin = cleanEnv(part).replace(/\/+$/, "");
+    if (!origin.startsWith("https://") || isVercelDeploymentUrl(origin)) continue;
+    return origin;
+  }
+  return "";
+}
+
+/**
+ * Start and the code exchange must use the same redirect_uri.
+ * Production never falls back to the deployment-specific VERCEL_URL.
+ */
+function getMetaRedirectUri() {
+  const explicit = cleanEnv(process.env.META_OAUTH_REDIRECT_URI);
+  const production = process.env.VERCEL_ENV === "production";
+  if (explicit && !(production && isVercelDeploymentUrl(explicit))) {
+    return explicit;
+  }
+  if (production) return PRODUCTION_OAUTH_REDIRECT_URI;
+  const origin = publicOriginForOAuth();
+  return origin ? `${origin}/api/auth/meta/callback` : "";
+}
+
 function getMetaConfig() {
   const appId = cleanEnv(process.env.META_APP_ID);
   const appSecret = cleanEnv(process.env.META_APP_SECRET);
   const configId = cleanEnv(process.env.META_LOGIN_CONFIG_ID);
-  const siteOrigin = getPublicSiteOrigin();
-  const redirectUri =
-    cleanEnv(process.env.META_OAUTH_REDIRECT_URI) ||
-    (siteOrigin ? `${siteOrigin}/api/auth/meta/callback` : "");
+  const redirectUri = getMetaRedirectUri();
+  const siteOrigin = redirectUri ? redirectUri.replace(/\/api\/auth\/meta\/callback$/, "") : "";
   return { appId, appSecret, configId, redirectUri, siteOrigin };
 }
 
@@ -86,8 +128,8 @@ function buildLoginUrl(cfg, state) {
   u.searchParams.set("config_id", cfg.configId);
   u.searchParams.set("redirect_uri", cfg.redirectUri);
   u.searchParams.set("response_type", "code");
+  u.searchParams.set("override_default_response_type", "true");
   u.searchParams.set("state", state);
-  u.searchParams.set("display", "popup");
   u.searchParams.set("prompt", "login");
   return u.toString();
 }

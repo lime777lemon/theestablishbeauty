@@ -6,7 +6,8 @@
  * - ADMIN_BASIC_USER (optional, default "admin")
  * - ADMIN_BASIC_PASSWORD (required in production; if unset, returns 503)
  *
- * Protects admin HTML only. Meta OAuth callback/start under /api/auth/meta/* stay public
+ * Protects admin HTML and the Instagram Login diagnostic API.
+ * Meta OAuth callback/start under /api/auth/meta/* stay public
  * (Meta must redirect to the callback without Basic Auth).
  */
 
@@ -16,6 +17,7 @@ export const config = {
     "/sql-editor.html",
     "/supplier-dashboard.html",
     "/meta-instagram-connect.html",
+    "/api/instagram-login-check",
     "/stripe-connect-sinatra/:path*",
   ],
 };

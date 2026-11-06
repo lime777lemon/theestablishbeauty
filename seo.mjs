@@ -186,10 +186,54 @@ function buildProductJsonLd({ title, description, url }) {
   return { image, name };
 }
 
+function areaServed() {
+  const code = String(cfg().areaServed || "JP").trim() || "JP";
+  const names = { JP: "Japan" };
+  return { "@type": "Country", name: names[code] || code };
+}
+
+function sameAsLinks() {
+  const links = Array.isArray(cfg().sameAs) ? cfg().sameAs.map((v) => String(v || "").trim()).filter(Boolean) : [];
+  return links.length ? links : undefined;
+}
+
+function buildOnlineStoreJsonLd(site, siteName, brandName) {
+  const email = String(cfg().email || "info@theestablishbeauty.com").trim();
+  const storeName = String(cfg().storeName || `${brandName} TOKYO公式ストア`).trim();
+  upsertJsonLd("seo-jsonld-store", {
+    "@context": "https://schema.org",
+    "@type": "OnlineStore",
+    name: storeName,
+    alternateName: [siteName, brandName].filter((name, i, all) => name && all.indexOf(name) === i),
+    url: site ? `${site}/` : undefined,
+    image: absoluteUrl("/assets/site-logo.png"),
+    logo: absoluteUrl("/assets/site-logo.png"),
+    email: email || undefined,
+    currenciesAccepted: "JPY",
+    areaServed: areaServed(),
+    sameAs: sameAsLinks(),
+    parentOrganization: {
+      "@type": "Organization",
+      name: siteName,
+      url: site ? `${site}/` : undefined,
+    },
+    contactPoint: email
+      ? {
+          "@type": "ContactPoint",
+          contactType: "customer support",
+          email,
+          areaServed: "JP",
+          availableLanguage: ["Japanese", "English"],
+        }
+      : undefined,
+  });
+}
+
 function buildJsonLd({ title, description, url, lang }) {
   const site = siteUrl();
   const siteName = cfg().siteName || "The Establish Beauty";
   const brandName = cfg().brandName || "EMR-TEK";
+  const email = String(cfg().email || "info@theestablishbeauty.com").trim();
 
   upsertJsonLd("seo-jsonld-org", {
     "@context": "https://schema.org",
@@ -197,7 +241,9 @@ function buildJsonLd({ title, description, url, lang }) {
     name: siteName,
     url: site ? `${site}/` : undefined,
     logo: absoluteUrl("/assets/site-logo.png"),
-    email: "info@theestablishbeauty.com",
+    email: email || undefined,
+    areaServed: areaServed(),
+    sameAs: sameAsLinks(),
   });
 
   if (pagePath() === "/") {
@@ -212,9 +258,12 @@ function buildJsonLd({ title, description, url, lang }) {
         name: siteName,
       },
     });
+    buildOnlineStoreJsonLd(site, siteName, brandName);
   } else {
     const existing = document.getElementById("seo-jsonld-website");
     if (existing) existing.remove();
+    const store = document.getElementById("seo-jsonld-store");
+    if (store) store.remove();
   }
 
   upsertJsonLd("seo-jsonld-page", {
