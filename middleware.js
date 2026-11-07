@@ -54,13 +54,23 @@ function timingSafeEqual(a, b) {
   return out === 0;
 }
 
+function requestUrl(request) {
+  try {
+    return new URL(request.url);
+  } catch {
+    return null;
+  }
+}
+
 function isLocalHost(request) {
-  const host = request.nextUrl.hostname;
+  const url = requestUrl(request);
+  const host = url ? url.hostname : "";
   return host === "localhost" || host === "127.0.0.1" || host === "::1";
 }
 
 export default function middleware(request) {
-  const path = request.nextUrl.pathname;
+  const url = requestUrl(request);
+  const path = url ? url.pathname : "";
   if (path === "/note-admin.html" || path === "/api/note-admin") {
     if (!isLocalHost(request)) {
       return new Response("Not found", {
