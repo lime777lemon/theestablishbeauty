@@ -19,8 +19,8 @@ COMMON = {
         "en": "Breadcrumb",
     },
     "emr.legal.footer.tagline": {
-        "ja": "輸入EC・ドロップシッピングによるウェルネス製品のご提供。",
-        "en": "Wellness products via import e-commerce and dropshipping.",
+        "ja": "商品の紹介と、購入先の販売事業者への案内。",
+        "en": "Product introductions and links to the selling business.",
     },
 }
 
@@ -32,8 +32,8 @@ PAGES = {
             "en": "Specified Commercial Transactions – EMR-TEK",
         },
         "doc_desc": {
-            "ja": "特定商取引法に基づく表記 — 販売業者、代金、配送、返品等（輸入EC・ドロップシッピング）。",
-            "en": "Legal seller disclosures — pricing, shipping, returns (import e-commerce & dropshipping).",
+            "ja": "特定商取引法に基づく表記。本サイトは通信販売の販売者ではなく、配送・支払い・返品は購入先の事業者が行います。",
+            "en": "Specified commercial transactions notice. This site is not the mail-order seller. The business you buy from handles shipping, payment, and returns.",
         },
         "crumb": {
             "ja": "特定商取引法に基づく表記",
@@ -44,8 +44,12 @@ PAGES = {
             "en": "Specified Commercial Transactions",
         },
         "sub": {
-            "ja": "通信販売（輸入EC・ドロップシッピング）に関する表示",
-            "en": "Disclosures for online sales (import e-commerce & dropshipping)",
+            "ja": "本サイトは通信販売の販売者ではありません",
+            "en": "This site is not the mail-order seller",
+        },
+        "updated": {
+            "ja": "最終更新日：2026年11月7日",
+            "en": "Last updated: November 7, 2026",
         },
     },
     "terms.html": {
@@ -55,18 +59,18 @@ PAGES = {
             "en": "Terms of Service – The Establish Beauty",
         },
         "doc_desc": {
-            "ja": "The Establish Beauty 利用規約 — 輸入EC・ドロップシッピング、支払い、配送、返品等について。",
-            "en": "The Establish Beauty Terms — import e-commerce, dropshipping, payment, shipping, returns, and more.",
+            "ja": "The Establish Beauty 利用規約。商品の購入契約は購入先の販売事業者との間で成立し、配送・支払い・返品は当該事業者が行います。",
+            "en": "The Establish Beauty Terms. Purchase contracts are with the selling business, which handles shipping, payment, and returns.",
         },
         "updated": {
-            "ja": "最終更新日：2026年11月5日",
-            "en": "Last updated: November 5, 2026",
+            "ja": "最終更新日：2026年11月7日",
+            "en": "Last updated: November 7, 2026",
         },
         "crumb": {"ja": "利用規約", "en": "Terms of Service"},
         "h1": {"ja": "利用規約", "en": "Terms of Service"},
         "sub": {
-            "ja": "本サイトのご利用条件（輸入EC・ドロップシッピング）",
-            "en": "Terms of use for this site (import e-commerce & dropshipping)",
+            "ja": "本サイトの利用条件。売買契約の相手方は購入先の販売事業者です",
+            "en": "Terms of use. The purchase contract is with the selling business",
         },
     },
     "privacy.html": {
@@ -76,18 +80,18 @@ PAGES = {
             "en": "Privacy Policy – The Establish Beauty",
         },
         "doc_desc": {
-            "ja": "The Establish Beauty の個人情報の取扱い。輸入EC、ドロップシッピング、InstagramおよびMetaとの接続について。",
-            "en": "How The Establish Beauty handles personal data, including Instagram and Meta connections, import e-commerce, and dropshipping.",
+            "ja": "The Establish Beauty の個人情報の取扱い。商品の紹介、購入先の事業者、InstagramおよびMetaとの接続について。",
+            "en": "How The Establish Beauty handles personal data, including product referrals, the selling business, and Instagram and Meta connections.",
         },
         "updated": {
-            "ja": "最終更新日：2026年11月5日",
-            "en": "Last updated: November 5, 2026",
+            "ja": "最終更新日：2026年11月7日",
+            "en": "Last updated: November 7, 2026",
         },
         "crumb": {"ja": "プライバシーポリシー", "en": "Privacy Policy"},
         "h1": {"ja": "プライバシーポリシー", "en": "Privacy Policy"},
         "sub": {
-            "ja": "輸入EC・ドロップシッピングにおける個人情報の取扱いについて",
-            "en": "Personal data handling for import e-commerce and dropshipping",
+            "ja": "本サイトで取得する情報の取扱いについて",
+            "en": "How we handle information collected on this site",
         },
     },
     "customer-policies.html": {
@@ -97,8 +101,12 @@ PAGES = {
             "en": "Shipping, Returns, Payment & Pricing – EMR-TEK",
         },
         "doc_desc": {
-            "ja": "配送ポリシー（海外発送・所要日数・関税）、返品・返金、お支払い方法、価格表示について。",
-            "en": "Shipping (international delivery, timelines, duties), returns, payment methods, and pricing.",
+            "ja": "配送、返品、支払い、価格は購入先の販売事業者が定めます。The Establish Beauty はこれらの業務を行いません。",
+            "en": "The selling business sets shipping, returns, payment, and price. The Establish Beauty does not perform those services.",
+        },
+        "updated": {
+            "ja": "最終更新日：2026年11月7日",
+            "en": "Last updated: November 7, 2026",
         },
         "crumb": {
             "ja": "配送・返品・支払い・価格",
@@ -109,8 +117,8 @@ PAGES = {
             "en": "Shipping, Returns, Payment & Pricing",
         },
         "sub": {
-            "ja": "輸入EC・海外発送を前提としたご案内",
-            "en": "Guidance for import e-commerce and international shipping",
+            "ja": "配送・返品・支払い・価格は、購入先の事業者が行います",
+            "en": "The business you buy from handles shipping, returns, payment, and price",
         },
     },
 }
