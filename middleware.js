@@ -9,15 +9,20 @@
  * Protects admin HTML and the Instagram Login diagnostic API.
  * Meta OAuth callback/start under /api/auth/meta/* stay public
  * (Meta must redirect to the callback without Basic Auth).
+ * YouTube OAuth start requires Basic Auth. The callback stays public
+ * because Google redirects there without Basic Auth.
  */
 
 export const config = {
   matcher: [
     "/contact-inquiries-admin.html",
+    "/note-admin.html",
+    "/api/note-admin",
     "/sql-editor.html",
     "/supplier-dashboard.html",
     "/meta-instagram-connect.html",
     "/api/instagram-login-check",
+    "/api/auth/youtube/start",
     "/stripe-connect-sinatra/:path*",
   ],
 };
@@ -49,7 +54,23 @@ function timingSafeEqual(a, b) {
   return out === 0;
 }
 
+function isLocalHost(request) {
+  const host = request.nextUrl.hostname;
+  return host === "localhost" || host === "127.0.0.1" || host === "::1";
+}
+
 export default function middleware(request) {
+  const path = request.nextUrl.pathname;
+  if (path === "/note-admin.html" || path === "/api/note-admin") {
+    if (!isLocalHost(request)) {
+      return new Response("Not found", {
+        status: 404,
+        headers: { "Cache-Control": "no-store", "Content-Type": "text/plain; charset=utf-8" },
+      });
+    }
+    return;
+  }
+
   const expectedUser = String(process.env.ADMIN_BASIC_USER || "admin").trim() || "admin";
   const expectedPass = String(process.env.ADMIN_BASIC_PASSWORD || "").trim();
 
