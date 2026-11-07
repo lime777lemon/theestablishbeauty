@@ -289,19 +289,19 @@ function loadReferralScript() {
 
 const SOCIAL_LINKS = [
   {
-    href: "https://www.instagram.com/emrtekinc/",
+    href: "https://www.instagram.com/theestablishbeauty/",
     label: "Instagram",
     icon: "instagram",
     path: "M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.75-.88a1.13 1.13 0 1 1 0 2.25 1.13 1.13 0 0 1 0-2.25z",
   },
   {
-    href: "https://www.facebook.com/ElectromagneticRevolution",
+    href: "https://www.facebook.com/theestablishbeauty/",
     label: "Facebook",
     icon: "facebook",
     path: "M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.5 1.6-1.5H16.8V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.4H8.1V14h2.5v8h2.9z",
   },
   {
-    href: "https://www.youtube.com/channel/UCKE-VVGc_g2ToXC-Lqp8THA",
+    href: "https://www.youtube.com/channel/UC9Ba5VZNCekF_9qVoxvbOaQ",
     label: "YouTube",
     icon: "youtube",
     path: "M21.6 7.2a2.7 2.7 0 0 0-1.9-1.9C18 4.8 12 4.8 12 4.8s-6 0-7.7.5a2.7 2.7 0 0 0-1.9 1.9C2 8.9 2 12 2 12s0 3.1.4 4.8a2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.7.5 7.7.5s6 0 7.7-.5a2.7 2.7 0 0 0 1.9-1.9c.4-1.7.4-4.8.4-4.8s0-3.1-.4-4.8zM10 15.2V8.8L15.5 12 10 15.2z",
